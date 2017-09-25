@@ -22,17 +22,19 @@ public class Titan extends GraphicsElement implements Serializable{
     private String vitalElement;
     private String icon;
     private int damage;
+    private int mana;
     
     //Relation
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
 
-    public Titan(String name, int life, int moves, String vitalElement, String icon, int damage) {
+    public Titan(String name, int life, int moves, String vitalElement, String icon, int damage,int mana) {
         this.name = name;
         this.life = life;
         this.moves = moves;
         this.vitalElement = vitalElement;
         this.icon = icon;
         this.damage = damage;
+        this.mana=mana;
     }
     
 

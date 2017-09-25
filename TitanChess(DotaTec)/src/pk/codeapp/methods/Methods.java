@@ -17,49 +17,42 @@ import pk.codeapp.model.User;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jose Pablo Brenes
  */
 public class Methods {
+
     private Arena arena;
     private User player1;
     private User player2;
     private boolean turn;
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
-    private Titan[] titans= new Titan[8];
+    private Titan[] titans = new Titan[8];
     //<editor-fold desc="Default list from titans" defaultstate="collapsed">
-    private String[] imageTitans=
-    {"src/pk/codeapp/tools/titans/titan1.jpg",
-        "src/pk/codeapp/tools/titans/titan2.jpg",
-        "src/pk/codeapp/tools/titans/titan3.jpg",
-        "src/pk/codeapp/tools/titans/titan4.png",
-        "src/pk/codeapp/tools/titans/titan5.jpg",
-        "src/pk/codeapp/tools/titans/titan6.png",
-        "src/pk/codeapp/tools/titans/titan7.png",null};
-     private String[] gifTitans=
-    {"src/pk/codeapp/tools/titans/titan1.gif",
-        "src/pk/codeapp/tools/titans/titan2.gif",
-        "src/pk/codeapp/tools/titans/titan3.gif",
-        "src/pk/codeapp/tools/titans/titan4.gif",
-        "src/pk/codeapp/tools/titans/titan5.gif",
-        "src/pk/codeapp/tools/titans/titan6.gif",
-        "src/pk/codeapp/tools/titans/titan7.gif",null};
+    private String[] imageTitans
+            = {"src/pk/codeapp/tools/titans/titan1.jpg",
+                "src/pk/codeapp/tools/titans/titan2.jpg",
+                "src/pk/codeapp/tools/titans/titan3.jpg",
+                "src/pk/codeapp/tools/titans/titan4.png",
+                null, null, null, null};
+    private String[] gifTitans
+            = {"src/pk/codeapp/tools/titans/titan1.gif",
+                "src/pk/codeapp/tools/titans/titan2.gif",
+                "src/pk/codeapp/tools/titans/titan3.gif",
+                "src/pk/codeapp/tools/titans/titan4.gif",
+                null, null, null, null};
     //</editor-fold>
-        
-    
-    
-    
+
     /**
      * Register new user in the game
+     *
      * @param userName
      * @param password
      * @param email
-     * @return  true or false when the creation is sucessfull
+     * @return true or false when the creation is sucessfull
      */
-    
     public boolean registerUser(String userName, String password, String email) {
         boolean flag = false;
         for (User user : players) {
@@ -73,10 +66,12 @@ public class Methods {
         }
 
     }
+
     /**
      * Search user in the player list
+     *
      * @param userName
-     * @return  the user found or null if the user is not
+     * @return the user found or null if the user is not
      */
     public User searchUser(String userName) {
         for (int i = 0; i < players.size(); i++) {
@@ -87,11 +82,11 @@ public class Methods {
         }
         return null;
     }
+
     /**
      * Write user in the binary file
      */
-    public void writeUser() 
-    {
+    public void writeUser() {
         if (userFile.exists()) {
             userFile.delete();
             System.out.println("Deleted");
@@ -105,7 +100,7 @@ public class Methods {
             for (int i = 0; i < players.size(); i++) {
                 file = new FileOutputStream(userFile, true);
                 output = new ObjectOutputStream(file);
-                User save=players.get(i);
+                User save = players.get(i);
                 output.writeObject(save);
             }
 
@@ -130,6 +125,7 @@ public class Methods {
         }
 
     }
+
     /**
      * Charge users from the binary file
      */
@@ -153,10 +149,8 @@ public class Methods {
         }
 
     }
-    
-    
-   //<editor-fold desc="*All getter and setter here*" defaultstate="collapsed">
 
+    //<editor-fold desc="*All getter and setter here*" defaultstate="collapsed">
     public String[] getImageTitans() {
         return imageTitans;
     }
@@ -172,10 +166,8 @@ public class Methods {
     public void setTitans(Titan[] titans) {
         this.titans = titans;
     }
-    
-    
-    //</editor-fold>
 
+    //</editor-fold>
     public String[] getGifTitans() {
         return gifTitans;
     }
@@ -183,23 +175,24 @@ public class Methods {
     public void setGifTitans(String[] gifTitans) {
         this.gifTitans = gifTitans;
     }
-    public void defaulTitan(){
-      
-       
-        Titan titan = new Titan("Western Dragon", 600, 3, "Aire","",100);
-        titans[0]=titan;
-        titan = new Titan("Treatan", 700, 1, "Fire","",250);
-        titans[1]=titan;
-         titan = new Titan("Tololo", 800, 2, "Land","",230);
-       titans[2]=titan;
-        titan = new Titan("Buckbeak", 400, 2, "Aire","",300);
-        titans[3]=titan;
-         titan = new Titan("Geb", 1400, 3, "Land","",80);
-        titans[4]=titan;
-        titan = new Titan("Sobeck", 1000, 2, "Water","",100);
-       titans[5]=titan;
-         titan = new Titan("Foxy", 500, 1, "Fire","",500);
-       titans[6]=titan;
-       titans[7]=null;
+
+    public void defaulTitan() {
+
+        Titan titan = new Titan("Western Dragon", 600, 3, "Air", "", 100,400);
+        titans[0] = titan;
+        titan = new Titan("Treatan", 700, 1, "Fire", "", 250,300);
+        titans[1] = titan;
+        titan = new Titan("Tololo", 800, 2, "Water", "", 230,600);
+        titans[2] = titan;
+        titan = new Titan("Buckbeak", 400, 2, "Air", "", 300,500);
+        titans[3] = titan;
+
+//         titan = new Titan("Geb", 1400, 3, "Land","",80);
+//        titans[4]=titan;
+//        titan = new Titan("Sobeck", 1000, 2, "Water","",100);
+//       titans[5]=titan;
+//         titan = new Titan("Foxy", 500, 1, "Fire","",500);
+//       titans[6]=titan;
+//       titans[7]=null;
     }
 }

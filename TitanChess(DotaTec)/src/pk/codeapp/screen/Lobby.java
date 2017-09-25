@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.Titan;
-import static pk.codeapp.screen.MainApp.methods;
+
 
 /**
  *
@@ -62,6 +62,7 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan7 = new javax.swing.JButton();
         btnTitan8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         lblGifImage = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         information = new javax.swing.JList<>();
@@ -206,13 +207,19 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/playGame.png"))); // NOI18N
         jButton9.setOpaque(false);
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, 240, 100));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, 220, 100));
+
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Back");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
 
         lblGifImage.setBackground(new java.awt.Color(0, 0, 0));
         lblGifImage.setFont(new java.awt.Font("Century Schoolbook L", 1, 36)); // NOI18N
         lblGifImage.setForeground(new java.awt.Color(255, 255, 255));
         lblGifImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(lblGifImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 500));
+        getContentPane().add(lblGifImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
 
         information.setBackground(new java.awt.Color(51, 51, 51));
         information.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -316,6 +323,7 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
     private javax.swing.JButton btnTitan7;
     private javax.swing.JButton btnTitan8;
     private javax.swing.JList<String> information;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -330,43 +338,43 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
             btnTitan1.setIcon(new ImageIcon(titans[0]));
             
         } else {
-            btnTitan8.setText("Coming soon...");
+            btnTitan1.setText("Coming soon...");
         }
         if (titans[1] != null) {
             btnTitan2.setIcon(new ImageIcon(titans[1]));
             
         } else {
-            btnTitan8.setText("Coming soon...");
+            btnTitan2.setText("Coming soon...");
         }
         if (titans[2] != null) {
             btnTitan3.setIcon(new ImageIcon(titans[2]));
             
         } else {
-            btnTitan8.setText("Coming soon...");
+            btnTitan3.setText("Coming soon...");
         }
         if (titans[3] != null) {
             btnTitan4.setIcon(new ImageIcon(titans[3]));
            
         } else {
-            btnTitan8.setText("Coming soon...");
+            btnTitan4.setText("Coming soon...");
         }
         if (titans[4] != null) {
             btnTitan5.setIcon(new ImageIcon(titans[4]));
             
         } else {
-            btnTitan8.setText("Coming soon...");
+            btnTitan5.setText("Coming soon...");
         }
         if (titans[5] != null) {
             btnTitan6.setIcon(new ImageIcon(titans[5]));
          
         } else {
-            btnTitan8.setText("Coming soon...");
+            btnTitan6.setText("Coming soon...");
         }
         if (titans[6] != null) {
             btnTitan7.setIcon(new ImageIcon(titans[6]));
            
         } else {
-            btnTitan8.setText("Coming soon...");
+            btnTitan7.setText("Coming soon...");
         }
         if (titans[7] != null) {
             btnTitan8.setIcon(new ImageIcon(titans[7]));
