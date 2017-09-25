@@ -7,15 +7,9 @@ package pk.codeapp.screen;
 
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Jose Pablo Brenes
- */
 public class SelectTitan extends javax.swing.JFrame {
-
-    /**
-     * Creates new form SelectTitan
-     */
+    //Inicialization of Variables
+    private int columnGame,rowGame; // Column and row of Table Game
     public SelectTitan() {
         initComponents();
        lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
@@ -40,6 +34,7 @@ public class SelectTitan extends javax.swing.JFrame {
         buttonGroupTitan6 = new javax.swing.ButtonGroup();
         buttonGroupTitan7 = new javax.swing.ButtonGroup();
         buttonGroupTitan8 = new javax.swing.ButtonGroup();
+        jMenu1 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         titan_image6 = new javax.swing.JLabel();
         titan_image1 = new javax.swing.JLabel();
@@ -67,7 +62,12 @@ public class SelectTitan extends javax.swing.JFrame {
         btnTitan1_Player2 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         cmbSizeofmap = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        btnPositionTower = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -78,39 +78,39 @@ public class SelectTitan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Select the Titans");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 290, 50));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 290, 50));
 
         titan_image6.setToolTipText("");
         titan_image6.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 80, 80));
+        getContentPane().add(titan_image6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 80, 80));
 
         titan_image1.setToolTipText("");
         titan_image1.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 80, 80));
+        getContentPane().add(titan_image1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 80, 80));
 
         titan_image3.setToolTipText("");
         titan_image3.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 80, 80));
+        getContentPane().add(titan_image3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 80, 80));
 
         titan_image2.setToolTipText("");
         titan_image2.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 80, 80));
+        getContentPane().add(titan_image2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 80, 80));
 
         titan_image4.setToolTipText("");
         titan_image4.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 80, 80));
+        getContentPane().add(titan_image4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 160, 80, 80));
 
         titan_image8.setToolTipText("");
         titan_image8.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 80, 80));
+        getContentPane().add(titan_image8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 330, 80, 80));
 
         titan_image5.setToolTipText("");
         titan_image5.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 80, 80));
+        getContentPane().add(titan_image5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 80, 80));
 
         titan_image7.setToolTipText("");
         titan_image7.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(titan_image7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 80, 80));
+        getContentPane().add(titan_image7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, 80, 80));
 
         btnTitan2_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan2.add(btnTitan2_Player1);
@@ -123,7 +123,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan2_Player1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan2_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 90, -1));
+        getContentPane().add(btnTitan2_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 90, -1));
 
         btnTitan5_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan5.add(btnTitan5_Player1);
@@ -131,7 +131,7 @@ public class SelectTitan extends javax.swing.JFrame {
         btnTitan5_Player1.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan5_Player1.setText("Player 1");
         btnTitan5_Player1.setOpaque(false);
-        getContentPane().add(btnTitan5_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 90, -1));
+        getContentPane().add(btnTitan5_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 90, -1));
 
         btnTitan3_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan3.add(btnTitan3_Player1);
@@ -144,7 +144,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan3_Player1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan3_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 90, -1));
+        getContentPane().add(btnTitan3_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 90, -1));
 
         btnTitan4_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan4.add(btnTitan4_Player1);
@@ -152,7 +152,7 @@ public class SelectTitan extends javax.swing.JFrame {
         btnTitan4_Player1.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan4_Player1.setText("Player 1");
         btnTitan4_Player1.setOpaque(false);
-        getContentPane().add(btnTitan4_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, 90, -1));
+        getContentPane().add(btnTitan4_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, 90, -1));
 
         btnTitan6_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan6.add(btnTitan6_Player1);
@@ -160,7 +160,7 @@ public class SelectTitan extends javax.swing.JFrame {
         btnTitan6_Player1.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan6_Player1.setText("Player 1");
         btnTitan6_Player1.setOpaque(false);
-        getContentPane().add(btnTitan6_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 90, -1));
+        getContentPane().add(btnTitan6_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, 90, -1));
 
         btnTitan7_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan7.add(btnTitan7_Player1);
@@ -168,7 +168,7 @@ public class SelectTitan extends javax.swing.JFrame {
         btnTitan7_Player1.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan7_Player1.setText("Player 1");
         btnTitan7_Player1.setOpaque(false);
-        getContentPane().add(btnTitan7_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 90, -1));
+        getContentPane().add(btnTitan7_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 90, -1));
 
         btnTitan8_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan8.add(btnTitan8_Player1);
@@ -176,7 +176,7 @@ public class SelectTitan extends javax.swing.JFrame {
         btnTitan8_Player1.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan8_Player1.setText("Player 1");
         btnTitan8_Player1.setOpaque(false);
-        getContentPane().add(btnTitan8_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 380, 90, -1));
+        getContentPane().add(btnTitan8_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 90, -1));
 
         btnTitan1_Player1.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan1.add(btnTitan1_Player1);
@@ -184,7 +184,7 @@ public class SelectTitan extends javax.swing.JFrame {
         btnTitan1_Player1.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan1_Player1.setText("Player 1");
         btnTitan1_Player1.setOpaque(false);
-        getContentPane().add(btnTitan1_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 90, -1));
+        getContentPane().add(btnTitan1_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 90, -1));
 
         btnTitan2_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan2.add(btnTitan2_Player2);
@@ -197,7 +197,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan2_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan2_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 90, -1));
+        getContentPane().add(btnTitan2_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 90, -1));
 
         btnTitan3_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan3.add(btnTitan3_Player2);
@@ -210,7 +210,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan3_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan3_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 90, -1));
+        getContentPane().add(btnTitan3_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 90, -1));
 
         btnTitan4_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan4.add(btnTitan4_Player2);
@@ -223,7 +223,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan4_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan4_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 90, -1));
+        getContentPane().add(btnTitan4_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 90, -1));
 
         btnTitan5_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan5.add(btnTitan5_Player2);
@@ -236,7 +236,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan5_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan5_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 90, -1));
+        getContentPane().add(btnTitan5_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 90, -1));
 
         btnTitan6_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan6.add(btnTitan6_Player2);
@@ -249,7 +249,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan6_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan6_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 90, -1));
+        getContentPane().add(btnTitan6_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 90, -1));
 
         btnTitan7_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan7.add(btnTitan7_Player2);
@@ -262,7 +262,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan7_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan7_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 90, -1));
+        getContentPane().add(btnTitan7_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 90, -1));
 
         btnTitan8_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan8.add(btnTitan8_Player2);
@@ -275,7 +275,7 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan8_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan8_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 90, -1));
+        getContentPane().add(btnTitan8_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 450, 90, -1));
 
         btnTitan1_Player2.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroupTitan1.add(btnTitan1_Player2);
@@ -288,18 +288,40 @@ public class SelectTitan extends javax.swing.JFrame {
                 btnTitan1_Player2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTitan1_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 90, -1));
+        getContentPane().add(btnTitan1_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Size of Map:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 70, -1, -1));
 
         cmbSizeofmap.setBackground(new java.awt.Color(0, 0, 0));
         cmbSizeofmap.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbSizeofmap.setForeground(new java.awt.Color(255, 255, 255));
         cmbSizeofmap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large", " " }));
-        getContentPane().add(cmbSizeofmap, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 110, 200, 40));
+        getContentPane().add(cmbSizeofmap, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 110, 200, 40));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Selection Position Tower:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 230, -1, -1));
+
+        btnPositionTower.setBackground(new java.awt.Color(0, 0, 0));
+        btnPositionTower.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnPositionTower.setForeground(new java.awt.Color(255, 255, 255));
+        btnPositionTower.setText("Position Towers");
+        btnPositionTower.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPositionTowerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPositionTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 270, 160, 60));
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Back");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 140, 50));
 
         lblBackground.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/SelectTitan_Background.jpg"))); // NOI18N
@@ -348,6 +370,30 @@ public class SelectTitan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTitan1_Player2ActionPerformed
 
+    private void btnPositionTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPositionTowerActionPerformed
+        String sizeOfTable = checkStringSize(); // Return the string of combobox
+        setSizeoftableGame(sizeOfTable); //set variables column and row related to String size
+        this.setVisible(false);
+        System.out.println(sizeOfTable);
+        SelectionTower selectionTower =  new SelectionTower(); //Instance of windows selection of tower
+        selectionTower.beforeWindows(this); // Pass windows to Selection of tower
+        
+    }//GEN-LAST:event_btnPositionTowerActionPerformed
+    private String checkStringSize(){ // Return the String cliked in cmb (Small,Medium,Large)
+        return (String)cmbSizeofmap.getSelectedItem(); 
+    }
+    private void setSizeoftableGame(String sizeOfTable){
+        if(sizeOfTable.equals("Large")){
+            this.columnGame=14;
+            this.rowGame=15;}
+        else if(sizeOfTable.equals("Medium")){
+            this.columnGame=12;
+            this.rowGame=13;
+        }else{
+            this.columnGame=10;
+            this.rowGame=11;
+        }  
+    }
     /**
      * @param args the command line arguments
      */
@@ -382,8 +428,26 @@ public class SelectTitan extends javax.swing.JFrame {
             }
         });
     }
+      // <editor-fold defaultstate="collapsed" desc="Geters and Seters">
+    
+    public int getColumnGame() {
+        return columnGame;
+    }
+
+    public void setColumnGame(int columnGame) {
+        this.columnGame = columnGame;
+    }
+
+    public int getRowGame() {
+        return rowGame;
+    }
+
+    public void setRowGame(int rowGame) {
+        this.rowGame = rowGame;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPositionTower;
     private javax.swing.JRadioButton btnTitan1_Player1;
     private javax.swing.JRadioButton btnTitan1_Player2;
     private javax.swing.JRadioButton btnTitan2_Player1;
@@ -409,8 +473,11 @@ public class SelectTitan extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupTitan7;
     private javax.swing.ButtonGroup buttonGroupTitan8;
     private javax.swing.JComboBox<String> cmbSizeofmap;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel titan_image1;
     private javax.swing.JLabel titan_image2;
@@ -421,4 +488,8 @@ public class SelectTitan extends javax.swing.JFrame {
     private javax.swing.JLabel titan_image7;
     private javax.swing.JLabel titan_image8;
     // End of variables declaration//GEN-END:variables
+
+   
+    
 }
+
