@@ -7,10 +7,13 @@ package pk.codeapp.screen;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.methods.Methods;
+import pk.codeapp.model.Titan;
 import static pk.codeapp.screen.MainApp.methods;
 
 /**
@@ -60,12 +63,12 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         lblGifImage = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        information = new javax.swing.JList<>();
         lblLobbyBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -208,7 +211,16 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         lblGifImage.setBackground(new java.awt.Color(0, 0, 0));
         lblGifImage.setFont(new java.awt.Font("Century Schoolbook L", 1, 36)); // NOI18N
         lblGifImage.setForeground(new java.awt.Color(255, 255, 255));
+        lblGifImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblGifImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 500));
+
+        information.setBackground(new java.awt.Color(51, 51, 51));
+        information.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        information.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
+        information.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(information);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 780, 220));
 
         lblLobbyBackground.setBackground(new java.awt.Color(0, 0, 0));
         lblLobbyBackground.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
@@ -303,8 +315,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
     private javax.swing.JButton btnTitan6;
     private javax.swing.JButton btnTitan7;
     private javax.swing.JButton btnTitan8;
+    private javax.swing.JList<String> information;
     private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblGifImage;
     private javax.swing.JLabel lblLobbyBackground;
     // End of variables declaration//GEN-END:variables
@@ -314,45 +328,59 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         String titans[] = methods.getImageTitans();
         if (titans[0] != null) {
             btnTitan1.setIcon(new ImageIcon(titans[0]));
+            
         } else {
             btnTitan8.setText("Coming soon...");
         }
         if (titans[1] != null) {
             btnTitan2.setIcon(new ImageIcon(titans[1]));
+            
         } else {
             btnTitan8.setText("Coming soon...");
         }
         if (titans[2] != null) {
             btnTitan3.setIcon(new ImageIcon(titans[2]));
+            
         } else {
             btnTitan8.setText("Coming soon...");
         }
         if (titans[3] != null) {
             btnTitan4.setIcon(new ImageIcon(titans[3]));
+           
         } else {
             btnTitan8.setText("Coming soon...");
         }
         if (titans[4] != null) {
             btnTitan5.setIcon(new ImageIcon(titans[4]));
+            
         } else {
             btnTitan8.setText("Coming soon...");
         }
         if (titans[5] != null) {
             btnTitan6.setIcon(new ImageIcon(titans[5]));
+         
         } else {
             btnTitan8.setText("Coming soon...");
         }
         if (titans[6] != null) {
             btnTitan7.setIcon(new ImageIcon(titans[6]));
+           
         } else {
             btnTitan8.setText("Coming soon...");
         }
         if (titans[7] != null) {
             btnTitan8.setIcon(new ImageIcon(titans[7]));
+           
         } else {
             btnTitan8.setText("Coming soon...");
         }
 
+    }
+    public void showInfo(int show){
+      
+        ArrayList<Titan> titans=methods.getTitans();
+          if(show<=titans.size())
+        information.setModel(titans.get(show).toModel());
     }
     //</editor-fold>
 
@@ -374,9 +402,13 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         if (titanImage[icon] != null) {
             lblGifImage.setIcon(new ImageIcon(titanImage[icon]));
              lblGifImage.setText(null);
+             showInfo(icon);
         } else {
             lblGifImage.setIcon(null);
             lblGifImage.setText("Coming soon...");
+            DefaultListModel<String> model= new DefaultListModel();
+            model.addElement("No information available yet.");
+            information.setModel(model);
         }
     }
 }
