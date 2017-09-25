@@ -32,9 +32,13 @@ public class Methods {
     private boolean turn;
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
+<<<<<<< HEAD
     private ArrayList<Titan> titans= new ArrayList();
     private GraphicsElement graphicsElements[][]; // Matrix of Game
     private int columnGame,rowGame; 
+=======
+    private Titan[] titans= new Titan[8];
+>>>>>>> master
     //<editor-fold desc="Default list from titans" defaultstate="collapsed">
     private String[] imageTitans=
     {"src/pk/codeapp/tools/titans/titan1.jpg",
@@ -170,11 +174,11 @@ public class Methods {
         this.imageTitans = imageTitans;
     }
 
-    public ArrayList<Titan> getTitans() {
+    public Titan[] getTitans() {
         return titans;
     }
 
-    public void setTitans(ArrayList<Titan> titans) {
+    public void setTitans(Titan[] titans) {
         this.titans = titans;
     }
     
@@ -209,19 +213,20 @@ public class Methods {
       
        
         Titan titan = new Titan("Western Dragon", 600, 3, "Aire","",100);
-        titans.add(titan);
+        titans[0]=titan;
         titan = new Titan("Treatan", 700, 1, "Fire","",250);
-        titans.add(titan);
+        titans[1]=titan;
          titan = new Titan("Tololo", 800, 2, "Land","",230);
-        titans.add(titan);
+       titans[2]=titan;
         titan = new Titan("Buckbeak", 400, 2, "Aire","",300);
-        titans.add(titan);
+        titans[3]=titan;
          titan = new Titan("Geb", 1400, 3, "Land","",80);
-        titans.add(titan);
+        titans[4]=titan;
         titan = new Titan("Sobeck", 1000, 2, "Water","",100);
-        titans.add(titan);
+       titans[5]=titan;
          titan = new Titan("Foxy", 500, 1, "Fire","",500);
-        titans.add(titan);
+       titans[6]=titan;
+       titans[7]=null;
     }
     public void addTower(Tower newTower){ // Add tower in the matrix
         if(graphicsElements==null){ //Check to empty

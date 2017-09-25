@@ -378,9 +378,9 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
     }
     public void showInfo(int show){
       
-        ArrayList<Titan> titans=methods.getTitans();
-          if(show<=titans.size())
-        information.setModel(titans.get(show).toModel());
+        Titan[] titans=methods.getTitans();
+          if(show<=titans.length)
+        information.setModel(titans[show].toModel());
     }
     //</editor-fold>
 
