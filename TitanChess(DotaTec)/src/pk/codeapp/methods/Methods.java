@@ -31,18 +31,7 @@ public class Methods {
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
     private Titan[] titans = new Titan[8];
     //<editor-fold desc="Default list from titans" defaultstate="collapsed">
-    private String[] imageTitans
-            = {"src/pk/codeapp/tools/titans/titan1.jpg",
-                "src/pk/codeapp/tools/titans/titan2.jpg",
-                "src/pk/codeapp/tools/titans/titan3.jpg",
-                "src/pk/codeapp/tools/titans/titan4.png",
-                null, null, null, null};
-    private String[] gifTitans
-            = {"src/pk/codeapp/tools/titans/titan1.gif",
-                "src/pk/codeapp/tools/titans/titan2.gif",
-                "src/pk/codeapp/tools/titans/titan3.gif",
-                "src/pk/codeapp/tools/titans/titan4.gif",
-                null, null, null, null};
+    
     //</editor-fold>
 
     /**
@@ -151,13 +140,7 @@ public class Methods {
     }
 
     //<editor-fold desc="*All getter and setter here*" defaultstate="collapsed">
-    public String[] getImageTitans() {
-        return imageTitans;
-    }
 
-    public void setImageTitans(String[] imageTitans) {
-        this.imageTitans = imageTitans;
-    }
 
     public Titan[] getTitans() {
         return titans;
@@ -168,31 +151,30 @@ public class Methods {
     }
 
     //</editor-fold>
-    public String[] getGifTitans() {
-        return gifTitans;
-    }
 
-    public void setGifTitans(String[] gifTitans) {
-        this.gifTitans = gifTitans;
-    }
 
     public void defaulTitan() {
+        //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
+        Titan titan = new Titan("Western Dragon", 400,3,200, 200, "Air", "src/pk/codeapp/tools/titans/icons/titan1.jpg","src/pk/codeapp/tools/titans/titan1.jpg","src/pk/codeapp/tools/titans/titan1.gif");
+        addTitan(titan);
+         titan = new Titan("Tretan", 400,3,200, 200, "Fire", "src/pk/codeapp/tools/titans/icons/titan2.jpg","src/pk/codeapp/tools/titans/titan2.jpg","src/pk/codeapp/tools/titans/titan2.gif");
+        addTitan(titan);
+         titan = new Titan("Tololo", 400,3,200, 200, "Water", "src/pk/codeapp/tools/titans/icons/titan3.jpg","src/pk/codeapp/tools/titans/titan3.jpg","src/pk/codeapp/tools/titans/titan3.gif");
+        addTitan(titan);
+         titan = new Titan("Geb", 400,3,200, 200, "Land", "src/pk/codeapp/tools/titans/icons/titan4.jpg","src/pk/codeapp/tools/titans/titan4.jpg","src/pk/codeapp/tools/titans/titan4.gif");
+        addTitan(titan);
 
-        Titan titan = new Titan("Western Dragon", 600, 3, "Air", "", 100,400);
-        titans[0] = titan;
-        titan = new Titan("Treatan", 700, 1, "Fire", "", 250,300);
-        titans[1] = titan;
-        titan = new Titan("Tololo", 800, 2, "Water", "", 230,600);
-        titans[2] = titan;
-        titan = new Titan("Buckbeak", 400, 2, "Air", "", 300,500);
-        titans[3] = titan;
+    
 
-//         titan = new Titan("Geb", 1400, 3, "Land","",80);
-//        titans[4]=titan;
-//        titan = new Titan("Sobeck", 1000, 2, "Water","",100);
-//       titans[5]=titan;
-//         titan = new Titan("Foxy", 500, 1, "Fire","",500);
-//       titans[6]=titan;
-//       titans[7]=null;
+
     }
+    public void addTitan(Titan titan){
+        for (int i = 0; i < titans.length; i++) {
+            if(titans[i]==null){
+                titans[i]=titan;
+                break;
+            }
+        }
+    }
+
 }
