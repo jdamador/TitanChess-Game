@@ -13,9 +13,10 @@ import pk.codeapp.model.GraphicsElement;
  */
 public class Tower extends GraphicsElement{
     private int quantityStamina;
-
-    public Tower(int quantityStamina) {
+    Dupla position;
+    public Tower(int quantityStamina,Dupla dupla) {
         this.quantityStamina = quantityStamina;
+        this.position=dupla;
     }
     
     public int getQuantityStamina() {
@@ -24,6 +25,14 @@ public class Tower extends GraphicsElement{
 
     public void setQuantityStamina(int quantityStamina) {
         this.quantityStamina = quantityStamina;
+    }
+
+    public Dupla getPosition() {
+        return position;
+    }
+
+    public void setPosition(Dupla position) {
+        this.position = position;
     }
     
 }
