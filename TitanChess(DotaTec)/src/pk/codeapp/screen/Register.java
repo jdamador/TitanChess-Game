@@ -5,9 +5,12 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pk.codeapp.methods.DefaultRules;
+import static pk.codeapp.screen.MainApp.methods;
 
 /**
  *
@@ -20,6 +23,16 @@ public class Register extends javax.swing.JFrame implements DefaultRules {
      */
     public Register() {
         initComponents();
+        this.setLocationRelativeTo(null);
+           this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
+                
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
 
     /**

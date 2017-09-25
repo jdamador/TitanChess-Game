@@ -29,6 +29,25 @@ public class Methods {
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
     
+    //<editor-fold desc="Default list from titans" defaultstate="collapsed">
+    private String[] imageTitans=
+    {"src/pk/codeapp/tools/titans/titan1.jpg",
+        "src/pk/codeapp/tools/titans/titan2.jpg",
+        "src/pk/codeapp/tools/titans/titan3.jpg",
+        "src/pk/codeapp/tools/titans/titan4.png",
+        "src/pk/codeapp/tools/titans/titan5.jpg",
+        "src/pk/codeapp/tools/titans/titan6.png",
+        "src/pk/codeapp/tools/titans/titan7.png",null};
+     private String[] gifTitans=
+    {"src/pk/codeapp/tools/titans/titan1.gif",
+        "src/pk/codeapp/tools/titans/titan2.gif",
+        "src/pk/codeapp/tools/titans/titan3.gif",
+        "src/pk/codeapp/tools/titans/titan4.gif",
+        "src/pk/codeapp/tools/titans/titan5.gif",
+        "src/pk/codeapp/tools/titans/titan6.gif",
+        "src/pk/codeapp/tools/titans/titan7.gif",null};
+    //</editor-fold>
+        
     
     
     
@@ -132,5 +151,27 @@ public class Methods {
         } catch (Exception exc) {
         }
 
+    }
+    
+    
+   //<editor-fold desc="*All getter and setter here*" defaultstate="collapsed">
+
+    public String[] getImageTitans() {
+        return imageTitans;
+    }
+
+    public void setImageTitans(String[] imageTitans) {
+        this.imageTitans = imageTitans;
+    }
+    
+    
+    //</editor-fold>
+
+    public String[] getGifTitans() {
+        return gifTitans;
+    }
+
+    public void setGifTitans(String[] gifTitans) {
+        this.gifTitans = gifTitans;
     }
 }

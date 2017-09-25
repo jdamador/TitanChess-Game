@@ -5,7 +5,11 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
+import pk.codeapp.model.User;
 import sun.security.jgss.spi.MechanismFactory;
 
 /**
@@ -20,6 +24,17 @@ public class MainApp extends javax.swing.JFrame {
      */
     public MainApp() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        methods.readUser();
+         this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
+                
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
 
     /**
@@ -31,37 +46,41 @@ public class MainApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setToolTipText("");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 410, 40));
+        txtUsername.setBackground(new java.awt.Color(51, 51, 51));
+        txtUsername.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsername.setToolTipText("");
+        getContentPane().add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 410, 40));
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setToolTipText("");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 410, 40));
+        txtPassword.setBackground(new java.awt.Color(51, 51, 51));
+        txtPassword.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPassword.setToolTipText("");
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 410, 40));
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Start Game");
         jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 190, 40));
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
@@ -92,6 +111,11 @@ public class MainApp extends javax.swing.JFrame {
         Register registerWindow= new Register();
         registerWindow.openWindow(this);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        login();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,7 +156,22 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+public void login()
+    {
+     String userName = txtUsername.getText();
+     User askUser=methods.searchUser(userName);
+     if(askUser!=null){
+         String password = txtPassword.getText();
+         if(askUser.getPassword().equals(password)){
+             Lobby lobby= new Lobby();
+             lobby.openWindow(this);
+         }else JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...","Password invalid",JOptionPane.WARNING_MESSAGE);
+     }
+     else JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...","Password invalid",JOptionPane.WARNING_MESSAGE);
+     
+    }
 }
