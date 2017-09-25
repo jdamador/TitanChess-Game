@@ -5,12 +5,16 @@
  */
 package pk.codeapp.screen;
 
+import pk.codeapp.methods.Methods;
+import sun.security.jgss.spi.MechanismFactory;
+
 /**
  *
  * @author amador
  */
 public class MainApp extends javax.swing.JFrame {
 
+    static Methods methods= new Methods();
     /**
      * Creates new form MainApp
      */
@@ -36,6 +40,7 @@ public class MainApp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setBackground(new java.awt.Color(51, 51, 51));
@@ -64,6 +69,11 @@ public class MainApp extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Register");
         jButton2.setToolTipText("");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 190, 40));
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -76,6 +86,12 @@ public class MainApp extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Register registerWindow= new Register();
+        registerWindow.openWindow(this);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
