@@ -12,4 +12,13 @@ package pk.codeapp.model;
  */
 public abstract class GraphicsElement {
     private Dupla dupla;
+
+    public Dupla getDupla() {
+        return dupla;
+    }
+
+    public void setDupla(Dupla dupla) {
+        this.dupla = dupla;
+    }
+    
 }

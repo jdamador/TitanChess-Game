@@ -12,6 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import pk.codeapp.model.Dupla;
+import pk.codeapp.model.Path;
+import pk.codeapp.model.Tower;
 
 public class SelectionTower extends javax.swing.JFrame implements ActionListener {
 
@@ -114,6 +117,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         this.dispose();
         selectTitan.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -155,7 +159,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         int column = columnGame, row = rowGame-6;
         for (int j = 0; j < row; j++) {
             for (int i = 0; i < column; i++) {
-                JButton temp = new JButton();
+                Path temp = new Path(i,j);
                 temp.setName("button"+i+"_"+text);
                 temp.addActionListener(this);
                 temp.setVisible(true);
@@ -183,17 +187,23 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e){ 
-        JButton temp = (JButton) e.getSource();
+        Path temp = (Path) e.getSource();
+        System.out.println(temp.getX());
+        System.out.println(temp.getY());
         // each panel will have a difference of one pixel to calculate whith is clicked
         if(temp.getParent().getHeight()==500){ //First Panel
             contTowersP1++;
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
-            temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));}}
+            temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
+            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()));
+            MainApp.methods.addTower(newTower);
+            }}
         else if(temp.getParent().getHeight()==501){ //Second Panel
             contTowersP2++;
             if(contTowersP2<=3){// Check the num Tower is less than 3 (Panel 2)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
-            
+            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()));
+            MainApp.methods.addTower(newTower);
             }}
     }
 

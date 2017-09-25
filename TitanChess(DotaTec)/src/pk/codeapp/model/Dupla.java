@@ -11,28 +11,30 @@ package pk.codeapp.model;
  * @author Jose Pablo Brenes
  */
 public class Dupla {
-    private int posX;
-    private int posY;
+    private int column;
+    private int row;
 
-    public Dupla(int posX, int posY) {
-        this.posX = posX;
-        this.posY = posY;
+    public Dupla(int column, int row) {
+        this.column = column;
+        this.row = row;
     }
     public Dupla(){}
-    public int getPosX() {
-        return posX;
+
+    public int getColumn() {
+        return column;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
+    public void setColumn(int column) {
+        this.column = column;
     }
 
-    public int getPosY() {
-        return posY;
+    public int getRow() {
+        return row;
     }
 
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void setRow(int row) {
+        this.row = row;
     }
+    
     
 }

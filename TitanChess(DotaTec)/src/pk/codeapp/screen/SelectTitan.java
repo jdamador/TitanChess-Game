@@ -374,7 +374,11 @@ public class SelectTitan extends javax.swing.JFrame {
         String sizeOfTable = checkStringSize(); // Return the string of combobox
         setSizeoftableGame(sizeOfTable); //set variables column and row related to String size
         this.setVisible(false);
-        System.out.println(sizeOfTable);
+        
+        // Set ColumnGame and RowGame in methods
+        MainApp.methods.setColumnGame(columnGame);
+        MainApp.methods.setRowGame(rowGame);
+        
         SelectionTower selectionTower =  new SelectionTower(); //Instance of windows selection of tower
         selectionTower.beforeWindows(this); // Pass windows to Selection of tower
         

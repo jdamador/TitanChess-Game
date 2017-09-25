@@ -9,7 +9,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import pk.codeapp.model.Arena;
+import pk.codeapp.model.Dupla;
+import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Titan;
+import pk.codeapp.model.Tower;
 import pk.codeapp.model.User;
 
 /*
@@ -30,6 +33,8 @@ public class Methods {
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
     private ArrayList<Titan> titans= new ArrayList();
+    private GraphicsElement graphicsElements[][]; // Matrix of Game
+    private int columnGame,rowGame; 
     //<editor-fold desc="Default list from titans" defaultstate="collapsed">
     private String[] imageTitans=
     {"src/pk/codeapp/tools/titans/titan1.jpg",
@@ -183,6 +188,23 @@ public class Methods {
     public void setGifTitans(String[] gifTitans) {
         this.gifTitans = gifTitans;
     }
+
+    public int getColumnGame() {
+        return columnGame;
+    }
+
+    public void setColumnGame(int columnGame) {
+        this.columnGame = columnGame;
+    }
+
+    public int getRowGame() {
+        return rowGame;
+    }
+
+    public void setRowGame(int rowGame) {
+        this.rowGame = rowGame;
+    }
+    
     public void defaulTitan(){
       
        
@@ -200,5 +222,14 @@ public class Methods {
         titans.add(titan);
          titan = new Titan("Foxy", 500, 1, "Fire","",500);
         titans.add(titan);
+    }
+    public void addTower(Tower newTower){ // Add tower in the matrix
+        if(graphicsElements==null){ //Check to empty
+            graphicsElements=new GraphicsElement[columnGame][rowGame]; //Create a new Matrix
+            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower;
+        }
+        else{      
+            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower;
+        }
     }
 }
