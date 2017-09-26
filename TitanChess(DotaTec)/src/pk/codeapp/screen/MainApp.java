@@ -5,6 +5,7 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -18,7 +19,8 @@ import sun.security.jgss.spi.MechanismFactory;
  */
 public class MainApp extends javax.swing.JFrame {
 
-    static Methods methods= new Methods();
+    static Methods methods = new Methods();
+
     /**
      * Creates new form MainApp
      */
@@ -27,11 +29,9 @@ public class MainApp extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         methods.readUser();
         methods.defaulTitan();
-         this.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent evt)
-            {
-                
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+
                 methods.writeUser();
                 System.exit(0);
             }
@@ -48,9 +48,9 @@ public class MainApp extends javax.swing.JFrame {
     private void initComponents() {
 
         txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,14 +63,12 @@ public class MainApp extends javax.swing.JFrame {
         txtUsername.setForeground(new java.awt.Color(255, 255, 255));
         txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsername.setToolTipText("");
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 410, 40));
-
-        txtPassword.setBackground(new java.awt.Color(51, 51, 51));
-        txtPassword.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPassword.setToolTipText("");
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 410, 40));
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
@@ -96,6 +94,17 @@ public class MainApp extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 190, 40));
 
+        txtPassword.setBackground(new java.awt.Color(51, 51, 51));
+        txtPassword.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 410, 40));
+
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,7 +118,7 @@ public class MainApp extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Register registerWindow= new Register();
+        Register registerWindow = new Register();
         registerWindow.openWindow(this);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -117,6 +126,20 @@ public class MainApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         login();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+           if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments
@@ -157,22 +180,34 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
-public void login()
-    {
-     String userName = txtUsername.getText();
-     User askUser=methods.searchUser(userName);
-     if(askUser!=null){
-         String password = txtPassword.getText();
-         if(askUser.getPassword().equals(password)){
-             Lobby lobby= new Lobby();
-             lobby.openWindow(this);
-         }else JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...","Password invalid",JOptionPane.WARNING_MESSAGE);
-     }
-     else JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...","Password invalid",JOptionPane.WARNING_MESSAGE);
-     
+    public void login() {
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        if (username.equals("Gabe")) {
+                   if (password.equals("123")) {
+                    GameMaster gm = new GameMaster();
+                    gm.openWindow(this);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+                } 
+        } else {
+            User askUser = methods.searchUser(username);
+            if (askUser != null) {
+                
+                if (askUser.getPassword().equals(password)) {
+                    Lobby lobby = new Lobby();
+                    lobby.openWindow(this);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
     }
 }

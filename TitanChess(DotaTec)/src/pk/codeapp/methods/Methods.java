@@ -20,18 +20,19 @@ import pk.codeapp.model.User;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jose Pablo Brenes
  */
 public class Methods {
+
     private Arena arena;
     private User player1;
     private User player2;
     private boolean turn;
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
+<<<<<<< HEAD
     private boolean checkTowerPlayer1; // Boolean to cheek quantity of towers in player 1
     private boolean checkTowerPlayer2;// Boolean to cheek quantity of towers in player 2
     private GraphicsElement graphicsElements[][]; // Matrix of Game
@@ -62,15 +63,21 @@ public class Methods {
         
     
     
+=======
+    private Titan[] titans = new Titan[8];
+    //<editor-fold desc="Default list from titans" defaultstate="collapsed">
+>>>>>>> master
     
+    //</editor-fold>
+
     /**
      * Register new user in the game
+     *
      * @param userName
      * @param password
      * @param email
-     * @return  true or false when the creation is sucessfull
+     * @return true or false when the creation is sucessfull
      */
-    
     public boolean registerUser(String userName, String password, String email) {
         boolean flag = false;
         for (User user : players) {
@@ -84,10 +91,12 @@ public class Methods {
         }
 
     }
+
     /**
      * Search user in the player list
+     *
      * @param userName
-     * @return  the user found or null if the user is not
+     * @return the user found or null if the user is not
      */
     public User searchUser(String userName) {
         for (int i = 0; i < players.size(); i++) {
@@ -98,11 +107,11 @@ public class Methods {
         }
         return null;
     }
+
     /**
      * Write user in the binary file
      */
-    public void writeUser() 
-    {
+    public void writeUser() {
         if (userFile.exists()) {
             userFile.delete();
             System.out.println("Deleted");
@@ -116,7 +125,7 @@ public class Methods {
             for (int i = 0; i < players.size(); i++) {
                 file = new FileOutputStream(userFile, true);
                 output = new ObjectOutputStream(file);
-                User save=players.get(i);
+                User save = players.get(i);
                 output.writeObject(save);
             }
 
@@ -141,6 +150,7 @@ public class Methods {
         }
 
     }
+
     /**
      * Charge users from the binary file
      */
@@ -164,17 +174,9 @@ public class Methods {
         }
 
     }
-    
-    
-   //<editor-fold desc="*All getter and setter here*" defaultstate="collapsed">
 
-    public String[] getImageTitans() {
-        return imageTitans;
-    }
+    //<editor-fold desc="*All getter and setter here*" defaultstate="collapsed">
 
-    public void setImageTitans(String[] imageTitans) {
-        this.imageTitans = imageTitans;
-    }
 
     public Titan[] getTitans() {
         return titans;
@@ -183,17 +185,26 @@ public class Methods {
     public void setTitans(Titan[] titans) {
         this.titans = titans;
     }
-    
-    
+
     //</editor-fold>
 
-    public String[] getGifTitans() {
-        return gifTitans;
-    }
 
-    public void setGifTitans(String[] gifTitans) {
-        this.gifTitans = gifTitans;
+    public void defaulTitan() {
+        //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
+        Titan titan = new Titan("Western Dragon", 400,3,200, 200, "Air", "src/pk/codeapp/tools/titans/icons/titan1.jpg","src/pk/codeapp/tools/titans/titan1.jpg","src/pk/codeapp/tools/titans/titan1.gif");
+        addTitan(titan);
+         titan = new Titan("Tretan", 400,3,200, 200, "Fire", "src/pk/codeapp/tools/titans/icons/titan2.jpg","src/pk/codeapp/tools/titans/titan2.jpg","src/pk/codeapp/tools/titans/titan2.gif");
+        addTitan(titan);
+         titan = new Titan("Tololo", 400,3,200, 200, "Water", "src/pk/codeapp/tools/titans/icons/titan3.jpg","src/pk/codeapp/tools/titans/titan3.jpg","src/pk/codeapp/tools/titans/titan3.gif");
+        addTitan(titan);
+         titan = new Titan("Geb", 400,3,200, 200, "Land", "src/pk/codeapp/tools/titans/icons/titan4.jpg","src/pk/codeapp/tools/titans/titan4.jpg","src/pk/codeapp/tools/titans/titan4.gif");
+        addTitan(titan);
+
+    
+
+
     }
+<<<<<<< HEAD
 
     public int getColumnGame() {
         return columnGame;
@@ -249,3 +260,15 @@ public class Methods {
             this.checkTowerPlayer2=true;
     }
 }
+=======
+    public void addTitan(Titan titan){
+        for (int i = 0; i < titans.length; i++) {
+            if(titans[i]==null){
+                titans[i]=titan;
+                break;
+            }
+        }
+    }
+
+}
+>>>>>>> master
