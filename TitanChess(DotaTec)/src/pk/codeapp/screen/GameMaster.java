@@ -80,10 +80,11 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         deleteTitan = new javax.swing.JPanel();
-        cmbShowTitans = new javax.swing.JComboBox<>();
+        cmbDeleteTitans = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
+        chargeTitansToDelete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         modifyTitan = new javax.swing.JPanel();
         txtNewName2 = new javax.swing.JTextField();
@@ -96,7 +97,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         jButton6 = new javax.swing.JButton();
         cmbMoves3 = new javax.swing.JComboBox<>();
         jButton11 = new javax.swing.JButton();
-        cmbPathImage2 = new javax.swing.JComboBox<>();
+        cmbModifyTitans = new javax.swing.JComboBox<>();
         sliderDamage6 = new javax.swing.JSlider();
         sliderDamage7 = new javax.swing.JSlider();
         sliderDamage8 = new javax.swing.JSlider();
@@ -336,10 +337,15 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
         deleteTitan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        deleteTitan.add(cmbShowTitans, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 270, 30));
+        deleteTitan.add(cmbDeleteTitans, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 270, 30));
 
         jButton1.setText("Delete");
-        deleteTitan.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 160, 50));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        deleteTitan.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 160, 50));
 
         jButton7.setBackground(new java.awt.Color(51, 51, 51));
         jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -356,6 +362,14 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Delete Titan");
         deleteTitan.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
+
+        chargeTitansToDelete.setText("Load");
+        chargeTitansToDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chargeTitansToDeleteActionPerformed(evt);
+            }
+        });
+        deleteTitan.add(chargeTitansToDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -431,15 +445,15 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         });
         modifyTitan.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, -1, -1));
 
-        cmbPathImage2.setBackground(new java.awt.Color(102, 102, 102));
-        cmbPathImage2.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        cmbPathImage2.setForeground(new java.awt.Color(255, 255, 255));
-        cmbPathImage2.addActionListener(new java.awt.event.ActionListener() {
+        cmbModifyTitans.setBackground(new java.awt.Color(102, 102, 102));
+        cmbModifyTitans.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        cmbModifyTitans.setForeground(new java.awt.Color(255, 255, 255));
+        cmbModifyTitans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbPathImage2ActionPerformed(evt);
+                cmbModifyTitansActionPerformed(evt);
             }
         });
-        modifyTitan.add(cmbPathImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 420, 30));
+        modifyTitan.add(cmbModifyTitans, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 420, 30));
 
         sliderDamage6.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         sliderDamage6.setForeground(new java.awt.Color(255, 255, 255));
@@ -489,9 +503,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbPathImage2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPathImage2ActionPerformed
+    private void cmbModifyTitansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbModifyTitansActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPathImage2ActionPerformed
+    }//GEN-LAST:event_cmbModifyTitansActionPerformed
 
     private void cmbMoves3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMoves3ActionPerformed
         // TODO add your handling code here:
@@ -533,11 +547,27 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         // TODO add your handling code here:
         createNewTitan();
 
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmbVitalElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVitalElementActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbVitalElementActionPerformed
+
+    private void chargeTitansToDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chargeTitansToDeleteActionPerformed
+        // TODO add your handling code here:
+        chargeTitansInComboBox();
+    }//GEN-LAST:event_chargeTitansToDeleteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (deleteTitan()) {
+            JOptionPane.showMessageDialog(rootPane, "Delete sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Delete Fail", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,12 +608,13 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private javax.swing.JPanel addAttack;
     private javax.swing.JTextField attackName;
     private javax.swing.JButton btnAddAttack;
+    private javax.swing.JButton chargeTitansToDelete;
     private javax.swing.JComboBox<String> cmbAttackTitans;
+    private javax.swing.JComboBox<String> cmbDeleteTitans;
+    private javax.swing.JComboBox<String> cmbModifyTitans;
     private javax.swing.JComboBox<String> cmbMoves3;
     private javax.swing.JComboBox<String> cmbNewMoves;
     private javax.swing.JComboBox<String> cmbNewPath;
-    private javax.swing.JComboBox<String> cmbPathImage2;
-    private javax.swing.JComboBox<String> cmbShowTitans;
     private javax.swing.JComboBox<String> cmbVitalElement;
     private javax.swing.JPanel createNewTitan;
     private javax.swing.JPanel deleteTitan;
@@ -659,8 +690,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
             }
         }
         cmbAttackTitans.setModel(model);
-        cmbShowTitans.setModel(model);
-        cmbShowTitans.setModel(model);
+        cmbDeleteTitans.setModel(model);
+        cmbDeleteTitans.setModel(model);
 
     }
 
@@ -687,6 +718,19 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         String imageBig = getImageBig(path);
         String icon = getIcon(path);
         String gif = getGif(path);
+        int damage = slideNewDamage.getValue();
+        int life = slideNewLife.getValue();
+        int mana = slideNewMana.getValue();
+        String name = txtNewName.getText();
+        String vitalElement = (String) cmbVitalElement.getSelectedItem();
+        int moves = Integer.parseInt((String) cmbNewMoves.getSelectedItem());
+        Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif);
+        if (methods.addTitan(newTitan)) {
+            JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Fail", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+
     }
 
     private String getImageBig(String path) {
@@ -695,9 +739,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
                 return "src/pk/codeapp/tools/titans/titan8.png";
             }
             case "Foxy": {
-                 return "src/pk/codeapp/tools/titans/titan7.png";
+                return "src/pk/codeapp/tools/titans/titan7.png";
             }
-            case"Sobeck":{
+            case "Sobeck": {
                 return "src/pk/codeapp/tools/titans/titan6.png";
             }
 
@@ -706,14 +750,14 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     }
 
     private String getIcon(String path) {
-         switch (path) {
+        switch (path) {
             case "Buckbeak": {
                 return "src/pk/codeapp/tools/titans/icons/titan8.png";
             }
             case "Foxy": {
-                 return "src/pk/codeapp/tools/titans/icons/titan7.png";
+                return "src/pk/codeapp/tools/titans/icons/titan7.png";
             }
-            case"Sobeck":{
+            case "Sobeck": {
                 return "src/pk/codeapp/tools/titans/icons/titan6.png";
             }
 
@@ -722,20 +766,33 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     }
 
     private String getGif(String path) {
-         switch (path) {
+        switch (path) {
             case "Buckbeak": {
                 return "src/pk/codeapp/tools/titans/titan8.gif";
             }
             case "Foxy": {
-                 return "src/pk/codeapp/tools/titans/titan7.gif";
+                return "src/pk/codeapp/tools/titans/titan7.gif";
             }
-            case"Sobeck":{
+            case "Sobeck": {
                 return "src/pk/codeapp/tools/titans/titan6.gif";
             }
 
         }
 
         return null;
+    }
+
+    private boolean deleteTitan() {
+        String nameToDelete = (String) cmbDeleteTitans.getSelectedItem();
+        for (int i = 0; i < titans.length; i++) {
+            if (titans[i] != null) {
+                if (titans[i].getName().equals(nameToDelete)) {
+                    titans[i] = null;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
