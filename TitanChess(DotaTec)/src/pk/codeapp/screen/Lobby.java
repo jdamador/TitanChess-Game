@@ -230,7 +230,7 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         lblGifImage.setFont(new java.awt.Font("Century Schoolbook L", 1, 36)); // NOI18N
         lblGifImage.setForeground(new java.awt.Color(255, 255, 255));
         lblGifImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(lblGifImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
+        getContentPane().add(lblGifImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
 
         information.setBackground(new java.awt.Color(51, 51, 51));
         information.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -238,7 +238,7 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         information.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(information);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 780, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 780, 220));
 
         lblLobbyBackground.setBackground(new java.awt.Color(0, 0, 0));
         lblLobbyBackground.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
@@ -359,6 +359,7 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         for (int i = 0; i < titans.length; i++) {
             JButton btn = getButton(i+1);
             if(btn==null)break;
+            
             if (titans[i] != null) {
                 btn.setIcon(titans[i].getImageBig());
 
