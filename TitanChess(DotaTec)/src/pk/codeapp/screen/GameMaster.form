@@ -86,7 +86,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtAttackName">
+            <Component class="javax.swing.JTextField" name="attackName">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
@@ -501,7 +501,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
-                    <StringItem index="0" value="Geb"/>
+                    <StringItem index="0" value="Buckbeak"/>
                     <StringItem index="1" value="Foxy"/>
                     <StringItem index="2" value="Sobeck"/>
                   </StringArray>

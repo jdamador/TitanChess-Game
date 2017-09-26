@@ -49,7 +49,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         addAttack = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtAttackName = new javax.swing.JTextField();
+        attackName = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -117,10 +117,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         jLabel3.setText("Add Attack");
         addAttack.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
 
-        txtAttackName.setBackground(new java.awt.Color(102, 102, 102));
-        txtAttackName.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        txtAttackName.setForeground(new java.awt.Color(255, 255, 255));
-        addAttack.add(txtAttackName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 400, -1));
+        attackName.setBackground(new java.awt.Color(102, 102, 102));
+        attackName.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        attackName.setForeground(new java.awt.Color(255, 255, 255));
+        addAttack.add(attackName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 400, -1));
 
         jLabel9.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,7 +264,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         cmbNewPath.setBackground(new java.awt.Color(102, 102, 102));
         cmbNewPath.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbNewPath.setForeground(new java.awt.Color(255, 255, 255));
-        cmbNewPath.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Geb", "Foxy", "Sobeck" }));
+        cmbNewPath.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buckbeak", "Foxy", "Sobeck" }));
         cmbNewPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbNewPathActionPerformed(evt);
@@ -506,7 +506,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     }//GEN-LAST:event_cmbNewMovesActionPerformed
 
     private void btnAddAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAttackActionPerformed
-     
+        addAttack();
     }//GEN-LAST:event_btnAddAttackActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -531,7 +531,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-     
+        createNewTitan();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmbVitalElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVitalElementActionPerformed
@@ -575,6 +576,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addAttack;
+    private javax.swing.JTextField attackName;
     private javax.swing.JButton btnAddAttack;
     private javax.swing.JComboBox<String> cmbAttackTitans;
     private javax.swing.JComboBox<String> cmbMoves3;
@@ -631,7 +633,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private javax.swing.JSlider sliderDamage8;
     private javax.swing.JSlider sliderDamageAttack;
     private javax.swing.JSlider sliderManaAttack;
-    private javax.swing.JTextField txtAttackName;
     private javax.swing.JTextField txtNewName;
     private javax.swing.JTextField txtNewName2;
     // End of variables declaration//GEN-END:variables
@@ -662,5 +663,79 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         cmbShowTitans.setModel(model);
 
     }
- 
+
+    private void addAttack() {
+        if (attackName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank", "Alert", JOptionPane.WARNING_MESSAGE);
+        } else {
+            for (int i = 0; i < titans.length; i++) {
+                if (titans[i] != null) {
+                    String name = (String) cmbAttackTitans.getSelectedItem();
+                    if (titans[i].getName().equals(name)) {
+                        Attack attack = new Attack(attackName.getText(), sliderManaAttack.getValue(), sliderDamageAttack.getValue());
+                        titans[i].addAttack(attack);
+                        JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    private void createNewTitan() {
+        String path = (String) cmbNewPath.getSelectedItem();
+        String imageBig = getImageBig(path);
+        String icon = getIcon(path);
+        String gif = getGif(path);
+    }
+
+    private String getImageBig(String path) {
+        switch (path) {
+            case "Buckbeak": {
+                return "src/pk/codeapp/tools/titans/titan8.png";
+            }
+            case "Foxy": {
+                 return "src/pk/codeapp/tools/titans/titan7.png";
+            }
+            case"Sobeck":{
+                return "src/pk/codeapp/tools/titans/titan6.png";
+            }
+
+        }
+        return null;
+    }
+
+    private String getIcon(String path) {
+         switch (path) {
+            case "Buckbeak": {
+                return "src/pk/codeapp/tools/titans/icons/titan8.png";
+            }
+            case "Foxy": {
+                 return "src/pk/codeapp/tools/titans/icons/titan7.png";
+            }
+            case"Sobeck":{
+                return "src/pk/codeapp/tools/titans/icons/titan6.png";
+            }
+
+        }
+        return null;
+    }
+
+    private String getGif(String path) {
+         switch (path) {
+            case "Buckbeak": {
+                return "src/pk/codeapp/tools/titans/titan8.gif";
+            }
+            case "Foxy": {
+                 return "src/pk/codeapp/tools/titans/titan7.gif";
+            }
+            case"Sobeck":{
+                return "src/pk/codeapp/tools/titans/titan6.gif";
+            }
+
+        }
+
+        return null;
+    }
+
 }
