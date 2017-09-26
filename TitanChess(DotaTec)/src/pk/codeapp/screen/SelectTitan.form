@@ -69,7 +69,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="10" width="290" height="50"/>
+          <AbsoluteConstraints x="390" y="10" width="390" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -309,7 +309,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="990" y="570" width="200" height="90"/>
+          <AbsoluteConstraints x="990" y="580" width="200" height="90"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -341,12 +341,11 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="4">
             <StringItem index="0" value="Fire"/>
             <StringItem index="1" value="Aqua"/>
             <StringItem index="2" value="Wind"/>
             <StringItem index="3" value="Land"/>
-            <StringItem index="4" value=" "/>
           </StringArray>
         </Property>
       </Properties>

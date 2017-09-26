@@ -92,7 +92,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Select the Titans");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 290, 50));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 390, 50));
 
         titan_image6.setToolTipText("");
         titan_image6.setBorder(new javax.swing.border.MatteBorder(null));
@@ -170,7 +170,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
                 btnStartGameActionPerformed(evt);
             }
         });
-        getContentPane().add(btnStartGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 570, 200, 90));
+        getContentPane().add(btnStartGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 580, 200, 90));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,7 +180,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         cmbSizeofmap1.setBackground(new java.awt.Color(0, 0, 0));
         cmbSizeofmap1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbSizeofmap1.setForeground(new java.awt.Color(255, 255, 255));
-        cmbSizeofmap1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fire", "Aqua", "Wind", "Land", " " }));
+        cmbSizeofmap1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fire", "Aqua", "Wind", "Land" }));
         getContentPane().add(cmbSizeofmap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 420, 200, 40));
 
         cmbTitan1.setBackground(new java.awt.Color(0, 0, 0));

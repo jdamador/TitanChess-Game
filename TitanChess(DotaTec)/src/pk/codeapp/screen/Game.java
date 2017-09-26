@@ -10,7 +10,7 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
     private String elementArena;
     public Game() {
         initComponents();
-        paintBackground();
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -22,10 +22,20 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1280, 720));
+        jPanel1.setName(""); // NOI18N
         jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -35,10 +45,10 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGap(0, 718, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -55,11 +65,17 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         goBack();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.setVisible(true);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -95,19 +111,25 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
             }
         });
     }
-    private void paintBackground(){ // Paint The arena of type respective
+    private void paintBackground(String elementArena){ // Paint The arena of type respective
+        System.out.println(elementArena);
         switch(elementArena){
-            case "Fire": lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundFire.jpg"));
-            case "Land": lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundLand.jpg"));
-            case "Wind": lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundWind.jpg"));
-            case "Aqua": lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundAqua.jpg"));
+            
+            case "Fire": {lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundFire.jpg"));
+            break;
+            }
+            case "Land": {lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundLand.jpg"));break;}
+            case "Wind":{ lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundWind.jpg"));break;}
+            case "Aqua":{ lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/BackgroundAqua.jpg")); break;}
         }
     }
     @Override
     public void openWindow(JFrame frame) {
        selectTitan=(SelectTitan)frame;
        frame.setVisible(false);
+       this.setVisible(true);
        this.elementArena=selectTitan.getElementOfArena(); // Obtain the type of element arena
+        paintBackground(elementArena);
     }
 
     @Override
