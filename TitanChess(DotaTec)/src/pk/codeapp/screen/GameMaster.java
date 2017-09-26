@@ -23,7 +23,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private MainApp beforeWindow;
     private Methods methods = MainApp.methods;
     private Titan[] titans;
-
+    String selectedName;
     /**
      * Creates new form GameMaster
      */
@@ -87,20 +87,20 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         chargeTitansToDelete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         modifyTitan = new javax.swing.JPanel();
-        txtNewName2 = new javax.swing.JTextField();
+        txtModifyName = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        cmbMoves3 = new javax.swing.JComboBox<>();
+        makeChanges = new javax.swing.JButton();
+        cmbModifyMoves = new javax.swing.JComboBox<>();
         jButton11 = new javax.swing.JButton();
         cmbModifyTitans = new javax.swing.JComboBox<>();
-        sliderDamage6 = new javax.swing.JSlider();
-        sliderDamage7 = new javax.swing.JSlider();
-        sliderDamage8 = new javax.swing.JSlider();
+        slideModifyLife = new javax.swing.JSlider();
+        slideModifyMana = new javax.swing.JSlider();
+        slideModifyDamage = new javax.swing.JSlider();
         jLabel36 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
@@ -108,6 +108,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         addAttack.setForeground(new java.awt.Color(255, 255, 255));
         addAttack.setOpaque(false);
@@ -121,7 +124,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         attackName.setBackground(new java.awt.Color(102, 102, 102));
         attackName.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         attackName.setForeground(new java.awt.Color(255, 255, 255));
-        addAttack.add(attackName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 400, -1));
+        addAttack.add(attackName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 420, -1));
 
         jLabel9.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,23 +168,25 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         });
         addAttack.add(btnAddAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, -1, -1));
 
-        sliderDamageAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        sliderDamageAttack.setBackground(new java.awt.Color(102, 102, 102));
+        sliderDamageAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         sliderDamageAttack.setForeground(new java.awt.Color(255, 255, 255));
         sliderDamageAttack.setMajorTickSpacing(50);
         sliderDamageAttack.setMaximum(300);
         sliderDamageAttack.setMinimum(50);
         sliderDamageAttack.setPaintLabels(true);
         sliderDamageAttack.setPaintTicks(true);
-        addAttack.add(sliderDamageAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 400, 60));
+        addAttack.add(sliderDamageAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 420, 60));
 
-        sliderManaAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        sliderManaAttack.setBackground(new java.awt.Color(102, 102, 102));
+        sliderManaAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         sliderManaAttack.setForeground(new java.awt.Color(255, 255, 255));
         sliderManaAttack.setMajorTickSpacing(50);
         sliderManaAttack.setMaximum(400);
         sliderManaAttack.setMinimum(50);
         sliderManaAttack.setPaintLabels(true);
         sliderManaAttack.setPaintTicks(true);
-        addAttack.add(sliderManaAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 400, 60));
+        addAttack.add(sliderManaAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 420, 60));
 
         lblName.setBackground(new java.awt.Color(102, 102, 102));
         lblName.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -238,7 +243,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
                 jButton2ActionPerformed(evt);
             }
         });
-        createNewTitan.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 630, -1, -1));
+        createNewTitan.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, -1, -1));
 
         cmbNewMoves.setBackground(new java.awt.Color(102, 102, 102));
         cmbNewMoves.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -273,7 +278,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         });
         createNewTitan.add(cmbNewPath, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 580, 380, 30));
 
-        slideNewLife.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        slideNewLife.setBackground(new java.awt.Color(102, 102, 102));
+        slideNewLife.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         slideNewLife.setForeground(new java.awt.Color(255, 255, 255));
         slideNewLife.setMajorTickSpacing(50);
         slideNewLife.setMaximum(700);
@@ -282,7 +288,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         slideNewLife.setPaintTicks(true);
         createNewTitan.add(slideNewLife, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 400, 60));
 
-        slideNewMana.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        slideNewMana.setBackground(new java.awt.Color(102, 102, 102));
+        slideNewMana.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         slideNewMana.setForeground(new java.awt.Color(255, 255, 255));
         slideNewMana.setMajorTickSpacing(50);
         slideNewMana.setMaximum(400);
@@ -291,7 +298,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         slideNewMana.setPaintTicks(true);
         createNewTitan.add(slideNewMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 400, 60));
 
-        slideNewDamage.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        slideNewDamage.setBackground(new java.awt.Color(102, 102, 102));
+        slideNewDamage.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         slideNewDamage.setForeground(new java.awt.Color(255, 255, 255));
         slideNewDamage.setMajorTickSpacing(50);
         slideNewDamage.setMaximum(300);
@@ -337,15 +345,21 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
         deleteTitan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cmbDeleteTitans.setBackground(new java.awt.Color(51, 51, 51));
+        cmbDeleteTitans.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        cmbDeleteTitans.setForeground(new java.awt.Color(255, 255, 255));
         deleteTitan.add(cmbDeleteTitans, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 270, 30));
 
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        deleteTitan.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 160, 50));
+        deleteTitan.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 160, 50));
 
         jButton7.setBackground(new java.awt.Color(51, 51, 51));
         jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -363,6 +377,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         jLabel18.setText("Delete Titan");
         deleteTitan.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
 
+        chargeTitansToDelete.setBackground(new java.awt.Color(51, 51, 51));
+        chargeTitansToDelete.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        chargeTitansToDelete.setForeground(new java.awt.Color(255, 255, 255));
         chargeTitansToDelete.setText("Load");
         chargeTitansToDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -371,7 +388,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         });
         deleteTitan.add(chargeTitansToDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameMaster_Background.jpg"))); // NOI18N
@@ -382,10 +399,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         modifyTitan.setOpaque(false);
         modifyTitan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtNewName2.setBackground(new java.awt.Color(102, 102, 102));
-        txtNewName2.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        txtNewName2.setForeground(new java.awt.Color(255, 255, 255));
-        modifyTitan.add(txtNewName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 420, -1));
+        txtModifyName.setBackground(new java.awt.Color(102, 102, 102));
+        txtModifyName.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        txtModifyName.setForeground(new java.awt.Color(255, 255, 255));
+        modifyTitan.add(txtModifyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 420, -1));
 
         jLabel30.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
@@ -417,22 +434,27 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         jLabel35.setText("Create New TITAN");
         modifyTitan.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
-        jButton6.setBackground(new java.awt.Color(51, 51, 51));
-        jButton6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Create Titan");
-        modifyTitan.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 630, -1, -1));
-
-        cmbMoves3.setBackground(new java.awt.Color(102, 102, 102));
-        cmbMoves3.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        cmbMoves3.setForeground(new java.awt.Color(255, 255, 255));
-        cmbMoves3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Move", "2 Moves", "3 Moves" }));
-        cmbMoves3.addActionListener(new java.awt.event.ActionListener() {
+        makeChanges.setBackground(new java.awt.Color(51, 51, 51));
+        makeChanges.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        makeChanges.setForeground(new java.awt.Color(255, 255, 255));
+        makeChanges.setText("Make Changes");
+        makeChanges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbMoves3ActionPerformed(evt);
+                makeChangesActionPerformed(evt);
             }
         });
-        modifyTitan.add(cmbMoves3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 420, 30));
+        modifyTitan.add(makeChanges, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 630, -1, -1));
+
+        cmbModifyMoves.setBackground(new java.awt.Color(102, 102, 102));
+        cmbModifyMoves.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        cmbModifyMoves.setForeground(new java.awt.Color(255, 255, 255));
+        cmbModifyMoves.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Move", "2 Moves", "3 Moves" }));
+        cmbModifyMoves.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbModifyMovesActionPerformed(evt);
+            }
+        });
+        modifyTitan.add(cmbModifyMoves, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 420, 30));
 
         jButton11.setBackground(new java.awt.Color(51, 51, 51));
         jButton11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -446,7 +468,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         modifyTitan.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, -1, -1));
 
         cmbModifyTitans.setBackground(new java.awt.Color(102, 102, 102));
-        cmbModifyTitans.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        cmbModifyTitans.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         cmbModifyTitans.setForeground(new java.awt.Color(255, 255, 255));
         cmbModifyTitans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,43 +477,54 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         });
         modifyTitan.add(cmbModifyTitans, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 420, 30));
 
-        sliderDamage6.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        sliderDamage6.setForeground(new java.awt.Color(255, 255, 255));
-        sliderDamage6.setMajorTickSpacing(50);
-        sliderDamage6.setMaximum(700);
-        sliderDamage6.setMinimum(400);
-        sliderDamage6.setPaintLabels(true);
-        sliderDamage6.setPaintTicks(true);
-        modifyTitan.add(sliderDamage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 420, 60));
+        slideModifyLife.setBackground(new java.awt.Color(102, 102, 102));
+        slideModifyLife.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        slideModifyLife.setForeground(new java.awt.Color(255, 255, 255));
+        slideModifyLife.setMajorTickSpacing(50);
+        slideModifyLife.setMaximum(700);
+        slideModifyLife.setMinimum(400);
+        slideModifyLife.setPaintLabels(true);
+        slideModifyLife.setPaintTicks(true);
+        modifyTitan.add(slideModifyLife, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 420, 60));
 
-        sliderDamage7.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        sliderDamage7.setForeground(new java.awt.Color(255, 255, 255));
-        sliderDamage7.setMajorTickSpacing(50);
-        sliderDamage7.setMaximum(400);
-        sliderDamage7.setMinimum(50);
-        sliderDamage7.setPaintLabels(true);
-        sliderDamage7.setPaintTicks(true);
-        modifyTitan.add(sliderDamage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 420, 60));
+        slideModifyMana.setBackground(new java.awt.Color(102, 102, 102));
+        slideModifyMana.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        slideModifyMana.setForeground(new java.awt.Color(255, 255, 255));
+        slideModifyMana.setMajorTickSpacing(50);
+        slideModifyMana.setMaximum(400);
+        slideModifyMana.setMinimum(50);
+        slideModifyMana.setPaintLabels(true);
+        slideModifyMana.setPaintTicks(true);
+        modifyTitan.add(slideModifyMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 420, 60));
 
-        sliderDamage8.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        sliderDamage8.setForeground(new java.awt.Color(255, 255, 255));
-        sliderDamage8.setMajorTickSpacing(50);
-        sliderDamage8.setMaximum(300);
-        sliderDamage8.setMinimum(50);
-        sliderDamage8.setPaintLabels(true);
-        sliderDamage8.setPaintTicks(true);
-        modifyTitan.add(sliderDamage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 420, 60));
+        slideModifyDamage.setBackground(new java.awt.Color(102, 102, 102));
+        slideModifyDamage.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        slideModifyDamage.setForeground(new java.awt.Color(255, 255, 255));
+        slideModifyDamage.setMajorTickSpacing(50);
+        slideModifyDamage.setMaximum(300);
+        slideModifyDamage.setMinimum(50);
+        slideModifyDamage.setPaintLabels(true);
+        slideModifyDamage.setPaintTicks(true);
+        modifyTitan.add(slideModifyDamage, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 420, 60));
 
         jLabel36.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Damage");
         modifyTitan.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
 
+        jButton4.setBackground(new java.awt.Color(102, 102, 102));
+        jButton4.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Load");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         modifyTitan.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, -1));
 
         jLabel37.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel37.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameMaster_Background.jpg"))); // NOI18N
         modifyTitan.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 700));
@@ -507,9 +540,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbModifyTitansActionPerformed
 
-    private void cmbMoves3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMoves3ActionPerformed
+    private void cmbModifyMovesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbModifyMovesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMoves3ActionPerformed
+    }//GEN-LAST:event_cmbModifyMovesActionPerformed
 
     private void cmbNewPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNewPathActionPerformed
         // TODO add your handling code here:
@@ -569,6 +602,42 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String selected =(String) cmbModifyTitans.getSelectedItem();
+        selectedName=selected;
+        for (int i = 0; i < titans.length; i++) {
+            if(titans[i]!=null){
+                if(titans[i].getName().equals(selected)){
+                    txtModifyName.setText(titans[i].getName());
+                    slideModifyDamage.setValue(titans[i].getDamage());
+                    slideModifyLife.setValue(titans[i].getLife());
+                    slideModifyMana.setValue(titans[i].getMana());
+                    cmbModifyMoves.setSelectedIndex(titans[i].getMoves()-1);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void makeChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeChangesActionPerformed
+        // TODO add your handling code here:
+            for (int i = 0; i < titans.length; i++) {
+            if(titans[i]!=null){
+                if(titans[i].getName().equals(selectedName)){
+                   titans[i].setName( txtModifyName.getText());
+                   
+                    titans[i].setDamage(slideModifyDamage.getValue());
+                    titans[i].setLife(slideModifyLife.getValue());
+                     titans[i].setMana(slideModifyMana.getValue());
+                     titans[i].setMoves(cmbModifyMoves.getSelectedIndex()+1);
+                     JOptionPane.showMessageDialog(rootPane, "Modify successfully","Information",JOptionPane.INFORMATION_MESSAGE);
+                     return;
+                }
+            }
+        }
+            JOptionPane.showMessageDialog(rootPane, "Fail","Warning",JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_makeChangesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -611,8 +680,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private javax.swing.JButton chargeTitansToDelete;
     private javax.swing.JComboBox<String> cmbAttackTitans;
     private javax.swing.JComboBox<String> cmbDeleteTitans;
+    private javax.swing.JComboBox<String> cmbModifyMoves;
     private javax.swing.JComboBox<String> cmbModifyTitans;
-    private javax.swing.JComboBox<String> cmbMoves3;
     private javax.swing.JComboBox<String> cmbNewMoves;
     private javax.swing.JComboBox<String> cmbNewPath;
     private javax.swing.JComboBox<String> cmbVitalElement;
@@ -623,7 +692,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -655,17 +723,18 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JLabel lblName;
+    private javax.swing.JButton makeChanges;
     private javax.swing.JPanel modifyTitan;
+    private javax.swing.JSlider slideModifyDamage;
+    private javax.swing.JSlider slideModifyLife;
+    private javax.swing.JSlider slideModifyMana;
     private javax.swing.JSlider slideNewDamage;
     private javax.swing.JSlider slideNewLife;
     private javax.swing.JSlider slideNewMana;
-    private javax.swing.JSlider sliderDamage6;
-    private javax.swing.JSlider sliderDamage7;
-    private javax.swing.JSlider sliderDamage8;
     private javax.swing.JSlider sliderDamageAttack;
     private javax.swing.JSlider sliderManaAttack;
+    private javax.swing.JTextField txtModifyName;
     private javax.swing.JTextField txtNewName;
-    private javax.swing.JTextField txtNewName2;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -691,7 +760,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         }
         cmbAttackTitans.setModel(model);
         cmbDeleteTitans.setModel(model);
-        cmbDeleteTitans.setModel(model);
+        cmbModifyTitans.setModel(model);
 
     }
 
@@ -723,7 +792,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         int mana = slideNewMana.getValue();
         String name = txtNewName.getText();
         String vitalElement = (String) cmbVitalElement.getSelectedItem();
-        int moves = Integer.parseInt((String) cmbNewMoves.getSelectedItem());
+        int moves =cmbNewMoves.getSelectedIndex()+1;
         Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif);
         if (methods.addTitan(newTitan)) {
             JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
