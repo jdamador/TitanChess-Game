@@ -32,44 +32,16 @@ public class Methods {
     private boolean turn;
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
-<<<<<<< HEAD
+
     private boolean checkTowerPlayer1; // Boolean to cheek quantity of towers in player 1
     private boolean checkTowerPlayer2;// Boolean to cheek quantity of towers in player 2
     private GraphicsElement graphicsElements[][]; // Matrix of Game
-    private int columnGame,rowGame; 
+    private int columnGame, rowGame;
 
-    private Titan[] titans= new Titan[8];
-
-    //<editor-fold desc="Default list from titans" defaultstate="collapsed">
-        
- 
-    private String[] imageTitans=
-    {"src/pk/codeapp/tools/titans/titan1.jpg",
-        "src/pk/codeapp/tools/titans/titan2.jpg",
-        "src/pk/codeapp/tools/titans/titan3.jpg",
-        "src/pk/codeapp/tools/titans/titan4.png",
-        "src/pk/codeapp/tools/titans/titan5.jpg",
-        "src/pk/codeapp/tools/titans/titan6.png",
-        "src/pk/codeapp/tools/titans/titan7.png",null};
-     private String[] gifTitans=
-    {"src/pk/codeapp/tools/titans/titan1.gif",
-        "src/pk/codeapp/tools/titans/titan2.gif",
-        "src/pk/codeapp/tools/titans/titan3.gif",
-        "src/pk/codeapp/tools/titans/titan4.gif",
-        "src/pk/codeapp/tools/titans/titan5.gif",
-        "src/pk/codeapp/tools/titans/titan6.gif",
-        "src/pk/codeapp/tools/titans/titan7.gif",null};
-    //</editor-fold>
-        
-    
-    
-=======
     private Titan[] titans = new Titan[8];
-    //<editor-fold desc="Default list from titans" defaultstate="collapsed">
->>>>>>> master
-    
-    //</editor-fold>
 
+    //<editor-fold desc="Default list from titans" defaultstate="collapsed">
+    //</editor-fold>
     /**
      * Register new user in the game
      *
@@ -176,8 +148,6 @@ public class Methods {
     }
 
     //<editor-fold desc="*All getter and setter here*" defaultstate="collapsed">
-
-
     public Titan[] getTitans() {
         return titans;
     }
@@ -187,24 +157,18 @@ public class Methods {
     }
 
     //</editor-fold>
-
-
     public void defaulTitan() {
         //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
-        Titan titan = new Titan("Western Dragon", 400,3,200, 200, "Air", "src/pk/codeapp/tools/titans/icons/titan1.jpg","src/pk/codeapp/tools/titans/titan1.jpg","src/pk/codeapp/tools/titans/titan1.gif");
+        Titan titan = new Titan("Western Dragon", 400, 3, 200, 200, "Air", "src/pk/codeapp/tools/titans/icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.gif");
         addTitan(titan);
-         titan = new Titan("Tretan", 400,3,200, 200, "Fire", "src/pk/codeapp/tools/titans/icons/titan2.jpg","src/pk/codeapp/tools/titans/titan2.jpg","src/pk/codeapp/tools/titans/titan2.gif");
+        titan = new Titan("Tretan", 400, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.gif");
         addTitan(titan);
-         titan = new Titan("Tololo", 400,3,200, 200, "Water", "src/pk/codeapp/tools/titans/icons/titan3.jpg","src/pk/codeapp/tools/titans/titan3.jpg","src/pk/codeapp/tools/titans/titan3.gif");
+        titan = new Titan("Tololo", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.gif");
         addTitan(titan);
-         titan = new Titan("Geb", 400,3,200, 200, "Land", "src/pk/codeapp/tools/titans/icons/titan4.jpg","src/pk/codeapp/tools/titans/titan4.jpg","src/pk/codeapp/tools/titans/titan4.gif");
+        titan = new Titan("Geb", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.gif");
         addTitan(titan);
-
-    
-
 
     }
-<<<<<<< HEAD
 
     public int getColumnGame() {
         return columnGame;
@@ -221,54 +185,35 @@ public class Methods {
     public void setRowGame(int rowGame) {
         this.rowGame = rowGame;
     }
-    
-    public void defaulTitan(){
-      
-       
-        Titan titan = new Titan("Western Dragon", 600, 3, "Aire","",100);
-        titans[0]=titan;
-        titan = new Titan("Treatan", 700, 1, "Fire","",250);
-        titans[1]=titan;
-         titan = new Titan("Tololo", 800, 2, "Land","",230);
-       titans[2]=titan;
-        titan = new Titan("Buckbeak", 400, 2, "Aire","",300);
-        titans[3]=titan;
-         titan = new Titan("Geb", 1400, 3, "Land","",80);
-        titans[4]=titan;
-        titan = new Titan("Sobeck", 1000, 2, "Water","",100);
-       titans[5]=titan;
-         titan = new Titan("Foxy", 500, 1, "Fire","",500);
-       titans[6]=titan;
-       titans[7]=null;
-    }
-    public void addTower(Tower newTower){ // Add tower in the matrix
-        if(checkTowerPlayer1==false || checkTowerPlayer2==false)
+
+    public void addTower(Tower newTower) { // Add tower in the matrix
+        if (checkTowerPlayer1 == false || checkTowerPlayer2 == false) {
             activeTowertoPlay(newTower.getTowerPlayer()); //Methods to active tower to play
-        if(graphicsElements==null){ //Check to empty
-            graphicsElements=new GraphicsElement[columnGame][rowGame]; //Create a new Matrix
-            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower; //Add
         }
-        else{      
-            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower;//Add
-        }
-    }
-    
-    private void activeTowertoPlay(String panel){ // Methods to activate the verfication of the towers 
-        if(panel.equals("player1"))
-                this.checkTowerPlayer1=true;
-        else
-            this.checkTowerPlayer2=true;
-    }
-}
-=======
-    public void addTitan(Titan titan){
-        for (int i = 0; i < titans.length; i++) {
-            if(titans[i]==null){
-                titans[i]=titan;
-                break;
-            }
+        if (graphicsElements == null) { //Check to empty
+            graphicsElements = new GraphicsElement[columnGame][rowGame]; //Create a new Matrix
+            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()] = newTower; //Add
+        } else {
+            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()] = newTower;//Add
         }
     }
 
+    private void activeTowertoPlay(String panel) { // Methods to activate the verfication of the towers 
+        if (panel.equals("player1")) {
+            this.checkTowerPlayer1 = true;
+        } else {
+            this.checkTowerPlayer2 = true;
+        }
+    }
+
+    public boolean addTitan(Titan titan) {
+        for (int i = 0; i < titans.length; i++) {
+            if (titans[i] == null) {
+                titans[i] = titan;
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
->>>>>>> master

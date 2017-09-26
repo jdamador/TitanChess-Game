@@ -9,12 +9,14 @@ import javafx.scene.control.RadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.model.Titan;
 
-public class SelectTitan extends javax.swing.JFrame {
+public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
     //Inicialization of Variables
     private int columnGame,rowGame; // Column and row of Table Game
     private boolean activateButtonTowers=true; // Activations of towers button
@@ -446,7 +448,7 @@ public class SelectTitan extends javax.swing.JFrame {
            if(addTitanInTheCorrectPlayer()){
                setElementOfArena((String)cmbSizeofmap1.getSelectedItem());
                Game game = new Game();
-               game.beforeWindows(this);
+               game.openWindow(this);
                
                
                
@@ -621,6 +623,16 @@ public class SelectTitan extends javax.swing.JFrame {
     private javax.swing.JLabel titan_image7;
     private javax.swing.JLabel titan_image8;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void openWindow(JFrame frame) {
+       
+    }
+
+    @Override
+    public void goBack() {
+
+    }
 
    
     

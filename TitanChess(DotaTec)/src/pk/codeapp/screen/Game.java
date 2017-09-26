@@ -5,11 +5,14 @@
  */
 package pk.codeapp.screen;
 
+import javax.swing.JFrame;
+import pk.codeapp.methods.DefaultRules;
+
 /**
  *
  * @author Jose Pablo Brenes
  */
-public class Game extends javax.swing.JFrame {
+public class Game extends javax.swing.JFrame implements DefaultRules {
 
     /**
      * Creates new form Game
@@ -96,4 +99,14 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void openWindow(JFrame frame) {
+      
+    }
+
+    @Override
+    public void goBack() {
+        
+    }
 }

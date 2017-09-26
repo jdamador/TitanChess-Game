@@ -506,30 +506,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     }//GEN-LAST:event_cmbNewMovesActionPerformed
 
     private void btnAddAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAttackActionPerformed
-        // TODO add your handling code here:
-        if (txtAttackName.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank");
-        } else {
-            if (titans.length != 0) {
-                for (int i = 0; i < titans.length; i++) {
-                    String titanSelected = (String) cmbAttackTitans.getSelectedItem();
-                    System.out.println(titans[i].getName());
-                    if (titans[i] != null) {
-                        if (titanSelected.equals(titans[i].getName())) {
-                            Attack attack = new Attack(txtAttackName.getText(), sliderDamageAttack.getValue(), sliderManaAttack.getValue());
-                            titans[i].addAttack(attack);
-                            JOptionPane.showMessageDialog(rootPane, "Added successful!");
-                            break;
-                        }
-                    }
-
-                }
-                JOptionPane.showMessageDialog(rootPane, "Fail!");
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Fail!");
-            }
-
-        }
+     
     }//GEN-LAST:event_btnAddAttackActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -554,7 +531,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        createTitan();
+     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmbVitalElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVitalElementActionPerformed
@@ -685,24 +662,5 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         cmbShowTitans.setModel(model);
 
     }
-    
-    /**
-     * Create new Titan with all attributes
-     */
-    private void createTitan() {
-//        if(txtNewName.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(rootPane,"Don't leave spaces in blank");
-//        }else{
-//            String vitalElement = (String) cmbVitalElement.getSelectedItem();
-//            String path= (String) cmbNewPath.getSelectedItem();
-//            String move=(String) cmbNewMoves.getSelectedItem();
-//            int moves=Integer.parseInt(move);
-//            Titan titan= new Titan(txtNewName.getText(), slideNewLife.getValue(), moves, vitalElement, "src/pk/codeapp/tools/icon/"+path+"./png", slideNewDamage.getValue(), slideNewMana.getValue());
-//            methods.newTitan(titan);
-//            int pathDirection=  cmbNewPath.getSelectedIndex();
-//            methods.addNewImageTitan("src/pk/codeapp/tools/titans/titan"+(4+pathDirection));
-//            
-//        }
-//    }
-    }
+ 
 }

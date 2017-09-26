@@ -22,7 +22,6 @@ public class Titan extends GraphicsElement implements Serializable{
     private int life;
     private int moves;
     private String vitalElement;
-   
     private int damage;
     private int mana;
     //Graphics Attibutes
@@ -31,6 +30,8 @@ public class Titan extends GraphicsElement implements Serializable{
      private ImageIcon imageBig;
     //Relation
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
+    //Player
+    private String player;
 
     public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String imageBig,String gif) {
         //init attributes
@@ -77,16 +78,7 @@ public class Titan extends GraphicsElement implements Serializable{
         return vitalElement;
     }
 
-<<<<<<< HEAD
-    public String getIcon() {
-        return icon;
-    }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-    
-=======
     public void setVitalElement(String vitalElement) {
         this.vitalElement = vitalElement;
     }
@@ -133,9 +125,17 @@ public class Titan extends GraphicsElement implements Serializable{
         this.imageBig = imageBig;
     }
 
+    public String getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(String player) {
+        this.player = player;
+    }
+
     
 
->>>>>>> master
+
     public DefaultListModel<String> toModel() {
         DefaultListModel<String> model= new DefaultListModel();
         model.addElement("Name:   "+this.name+ "    Vital Element:    "+this.vitalElement);
