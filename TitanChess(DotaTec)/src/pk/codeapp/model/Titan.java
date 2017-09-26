@@ -22,10 +22,6 @@ public class Titan extends GraphicsElement implements Serializable{
     private int life;
     private int moves;
     private String vitalElement;
-<<<<<<< Updated upstream
-=======
-    private String player;
->>>>>>> Stashed changes
     private int damage;
     private int mana;
     //Graphics Attibutes
@@ -79,14 +75,12 @@ public class Titan extends GraphicsElement implements Serializable{
         this.moves = moves;
     }
 
-<<<<<<< Updated upstream
     public String getVitalElement() {
         return vitalElement;
     }
 
 
-=======
->>>>>>> Stashed changes
+
     public void setVitalElement(String vitalElement) {
         this.vitalElement = vitalElement;
     }
@@ -136,22 +130,11 @@ public class Titan extends GraphicsElement implements Serializable{
     public String getPlayer() {
         return player;
     }
-<<<<<<< Updated upstream
-
     public void setPlayer(String player) {
         this.player = player;
     }
 
     
-
-
-=======
-
-    public void setPlayer(String player) {
-        this.player = player;
-    }
-    
->>>>>>> Stashed changes
     public DefaultListModel<String> toModel() {
         DefaultListModel<String> model= new DefaultListModel();
         model.addElement("Name:   "+this.name+ "    Vital Element:    "+this.vitalElement);

@@ -10,24 +10,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.model.Dupla;
 import pk.codeapp.model.Path;
 import pk.codeapp.model.Tower;
 
-public class SelectionTower extends javax.swing.JFrame implements ActionListener {
+public class SelectionTower extends javax.swing.JFrame implements ActionListener, DefaultRules{
 
-    //Inicialization of Variables
+    //Inicialization of Variable
     private SelectTitan selectTitan;
     private int columnGame, rowGame;
     private int contTowersP1=0; // Cont of Towers to player 1
     private int contTowersP2=0; // Cont of Towers to player 2
     public SelectionTower() {
         initComponents();
-        this.setVisible(true);
-        lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
         this.setLocationRelativeTo(null); //Localization of Windows
+         lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -117,9 +118,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        this.dispose();
-        selectTitan.setVisible(true);
+        goBack();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
@@ -154,7 +153,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         });
     }
 
-    private void paintTabletoTowers(JPanel panel,String text) { //Methods to paint matrix of table(Only part of player)
+   private void paintTabletoTowers(JPanel panel,String text) { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame-6,columnGame));
         int column = columnGame, row = rowGame-6;
         for (int j = 0; j < row; j++) {
@@ -168,11 +167,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         }
     }
     public void beforeWindows(SelectTitan window) { // Methods to obtain before Windows
-        selectTitan = window;
-        this.columnGame=selectTitan.getColumnGame();
-        this.rowGame=selectTitan.getRowGame();
-        paintTabletoTowers(towerPlayer1,"towerplayer1");
-        paintTabletoTowers(towerPlaye2,"towerplayer2");
+        
         //Equals variables column and row
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -188,8 +183,6 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e){ 
         Path temp = (Path) e.getSource();
-        System.out.println(temp.getX());
-        System.out.println(temp.getY());
         // each panel will have a difference of one pixel to calculate whith is clicked
         if(temp.getParent().getHeight()==500){ //First Panel
             contTowersP1++;
@@ -206,5 +199,28 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             MainApp.methods.addTower(newTower);
             }}
     }
+
+    @Override
+    public void openWindow(JFrame frame) {
+        selectTitan = (SelectTitan)frame;
+        selectTitan.setVisible(false);
+        this.setVisible(true);
+        this.columnGame=selectTitan.getColumnGame();
+        this.rowGame=selectTitan.getRowGame();
+        paintTabletoTowers(towerPlayer1,"towerplayer1");
+        paintTabletoTowers(towerPlaye2,"towerplayer2");
+    }
+
+    @Override
+    public void goBack() {
+       if(contTowersP1==0 || contTowersP2==0){
+            JOptionPane.showMessageDialog(rootPane,"Please select more towers in the diferents player( Minumum 1 tower for player)");
+        }
+        else{
+        this.dispose();
+        selectTitan.setVisible(true);}
+    }
+
+    
 
 }

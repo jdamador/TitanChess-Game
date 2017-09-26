@@ -416,7 +416,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
         MainApp.methods.setRowGame(rowGame);
         
         SelectionTower selectionTower =  new SelectionTower(); //Instance of windows selection of tower
-        selectionTower.beforeWindows(this); // Pass windows to Selection of tower
+        this.setVisible(false);
+        selectionTower.openWindow(this); // Pass windows to Selection of tower
         activateButtonTowers=false; //Desactive button
         }
     }//GEN-LAST:event_btnPositionTowerActionPerformed
@@ -461,6 +462,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
          for (int i = 0; i < titans.length; i++) {
                 if(minimumTitan<3){ //Checks minimum Titans
                 if(titans[i]!=null){
+                    System.out.println(getButtonGroup(i).getSelection());
                     if(getButtonGroup(i).getSelection().equals(getRadioButton(i))) //Checks to Group Buttons which Button is selected( in this case buttons to player 1)
                         titans[i].setPlayer("player1"); //add text
                     else
