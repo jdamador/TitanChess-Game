@@ -195,14 +195,14 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             contTowersP1++;
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
-            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()));
+            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player1");
             MainApp.methods.addTower(newTower);
             }}
         else if(temp.getParent().getHeight()==501){ //Second Panel
             contTowersP2++;
             if(contTowersP2<=3){// Check the num Tower is less than 3 (Panel 2)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
-            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()));
+            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player2");
             MainApp.methods.addTower(newTower);
             }}
     }

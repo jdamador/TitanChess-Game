@@ -5,15 +5,27 @@
  */
 package pk.codeapp.screen;
 
+import javafx.scene.control.RadioButton;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import pk.codeapp.model.Titan;
 
 public class SelectTitan extends javax.swing.JFrame {
     //Inicialization of Variables
     private int columnGame,rowGame; // Column and row of Table Game
+    private boolean activateButtonTowers=true; // Activations of towers button
+    private  int minimumTitan=0; // Minimum titans to the players has selected
+    private String elementOfArena; 
+    private Titan[] titans;
     public SelectTitan() {
-        initComponents();
+        initComponents(); 
        lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
        this.setLocationRelativeTo(null); //Localization of Windows
+       putImageIconTitan();
        
     }
 
@@ -35,6 +47,7 @@ public class SelectTitan extends javax.swing.JFrame {
         buttonGroupTitan7 = new javax.swing.ButtonGroup();
         buttonGroupTitan8 = new javax.swing.ButtonGroup();
         jMenu1 = new javax.swing.JMenu();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         titan_image6 = new javax.swing.JLabel();
         titan_image1 = new javax.swing.JLabel();
@@ -65,14 +78,15 @@ public class SelectTitan extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnPositionTower = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnStartGame = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cmbSizeofmap1 = new javax.swing.JComboBox<>();
         lblBackground = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -292,14 +306,14 @@ public class SelectTitan extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Size of Map:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 70, -1, -1));
+        jLabel2.setText("Choose the element arena");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 380, -1, -1));
 
         cmbSizeofmap.setBackground(new java.awt.Color(0, 0, 0));
         cmbSizeofmap.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbSizeofmap.setForeground(new java.awt.Color(255, 255, 255));
         cmbSizeofmap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large", " " }));
-        getContentPane().add(cmbSizeofmap, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 110, 200, 40));
+        getContentPane().add(cmbSizeofmap, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 110, 200, 40));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -322,6 +336,25 @@ public class SelectTitan extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 140, 50));
+
+        btnStartGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/playGame.png"))); // NOI18N
+        btnStartGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartGameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnStartGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 570, 200, 90));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Size of Map:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 70, -1, -1));
+
+        cmbSizeofmap1.setBackground(new java.awt.Color(0, 0, 0));
+        cmbSizeofmap1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cmbSizeofmap1.setForeground(new java.awt.Color(255, 255, 255));
+        cmbSizeofmap1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fire", "Aqua", "Wind", "Land", " " }));
+        getContentPane().add(cmbSizeofmap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 420, 200, 40));
 
         lblBackground.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/SelectTitan_Background.jpg"))); // NOI18N
@@ -371,6 +404,7 @@ public class SelectTitan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTitan1_Player2ActionPerformed
 
     private void btnPositionTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPositionTowerActionPerformed
+        if(activateButtonTowers){
         String sizeOfTable = checkStringSize(); // Return the string of combobox
         setSizeoftableGame(sizeOfTable); //set variables column and row related to String size
         this.setVisible(false);
@@ -381,8 +415,91 @@ public class SelectTitan extends javax.swing.JFrame {
         
         SelectionTower selectionTower =  new SelectionTower(); //Instance of windows selection of tower
         selectionTower.beforeWindows(this); // Pass windows to Selection of tower
-        
+        activateButtonTowers=false; //Desactive button
+        }
     }//GEN-LAST:event_btnPositionTowerActionPerformed
+    private void putImageIconTitan(){ // Put icons of titans in the labels
+        titans = MainApp.methods.getTitans();
+        for (int i = 0; i < titans.length; i++) {
+           // if(titans[i]!=null)
+    //            checkIconJLabel(i).setIcon(titans[i].getIcon()); // Put Image Icon in the labels
+        }
+    }
+    private JLabel checkIconJLabel(int i){ // Return the JLabel 
+        switch("titan_image"+i){
+        case "titan_image1": return titan_image1;
+        case "titan_image2":return titan_image2;
+        case "titan_image3":return titan_image3;
+        case "titan_image4":return titan_image4;
+        case "titan_image5":return titan_image5;
+        case "titan_image6":return titan_image6;
+        case "titan_image7":return titan_image7;
+        case "titan_image8":return titan_image8;
+        }
+        return null;  
+    }
+    //Button to Start Game 
+    private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
+        if(activateButtonTowers==true){ //Checks to tower is correct selected
+            JOptionPane.showMessageDialog(rootPane, "!!! Select the towers to Play Game !!! ");
+        }else{
+           if(addTitanInTheCorrectPlayer()){
+               setElementOfArena((String)cmbSizeofmap1.getSelectedItem());
+               Game game = new Game();
+               game.beforeWindows(this);
+               
+               
+               
+           }
+               
+               
+        }
+    }//GEN-LAST:event_btnStartGameActionPerformed
+    private boolean addTitanInTheCorrectPlayer(){ // Add each titan in the correct player with respect to the selected button
+         for (int i = 0; i < titans.length; i++) {
+                if(minimumTitan<3){ //Checks minimum Titans
+                if(titans[i]!=null){
+                    if(getButtonGroup(i).getSelection().equals(getRadioButton(i))) //Checks to Group Buttons which Button is selected( in this case buttons to player 1)
+                        titans[i].setPlayer("player1"); //add text
+                    else
+                        titans[i].setPlayer("player2"); //add text
+                }
+                else{
+                    minimumTitan++;// if is null plus one 
+                }}
+                else{
+                    JOptionPane.showMessageDialog(rootPane,"The minimum Titans is 6, Please select more Titan(s)");
+                    return false;
+                }
+                
+            }return true;
+    }
+    private JRadioButton getRadioButton(int i){// Return RadioButton  and give num(1-8)
+        switch("btnTitan"+i+"_Player1"){
+            case "btnTitan1_Player1": return btnTitan1_Player1;
+            case "btnTitan2_Player1":return btnTitan2_Player1;
+            case "btnTitan3_Player1":return btnTitan3_Player1;
+            case "btnTitan4_Player1":return btnTitan4_Player1;
+            case "btnTitan5_Player1":return btnTitan5_Player1;
+            case "btnTitan6_Player1":return btnTitan6_Player1;
+            case "btnTitan7_Player1":return btnTitan7_Player1;
+            case "btnTitan8_Player1":return btnTitan8_Player1;
+        }
+        return null;
+    }
+    private ButtonGroup getButtonGroup(int i){ // Return GroupButton  and give num(1-8)
+        switch("buttonGroupTitan"+i){
+            case "buttonGroupTitan1": return buttonGroupTitan1;
+            case "buttonGroupTitan2":return buttonGroupTitan2;
+            case "buttonGroupTitan3":return buttonGroupTitan3;
+            case "buttonGroupTitan4":return buttonGroupTitan4;
+            case "buttonGroupTitan5":return buttonGroupTitan5;
+            case "buttonGroupTitan6":return buttonGroupTitan6;
+            case "buttonGroupTitan7":return buttonGroupTitan7;
+            case "buttonGroupTitan8":return buttonGroupTitan8;
+        }
+        return null;
+    }
     private String checkStringSize(){ // Return the String cliked in cmb (Small,Medium,Large)
         return (String)cmbSizeofmap.getSelectedItem(); 
     }
@@ -433,6 +550,14 @@ public class SelectTitan extends javax.swing.JFrame {
         });
     }
       // <editor-fold defaultstate="collapsed" desc="Geters and Seters">
+
+    public String getElementOfArena() {
+        return elementOfArena;
+    }
+
+    public void setElementOfArena(String elementOfArena) {
+        this.elementOfArena = elementOfArena;
+    }
     
     public int getColumnGame() {
         return columnGame;
@@ -452,6 +577,7 @@ public class SelectTitan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPositionTower;
+    private javax.swing.JButton btnStartGame;
     private javax.swing.JRadioButton btnTitan1_Player1;
     private javax.swing.JRadioButton btnTitan1_Player2;
     private javax.swing.JRadioButton btnTitan2_Player1;
@@ -468,6 +594,7 @@ public class SelectTitan extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnTitan7_Player2;
     private javax.swing.JRadioButton btnTitan8_Player1;
     private javax.swing.JRadioButton btnTitan8_Player2;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupTitan1;
     private javax.swing.ButtonGroup buttonGroupTitan2;
     private javax.swing.ButtonGroup buttonGroupTitan3;
@@ -477,9 +604,11 @@ public class SelectTitan extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupTitan7;
     private javax.swing.ButtonGroup buttonGroupTitan8;
     private javax.swing.JComboBox<String> cmbSizeofmap;
+    private javax.swing.JComboBox<String> cmbSizeofmap1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JLabel lblBackground;

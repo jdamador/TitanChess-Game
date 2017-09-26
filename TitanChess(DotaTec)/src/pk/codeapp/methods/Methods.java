@@ -32,14 +32,16 @@ public class Methods {
     private boolean turn;
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
-<<<<<<< HEAD
-    private ArrayList<Titan> titans= new ArrayList();
+    private boolean checkTowerPlayer1; // Boolean to cheek quantity of towers in player 1
+    private boolean checkTowerPlayer2;// Boolean to cheek quantity of towers in player 2
     private GraphicsElement graphicsElements[][]; // Matrix of Game
     private int columnGame,rowGame; 
-=======
+
     private Titan[] titans= new Titan[8];
->>>>>>> master
+
     //<editor-fold desc="Default list from titans" defaultstate="collapsed">
+        
+ 
     private String[] imageTitans=
     {"src/pk/codeapp/tools/titans/titan1.jpg",
         "src/pk/codeapp/tools/titans/titan2.jpg",
@@ -229,12 +231,21 @@ public class Methods {
        titans[7]=null;
     }
     public void addTower(Tower newTower){ // Add tower in the matrix
+        if(checkTowerPlayer1==false || checkTowerPlayer2==false)
+            activeTowertoPlay(newTower.getTowerPlayer()); //Methods to active tower to play
         if(graphicsElements==null){ //Check to empty
             graphicsElements=new GraphicsElement[columnGame][rowGame]; //Create a new Matrix
-            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower;
+            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower; //Add
         }
         else{      
-            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower;
+            graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()]=newTower;//Add
         }
+    }
+    
+    private void activeTowertoPlay(String panel){ // Methods to activate the verfication of the towers 
+        if(panel.equals("player1"))
+                this.checkTowerPlayer1=true;
+        else
+            this.checkTowerPlayer2=true;
     }
 }

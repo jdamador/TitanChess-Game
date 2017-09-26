@@ -64,6 +64,14 @@ public class Titan extends GraphicsElement implements Serializable{
         return vitalElement;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+    
     public DefaultListModel<String> toModel() {
         DefaultListModel<String> model= new DefaultListModel();
         model.addElement("Name:   "+this.name+ "    Vital Element:    "+this.vitalElement);
