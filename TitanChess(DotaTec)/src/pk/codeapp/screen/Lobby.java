@@ -385,8 +385,12 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         if(titans[icon]==null){
             lblGifImage.setText("Coming soon...");
             lblGifImage.setIcon(null);
+            DefaultListModel model= new DefaultListModel();
+            model.addElement("No information available yet");
+            information.setModel(model);
         }else{
             lblGifImage.setIcon(titans[icon].getGif());
+            information.setModel(titans[icon].toModel());
         }
     }
 
