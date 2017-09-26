@@ -300,11 +300,12 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         if (activateButtonTowers == true) { //Checks to tower is correct selected
             JOptionPane.showMessageDialog(rootPane, "!!! Select the towers to Play Game !!! ");
         } else {
-            if (addTitanInTheCorrectPlayer()) {
+            if (addTitanInTheCorrectPlayer()==true) {
                 String elementofArena=(String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
                 Game game = new Game();
                 game.openWindow(this);
+                
             }else{
                 JOptionPane.showMessageDialog(rootPane,"You need more Titans to pay, minimun 3 for player");
             }
@@ -334,12 +335,12 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
                     JComboBox cmb = getcmbTitan(i+1);
                     if(cmb==null){break;}
                     else{
-                    String player = (String)cmb.getSelectedItem(); 
-                    if(player.equals("Player2")){
-                        titans[i].setPlayer("Player2");
+                    int player = cmb.getSelectedIndex(); 
+                    if(player==1){                        
+                       titans[i].setPlayer("Player2");
                         contTitansPlayer1--;
                     }else{
-                        titans[i].setPlayer("Player1");
+                       titans[i].setPlayer("Player1");
                         contTitansPlayer2--;
                         }
                     }
