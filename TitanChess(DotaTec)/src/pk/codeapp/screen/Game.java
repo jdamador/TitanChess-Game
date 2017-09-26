@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pk.codeapp.screen;
 
+<<<<<<< Updated upstream
 import javax.swing.JFrame;
 import pk.codeapp.methods.DefaultRules;
 
@@ -13,10 +10,12 @@ import pk.codeapp.methods.DefaultRules;
  * @author Jose Pablo Brenes
  */
 public class Game extends javax.swing.JFrame implements DefaultRules {
+=======
+>>>>>>> Stashed changes
 
-    /**
-     * Creates new form Game
-     */
+public class Game extends javax.swing.JFrame {
+    //Inicialization of Variables
+    private SelectTitan selectTitan;
     public Game() {
         initComponents();
     }
@@ -33,11 +32,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules {
         jPanel1 = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jPanel1.setOpaque(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -51,7 +45,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules {
             .addGap(0, 720, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         background.setToolTipText("");
@@ -94,12 +90,18 @@ public class Game extends javax.swing.JFrame implements DefaultRules {
             }
         });
     }
-
+    public void beforeWindows(SelectTitan selectTitan){
+        this.selectTitan=selectTitan;
+        selectTitan.setVisible(false);
+        
+    }
+            
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< Updated upstream
     @Override
     public void openWindow(JFrame frame) {
       
@@ -109,4 +111,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules {
     public void goBack() {
         
     }
+=======
+   
+>>>>>>> Stashed changes
 }

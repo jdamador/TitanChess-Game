@@ -38,10 +38,18 @@ public class Methods {
     private GraphicsElement graphicsElements[][]; // Matrix of Game
     private int columnGame, rowGame;
 
+<<<<<<< Updated upstream
     private Titan[] titans = new Titan[8];
 
     //<editor-fold desc="Default list from titans" defaultstate="collapsed">
     //</editor-fold>
+=======
+   
+        
+ 
+
+
+>>>>>>> Stashed changes
     /**
      * Register new user in the game
      *
@@ -169,7 +177,10 @@ public class Methods {
         addTitan(titan);
 
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     public int getColumnGame() {
         return columnGame;
     }
@@ -185,9 +196,15 @@ public class Methods {
     public void setRowGame(int rowGame) {
         this.rowGame = rowGame;
     }
+<<<<<<< Updated upstream
 
     public void addTower(Tower newTower) { // Add tower in the matrix
         if (checkTowerPlayer1 == false || checkTowerPlayer2 == false) {
+=======
+    
+    public void addTower(Tower newTower){ // Add tower in the matrix
+        if(checkTowerPlayer1==false || checkTowerPlayer2==false)
+>>>>>>> Stashed changes
             activeTowertoPlay(newTower.getTowerPlayer()); //Methods to active tower to play
         }
         if (graphicsElements == null) { //Check to empty
@@ -206,7 +223,12 @@ public class Methods {
         }
     }
 
+<<<<<<< Updated upstream
     public boolean addTitan(Titan titan) {
+=======
+
+    public void addTitan(Titan titan){
+>>>>>>> Stashed changes
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] == null) {
                 titans[i] = titan;
@@ -217,3 +239,7 @@ public class Methods {
     }
 
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
