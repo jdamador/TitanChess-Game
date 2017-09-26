@@ -32,7 +32,7 @@ public class Titan extends GraphicsElement implements Serializable{
     //Relation
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
     //Player
-    private String player;
+    private String player="";
 
     public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String imageBig,String gif) {
         //init attributes

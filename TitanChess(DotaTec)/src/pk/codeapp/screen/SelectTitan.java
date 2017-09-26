@@ -5,34 +5,36 @@
  */
 package pk.codeapp.screen;
 
-import javafx.scene.control.RadioButton;
-import javax.swing.ButtonGroup;
+
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
+
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.model.Titan;
 
-public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
+public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
+
     //Inicialization of Variables
-    private int columnGame,rowGame; // Column and row of Table Game
-    private boolean activateButtonTowers=true; // Activations of towers button
-    private  int minimumTitan=0; // Minimum titans to the players has selected
-    private String elementOfArena; 
+    private int columnGame, rowGame; // Column and row of Table Game
+    private boolean activateButtonTowers = true; // Activations of towers button
+    private int minimumTitan = 0; // Minimum titans to the players has selected
+    private String elementOfArena;
     private Titan[] titans;
     private Lobby lobby;
-    
+    private int contTitansPlayer1=4;
+    private int contTitansPlayer2=4;
     public SelectTitan() {
-        initComponents(); 
-       lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
-       this.setLocationRelativeTo(null); //Localization of Windows
-       titans=MainApp.methods.getTitans();
+        initComponents();
+        lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
+        this.setLocationRelativeTo(null); //Localization of Windows
+        titans = MainApp.methods.getTitans();
         System.out.println(titans);
-       putImageIconTitan();
-       
+        putImageIconTitan(); // Put the image in the labels 
+        visibilityofchoosersPlayer(); // Show the visibility of the choosers Players
+
     }
 
     /**
@@ -63,22 +65,6 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
         titan_image8 = new javax.swing.JLabel();
         titan_image5 = new javax.swing.JLabel();
         titan_image7 = new javax.swing.JLabel();
-        btnTitan2_Player1 = new javax.swing.JRadioButton();
-        btnTitan5_Player1 = new javax.swing.JRadioButton();
-        btnTitan3_Player1 = new javax.swing.JRadioButton();
-        btnTitan4_Player1 = new javax.swing.JRadioButton();
-        btnTitan6_Player1 = new javax.swing.JRadioButton();
-        btnTitan7_Player1 = new javax.swing.JRadioButton();
-        btnTitan8_Player1 = new javax.swing.JRadioButton();
-        btnTitan1_Player1 = new javax.swing.JRadioButton();
-        btnTitan2_Player2 = new javax.swing.JRadioButton();
-        btnTitan3_Player2 = new javax.swing.JRadioButton();
-        btnTitan4_Player2 = new javax.swing.JRadioButton();
-        btnTitan5_Player2 = new javax.swing.JRadioButton();
-        btnTitan6_Player2 = new javax.swing.JRadioButton();
-        btnTitan7_Player2 = new javax.swing.JRadioButton();
-        btnTitan8_Player2 = new javax.swing.JRadioButton();
-        btnTitan1_Player2 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         cmbSizeofmap = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -87,6 +73,14 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
         btnStartGame = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cmbSizeofmap1 = new javax.swing.JComboBox<>();
+        cmbTitan1 = new javax.swing.JComboBox<>();
+        cmbTitan2 = new javax.swing.JComboBox<>();
+        cmbTitan3 = new javax.swing.JComboBox<>();
+        cmbTitan4 = new javax.swing.JComboBox<>();
+        cmbTitan5 = new javax.swing.JComboBox<>();
+        cmbTitan6 = new javax.swing.JComboBox<>();
+        cmbTitan7 = new javax.swing.JComboBox<>();
+        cmbTitan8 = new javax.swing.JComboBox<>();
         lblBackground = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
@@ -131,184 +125,6 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
         titan_image7.setToolTipText("");
         titan_image7.setBorder(new javax.swing.border.MatteBorder(null));
         getContentPane().add(titan_image7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, 80, 80));
-
-        btnTitan2_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan2.add(btnTitan2_Player1);
-        btnTitan2_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan2_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan2_Player1.setText("Player 1");
-        btnTitan2_Player1.setOpaque(false);
-        btnTitan2_Player1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan2_Player1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan2_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 90, -1));
-
-        btnTitan5_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan5.add(btnTitan5_Player1);
-        btnTitan5_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan5_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan5_Player1.setText("Player 1");
-        btnTitan5_Player1.setOpaque(false);
-        getContentPane().add(btnTitan5_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 90, -1));
-
-        btnTitan3_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan3.add(btnTitan3_Player1);
-        btnTitan3_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan3_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan3_Player1.setText("Player 1");
-        btnTitan3_Player1.setOpaque(false);
-        btnTitan3_Player1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan3_Player1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan3_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 90, -1));
-
-        btnTitan4_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan4.add(btnTitan4_Player1);
-        btnTitan4_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan4_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan4_Player1.setText("Player 1");
-        btnTitan4_Player1.setOpaque(false);
-        getContentPane().add(btnTitan4_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, 90, -1));
-
-        btnTitan6_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan6.add(btnTitan6_Player1);
-        btnTitan6_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan6_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan6_Player1.setText("Player 1");
-        btnTitan6_Player1.setOpaque(false);
-        getContentPane().add(btnTitan6_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, 90, -1));
-
-        btnTitan7_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan7.add(btnTitan7_Player1);
-        btnTitan7_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan7_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan7_Player1.setText("Player 1");
-        btnTitan7_Player1.setOpaque(false);
-        getContentPane().add(btnTitan7_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 90, -1));
-
-        btnTitan8_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan8.add(btnTitan8_Player1);
-        btnTitan8_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan8_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan8_Player1.setText("Player 1");
-        btnTitan8_Player1.setOpaque(false);
-        getContentPane().add(btnTitan8_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 90, -1));
-
-        btnTitan1_Player1.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan1.add(btnTitan1_Player1);
-        btnTitan1_Player1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan1_Player1.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan1_Player1.setText("Player 1");
-        btnTitan1_Player1.setOpaque(false);
-        getContentPane().add(btnTitan1_Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 90, -1));
-
-        btnTitan2_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan2.add(btnTitan2_Player2);
-        btnTitan2_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan2_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan2_Player2.setText("Player 2");
-        btnTitan2_Player2.setOpaque(false);
-        btnTitan2_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan2_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan2_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 90, -1));
-
-        btnTitan3_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan3.add(btnTitan3_Player2);
-        btnTitan3_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan3_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan3_Player2.setText("Player 2");
-        btnTitan3_Player2.setOpaque(false);
-        btnTitan3_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan3_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan3_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 90, -1));
-
-        btnTitan4_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan4.add(btnTitan4_Player2);
-        btnTitan4_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan4_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan4_Player2.setText("Player 2");
-        btnTitan4_Player2.setOpaque(false);
-        btnTitan4_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan4_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan4_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 90, -1));
-
-        btnTitan5_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan5.add(btnTitan5_Player2);
-        btnTitan5_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan5_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan5_Player2.setText("Player 2");
-        btnTitan5_Player2.setOpaque(false);
-        btnTitan5_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan5_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan5_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 90, -1));
-
-        btnTitan6_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan6.add(btnTitan6_Player2);
-        btnTitan6_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan6_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan6_Player2.setText("Player 2");
-        btnTitan6_Player2.setOpaque(false);
-        btnTitan6_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan6_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan6_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 90, -1));
-
-        btnTitan7_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan7.add(btnTitan7_Player2);
-        btnTitan7_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan7_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan7_Player2.setText("Player 2");
-        btnTitan7_Player2.setOpaque(false);
-        btnTitan7_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan7_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan7_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 90, -1));
-
-        btnTitan8_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan8.add(btnTitan8_Player2);
-        btnTitan8_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan8_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan8_Player2.setText("Player 2");
-        btnTitan8_Player2.setOpaque(false);
-        btnTitan8_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan8_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan8_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 450, 90, -1));
-
-        btnTitan1_Player2.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroupTitan1.add(btnTitan1_Player2);
-        btnTitan1_Player2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTitan1_Player2.setForeground(new java.awt.Color(255, 255, 255));
-        btnTitan1_Player2.setText("Player 2");
-        btnTitan1_Player2.setOpaque(false);
-        btnTitan1_Player2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTitan1_Player2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTitan1_Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,178 +183,197 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
         cmbSizeofmap1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fire", "Aqua", "Wind", "Land", " " }));
         getContentPane().add(cmbSizeofmap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 420, 200, 40));
 
+        cmbTitan1.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan1.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 100, 30));
+
+        cmbTitan2.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan2.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 100, 30));
+
+        cmbTitan3.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan3.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 100, 30));
+
+        cmbTitan4.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan4.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 100, 30));
+
+        cmbTitan5.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan5.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 100, 30));
+
+        cmbTitan6.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan6.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 100, 30));
+
+        cmbTitan7.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan7.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 100, 30));
+
+        cmbTitan8.setBackground(new java.awt.Color(0, 0, 0));
+        cmbTitan8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbTitan8.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTitan8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        getContentPane().add(cmbTitan8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, 100, 30));
+
         lblBackground.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/SelectTitan_Background.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnTitan2_Player1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan2_Player1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan2_Player1ActionPerformed
-
-    private void btnTitan3_Player1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan3_Player1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan3_Player1ActionPerformed
-
-    private void btnTitan2_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan2_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan2_Player2ActionPerformed
-
-    private void btnTitan3_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan3_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan3_Player2ActionPerformed
-
-    private void btnTitan4_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan4_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan4_Player2ActionPerformed
-
-    private void btnTitan5_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan5_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan5_Player2ActionPerformed
-
-    private void btnTitan6_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan6_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan6_Player2ActionPerformed
-
-    private void btnTitan7_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan7_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan7_Player2ActionPerformed
-
-    private void btnTitan8_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan8_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan8_Player2ActionPerformed
-
-    private void btnTitan1_Player2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTitan1_Player2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTitan1_Player2ActionPerformed
-
+    private void visibilityofchoosersPlayer(){
+        for (int i = 0; i < titans.length; i++) {
+            if(titans[i]==null)
+                getcmbTitan(i).setVisible(false);
+        }
+    }
     private void btnPositionTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPositionTowerActionPerformed
-        if(activateButtonTowers){
-        String sizeOfTable = checkStringSize(); // Return the string of combobox
-        setSizeoftableGame(sizeOfTable); //set variables column and row related to String size
-        this.setVisible(false);
-        
-        // Set ColumnGame and RowGame in methods
-        MainApp.methods.setColumnGame(columnGame);
-        MainApp.methods.setRowGame(rowGame);
-        
-        SelectionTower selectionTower =  new SelectionTower(); //Instance of windows selection of tower
-        this.setVisible(false);
-        selectionTower.openWindow(this); // Pass windows to Selection of tower
-        activateButtonTowers=false; //Desactive button
+        if (activateButtonTowers) {
+            String sizeOfTable = checkStringSize(); // Return the string of combobox
+            setSizeoftableGame(sizeOfTable); //set variables column and row related to String size
+            this.setVisible(false);
+
+            // Set ColumnGame and RowGame in methods
+            MainApp.methods.setColumnGame(columnGame);
+            MainApp.methods.setRowGame(rowGame);
+
+            SelectionTower selectionTower = new SelectionTower(); //Instance of windows selection of tower
+            this.setVisible(false);
+            selectionTower.openWindow(this); // Pass windows to Selection of tower
+            activateButtonTowers = false; //Desactive button
         }
     }//GEN-LAST:event_btnPositionTowerActionPerformed
-    private void putImageIconTitan(){ // Put icons of titans in the labels
-        titans = MainApp.methods.getTitans();
-        System.out.println(titans);
+    private void putImageIconTitan() { // Put icons of titans in the labels
         for (int i = 0; i < titans.length; i++) {
-           if(titans[i]!=null){
-                 
-                JLabel aux=checkIconJLabel(i+1);
-                if(aux==null)
+            if (titans[i] != null) {
+
+                JLabel aux = checkIconJLabel(i + 1);
+                if (aux == null) {
                     break;
-                else    
-                    aux.setIcon(titans[i].getIcon());                
-        }
+                } else {
+                    aux.setIcon(titans[i].getIcon());
+                }
+            }
         }
     }
-    private JLabel checkIconJLabel(int i){ // Return the JLabel 
-        switch(i){
-        case 1: return titan_image1;
-        case 2:return titan_image2;
-        case 3:return titan_image3;
-        case 4:return titan_image4;
-        case 5 :return titan_image5;
-        case 6:return titan_image6;
-        case 7:return titan_image7;
-        case 8:return titan_image8;
+
+    private JLabel checkIconJLabel(int i) { // Return the JLabel 
+        switch (i) {
+            case 1:
+                return titan_image1;
+            case 2:
+                return titan_image2;
+            case 3:
+                return titan_image3;
+            case 4:
+                return titan_image4;
+            case 5:
+                return titan_image5;
+            case 6:
+                return titan_image6;
+            case 7:
+                return titan_image7;
+            case 8:
+                return titan_image8;
         }
-        return null;  
+        return null;
     }
+
     //Button to Start Game 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
-        if(activateButtonTowers==true){ //Checks to tower is correct selected
+        if (activateButtonTowers == true) { //Checks to tower is correct selected
             JOptionPane.showMessageDialog(rootPane, "!!! Select the towers to Play Game !!! ");
-        }else{
-           if(addTitanInTheCorrectPlayer()){
-               setElementOfArena((String)cmbSizeofmap1.getSelectedItem());
-               Game game = new Game();
-               game.openWindow(this);
-               
-               
-               
-           }
-               
-               
+        } else {
+            if (addTitanInTheCorrectPlayer()) {
+                String elementofArena=(String) cmbSizeofmap1.getSelectedItem();
+                setElementOfArena(elementofArena);
+                Game game = new Game();
+                game.openWindow(this);
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"You need more Titans to pay, minimun 3 for player");
+            }
+
         }
     }//GEN-LAST:event_btnStartGameActionPerformed
-
+    private JComboBox getcmbTitan(int i){
+        switch(i){
+            case 1: return cmbTitan1;
+            case 2: return cmbTitan2;
+            case 3: return cmbTitan3;
+            case 4: return cmbTitan4;
+            case 5: return cmbTitan5;
+            case 6: return cmbTitan6;
+            case 7: return cmbTitan7;
+            case 8: return cmbTitan8;
+        }
+       return null;
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         goBack();
     }//GEN-LAST:event_jButton2ActionPerformed
-    private boolean addTitanInTheCorrectPlayer(){ // Add each titan in the correct player with respect to the selected button
-         for (int i = 0; i < titans.length; i++) {
-                if(minimumTitan<3){ //Checks minimum Titans
+    private boolean addTitanInTheCorrectPlayer() { // Add each titan in the correct player with respect to the selected button
+        titans=MainApp.methods.getTitans();
+        for (int i = 0; i < titans.length; i++) {
                 if(titans[i]!=null){
-                    System.out.println(getButtonGroup(i).getSelection());
-                    if(getButtonGroup(i).getSelection().equals(getRadioButton(i))) //Checks to Group Buttons which Button is selected( in this case buttons to player 1)
-                        titans[i].setPlayer("player1"); //add text
-                    else
-                        titans[i].setPlayer("player2"); //add text
+                    JComboBox cmb = getcmbTitan(i+1);
+                    if(cmb==null){break;}
+                    else{
+                    String player = (String)cmb.getSelectedItem(); 
+                    if(player.equals("Player2")){
+                        titans[i].setPlayer("Player2");
+                        contTitansPlayer1--;
+                    }else{
+                        titans[i].setPlayer("Player1");
+                        contTitansPlayer2--;
+                        }
+                    }
                 }
-                else{
-                    minimumTitan++;// if is null plus one 
-                }}
-                else{
-                    JOptionPane.showMessageDialog(rootPane,"The minimum Titans is 6, Please select more Titan(s)");
-                    return false;
-                }
-                
-            }return true;
-    }
-    private JRadioButton getRadioButton(int i){// Return RadioButton  and give num(1-8)
-        switch("btnTitan"+i+"_Player1"){
-            case "btnTitan1_Player1": return btnTitan1_Player1;
-            case "btnTitan2_Player1":return btnTitan2_Player1;
-            case "btnTitan3_Player1":return btnTitan3_Player1;
-            case "btnTitan4_Player1":return btnTitan4_Player1;
-            case "btnTitan5_Player1":return btnTitan5_Player1;
-            case "btnTitan6_Player1":return btnTitan6_Player1;
-            case "btnTitan7_Player1":return btnTitan7_Player1;
-            case "btnTitan8_Player1":return btnTitan8_Player1;
         }
-        return null;
-    }
-    private ButtonGroup getButtonGroup(int i){ // Return GroupButton  and give num(1-8)
-        switch("buttonGroupTitan"+i){
-            case "buttonGroupTitan1": return buttonGroupTitan1;
-            case "buttonGroupTitan2":return buttonGroupTitan2;
-            case "buttonGroupTitan3":return buttonGroupTitan3;
-            case "buttonGroupTitan4":return buttonGroupTitan4;
-            case "buttonGroupTitan5":return buttonGroupTitan5;
-            case "buttonGroupTitan6":return buttonGroupTitan6;
-            case "buttonGroupTitan7":return buttonGroupTitan7;
-            case "buttonGroupTitan8":return buttonGroupTitan8;
+        // Checks number of selected players
+        if(contTitansPlayer1>2){
+           return false;
         }
-        return null;
+        else{
+            if(contTitansPlayer2>2){
+                return false;
+            }
+            }
+        return true;
     }
-    private String checkStringSize(){ // Return the String cliked in cmb (Small,Medium,Large)
-        return (String)cmbSizeofmap.getSelectedItem(); 
+
+    private String checkStringSize() { // Return the String cliked in cmb (Small,Medium,Large)
+        return (String) cmbSizeofmap.getSelectedItem();
     }
-    private void setSizeoftableGame(String sizeOfTable){
-        if(sizeOfTable.equals("Large")){
-            this.columnGame=14;
-            this.rowGame=15;}
-        else if(sizeOfTable.equals("Medium")){
-            this.columnGame=12;
-            this.rowGame=13;
-        }else{
-            this.columnGame=10;
-            this.rowGame=11;
-        }  
+
+    private void setSizeoftableGame(String sizeOfTable) {
+        if (sizeOfTable.equals("Large")) {
+            this.columnGame = 14;
+            this.rowGame = 15;
+        } else if (sizeOfTable.equals("Medium")) {
+            this.columnGame = 12;
+            this.rowGame = 13;
+        } else {
+            this.columnGame = 10;
+            this.rowGame = 11;
+        }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -573,7 +408,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
             }
         });
     }
-      // <editor-fold defaultstate="collapsed" desc="Geters and Seters">
+    // <editor-fold defaultstate="collapsed" desc="Geters and Seters">
 
     public String getElementOfArena() {
         return elementOfArena;
@@ -582,7 +417,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
     public void setElementOfArena(String elementOfArena) {
         this.elementOfArena = elementOfArena;
     }
-    
+
     public int getColumnGame() {
         return columnGame;
     }
@@ -602,22 +437,6 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPositionTower;
     private javax.swing.JButton btnStartGame;
-    private javax.swing.JRadioButton btnTitan1_Player1;
-    private javax.swing.JRadioButton btnTitan1_Player2;
-    private javax.swing.JRadioButton btnTitan2_Player1;
-    private javax.swing.JRadioButton btnTitan2_Player2;
-    private javax.swing.JRadioButton btnTitan3_Player1;
-    private javax.swing.JRadioButton btnTitan3_Player2;
-    private javax.swing.JRadioButton btnTitan4_Player1;
-    private javax.swing.JRadioButton btnTitan4_Player2;
-    private javax.swing.JRadioButton btnTitan5_Player1;
-    private javax.swing.JRadioButton btnTitan5_Player2;
-    private javax.swing.JRadioButton btnTitan6_Player1;
-    private javax.swing.JRadioButton btnTitan6_Player2;
-    private javax.swing.JRadioButton btnTitan7_Player1;
-    private javax.swing.JRadioButton btnTitan7_Player2;
-    private javax.swing.JRadioButton btnTitan8_Player1;
-    private javax.swing.JRadioButton btnTitan8_Player2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupTitan1;
     private javax.swing.ButtonGroup buttonGroupTitan2;
@@ -629,6 +448,14 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
     private javax.swing.ButtonGroup buttonGroupTitan8;
     private javax.swing.JComboBox<String> cmbSizeofmap;
     private javax.swing.JComboBox<String> cmbSizeofmap1;
+    private javax.swing.JComboBox<String> cmbTitan1;
+    private javax.swing.JComboBox<String> cmbTitan2;
+    private javax.swing.JComboBox<String> cmbTitan3;
+    private javax.swing.JComboBox<String> cmbTitan4;
+    private javax.swing.JComboBox<String> cmbTitan5;
+    private javax.swing.JComboBox<String> cmbTitan6;
+    private javax.swing.JComboBox<String> cmbTitan7;
+    private javax.swing.JComboBox<String> cmbTitan8;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -648,23 +475,22 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
 
     @Override
     public void openWindow(JFrame frame) {
-       lobby=(Lobby)frame;
-       this.setVisible(true);
-       lobby.setVisible(false);
+        lobby = (Lobby) frame;
+        this.setVisible(true);
+        lobby.setVisible(false);
     }
-     public void openWindows(JFrame frame) {
-       lobby=(Lobby)frame;
-       lobby.setVisible(false);
-       this.setVisible(true);
-       
+
+    public void openWindows(JFrame frame) {
+        lobby = (Lobby) frame;
+        lobby.setVisible(false);
+        this.setVisible(true);
+
     }
+
     @Override
     public void goBack() {
         this.dispose();
         lobby.setVisible(true);
     }
 
-   
-    
 }
-
