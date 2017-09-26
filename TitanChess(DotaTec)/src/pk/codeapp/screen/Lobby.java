@@ -208,6 +208,11 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/playGame.png"))); // NOI18N
         jButton9.setOpaque(false);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, 220, 100));
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
@@ -288,6 +293,12 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         // TODO add your handling code here:
         goBack();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        SelectTitan selectTitan = new SelectTitan();
+        selectTitan.openWindows(this);
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments

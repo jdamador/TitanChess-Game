@@ -157,13 +157,13 @@ public class Methods {
     //</editor-fold>
     public void defaulTitan() {
         //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
-        Titan titan = new Titan("Western Dragon", 400, 3, 200, 200, "Air", "src/pk/codeapp/tools/titans/icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.gif");
+        Titan titan = new Titan("Western Dragon", 400, 3, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.gif");
         addTitan(titan);
-        titan = new Titan("Tretan", 400, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.gif");
+        titan = new Titan("Tretan", 400, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/Icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.gif");
         addTitan(titan);
-        titan = new Titan("Sobeck", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", "src/pk/codeapp/tools/titans/titan6.gif");
+        titan = new Titan("Sobeck", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", "src/pk/codeapp/tools/titans/titan6.gif");
         addTitan(titan);
-        titan = new Titan("Geb", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.gif");
+        titan = new Titan("Geb", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.gif");
         addTitan(titan);
 
     }
@@ -183,7 +183,7 @@ public class Methods {
     public void setRowGame(int rowGame) {
         this.rowGame = rowGame;
     }
-
+    
     public void addTower(Tower newTower) { // Add tower in the matrix
         if (checkTowerPlayer1 == false || checkTowerPlayer2 == false) {
             activeTowertoPlay(newTower.getTowerPlayer()); //Methods to active tower to play

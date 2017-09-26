@@ -23,10 +23,14 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
     private  int minimumTitan=0; // Minimum titans to the players has selected
     private String elementOfArena; 
     private Titan[] titans;
+    private Lobby lobby;
+    
     public SelectTitan() {
         initComponents(); 
        lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
        this.setLocationRelativeTo(null); //Localization of Windows
+       titans=MainApp.methods.getTitans();
+        System.out.println(titans);
        putImageIconTitan();
        
     }
@@ -337,6 +341,11 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 140, 50));
 
         btnStartGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/playGame.png"))); // NOI18N
@@ -423,21 +432,28 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
     }//GEN-LAST:event_btnPositionTowerActionPerformed
     private void putImageIconTitan(){ // Put icons of titans in the labels
         titans = MainApp.methods.getTitans();
+        System.out.println(titans);
         for (int i = 0; i < titans.length; i++) {
-           // if(titans[i]!=null)
-    //            checkIconJLabel(i).setIcon(titans[i].getIcon()); // Put Image Icon in the labels
+           if(titans[i]!=null){
+                 
+                JLabel aux=checkIconJLabel(i+1);
+                if(aux==null)
+                    break;
+                else    
+                    aux.setIcon(titans[i].getIcon());                
+        }
         }
     }
     private JLabel checkIconJLabel(int i){ // Return the JLabel 
-        switch("titan_image"+i){
-        case "titan_image1": return titan_image1;
-        case "titan_image2":return titan_image2;
-        case "titan_image3":return titan_image3;
-        case "titan_image4":return titan_image4;
-        case "titan_image5":return titan_image5;
-        case "titan_image6":return titan_image6;
-        case "titan_image7":return titan_image7;
-        case "titan_image8":return titan_image8;
+        switch(i){
+        case 1: return titan_image1;
+        case 2:return titan_image2;
+        case 3:return titan_image3;
+        case 4:return titan_image4;
+        case 5 :return titan_image5;
+        case 6:return titan_image6;
+        case 7:return titan_image7;
+        case 8:return titan_image8;
         }
         return null;  
     }
@@ -458,6 +474,10 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
                
         }
     }//GEN-LAST:event_btnStartGameActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        goBack();
+    }//GEN-LAST:event_jButton2ActionPerformed
     private boolean addTitanInTheCorrectPlayer(){ // Add each titan in the correct player with respect to the selected button
          for (int i = 0; i < titans.length; i++) {
                 if(minimumTitan<3){ //Checks minimum Titans
@@ -628,12 +648,20 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules{
 
     @Override
     public void openWindow(JFrame frame) {
+       lobby=(Lobby)frame;
+       this.setVisible(true);
+       lobby.setVisible(false);
+    }
+     public void openWindows(JFrame frame) {
+       lobby=(Lobby)frame;
+       lobby.setVisible(false);
+       this.setVisible(true);
        
     }
-
     @Override
     public void goBack() {
-
+        this.dispose();
+        lobby.setVisible(true);
     }
 
    
