@@ -264,7 +264,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         cmbNewPath.setBackground(new java.awt.Color(102, 102, 102));
         cmbNewPath.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbNewPath.setForeground(new java.awt.Color(255, 255, 255));
-        cmbNewPath.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buckbeak", "Foxy", "Sobeck" }));
+        cmbNewPath.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buckbeak", "Foxy" }));
         cmbNewPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbNewPathActionPerformed(evt);

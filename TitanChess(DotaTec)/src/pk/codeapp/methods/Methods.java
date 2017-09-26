@@ -163,7 +163,7 @@ public class Methods {
         addTitan(titan);
         titan = new Titan("Tretan", 400, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.gif");
         addTitan(titan);
-        titan = new Titan("Tololo", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.gif");
+        titan = new Titan("Sobeck", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", "src/pk/codeapp/tools/titans/titan6.gif");
         addTitan(titan);
         titan = new Titan("Geb", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.gif");
         addTitan(titan);
