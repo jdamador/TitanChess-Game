@@ -68,7 +68,7 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 130, 50));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
-        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 630, 50, 30));
+        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
         setLocationRelativeTo(null);
@@ -134,11 +134,12 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
        selectTitan=(SelectTitan)frame;
        frame.setVisible(false);
        this.setVisible(true);
-       columnGame=selectTitan.getColumnGame();
-       rowGame=selectTitan.getRowGame();
+       columnGame=MainApp.methods.getColumnGame();
+       rowGame=MainApp.methods.getRowGame();
        this.elementArena=selectTitan.getElementOfArena(); // Obtain the type of element arena
-       // paintBackground(elementArena);
+       paintBackground(elementArena);
         paintTabletoTowers(jPanelGame);
+        
     }
 
     @Override
@@ -149,7 +150,7 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
       private void paintTabletoTowers(JPanel panel) { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame,columnGame));
         int column = columnGame, row = rowGame;
-        int midGame=(columnGame/2)+1;
+        int midGame=(columnGame/2);
         for (int j = 0; j < row; j++) {
             for (int i = 0; i < column; i++) {
                 if (i>=midGame){
