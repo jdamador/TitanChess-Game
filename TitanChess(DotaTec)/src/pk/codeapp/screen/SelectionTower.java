@@ -45,16 +45,14 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Select the Position of towers");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(390, 40, 500, 50);
+        jLabel1.setBounds(360, 30, 620, 50);
 
         towerPlayer1.setOpaque(false);
 
@@ -92,13 +90,13 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Player 2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(940, 110, 80, 30);
+        jLabel2.setBounds(940, 110, 120, 30);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Player 1");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(250, 110, 80, 30);
+        jLabel3.setBounds(250, 110, 110, 30);
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N

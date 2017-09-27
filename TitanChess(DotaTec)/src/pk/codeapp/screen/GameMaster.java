@@ -24,6 +24,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private Methods methods = MainApp.methods;
     private Titan[] titans;
     String selectedName;
+
     /**
      * Creates new form GameMaster
      */
@@ -604,16 +605,16 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        String selected =(String) cmbModifyTitans.getSelectedItem();
-        selectedName=selected;
+        String selected = (String) cmbModifyTitans.getSelectedItem();
+        selectedName = selected;
         for (int i = 0; i < titans.length; i++) {
-            if(titans[i]!=null){
-                if(titans[i].getName().equals(selected)){
+            if (titans[i] != null) {
+                if (titans[i].getName().equals(selected)) {
                     txtModifyName.setText(titans[i].getName());
                     slideModifyDamage.setValue(titans[i].getDamage());
                     slideModifyLife.setValue(titans[i].getLife());
                     slideModifyMana.setValue(titans[i].getMana());
-                    cmbModifyMoves.setSelectedIndex(titans[i].getMoves()-1);
+                    cmbModifyMoves.setSelectedIndex(titans[i].getMoves() - 1);
                 }
             }
         }
@@ -621,21 +622,21 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
     private void makeChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeChangesActionPerformed
         // TODO add your handling code here:
-            for (int i = 0; i < titans.length; i++) {
-            if(titans[i]!=null){
-                if(titans[i].getName().equals(selectedName)){
-                   titans[i].setName( txtModifyName.getText());
-                   
+        for (int i = 0; i < titans.length; i++) {
+            if (titans[i] != null) {
+                if (titans[i].getName().equals(selectedName)) {
+                    titans[i].setName(txtModifyName.getText());
+
                     titans[i].setDamage(slideModifyDamage.getValue());
                     titans[i].setLife(slideModifyLife.getValue());
-                     titans[i].setMana(slideModifyMana.getValue());
-                     titans[i].setMoves(cmbModifyMoves.getSelectedIndex()+1);
-                     JOptionPane.showMessageDialog(rootPane, "Modify successfully","Information",JOptionPane.INFORMATION_MESSAGE);
-                     return;
+                    titans[i].setMana(slideModifyMana.getValue());
+                    titans[i].setMoves(cmbModifyMoves.getSelectedIndex() + 1);
+                    JOptionPane.showMessageDialog(rootPane, "Modify successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    return;
                 }
             }
         }
-            JOptionPane.showMessageDialog(rootPane, "Fail","Warning",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(rootPane, "Fail", "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_makeChangesActionPerformed
 
     /**
@@ -783,21 +784,26 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     }
 
     private void createNewTitan() {
-        String path = (String) cmbNewPath.getSelectedItem();
-        String imageBig = getImageBig(path);
-        String icon = getIcon(path);
-        String gif = getGif(path);
-        int damage = slideNewDamage.getValue();
-        int life = slideNewLife.getValue();
-        int mana = slideNewMana.getValue();
         String name = txtNewName.getText();
-        String vitalElement = (String) cmbVitalElement.getSelectedItem();
-        int moves =cmbNewMoves.getSelectedIndex()+1;
-        Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif);
-        if (methods.addTitan(newTitan)) {
-            JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Fail", "Alert", JOptionPane.WARNING_MESSAGE);
+        if (!name.isEmpty()) {
+            String path = (String) cmbNewPath.getSelectedItem();
+            String imageBig = getImageBig(path);
+            String icon = getIcon(path);
+            String gif = getGif(path);
+            int damage = slideNewDamage.getValue();
+            int life = slideNewLife.getValue();
+            int mana = slideNewMana.getValue();
+
+            String vitalElement = (String) cmbVitalElement.getSelectedItem();
+            int moves = cmbNewMoves.getSelectedIndex() + 1;
+            Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif);
+            if (methods.addTitan(newTitan)) {
+                JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "The titan is already exist!", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank", "Alert", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -821,13 +827,13 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     private String getIcon(String path) {
         switch (path) {
             case "Buckbeak": {
-                return "src/pk/codeapp/tools/titans/icons/titan8.png";
+                return "src/pk/codeapp/tools/titans/Icons/titan8.png";
             }
             case "Foxy": {
-                return "src/pk/codeapp/tools/titans/icons/titan7.png";
+                return "src/pk/codeapp/tools/titans/Icons/titan7.png";
             }
             case "Sobeck": {
-                return "src/pk/codeapp/tools/titans/icons/titan6.png";
+                return "src/pk/codeapp/tools/titans/Icons/titan6.png";
             }
 
         }
