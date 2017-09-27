@@ -163,6 +163,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
                 Path temp = new Path(i,j);
                 temp.setName("button"+i+"_"+text);
                 temp.addActionListener(this);
+               
                 temp.setVisible(true);
                 panel.add(temp);
             }

@@ -137,7 +137,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Choose the element arena");
+        jLabel2.setText("3.Choose the element arena");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 380, -1, -1));
 
         cmbSizeofmap.setBackground(new java.awt.Color(0, 0, 0));
@@ -148,7 +148,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Selection Position Tower:");
+        jLabel4.setText("2.Selection Position Tower:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 230, -1, -1));
 
         btnPositionTower.setBackground(new java.awt.Color(0, 0, 0));
@@ -183,7 +183,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Size of Map:");
+        jLabel3.setText("1.Size of Map:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 70, -1, -1));
 
         cmbSizeofmap1.setBackground(new java.awt.Color(0, 0, 0));
@@ -249,10 +249,11 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
  
     private void btnPositionTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPositionTowerActionPerformed
         if (activateButtonTowers) {
+            cmbSizeofmap.setEnabled(false);
             String sizeOfTable = checkStringSize(); // Return the string of combobox
             setSizeoftableGame(sizeOfTable); //set variables column and row related to String size
             this.setVisible(false);
-
+            
             // Set ColumnGame and RowGame in methods
             MainApp.methods.setColumnGame(columnGame);
             MainApp.methods.setRowGame(rowGame);
@@ -364,7 +365,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         return (String) cmbSizeofmap.getSelectedItem();
     }
 
-    private void setSizeoftableGame(String sizeOfTable) {
+    private void setSizeoftableGame(String sizeOfTable) { // storage column and row 
+        System.out.println(sizeOfTable);
         if (sizeOfTable.equals("Large")) {
             this.columnGame = 14;
             this.rowGame = 14;

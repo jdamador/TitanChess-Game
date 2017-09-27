@@ -2,6 +2,8 @@ package pk.codeapp.screen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.paint.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,10 +13,12 @@ import pk.codeapp.model.Path;
 
 public class Game extends javax.swing.JFrame  implements DefaultRules, ActionListener,Runnable{
     //Inicialization of Variables
-    private SelectTitan selectTitan;
-    private String elementArena;
+    private SelectTitan selectTitan;  // Before Windows
+    private String elementArena; 
     private int columnGame;
     private int rowGame;
+    private boolean running; // thread Game)
+    private Thread thread; // Main thread Game 
     public Game() {
         initComponents();
        
@@ -178,9 +182,47 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
     public void actionPerformed(ActionEvent e) {
         
     }
+    // Start Thread of Game 
+     private void init() { // Inicialization of Varaibles
+        
+    }
 
+    private void tick() { // Variables
+
+    }
+
+    private void render() { // Graphics
+        
+    }
     @Override
     public void run() {
-        
+        init();
+        while (running) { // Main Loop
+
+            tick();
+            render();
+        }
+        stop();
+    }
+    public synchronized void start() {
+        System.out.println("Entro al start");
+        if (running) {
+            return;
+        }
+        running = true;
+        Thread thread = new Thread(this);
+        thread.start();
+    }
+
+    public synchronized void stop() {
+        if (!running) {
+            return;
+        }
+        running = false;
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
