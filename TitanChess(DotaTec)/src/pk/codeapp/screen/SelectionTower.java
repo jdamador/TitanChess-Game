@@ -25,6 +25,8 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     private int columnGame, rowGame;
     private int contTowersP1=0; // Cont of Towers to player 1
     private int contTowersP2=0; // Cont of Towers to player 2
+    private int beforeColumn=-1; // Storage before column to clicked
+    private int beforeRow=-1; // Storage before row to clicked
     public SelectionTower() {
         initComponents();
         this.setLocationRelativeTo(null); //Localization of Windows
@@ -154,8 +156,8 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     }
 
    private void paintTabletoTowers(JPanel panel,String text) { //Methods to paint matrix of table(Only part of player)
-        panel.setLayout(new java.awt.GridLayout(rowGame-6,columnGame));
-        int column = columnGame, row = rowGame-6;
+        panel.setLayout(new java.awt.GridLayout(rowGame-5,columnGame));
+        int column = columnGame, row = rowGame-5;
         for (int j = 0; j < row; j++) {
             for (int i = 0; i < column; i++) {
                 Path temp = new Path(i,j);
@@ -183,12 +185,18 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e){ 
         Path temp = (Path) e.getSource();
+       
+        if(beforeColumn==temp.getColumn() ||  beforeRow==temp.getRow()){return;}else{
+             beforeColumn=temp.getColumn();
+            beforeRow= temp.getRow();
         // each panel will have a difference of one pixel to calculate whith is clicked
         if(temp.getParent().getHeight()==500){ //First Panel
+            
             contTowersP1++;
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
-            temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
+                temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
             Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player1");
+           
             MainApp.methods.addTower(newTower);
             }}
         else if(temp.getParent().getHeight()==501){ //Second Panel
@@ -197,7 +205,9 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
             Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player2");
             MainApp.methods.addTower(newTower);
-            }}
+            }}}
+
+        
     }
 
     @Override

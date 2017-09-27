@@ -1,13 +1,20 @@
 package pk.codeapp.screen;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javafx.scene.paint.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import pk.codeapp.methods.DefaultRules;
+import pk.codeapp.model.Path;
 
-public class Game extends javax.swing.JFrame  implements DefaultRules{
+public class Game extends javax.swing.JFrame  implements DefaultRules, ActionListener,Runnable{
     //Inicialization of Variables
     private SelectTitan selectTitan;
     private String elementArena;
+    private int columnGame;
+    private int rowGame;
     public Game() {
         initComponents();
        
@@ -17,12 +24,11 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -30,25 +36,25 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
-        jPanel1.setMinimumSize(new java.awt.Dimension(1280, 720));
-        jPanel1.setName(""); // NOI18N
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
+        jPanelGame.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanelGame.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jPanelGame.setMinimumSize(new java.awt.Dimension(1280, 720));
+        jPanelGame.setName(""); // NOI18N
+        jPanelGame.setOpaque(false);
+        jPanelGame.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelGameLayout = new javax.swing.GroupLayout(jPanelGame);
+        jPanelGame.setLayout(jPanelGameLayout);
+        jPanelGameLayout.setHorizontalGroup(
+            jPanelGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1278, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelGameLayout.setVerticalGroup(
+            jPanelGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 718, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        getContentPane().add(jPanelGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 600));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -62,7 +68,7 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 130, 50));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
-        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 630, 50, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -128,8 +134,11 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
        selectTitan=(SelectTitan)frame;
        frame.setVisible(false);
        this.setVisible(true);
+       columnGame=selectTitan.getColumnGame();
+       rowGame=selectTitan.getRowGame();
        this.elementArena=selectTitan.getElementOfArena(); // Obtain the type of element arena
-        paintBackground(elementArena);
+       // paintBackground(elementArena);
+        paintTabletoTowers(jPanelGame);
     }
 
     @Override
@@ -137,10 +146,40 @@ public class Game extends javax.swing.JFrame  implements DefaultRules{
         this.dispose();
         selectTitan.setVisible(true);
     }
-
+      private void paintTabletoTowers(JPanel panel) { //Methods to paint matrix of table(Only part of player)
+        panel.setLayout(new java.awt.GridLayout(rowGame,columnGame));
+        int column = columnGame, row = rowGame;
+        int midGame=(columnGame/2)+1;
+        for (int j = 0; j < row; j++) {
+            for (int i = 0; i < column; i++) {
+                if (i>=midGame){
+                Path temp = new Path(i,j);
+                temp.addActionListener(this);
+                temp.setVisible(true);
+                temp.setBackground(java.awt.Color.GRAY);
+                panel.add(temp);
+                }else{
+                Path temp = new Path(i,j);
+                temp.addActionListener(this);
+                temp.setVisible(true);
+                temp.setBackground(java.awt.Color.lightGray);
+                panel.add(temp);}
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelGame;
     private javax.swing.JLabel lblBackground;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
+
+    @Override
+    public void run() {
+        
+    }
 }

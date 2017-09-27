@@ -31,9 +31,18 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
         this.setLocationRelativeTo(null); //Localization of Windows
         titans = MainApp.methods.getTitans();
-        System.out.println(titans);
+        // the visibility of cmb is false
+        cmbTitan1.setVisible(false);
+        cmbTitan2.setVisible(false);
+        cmbTitan3.setVisible(false);
+        cmbTitan4.setVisible(false);
+        cmbTitan5.setVisible(false);
+        cmbTitan6.setVisible(false);
+        cmbTitan7.setVisible(false);
+        cmbTitan8.setVisible(false);
+        
+        
         putImageIconTitan(); // Put the image in the labels 
-        visibilityofchoosersPlayer(); // Show the visibility of the choosers Players
 
     }
 
@@ -205,7 +214,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         cmbTitan4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan4.setForeground(new java.awt.Color(255, 255, 255));
         cmbTitan4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
-        getContentPane().add(cmbTitan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 100, 30));
+        getContentPane().add(cmbTitan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, 100, 30));
 
         cmbTitan5.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -229,7 +238,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         cmbTitan8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan8.setForeground(new java.awt.Color(255, 255, 255));
         cmbTitan8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
-        getContentPane().add(cmbTitan8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, 100, 30));
+        getContentPane().add(cmbTitan8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 100, 30));
 
         lblBackground.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/SelectTitan_Background.jpg"))); // NOI18N
@@ -237,12 +246,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void visibilityofchoosersPlayer(){
-        for (int i = 0; i < titans.length; i++) {
-            if(titans[i]==null)
-                getcmbTitan(i).setVisible(false);
-        }
-    }
+ 
     private void btnPositionTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPositionTowerActionPerformed
         if (activateButtonTowers) {
             String sizeOfTable = checkStringSize(); // Return the string of combobox
@@ -262,13 +266,11 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
     private void putImageIconTitan() { // Put icons of titans in the labels
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] != null) {
-
-                JLabel aux = checkIconJLabel(i + 1);
-                if (aux == null) {
-                    break;
-                } else {
+                JLabel aux = checkIconJLabel(i +1);
+                if (aux != null) {
+                    getcmbTitan(i+1).setVisible(true);
                     aux.setIcon(titans[i].getIcon());
-                }
+                } 
             }
         }
     }
@@ -332,7 +334,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         titans=MainApp.methods.getTitans();
         for (int i = 0; i < titans.length; i++) {
                 if(titans[i]!=null){
-                    JComboBox cmb = getcmbTitan(i+1);
+                    JComboBox cmb = getcmbTitan(i+1);              
                     if(cmb==null){break;}
                     else{
                     int player = cmb.getSelectedIndex(); 
@@ -365,13 +367,13 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
     private void setSizeoftableGame(String sizeOfTable) {
         if (sizeOfTable.equals("Large")) {
             this.columnGame = 14;
-            this.rowGame = 15;
+            this.rowGame = 14;
         } else if (sizeOfTable.equals("Medium")) {
             this.columnGame = 12;
-            this.rowGame = 13;
+            this.rowGame = 12;
         } else {
             this.columnGame = 10;
-            this.rowGame = 11;
+            this.rowGame = 10;
         }
     }
 
