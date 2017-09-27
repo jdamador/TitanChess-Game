@@ -186,6 +186,14 @@ public class Methods {
     public void setRowGame(int rowGame) {
         this.rowGame = rowGame;
     }
+
+    public GraphicsElement[][] getGraphicsElements() {
+        return graphicsElements;
+    }
+
+    public void setGraphicsElements(GraphicsElement[][] graphicsElements) {
+        this.graphicsElements = graphicsElements;
+    }
     
     public void addTower(Tower newTower) { // Add tower in the matrix
         if (checkTowerPlayer1 == false || checkTowerPlayer2 == false) {

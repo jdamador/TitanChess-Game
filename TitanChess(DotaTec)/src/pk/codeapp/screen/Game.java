@@ -2,6 +2,7 @@ package pk.codeapp.screen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.paint.Color;
@@ -9,7 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import pk.codeapp.methods.DefaultRules;
+import pk.codeapp.methods.GameSettings;
+import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Path;
+import pk.codeapp.model.Tower;
 
 public class Game extends javax.swing.JFrame  implements DefaultRules, ActionListener,Runnable{
     //Inicialization of Variables
@@ -19,11 +23,12 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
     private int rowGame;
     private boolean running; // thread Game)
     private Thread thread; // Main thread Game 
+    private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
+    private ArrayList<Path> buttons; // List of buttons
+    private GameSettings gameSettings = new GameSettings(); // Methods to Game
     public Game() {
         initComponents();
-       
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -141,8 +146,9 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
        columnGame=MainApp.methods.getColumnGame();
        rowGame=MainApp.methods.getRowGame();
        this.elementArena=selectTitan.getElementOfArena(); // Obtain the type of element arena
-       paintBackground(elementArena);
-        paintTabletoTowers(jPanelGame);
+       paintBackground(elementArena); // Paint Background 
+       paintTable(jPanelGame); //Paint table
+       paintTowersGame(); // Paint towers and titans in the game
         
     }
 
@@ -151,19 +157,31 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
         this.dispose();
         selectTitan.setVisible(true);
     }
-      private void paintTabletoTowers(JPanel panel) { //Methods to paint matrix of table(Only part of player)
+       private void  paintTowersGame(){ //Paint tower in the table
+            for (int j = 0; j < rowGame; j++) {
+                for (int i = 0; i < columnGame; i++) {
+                    if(graphicsElements[i][j] instanceof Tower){
+                        Tower tower = (Tower)graphicsElements[i][j];
+                        Path buttonToPaint=gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(),tower.getPosition().getRow()); //Methods to return the button
+                        buttonToPaint.setIcon(tower.getIcon());
+                    }
+            }
+        }
+       }
+      private void paintTable(JPanel panel) { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame,columnGame));
         int column = columnGame, row = rowGame;
         int midGame=(columnGame/2);
         for (int j = 0; j < row; j++) {
             for (int i = 0; i < column; i++) {
-                if (i>=midGame){
+                if (i>=midGame){ //Paint the player 1 with gray
                 Path temp = new Path(i,j);
                 temp.addActionListener(this);
                 temp.setVisible(true);
+                buttons.add(temp); // Add path in the list of buttons
                 temp.setBackground(java.awt.Color.GRAY);
                 panel.add(temp);
-                }else{
+                }else{ //Paint the player 2 with Light gray
                 Path temp = new Path(i,j);
                 temp.addActionListener(this);
                 temp.setVisible(true);
@@ -188,7 +206,7 @@ public class Game extends javax.swing.JFrame  implements DefaultRules, ActionLis
     }
 
     private void tick() { // Variables
-
+        
     }
 
     private void render() { // Graphics

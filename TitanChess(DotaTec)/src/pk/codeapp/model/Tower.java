@@ -1,4 +1,5 @@
 package pk.codeapp.model;
+import javax.swing.ImageIcon;
 import pk.codeapp.model.GraphicsElement;
 
 /*
@@ -15,10 +16,19 @@ public class Tower extends GraphicsElement{
     private int quantityStamina;
     private Dupla position;
     private String towerPlayer;
+    private ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/tower.png");
     public Tower(int quantityStamina,Dupla dupla,String player) {
         this.quantityStamina = quantityStamina;
         this.position=dupla;
         this.towerPlayer=player;
+    }
+
+    public ImageIcon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(ImageIcon icon) {
+        this.icon = icon;
     }
     
     public int getQuantityStamina() {
