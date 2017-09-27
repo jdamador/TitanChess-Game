@@ -140,9 +140,10 @@ public class Titan extends GraphicsElement implements Serializable{
         model.addElement("Name:   "+this.name+ "    Vital Element:    "+this.vitalElement);
         model.addElement("Life:   "+this.life + "     Maximun Damage  "+this.damage+"     Quantity Mana:  "+this.mana);
         model.addElement("Moves:  "+this.moves);
-       model.addElement("Attacks: ");
+       
     
         model.addElement("------------------------------------------------------------------------------------------------------------------------");
+        model.addElement("Attacks: ");
         for (int i = 0; i < attacks.size(); i++) {
          Attack attack =attacks.get(i);
          model.addElement("Name: "+attack.getNameAttack()+" Maximum Damage:  "+ attack.getQuantityDamage()+ " Loss Mana: "+attack.getQuantityMana());
