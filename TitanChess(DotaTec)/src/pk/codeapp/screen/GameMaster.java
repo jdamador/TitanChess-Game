@@ -107,7 +107,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         slideModifyMana = new javax.swing.JSlider();
         slideModifyDamage = new javax.swing.JSlider();
         jLabel36 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        loadData = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -260,13 +260,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbNewMoves.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbNewMoves.setForeground(new java.awt.Color(255, 255, 255));
         cmbNewMoves.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
-        cmbNewMoves.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cmbNewMovesActionPerformed(evt);
-            }
-        });
         createNewTitan.add(cmbNewMoves, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, 140, 30));
 
         jButton9.setBackground(new java.awt.Color(51, 51, 51));
@@ -285,13 +278,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbNewPath.setBackground(new java.awt.Color(102, 102, 102));
         cmbNewPath.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbNewPath.setForeground(new java.awt.Color(255, 255, 255));
-        cmbNewPath.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cmbNewPathActionPerformed(evt);
-            }
-        });
         createNewTitan.add(cmbNewPath, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 580, 380, 30));
 
         slideNewLife.setBackground(new java.awt.Color(102, 102, 102));
@@ -475,13 +461,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbModifyMoves.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         cmbModifyMoves.setForeground(new java.awt.Color(255, 255, 255));
         cmbModifyMoves.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Move", "2 Moves", "3 Moves" }));
-        cmbModifyMoves.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cmbModifyMovesActionPerformed(evt);
-            }
-        });
         modifyTitan.add(cmbModifyMoves, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 420, 30));
 
         jButton11.setBackground(new java.awt.Color(51, 51, 51));
@@ -500,13 +479,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbModifyTitans.setBackground(new java.awt.Color(102, 102, 102));
         cmbModifyTitans.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         cmbModifyTitans.setForeground(new java.awt.Color(255, 255, 255));
-        cmbModifyTitans.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cmbModifyTitansActionPerformed(evt);
-            }
-        });
         modifyTitan.add(cmbModifyTitans, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 420, 30));
 
         slideModifyLife.setBackground(new java.awt.Color(102, 102, 102));
@@ -544,18 +516,18 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jLabel36.setText("Damage");
         modifyTitan.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
 
-        jButton4.setBackground(new java.awt.Color(102, 102, 102));
-        jButton4.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Load");
-        jButton4.addActionListener(new java.awt.event.ActionListener()
+        loadData.setBackground(new java.awt.Color(102, 102, 102));
+        loadData.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        loadData.setForeground(new java.awt.Color(255, 255, 255));
+        loadData.setText("Load");
+        loadData.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton4ActionPerformed(evt);
+                loadDataActionPerformed(evt);
             }
         });
-        modifyTitan.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, -1));
+        modifyTitan.add(loadData, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, -1));
 
         jLabel37.setBackground(new java.awt.Color(102, 102, 102));
         jLabel37.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
@@ -569,22 +541,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbModifyTitansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbModifyTitansActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbModifyTitansActionPerformed
-
-    private void cmbModifyMovesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbModifyMovesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbModifyMovesActionPerformed
-
-    private void cmbNewPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNewPathActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbNewPathActionPerformed
-
-    private void cmbNewMovesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNewMovesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbNewMovesActionPerformed
 
     private void btnAddAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAttackActionPerformed
         addAttack();
@@ -636,10 +592,14 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void loadDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadDataActionPerformed
         // TODO add your handling code here:
+        /**
+         * Charge data from instance selescted
+         */
         String selected = (String) cmbModifyTitans.getSelectedItem();
         selectedName = selected;
+        //Update information to titan selected
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] != null) {
                 if (titans[i].getName().equals(selected)) {
@@ -651,10 +611,12 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
                 }
             }
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_loadDataActionPerformed
 
     private void makeChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeChangesActionPerformed
         // TODO add your handling code here:
+
+        //Make changes in the instance 
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] != null) {
                 if (titans[i].getName().equals(selectedName)) {
@@ -728,7 +690,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -760,6 +721,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JLabel lblName;
+    private javax.swing.JButton loadData;
     private javax.swing.JButton makeChanges;
     private javax.swing.JPanel modifyTitan;
     private javax.swing.JSlider slideModifyDamage;
@@ -773,7 +735,11 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     private javax.swing.JTextField txtModifyName;
     private javax.swing.JTextField txtNewName;
     // End of variables declaration//GEN-END:variables
-
+    /**
+     * Implement abstract method that open this windows
+     *
+     * @param frame
+     */
     @Override
     public void openWindow(JFrame frame)
     {
@@ -789,6 +755,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         beforeWindow.setVisible(true);
     }
 
+    /**
+     * This method show information in the interface
+     */
     public void chargeTitansInComboBox()
     {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel();
@@ -798,19 +767,19 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
                 model.addElement(titans[i].getName());
             }
         }
-       
+        model = new DefaultComboBoxModel();
         cmbAttackTitans.setModel(model);
         cmbDeleteTitans.setModel(model);
         cmbModifyTitans.setModel(model);
-         names = methods.getElement();
-         DefaultComboBoxModel<String> model2= new DefaultComboBoxModel();
-         model.addElement("");
+        names = methods.getElement();
+
+        model.addElement("");
         for (int i = 0; i < names.length; i++) {
             if (names[i] != null) {
-               model2.addElement(names[i] );
+                model.addElement(names[i]);
             }
         }
-         cmbNewPath.setModel(model2);
+        cmbNewPath.setModel(model);
     }
 
     private void addAttack()
@@ -835,7 +804,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     private void createNewTitan()
     {
         String name = txtNewName.getText();
-        if (!name.isEmpty()&&names.length!=0) {
+        if (!name.isEmpty() && names.length != 0) {
             String path = (String) cmbNewPath.getSelectedItem();
             int index = cmbNewPath.getSelectedIndex();
             String imageBig = getImageBig(path);
@@ -848,6 +817,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
             methods.setElement(index);
             String vitalElement = (String) cmbVitalElement.getSelectedItem();
             int moves = cmbNewMoves.getSelectedIndex() + 1;
+
             Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif, tiny);
 
             if (methods.addTitan(newTitan)) {
@@ -861,6 +831,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         }
 
     }
+//<editor-fold desc="ALL METHODS TO GET DEFAULTS IMAGES HERE" defaultstate="collapsed">
 
     private String getImageBig(String path)
     {
@@ -908,20 +879,6 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         return null;
     }
 
-    private boolean deleteTitan()
-    {
-        String nameToDelete = (String) cmbDeleteTitans.getSelectedItem();
-        for (int i = 0; i < titans.length; i++) {
-            if (titans[i] != null) {
-                if (titans[i].getName().equals(nameToDelete)) {
-                    titans[i] = null;
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     private String getTiny(String path)
     {
         switch (path) {
@@ -934,5 +891,23 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
 
         }
         return null;
+    }
+    //</editor-fold>
+    /**
+     * Delete titan from array
+     * @return  true or false when the operation is sucessfull or fail.
+     */
+    private boolean deleteTitan()
+    {
+        String nameToDelete = (String) cmbDeleteTitans.getSelectedItem();
+        for (int i = 0; i < titans.length; i++) {
+            if (titans[i] != null) {
+                if (titans[i].getName().equals(nameToDelete)) {
+                    titans[i] = null;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
