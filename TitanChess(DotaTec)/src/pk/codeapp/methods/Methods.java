@@ -150,17 +150,23 @@ public class Methods {
     //</editor-fold>
     public void defaulTitan() {
         //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
-        Titan titan = new Titan("Mewtwo", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", "src/pk/codeapp/tools/titans/titan6.gif");
+        Titan titan = new Titan("Mewtwo", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", 
+                "src/pk/codeapp/tools/titans/titan6.gif","src/pk/codeapp/tools/titans/Icons/icon6.png");
         addTitan(titan);
-        titan = new Titan("Geb", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.gif");
+        titan = new Titan("Geb", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg",
+                "src/pk/codeapp/tools/titans/titan4.gif","src/pk/codeapp/tools/titans/Icons/icon4.jpg");
         addTitan(titan);
-        titan = new Titan("Tretan", 400, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/Icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.gif");
+        titan = new Titan("Tretan", 400, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/Icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", 
+                "src/pk/codeapp/tools/titans/titan2.gif","src/pk/codeapp/tools/titans/Icons/icon2.jpg");
         addTitan(titan);
-        titan = new Titan("Western Dragon", 400, 3, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.gif");
+        titan = new Titan("Western Dragon", 400, 3, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg", 
+                "src/pk/codeapp/tools/titans/titan1.gif","src/pk/codeapp/tools/titans/Icons/icon1.jpg");
         addTitan(titan);
-        titan = new Titan("Jack", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.gif");
+        titan = new Titan("Jack", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.jpg",
+                "src/pk/codeapp/tools/titans/titan5.gif","src/pk/codeapp/tools/titans/Icons/icon5.jpg");
         addTitan(titan);
-        titan = new Titan("Lucario", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.gif");
+        titan = new Titan("Lucario", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", 
+                "src/pk/codeapp/tools/titans/titan3.gif","src/pk/codeapp/tools/titans/Icons/titan3.jpg");
         addTitan(titan);
 
     }
@@ -181,8 +187,6 @@ public class Methods {
         this.rowGame = rowGame;
     }
 
-<<<<<<< HEAD
-=======
     public GraphicsElement[][] getGraphicsElements() {
         return graphicsElements;
     }
@@ -191,7 +195,7 @@ public class Methods {
         this.graphicsElements = graphicsElements;
     }
     
->>>>>>> master
+
     public void addTower(Tower newTower) { // Add tower in the matrix
         if (checkTowerPlayer1 == false || checkTowerPlayer2 == false) {
             activeTowertoPlay(newTower.getTowerPlayer()); //Methods to active tower to play

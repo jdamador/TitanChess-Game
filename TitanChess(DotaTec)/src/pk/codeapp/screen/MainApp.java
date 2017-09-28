@@ -29,6 +29,8 @@ public class MainApp extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         methods.readUser();
         methods.defaulTitan();
+        
+        
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
 

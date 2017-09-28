@@ -36,10 +36,11 @@ public class Titan extends GraphicsElement implements Serializable{
     //Player
     private String player="";
 
-    public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String imageBig,String gif) {
+    public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String imageBig,String gif,String tiny) {
         //init attributes
         this.name = name;
         this.life = life;
+        this.tiny= new ImageIcon(tiny);
         this.moves = moves;
         this.vitalElement = vitalElement;
         this.damage = damage;

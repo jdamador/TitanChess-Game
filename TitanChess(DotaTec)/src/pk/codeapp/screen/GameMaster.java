@@ -18,7 +18,8 @@ import pk.codeapp.model.Titan;
  *
  * @author amador
  */
-public class GameMaster extends javax.swing.JFrame implements DefaultRules {
+public class GameMaster extends javax.swing.JFrame implements DefaultRules
+{
 
     private MainApp beforeWindow;
     private Methods methods = MainApp.methods;
@@ -28,7 +29,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     /**
      * Creates new form GameMaster
      */
-    public GameMaster() {
+    public GameMaster()
+    {
         titans = methods.getTitans();
         initComponents();
         chargeTitansInComboBox();
@@ -642,7 +644,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -667,8 +670,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new GameMaster().setVisible(true);
             }
         });
@@ -739,19 +744,22 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void openWindow(JFrame frame) {
+    public void openWindow(JFrame frame)
+    {
         this.setVisible(true);
         this.beforeWindow = (MainApp) frame;
         beforeWindow.setVisible(false);
     }
 
     @Override
-    public void goBack() {
+    public void goBack()
+    {
         this.dispose();
         beforeWindow.setVisible(true);
     }
 
-    public void chargeTitansInComboBox() {
+    public void chargeTitansInComboBox()
+    {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel();
 
         for (int i = 0; i < titans.length; i++) {
@@ -765,7 +773,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
 
     }
 
-    private void addAttack() {
+    private void addAttack()
+    {
         if (attackName.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank", "Alert", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -783,32 +792,37 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         }
     }
 
-    private void createNewTitan() {
+    private void createNewTitan()
+    {
         String name = txtNewName.getText();
         if (!name.isEmpty()) {
             String path = (String) cmbNewPath.getSelectedItem();
+            int index=cmbNewPath.getSelectedIndex();
             String imageBig = getImageBig(path);
             String icon = getIcon(path);
             String gif = getGif(path);
+            String tiny = getTiny(path);
             int damage = slideNewDamage.getValue();
             int life = slideNewLife.getValue();
             int mana = slideNewMana.getValue();
 
             String vitalElement = (String) cmbVitalElement.getSelectedItem();
             int moves = cmbNewMoves.getSelectedIndex() + 1;
-            Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif);
+            Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif, tiny);
+            cmbNewPath.remove(index);
             if (methods.addTitan(newTitan)) {
                 JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "The titan is already exist!", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank", "Alert", JOptionPane.WARNING_MESSAGE);
         }
 
     }
 
-    private String getImageBig(String path) {
+    private String getImageBig(String path)
+    {
         switch (path) {
             case "Buckbeak": {
                 return "src/pk/codeapp/tools/titans/titan8.png";
@@ -824,7 +838,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         return null;
     }
 
-    private String getIcon(String path) {
+    private String getIcon(String path)
+    {
         switch (path) {
             case "Buckbeak": {
                 return "src/pk/codeapp/tools/titans/Icons/titan8.png";
@@ -832,15 +847,13 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
             case "Foxy": {
                 return "src/pk/codeapp/tools/titans/Icons/titan7.png";
             }
-            case "Sobeck": {
-                return "src/pk/codeapp/tools/titans/Icons/titan6.png";
-            }
 
         }
         return null;
     }
 
-    private String getGif(String path) {
+    private String getGif(String path)
+    {
         switch (path) {
             case "Buckbeak": {
                 return "src/pk/codeapp/tools/titans/titan8.gif";
@@ -848,16 +861,14 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
             case "Foxy": {
                 return "src/pk/codeapp/tools/titans/titan7.gif";
             }
-            case "Sobeck": {
-                return "src/pk/codeapp/tools/titans/titan6.gif";
-            }
 
         }
 
         return null;
     }
 
-    private boolean deleteTitan() {
+    private boolean deleteTitan()
+    {
         String nameToDelete = (String) cmbDeleteTitans.getSelectedItem();
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] != null) {
@@ -870,4 +881,17 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules {
         return false;
     }
 
+    private String getTiny(String path)
+    {
+        switch (path) {
+            case "Buckbeak": {
+                return "src/pk/codeapp/tools/titans/Icons/icon8.png";
+            }
+            case "Foxy": {
+                return "src/pk/codeapp/tools/titans/Icons/icon7.png";
+            }
+
+        }
+        return null;
+    }
 }
