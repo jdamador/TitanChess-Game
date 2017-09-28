@@ -12,6 +12,7 @@ import pk.codeapp.model.GraphicsElement;
 
 import pk.codeapp.model.Path;
 import pk.codeapp.model.Titan;
+import pk.codeapp.model.Tower;
 
 /**
  *
@@ -29,12 +30,18 @@ public class GameSettings {
             }return null;
         }
         public void attack(Titan titan, GraphicsElement element2, Attack attack){
-              int makeDamage= getRadom(attack.getQuantityDamage());
-              System.out.println(makeDamage);
+              int getDamage= getRadom(attack.getQuantityDamage()+1);
+             if(element2 instanceof Tower){
+                 if(getDamage<((Tower) element2).getQuantityStamina()){
+                     
+                 }
+             }
+             
         }
         
         
         public int getRadom( int end){
+            
             int num= randomGenerator.nextInt(end);
             return num;
         }
