@@ -109,14 +109,7 @@ public class Methods {
                     e.printStackTrace();
                 }
             }
-            if (output != null) {
-                try {
-                    file.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
+         
         }
 
     }
