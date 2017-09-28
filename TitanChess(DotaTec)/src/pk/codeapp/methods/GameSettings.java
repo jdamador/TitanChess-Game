@@ -6,6 +6,8 @@
 package pk.codeapp.methods;
 
 import java.util.ArrayList;
+import pk.codeapp.model.Attack;
+import pk.codeapp.model.GraphicsElement;
 
 import pk.codeapp.model.Path;
 
@@ -22,5 +24,8 @@ public class GameSettings {
                     return button;
                 }
             }return null;
+        }
+        public void attack(GraphicsElement element1, GraphicsElement element2, Attack attack){
+            
         }
 }

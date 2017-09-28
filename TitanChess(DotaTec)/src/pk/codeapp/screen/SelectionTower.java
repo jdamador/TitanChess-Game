@@ -34,7 +34,8 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel1 = new javax.swing.JLabel();
         towerPlayer1 = new javax.swing.JPanel();
@@ -51,11 +52,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Select the Position of towers");
         getContentPane().add(jLabel1);
-
         jLabel1.setBounds(360, 30, 620, 50);
-
-        jLabel1.setBounds(410, 0, 500, 50);
-
 
         towerPlayer1.setOpaque(false);
 
@@ -71,34 +68,28 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         );
 
         getContentPane().add(towerPlayer1);
-        towerPlayer1.setBounds(0, 60, 1280, 590);
+        towerPlayer1.setBounds(0, 70, 1280, 590);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Player 2");
         getContentPane().add(jLabel2);
-
         jLabel2.setBounds(940, 110, 120, 30);
-
-        jLabel2.setBounds(1170, 30, 100, 30);
-
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Player 1");
         getContentPane().add(jLabel3);
-
         jLabel3.setBounds(250, 110, 110, 30);
-
-        jLabel3.setBounds(10, 30, 100, 30);
-
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
