@@ -401,6 +401,7 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
             model.addElement("No information available yet");
             information.setModel(model);
         }else{
+            lblGifImage.setText("");
             lblGifImage.setIcon(titans[icon].getGif());
             information.setModel(titans[icon].toModel());
         }

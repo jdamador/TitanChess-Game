@@ -32,7 +32,7 @@ public class Methods {
     private boolean turn;
     private ArrayList<User> players = new ArrayList();
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
-
+    String []element= {"Buckbeak", "Foxy"};
     private boolean checkTowerPlayer1; // Boolean to cheek quantity of towers in player 1
     private boolean checkTowerPlayer2;// Boolean to cheek quantity of towers in player 2
     private GraphicsElement graphicsElements[][]; // Matrix of Game
@@ -193,6 +193,16 @@ public class Methods {
 
     public void setGraphicsElements(GraphicsElement[][] graphicsElements) {
         this.graphicsElements = graphicsElements;
+    }
+
+    public String[] getElement()
+    {
+        return element;
+    }
+
+    public void setElement(int i)
+    {
+        this.element[i]= null;
     }
     
 

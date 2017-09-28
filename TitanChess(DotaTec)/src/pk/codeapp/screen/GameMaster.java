@@ -25,6 +25,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     private Methods methods = MainApp.methods;
     private Titan[] titans;
     String selectedName;
+    String[] names;
 
     /**
      * Creates new form GameMaster
@@ -44,7 +45,8 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jTabbedPane4 = new javax.swing.JTabbedPane();
@@ -143,8 +145,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton3ActionPerformed(evt);
             }
         });
@@ -164,8 +168,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         btnAddAttack.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAddAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnAddAttack.setText("Add Attack");
-        btnAddAttack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAddAttack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAddAttackActionPerformed(evt);
             }
         });
@@ -241,8 +247,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Make Changes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -252,8 +260,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbNewMoves.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbNewMoves.setForeground(new java.awt.Color(255, 255, 255));
         cmbNewMoves.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
-        cmbNewMoves.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbNewMoves.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbNewMovesActionPerformed(evt);
             }
         });
@@ -263,8 +273,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Back");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton9.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton9ActionPerformed(evt);
             }
         });
@@ -273,9 +285,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbNewPath.setBackground(new java.awt.Color(102, 102, 102));
         cmbNewPath.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbNewPath.setForeground(new java.awt.Color(255, 255, 255));
-        cmbNewPath.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buckbeak", "Foxy" }));
-        cmbNewPath.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbNewPath.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbNewPathActionPerformed(evt);
             }
         });
@@ -320,8 +333,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbVitalElement.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbVitalElement.setForeground(new java.awt.Color(255, 255, 255));
         cmbVitalElement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Air", "land", "Fire", "Water" }));
-        cmbVitalElement.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbVitalElement.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbVitalElementActionPerformed(evt);
             }
         });
@@ -357,8 +372,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -368,8 +385,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Back");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton7ActionPerformed(evt);
             }
         });
@@ -384,8 +403,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         chargeTitansToDelete.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         chargeTitansToDelete.setForeground(new java.awt.Color(255, 255, 255));
         chargeTitansToDelete.setText("Load");
-        chargeTitansToDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        chargeTitansToDelete.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 chargeTitansToDeleteActionPerformed(evt);
             }
         });
@@ -441,8 +462,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         makeChanges.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         makeChanges.setForeground(new java.awt.Color(255, 255, 255));
         makeChanges.setText("Make Changes");
-        makeChanges.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        makeChanges.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 makeChangesActionPerformed(evt);
             }
         });
@@ -452,8 +475,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbModifyMoves.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         cmbModifyMoves.setForeground(new java.awt.Color(255, 255, 255));
         cmbModifyMoves.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Move", "2 Moves", "3 Moves" }));
-        cmbModifyMoves.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbModifyMoves.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbModifyMovesActionPerformed(evt);
             }
         });
@@ -463,8 +488,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jButton11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton11.setForeground(new java.awt.Color(255, 255, 255));
         jButton11.setText("Back");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton11.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton11ActionPerformed(evt);
             }
         });
@@ -473,8 +500,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         cmbModifyTitans.setBackground(new java.awt.Color(102, 102, 102));
         cmbModifyTitans.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         cmbModifyTitans.setForeground(new java.awt.Color(255, 255, 255));
-        cmbModifyTitans.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbModifyTitans.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbModifyTitansActionPerformed(evt);
             }
         });
@@ -519,8 +548,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         jButton4.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Load");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton4ActionPerformed(evt);
             }
         });
@@ -767,10 +798,19 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
                 model.addElement(titans[i].getName());
             }
         }
+       
         cmbAttackTitans.setModel(model);
         cmbDeleteTitans.setModel(model);
         cmbModifyTitans.setModel(model);
-
+         names = methods.getElement();
+         DefaultComboBoxModel<String> model2= new DefaultComboBoxModel();
+         model.addElement("");
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] != null) {
+               model2.addElement(names[i] );
+            }
+        }
+         cmbNewPath.setModel(model2);
     }
 
     private void addAttack()
@@ -795,9 +835,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     private void createNewTitan()
     {
         String name = txtNewName.getText();
-        if (!name.isEmpty()) {
+        if (!name.isEmpty()&&names.length!=0) {
             String path = (String) cmbNewPath.getSelectedItem();
-            int index=cmbNewPath.getSelectedIndex();
+            int index = cmbNewPath.getSelectedIndex();
             String imageBig = getImageBig(path);
             String icon = getIcon(path);
             String gif = getGif(path);
@@ -805,12 +845,13 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
             int damage = slideNewDamage.getValue();
             int life = slideNewLife.getValue();
             int mana = slideNewMana.getValue();
-
+            methods.setElement(index);
             String vitalElement = (String) cmbVitalElement.getSelectedItem();
             int moves = cmbNewMoves.getSelectedIndex() + 1;
             Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif, tiny);
-            cmbNewPath.remove(index);
+
             if (methods.addTitan(newTitan)) {
+                chargeTitansInComboBox();
                 JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "The titan is already exist!", "Alert", JOptionPane.WARNING_MESSAGE);

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import pk.codeapp.methods.DefaultRules;
+import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Titan;
 
 public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
@@ -53,7 +54,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         buttonGroupTitan1 = new javax.swing.ButtonGroup();
         buttonGroupTitan2 = new javax.swing.ButtonGroup();
@@ -144,6 +146,13 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         cmbSizeofmap.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbSizeofmap.setForeground(new java.awt.Color(255, 255, 255));
         cmbSizeofmap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large", " " }));
+        cmbSizeofmap.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                cmbSizeofmapActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbSizeofmap, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 110, 200, 40));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -155,8 +164,10 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         btnPositionTower.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnPositionTower.setForeground(new java.awt.Color(255, 255, 255));
         btnPositionTower.setText("Position Towers");
-        btnPositionTower.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPositionTower.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPositionTowerActionPerformed(evt);
             }
         });
@@ -166,16 +177,20 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 140, 50));
 
         btnStartGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/playGame.png"))); // NOI18N
-        btnStartGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnStartGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnStartGameActionPerformed(evt);
             }
         });
@@ -329,8 +344,14 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
        return null;
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       MainApp.methods.setGraphicsElements(null);
         goBack();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cmbSizeofmapActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSizeofmapActionPerformed
+    {//GEN-HEADEREND:event_cmbSizeofmapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSizeofmapActionPerformed
     private boolean addTitanInTheCorrectPlayer() { // Add each titan in the correct player with respect to the selected button
         titans=MainApp.methods.getTitans();
         for (int i = 0; i < titans.length; i++) {
