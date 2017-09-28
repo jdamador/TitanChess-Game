@@ -25,6 +25,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private int columnGame;
     private int rowGame;
     private boolean running; // thread Game)
+    private boolean turnOfPlayer; // Define turn of player
+    private String actionToRealice; // Action to  realize the player
     private Thread thread; // Main thread Game 
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
