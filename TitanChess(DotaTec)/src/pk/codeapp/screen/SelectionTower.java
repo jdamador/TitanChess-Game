@@ -189,7 +189,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         Path temp = (Path) e.getSource();
         int half = columnGame/2;
         // each panel will have a difference of one pixel to calculate whith is clicked
-        if(temp.getColumn()<=half){ //First Panel
+        if(temp.getColumn()<half){ //First Panel
             contTowersP1++;
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
