@@ -246,6 +246,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                             
                             return new Dupla(i, j - 1);
                         } 
+                        else 
+                            if(graphicsElements[i-1][j]==null) {
+                            return new Dupla(i-1,j);
+                        }
                     }
                 }
             }
