@@ -187,27 +187,26 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e){ 
         Path temp = (Path) e.getSource();
-        int half = rowGame/2;
-        if(beforeColumn==temp.getColumn() ||  beforeRow==temp.getRow()){return;}else{
-             beforeColumn=temp.getColumn();
-            beforeRow= temp.getRow();
+        int half = columnGame/2;
         // each panel will have a difference of one pixel to calculate whith is clicked
-        if(temp.getRow()<=half){ //First Panel
+        if(temp.getColumn()<=half){ //First Panel
             contTowersP1++;
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
-                temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
+            temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
+            temp.setEnabled(false);
             Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player1");
-           
             MainApp.methods.addTower(newTower);
-            }}
+            }else{return;}
+        }
         else{ //Second Panel
             contTowersP2++;
             if(contTowersP2<=3){// Check the num Tower is less than 3 (Panel 2)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
+            temp.setEnabled(false);
             Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player2");
             MainApp.methods.addTower(newTower);
-            }}
-        }
+            }else{return;}}
+        
 
         
     }
