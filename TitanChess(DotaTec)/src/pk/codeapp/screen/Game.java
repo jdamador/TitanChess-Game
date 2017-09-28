@@ -206,7 +206,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     }
                     Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
                     buttonToPaint.setIcon(titan.getTiny());
-
                 }
             }
         }
@@ -235,8 +234,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 }
             }
         }
-        return null;
-    }
+        
+    }}return null;}
 
     private void paintTable(JPanel panel) { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame, columnGame));
