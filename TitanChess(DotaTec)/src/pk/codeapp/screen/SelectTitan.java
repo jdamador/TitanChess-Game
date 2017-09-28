@@ -319,6 +319,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
             JOptionPane.showMessageDialog(rootPane, "!!! Select the towers to Play Game !!! ");
         } else {
             if (addTitanInTheCorrectPlayer()==true) {
+           
                 String elementofArena=(String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
                 Game game = new Game();

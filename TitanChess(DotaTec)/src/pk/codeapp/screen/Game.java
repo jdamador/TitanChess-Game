@@ -166,7 +166,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         paintBackground(elementArena); // Paint Background 
         paintTable(jPanelGame); //Paint table
         paintTowersGame(); // Paint towers and titans in the game
-        paintStartTitans() ; //Paint and set posicions in the game
+        paintStartTitans(); //Paint and set posicions in the game
+
     }
 
     @Override
@@ -182,7 +183,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     Tower tower = (Tower) graphicsElements[i][j];
                     if (tower.getTowerPlayer().equals("player2")) {
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(), tower.getPosition().getRow()); //Methods to return the button
-                        System.out.println("Establece icono al boton");
+                    
                         buttonToPaint.setIcon(tower.getIcon());
                     } else {
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(), tower.getPosition().getRow()); //Methods to return the button
@@ -195,50 +196,62 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
 
     private void paintStartTitans() { //Paint start champions in the table
-            
-            for (int i = 0; i < MainApp.methods.getTitans().length; i++) {
-                    Titan titans[]=MainApp.methods.getTitans();
-                    Titan titan = titans[i];
-                    if(titan!=null){
-                    if (titan.getPlayer().equals("Player2")) {
-                        titan.setDupla(setPositionStartTitan()); // get Position of titan in the game
-                    } else {
-                        titan.setDupla(setPositionStartTitan());
-                    }
-                    graphicsElements[titan.getDupla().getColumn()][titan.getDupla().getRow()]=titan; // Set  titan in new Position in the matrix of game 
-                    Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
-                    System.out.println("Titan:"+titan.getName()+" Columna "+titan.getDupla().getColumn()+ " Fila "+titan.getDupla().getRow());
-                    buttonToPaint.setIcon(titan.getTiny());
-                }}
-            }
-        
-    
 
-    private Dupla setPositionStartTitan() { // Methods to get position of titans in the table
+        for (int i = 0; i < MainApp.methods.getTitans().length; i++) {
+            Titan titans[] = MainApp.methods.getTitans();
+            Titan titan = titans[i];
+            if (titan != null) {
+     
+                if (titan.getPlayer().equals("Player2")) {
+                    if (getPositionOfTitan("player2") != null) {
+                        System.out.println("Entro en el PLayer2");
+                        Dupla dupla = getPositionOfTitan("player2");
+                        titan.setDupla(dupla);
+                        graphicsElements[titan.getDupla().getColumn()][titan.getDupla().getRow()] = titan; // Set  titan in new Position in the matrix of game 
+                        Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
+                        System.out.println("Titan:" + titan.getName() + " Columna " + titan.getDupla().getColumn() + " Fila " + titan.getDupla().getRow());
+                        buttonToPaint.setIcon(titan.getTiny());
+                    }
+                } else {
+                    if (getPositionOfTitan("player1") != null) {
+                        System.out.println("Entro en el PLayer1");
+                        Dupla dupla = getPositionOfTitan("player1");
+                        titan.setDupla(dupla);
+                        graphicsElements[titan.getDupla().getColumn()][titan.getDupla().getRow()] = titan; // Set  titan in new Position in the matrix of game 
+                        Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
+                        System.out.println("Titan:" + titan.getName() + " Columna " + titan.getDupla().getColumn() + " Fila " + titan.getDupla().getRow());
+                        buttonToPaint.setIcon(titan.getTiny());
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    private Dupla getPositionOfTitan(String player) {
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
                 if (graphicsElements[i][j] instanceof Tower) {
+                   
                     Tower tower = (Tower) graphicsElements[i][j];
-                    if (tower.getTowerPlayer().equals("Player2")) {
-                        if (graphicsElements[i][j + 1].equals(null)) { // Checks to in front of towers be null
+                     System.out.println(tower.getTowerPlayer());
+                    if (tower.getTowerPlayer().equals(player)) {
+                        System.out.println(graphicsElements[i][j+1]);
+                          System.out.println(i+ "  "+j);
+                        if (graphicsElements[i][j + 1]==null) {
+                          
                             return new Dupla(i, j + 1);
-                        } else { // if the first position this titan else set down of tower
-                            if (graphicsElements[i + 1][j].equals(null)) { //Checks to down of tower
-                                return new Dupla(i + 1, j);
-                            }
-                        }
-                    } else {
-                        if (graphicsElements[i][j + 1].equals(null)) { // Checks to in front of towers be null
-                            return new Dupla(i, j + 1);
-                        } else { // if the first position this titan else set down of tower
-                            if (graphicsElements[i + 1][j].equals(null)) { //Checks to down of tower
-                                return new Dupla(i + 1, j);
+                        } else if (graphicsElements[i][j - 1]==null) {
+                            
+                            return new Dupla(i, j - 1);
+                        } 
                     }
                 }
             }
         }
-        
-    }}return null;}
+        return null;
+    }
 
     private void paintTable(JPanel panel) { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame, columnGame));
@@ -278,7 +291,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     // Start Thread of Game 
     private void init() { // Inicialization of Varaibles
-
+   
     }
 
     private void tick() { // Variables
@@ -317,8 +330,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         running = false;
         try {
             thread.join();
+
         } catch (InterruptedException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Game.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -154,21 +154,28 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         int midGame=(columnGame/2);
         for (int j = 0; j < row; j++) {
             for (int i = 0; i < column; i++) {
+                if(i==0 || j==0 || i==columnGame-1 || j== columnGame-1){
+                 Path temp = new Path(i,j);
+                temp.setEnabled(false);
+                  
+                 panel.add(temp);
+                }
+                else{
                 if (i>=midGame){ //Paint the player 1 with gray
                 Path temp = new Path(i,j);      
                 temp.addActionListener(this);
                 temp.setVisible(true);
-                temp.setBounds(i, j,80, 40);
-                temp.setBackground(java.awt.Color.GRAY);
+        
+                temp.setBackground(java.awt.Color.blue);
                 panel.add(temp);
                 }else{ //Paint the player 2 with Light gray
                 Path temp = new Path(i,j);
                 temp.addActionListener(this);
-                temp.setBounds(i, j,80, 40);
+    
                 temp.setVisible(true);
-                temp.setBackground(java.awt.Color.lightGray);
+                temp.setBackground(java.awt.Color.red);
                 panel.add(temp);}
-            }
+            }}
         }
     }
     public void beforeWindows(SelectTitan window) { // Methods to obtain before Windows
@@ -189,7 +196,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         Path temp = (Path) e.getSource();
         int half = columnGame/2;
         // each panel will have a difference of one pixel to calculate whith is clicked
-        if(temp.getColumn()<half){ //First Panel
+        if(temp.getColumn()<=half){ //First Panel
             contTowersP1++;
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
