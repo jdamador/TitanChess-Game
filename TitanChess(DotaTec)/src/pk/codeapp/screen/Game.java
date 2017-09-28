@@ -166,7 +166,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         paintBackground(elementArena); // Paint Background 
         paintTable(jPanelGame); //Paint table
         paintTowersGame(); // Paint towers and titans in the game
-
+        paintStartTitans() ; //Paint and set posicions in the game
     }
 
     @Override
@@ -195,21 +195,24 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
 
     private void paintStartTitans() { //Paint start champions in the table
-        for (int j = 0; j < rowGame; j++) {
-            for (int i = 0; i < columnGame; i++) {
-                if (graphicsElements[i][j] instanceof Titan) {
-                    Titan titan = (Titan) graphicsElements[i][j];
+            
+            for (int i = 0; i < MainApp.methods.getTitans().length; i++) {
+                    Titan titans[]=MainApp.methods.getTitans();
+                    Titan titan = titans[i];
+                    if(titan!=null){
                     if (titan.getPlayer().equals("Player2")) {
                         titan.setDupla(setPositionStartTitan()); // get Position of titan in the game
                     } else {
                         titan.setDupla(setPositionStartTitan());
                     }
+                    graphicsElements[titan.getDupla().getColumn()][titan.getDupla().getRow()]=titan; // Set  titan in new Position in the matrix of game 
                     Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
+                    System.out.println("Titan:"+titan.getName()+" Columna "+titan.getDupla().getColumn()+ " Fila "+titan.getDupla().getRow());
                     buttonToPaint.setIcon(titan.getTiny());
-                }
+                }}
             }
-        }
-    }
+        
+    
 
     private Dupla setPositionStartTitan() { // Methods to get position of titans in the table
         for (int j = 0; j < rowGame; j++) {
