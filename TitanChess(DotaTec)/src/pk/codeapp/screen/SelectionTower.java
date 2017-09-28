@@ -51,11 +51,11 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Select the Position of towers");
         getContentPane().add(jLabel1);
-<<<<<<< HEAD
+
         jLabel1.setBounds(360, 30, 620, 50);
-=======
+
         jLabel1.setBounds(410, 0, 500, 50);
->>>>>>> master
+
 
         towerPlayer1.setOpaque(false);
 
@@ -77,21 +77,21 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Player 2");
         getContentPane().add(jLabel2);
-<<<<<<< HEAD
+
         jLabel2.setBounds(940, 110, 120, 30);
-=======
+
         jLabel2.setBounds(1170, 30, 100, 30);
->>>>>>> master
+
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Player 1");
         getContentPane().add(jLabel3);
-<<<<<<< HEAD
+
         jLabel3.setBounds(250, 110, 110, 30);
-=======
+
         jLabel3.setBounds(10, 30, 100, 30);
->>>>>>> master
+
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
