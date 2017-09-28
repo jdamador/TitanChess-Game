@@ -166,7 +166,7 @@ public class Methods {
                 "src/pk/codeapp/tools/titans/titan5.gif","src/pk/codeapp/tools/titans/Icons/icon5.jpg");
         addTitan(titan);
         titan = new Titan("Lucario", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", 
-                "src/pk/codeapp/tools/titans/titan3.gif","src/pk/codeapp/tools/titans/Icons/titan3.jpg");
+                "src/pk/codeapp/tools/titans/titan3.gif","src/pk/codeapp/tools/titans/Icons/icon3.jpg");
         addTitan(titan);
 
     }
