@@ -181,6 +181,17 @@ public class Methods {
         this.rowGame = rowGame;
     }
 
+<<<<<<< HEAD
+=======
+    public GraphicsElement[][] getGraphicsElements() {
+        return graphicsElements;
+    }
+
+    public void setGraphicsElements(GraphicsElement[][] graphicsElements) {
+        this.graphicsElements = graphicsElements;
+    }
+    
+>>>>>>> master
     public void addTower(Tower newTower) { // Add tower in the matrix
         if (checkTowerPlayer1 == false || checkTowerPlayer2 == false) {
             activeTowertoPlay(newTower.getTowerPlayer()); //Methods to active tower to play

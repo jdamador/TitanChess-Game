@@ -28,6 +28,8 @@ public class Titan extends GraphicsElement implements Serializable{
      private ImageIcon icon;
      private ImageIcon gif;
      private ImageIcon imageBig;
+     private ImageIcon tiny;
+     private Dupla dupla;
      
     //Relation
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
@@ -51,6 +53,15 @@ public class Titan extends GraphicsElement implements Serializable{
         attacks.add(basic);
     }
     //<editor-fold desc="*Getter and Setter*" defaultstate=""collapsed">
+
+    public ImageIcon getTiny() {
+        return tiny;
+    }
+
+    public void setTiny(ImageIcon tiny) {
+        this.tiny = tiny;
+    }
+    
     public String getName() {
         return name;
     }
@@ -79,6 +90,14 @@ public class Titan extends GraphicsElement implements Serializable{
         return vitalElement;
     }
 
+    public Dupla getDupla() {
+        return dupla;
+    }
+
+    public void setDupla(Dupla dupla) {
+        this.dupla = dupla;
+    }
+    
 
 
     public void setVitalElement(String vitalElement) {
