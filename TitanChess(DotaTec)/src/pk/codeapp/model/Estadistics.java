@@ -6,10 +6,20 @@
  */
 package pk.codeapp.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author amador
  */
-public class Estadistics {
-    
+public class Estadistics implements Serializable {
+    private int playedGames;
+    private int lostGames;
+    private int winGames;
+    private int deadTitans;
+    private int drestroyTower;
+    private int myDeadTower;
+    private Titan[] name=new Titan[8];
+    private int deads[]= new int[8];
+    private int performance;
 }
