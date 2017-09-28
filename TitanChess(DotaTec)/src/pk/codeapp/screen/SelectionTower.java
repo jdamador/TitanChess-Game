@@ -146,11 +146,13 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
                 Path temp = new Path(i,j);      
                 temp.addActionListener(this);
                 temp.setVisible(true);
+                temp.setBounds(i, j,80, 40);
                 temp.setBackground(java.awt.Color.GRAY);
                 panel.add(temp);
                 }else{ //Paint the player 2 with Light gray
                 Path temp = new Path(i,j);
                 temp.addActionListener(this);
+                temp.setBounds(i, j,80, 40);
                 temp.setVisible(true);
                 temp.setBackground(java.awt.Color.lightGray);
                 panel.add(temp);}
