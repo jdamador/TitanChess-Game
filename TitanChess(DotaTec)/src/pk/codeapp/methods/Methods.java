@@ -251,6 +251,20 @@ public class Methods {
 
         return false;
     }
+    public void updateInGraphicsElements(GraphicsElement element){
+        int row;
+        int column;
+        if(element instanceof Tower){
+            Tower tw= (Tower) element;
+            column=tw.getPosition().getColumn();
+            row=tw.getPosition().getRow();
+        }else{
+            Titan tw= (Titan) element;
+            column=tw.getDupla().getColumn();
+            row=tw.getDupla().getRow();
+        }
+        graphicsElements[column][row]=element;
+    }
 
     public boolean search(Titan titan) {
         boolean flag = false;

@@ -21,7 +21,8 @@ import pk.codeapp.model.Titan;
 import pk.codeapp.model.Tower;
 import static pk.codeapp.screen.MainApp.methods;
 
-public class Game extends javax.swing.JFrame implements DefaultRules, ActionListener, Runnable {
+public class Game extends javax.swing.JFrame implements DefaultRules, ActionListener, Runnable
+{
 
     //Inicialization of Variables
     private SelectTitan selectTitan;  // Before Windows
@@ -38,32 +39,42 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private Thread thread; // Main thread Game 
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
-    private GameSettings gameSettings = new GameSettings(); // Methods to Game
+    private GameSettings gameSettings = new GameSettings(MainApp.methods); // Methods to Game
     Titan titans[];
+    private String mode;
 
-    public Game() {
+    public Game()
+    {
         initComponents();
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent evt) {
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
 
                 methods.writeUser();
                 System.exit(0);
             }
         });
+        mode = "pasive";
+        btnAttack.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnEndTurn = new javax.swing.JButton();
+        btnAttack = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
                 formWindowOpened(evt);
             }
         });
@@ -93,8 +104,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -104,12 +117,24 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnEndTurn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEndTurn.setForeground(new java.awt.Color(255, 255, 255));
         btnEndTurn.setText("End Turn");
-        btnEndTurn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEndTurn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnEndTurnActionPerformed(evt);
             }
         });
         getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 600, 110, 50));
+
+        btnAttack.setText("Attack");
+        btnAttack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnAttackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 600, 130, 50));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -128,24 +153,36 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEndTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndTurnActionPerformed
-            actionToRealice="move";
-            changePlayer();
-            
-        
+        actionToRealice = "move";
+        mode="pasive";
+        changePlayer();
+
+
     }//GEN-LAST:event_btnEndTurnActionPerformed
-    private void changePlayer(){
+
+    private void btnAttackActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAttackActionPerformed
+    {//GEN-HEADEREND:event_btnAttackActionPerformed
+        // TODO add your handling code here:
+        mode = "attack";
+        JOptionPane.showMessageDialog(rootPane, "Select your enemy!");
+
+    }//GEN-LAST:event_btnAttackActionPerformed
+    private void changePlayer()
+    {
         if (turnOfPlayer) { //Player 1  - Player 2
-            turnOfPlayer = false; 
+            turnOfPlayer = false;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
-        } else{ //Player 2  - Player 1
-            turnOfPlayer = true; 
+        } else { //Player 2  - Player 1
+            turnOfPlayer = true;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 1");
         }
     }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -170,14 +207,17 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new Game().setVisible(true);
             }
         });
     }
 
-    private void paintBackground(String elementArena) { // Paint The arena of type respective
+    private void paintBackground(String elementArena)
+    { // Paint The arena of type respective
         System.out.println(elementArena);
         switch (elementArena) {
 
@@ -201,7 +241,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
 
     @Override
-    public void openWindow(JFrame frame) {
+    public void openWindow(JFrame frame)
+    {
         selectTitan = (SelectTitan) frame;
         frame.setVisible(false);
         this.setVisible(true);
@@ -217,12 +258,14 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
 
     @Override
-    public void goBack() {
+    public void goBack()
+    {
         this.dispose();
         selectTitan.setVisible(true);
     }
 
-    private void paintTowersGame() { //Paint tower in the table
+    private void paintTowersGame()
+    { //Paint tower in the table
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
                 if (graphicsElements[i][j] instanceof Tower) {
@@ -241,7 +284,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
     }
 
-    private void paintStartTitans() { //Paint start champions in the table
+    private void paintStartTitans()
+    { //Paint start champions in the table
         titans = MainApp.methods.getTitans();
         for (int i = 0; i < titans.length; i++) {
             ;
@@ -275,12 +319,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
     }
 
-    private Dupla getPositionOfTitan(String player) {
+    private Dupla getPositionOfTitan(String player)
+    {
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
                 if (graphicsElements[i][j] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[i][j];
-                 
+
                     if (tower.getTowerPlayer().equals(player)) {
                         System.out.println(graphicsElements[i][j + 1]);
                         System.out.println(i + "  " + j);
@@ -300,7 +345,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         return null;
     }
 
-    private void paintTable(JPanel panel) { //Methods to paint matrix of table(Only part of player)
+    private void paintTable(JPanel panel)
+    { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame, columnGame));
         int column = columnGame, row = rowGame;
         int midGame = (columnGame / 2);
@@ -326,6 +372,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnEndTurn;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanelGame;
@@ -333,78 +380,95 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void actionPerformed(ActionEvent e) { // Click in the mouse
-        Path temp = (Path) e.getSource();
+    public void actionPerformed(ActionEvent e)
+    { // Click in the mouse
+
+        if (mode.equals("attack")) {
+            enterAttackMode(e);
+        }else{
+            Path temp = (Path) e.getSource();
         int column = temp.getColumn();
         int row = temp.getRow();
-        if (actionToRealice.equals("move")){ //Move
-            if(turnOfPlayer)
-                moveTitan("Player1",column,row,temp);
-            else
-                moveTitan("Player2",column,row,temp);
-        }else if(actionToRealice.equals("movePosition")){
-            if(gameSettings.isSomebodyHere(column, row, graphicsElements)){
-                movePosition(column,row,temp);
+        if (actionToRealice.equals("move")) { //Move
+            if (turnOfPlayer) {
+                moveTitan("Player1", column, row, temp);
+            } else {
+                moveTitan("Player2", column, row, temp);
+            }
+        } else if (actionToRealice.equals("movePosition")) {
+            if (gameSettings.isSomebodyHere(column, row, graphicsElements)) {
+                movePosition(column, row, temp);
             }
         }
+        }
+        
     }
-    private void movePosition(int column,int row, Path temp){ // Move Position of titan
-        System.out.println("Entro a move Position"+" El contador es: "+contMovesTitan);
-        if(contMovesTitan>0){
+
+    private void movePosition(int column, int row, Path temp)
+    { // Move Position of titan
+        System.out.println("Entro a move Position" + " El contador es: " + contMovesTitan);
+        if (contMovesTitan > 0) {
             System.out.println("Entro al contador");
-        if(gameSettings.checkRange(column,row,actualTitan)){ //Check range of titan
-            System.out.println("Posicion actual del Mouse: "+column+" -  "+row);
-            System.out.println("Posicion del titan: "+actualTitan.getDupla().getColumn()+" - "+actualTitan.getDupla().getRow());
-            graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()]=null; // Delete before position
-            actualTitan.setDupla(new Dupla(column,row));
-            backupButton.setIcon(null); 
-            graphicsElements[column][row]=actualTitan; //set actual position in the matrix
-            backupButton=temp;
-            temp.setIcon(actualTitan.getTiny());
-            contMovesTitan--;
-        }}else{
-            JOptionPane.showMessageDialog(rootPane,"Titan does not have more movements");
+            if (gameSettings.checkRange(column, row, actualTitan)) { //Check range of titan
+                System.out.println("Posicion actual del Mouse: " + column + " -  " + row);
+                System.out.println("Posicion del titan: " + actualTitan.getDupla().getColumn() + " - " + actualTitan.getDupla().getRow());
+                graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()] = null; // Delete before position
+                actualTitan.setDupla(new Dupla(column, row));
+                backupButton.setIcon(null);
+                graphicsElements[column][row] = actualTitan; //set actual position in the matrix
+                backupButton = temp;
+                temp.setIcon(actualTitan.getTiny());
+                contMovesTitan--;
+                btnAttack.setEnabled(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Titan does not have more movements");
         }
     }
-    private void moveTitan(String player,int column,int row,Path temp){ // Methods to move titan 
-        if(graphicsElements[column][row] instanceof Titan){
-            Titan titan=(Titan)graphicsElements[column][row];
-            if(titan.getPlayer().equals(player)){
-                contMovesTitan=titan.getMoves();
-                backupButton=temp; // Backup the button to move
-                actualTitan=titan; // set Actual Titan
-                JOptionPane.showMessageDialog(rootPane,"Move the Titan |All Movement "+titan.getMoves()); //Message to Move
-                actionToRealice="movePosition"; //set action to Moviment titan
+
+    private void moveTitan(String player, int column, int row, Path temp)
+    { // Methods to move titan 
+        if (graphicsElements[column][row] instanceof Titan) {
+            Titan titan = (Titan) graphicsElements[column][row];
+            if (titan.getPlayer().equals(player)) {
+                contMovesTitan = titan.getMoves();
+                backupButton = temp; // Backup the button to move
+                actualTitan = titan; // set Actual Titan
+                JOptionPane.showMessageDialog(rootPane, "Move the Titan |All Movement " + titan.getMoves()); //Message to Move
+                actionToRealice = "movePosition"; //set action to Moviment titan
             }
         }
     }
 
     // Start Thread of Game 
-    private void init() { // Inicialization of Varaibles
+    private void init()
+    { // Inicialization of Varaibles
         //Start Game 
         actionToRealice = "move";
         int playerStart = gameSettings.getRadom(2);
-        if (playerStart==0) { //Player 1  
-            turnOfPlayer = true; 
+        if (playerStart == 0) { //Player 1  
+            turnOfPlayer = true;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 1");
-        } else{ //Player 2
-            turnOfPlayer = false; 
+        } else { //Player 2
+            turnOfPlayer = false;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
         }
-        
 
     }
 
-    private void tick() { // Variables
+    private void tick()
+    { // Variables
 
     }
 
-    private void render() { // Graphics
+    private void render()
+    { // Graphics
 
     }
 
     @Override
-    public void run() {
+    public void run()
+    {
         init();
         while (running) { // Main Loop
 
@@ -414,7 +478,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         stop();
     }
 
-    public synchronized void start() {
+    public synchronized void start()
+    {
         System.out.println("Entro al start");
         if (running) {
             return;
@@ -424,7 +489,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         thread.start();
     }
 
-    public synchronized void stop() {
+    public synchronized void stop()
+    {
         if (!running) {
             return;
         }
@@ -435,6 +501,43 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         } catch (InterruptedException ex) {
             Logger.getLogger(Game.class
                     .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    /**
+     * This method receives an ActionEvent to realize the attack
+     * @param e 
+     */
+    private void enterAttackMode(ActionEvent e)
+    {
+        Path path = (Path) e.getSource();
+
+        if (!gameSettings.isSomebodyHere(path.getColumn(), path.getRow(), graphicsElements)) {
+            int column = path.getColumn();
+            int row = path.getRow();
+            if (gameSettings.checkRange(column, row, actualTitan)) {
+                if (graphicsElements[column][row] instanceof Tower) {
+                    Tower tower= (Tower) graphicsElements[column][row];
+                    if(!tower.getTowerPlayer().equals(actualTitan.getPlayer())){
+                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0)); //need send attack
+                    }
+                }
+                else{
+                        Titan titan=(Titan)graphicsElements[column][row];
+                     if(!titan.getPlayer().equals(actualTitan.getPlayer())){
+                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0)); //need send attack
+                    }
+                }
+                return;
+               
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "out of range");
+                return;
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "there is nobody there");
+                return;
         }
     }
 }

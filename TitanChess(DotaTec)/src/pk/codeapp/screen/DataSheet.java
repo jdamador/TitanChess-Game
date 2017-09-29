@@ -173,6 +173,7 @@ public class DataSheet extends javax.swing.JFrame implements DefaultRules
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        goBack();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

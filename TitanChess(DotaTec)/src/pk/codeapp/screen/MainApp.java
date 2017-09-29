@@ -19,7 +19,7 @@ import pk.codeapp.model.User;
  */
 public class MainApp extends javax.swing.JFrame {
 
-    static Methods methods = new Methods();
+   public  static Methods methods = new Methods();
 
     /**
      * Creates new form MainApp

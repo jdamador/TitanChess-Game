@@ -154,6 +154,16 @@ public class Titan extends GraphicsElement implements Serializable{
         this.player = player;
     }
 
+    public ArrayList<Attack> getAttacks()
+    {
+        return attacks;
+    }
+
+    public void setAttacks(ArrayList<Attack> attacks)
+    {
+        this.attacks = attacks;
+    }
+
     
     public DefaultListModel<String> toModel() {
         DefaultListModel<String> model= new DefaultListModel();

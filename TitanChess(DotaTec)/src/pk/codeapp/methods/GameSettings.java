@@ -19,58 +19,89 @@ import pk.codeapp.screen.MainApp;
  *
  * @author Jose Pablo Brenes
  */
-public class GameSettings {
-         Random randomGenerator = new Random();
-         
-        public Path searchButtonToPaint(ArrayList buttons,int column,int row){
-            for (int i = 0; i < buttons.size(); i++) {
-                Path button = (Path)buttons.get(i);
-                if(button.getColumn()==column && button.getRow() == row){
-                    return button;
-                }
-            }return null;
-        }
-        public void attack(Titan titan, GraphicsElement element2, Attack attack){
-              int getDamage= getRadom(attack.getQuantityDamage()+1);
-             if(element2 instanceof Tower){
-                 if(getDamage<((Tower) element2).getQuantityStamina()){
-                     
-                 }
-             }
-             
-        }
-        public boolean isSomebodyHere(int column,int row,GraphicsElement[][] graphicsElements){ 
-            if(graphicsElements[column][row] instanceof Tower){
-                return false;
-            }else if(graphicsElements[column][row] instanceof Titan){
-                return false;
-            }return true;
+public class GameSettings
+{
+
+    Random randomGenerator = new Random();
+    Methods methods;
+
+    public GameSettings(Methods methods)
+    {
+        this.methods = methods;
     }
-        
-        public int getRadom( int end){
-            
-            int num= randomGenerator.nextInt(end);
-            return num;
+
+    public Path searchButtonToPaint(ArrayList buttons, int column, int row)
+    {
+        for (int i = 0; i < buttons.size(); i++) {
+            Path button = (Path) buttons.get(i);
+            if (button.getColumn() == column && button.getRow() == row) {
+                return button;
+            }
         }
-        public boolean checkRange(int column,int row,Titan actualTitan){
-            int columnTitan = actualTitan.getDupla().getColumn();
-            int rowTitan = actualTitan.getDupla().getRow();
-            if(actualTitan.getPlayer().equals("Player1")){
-            if(
-                    (columnTitan+1==column && rowTitan==row)||
-                    (columnTitan==column && rowTitan+1==row)||
-                    (columnTitan==column && rowTitan-1==row)){
-                return true;
+        return null;
+    }
+
+    public void attack(Titan titan, GraphicsElement element2, Attack attack)
+    {
+        int damage = getRadom(attack.getQuantityDamage() + 1);
+        if (element2 instanceof Tower) {
             
-        }}else{
-            if((columnTitan-1==column && rowTitan==row) || 
-                    
-                    (columnTitan==column && rowTitan+1==row)||
-                    (columnTitan==column && rowTitan-1==row)){
-                return true;
-            
-        }}
+            Tower tower = ((Tower) element2);
+             System.out.println(tower.getQuantityStamina());
+            if (damage < tower.getQuantityStamina()) {
+                tower.setQuantityStamina(tower.getQuantityStamina() - damage);
+                System.out.println(tower.getQuantityStamina());
+                methods.updateInGraphicsElements(element2);
+            }
+        } else {
+            Titan titan2= (Titan)element2;
+            System.out.println(titan.getLife());
+            if(damage<titan2.getLife()){
+                titan.setLife(titan.getLife()-damage);
+                System.out.println(titan.getLife());
+                methods.updateInGraphicsElements(titan);
+                System.out.println();
+            }
+        }
+    }
+
+    public boolean isSomebodyHere(int column, int row, GraphicsElement[][] graphicsElements)
+    {
+        if (graphicsElements[column][row] instanceof Tower) {
             return false;
-            
+        } else if (graphicsElements[column][row] instanceof Titan) {
+            return false;
         }
+        return true;
+    }
+
+    public int getRadom(int end)
+    {
+
+        int num = randomGenerator.nextInt(end);
+        return num;
+    }
+
+    public boolean checkRange(int column, int row, Titan actualTitan)
+    {
+        int columnTitan = actualTitan.getDupla().getColumn();
+        int rowTitan = actualTitan.getDupla().getRow();
+        if (actualTitan.getPlayer().equals("Player1")) {
+            if ((columnTitan + 1 == column && rowTitan == row)
+                    || (columnTitan == column && rowTitan + 1 == row)
+                    || (columnTitan == column && rowTitan - 1 == row)) {
+                return true;
+
+            }
+        } else {
+            if ((columnTitan - 1 == column && rowTitan == row)
+                    || (columnTitan == column && rowTitan + 1 == row)
+                    || (columnTitan == column && rowTitan - 1 == row)) {
+                return true;
+
+            }
+        }
+        return false;
+
+    }
 }
