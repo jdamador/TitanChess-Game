@@ -509,7 +509,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private void tick()
     { // Variables
         whoWin();
-        whoDead();
+       // whoDead();
     }
 
     private void render()

@@ -7,6 +7,7 @@ package pk.codeapp.methods;
 
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import pk.codeapp.model.Attack;
 import pk.codeapp.model.GraphicsElement;
@@ -71,10 +72,13 @@ public class GameSettings
             else{
                 if(tower.getTowerPlayer().equals("Player1")) //Less tower 
                     contTowersP1--;
-                else
-                contTowersP2--;
+                else{
+                    contTowersP2--;}
+                
                 tower.setQuantityStamina(0);
                 Path path=searchButtonToPaint(buttons,tower.getDupla().getColumn(), tower.getDupla().getColumn());
+                path.setIcon(new ImageIcon("src/pk/codeapp/tools/deletetower.png"));
+                path.setEnabled(false);
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
                 return false;
@@ -157,6 +161,15 @@ public class GameSettings
     public void setDeadTitan(boolean deadTitan) {
         this.deadTitan = deadTitan;
     }
+
+    public ArrayList<Path> getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(ArrayList<Path> buttons) {
+        this.buttons = buttons;
+    }
+    
        
 
     
