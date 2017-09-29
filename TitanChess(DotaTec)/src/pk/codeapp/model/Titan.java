@@ -50,7 +50,7 @@ public class Titan extends GraphicsElement implements Serializable{
         this.gif= new ImageIcon(gif);
         this.imageBig = new ImageIcon(imageBig);
         //Create basic Attack
-        Attack basic = new Attack("Hit", 80, 70);
+        Attack basic = new Attack("Beat you up", 0, 70);
         attacks.add(basic);
     }
     //<editor-fold desc="*Getter and Setter*" defaultstate=""collapsed">

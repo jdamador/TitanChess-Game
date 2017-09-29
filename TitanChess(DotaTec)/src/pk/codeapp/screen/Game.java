@@ -154,7 +154,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void btnEndTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndTurnActionPerformed
         actionToRealice = "move";
-        mode="pasive";
+        mode = "pasive";
         changePlayer();
 
 
@@ -385,23 +385,23 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
         if (mode.equals("attack")) {
             enterAttackMode(e);
-        }else{
+        } else {
             Path temp = (Path) e.getSource();
-        int column = temp.getColumn();
-        int row = temp.getRow();
-        if (actionToRealice.equals("move")) { //Move
-            if (turnOfPlayer) {
-                moveTitan("Player1", column, row, temp);
-            } else {
-                moveTitan("Player2", column, row, temp);
-            }
-        } else if (actionToRealice.equals("movePosition")) {
-            if (gameSettings.isSomebodyHere(column, row, graphicsElements)) {
-                movePosition(column, row, temp);
+            int column = temp.getColumn();
+            int row = temp.getRow();
+            if (actionToRealice.equals("move")) { //Move
+                if (turnOfPlayer) {
+                    moveTitan("Player1", column, row, temp);
+                } else {
+                    moveTitan("Player2", column, row, temp);
+                }
+            } else if (actionToRealice.equals("movePosition")) {
+                if (gameSettings.isSomebodyHere(column, row, graphicsElements)) {
+                    movePosition(column, row, temp);
+                }
             }
         }
-        }
-        
+
     }
 
     private void movePosition(int column, int row, Path temp)
@@ -503,11 +503,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     /**
      * This method receives an ActionEvent to realize the attack
-     * @param e 
+     *
+     * @param e
      */
     private void enterAttackMode(ActionEvent e)
     {
@@ -518,26 +518,31 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             int row = path.getRow();
             if (gameSettings.checkRange(column, row, actualTitan)) {
                 if (graphicsElements[column][row] instanceof Tower) {
-                    Tower tower= (Tower) graphicsElements[column][row];
-                    if(!tower.getTowerPlayer().equals(actualTitan.getPlayer())){
+                    Tower tower = (Tower) graphicsElements[column][row];
+                    if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
                         gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0)); //need send attack
+                        actionToRealice = "move";
+                        mode = "pasive";
+                         changePlayer();
+
+                    }
+                } else {
+                    Titan titan = (Titan) graphicsElements[column][row];
+                    if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
+                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0)); //need send attack
+                        actionToRealice = "move";
+                        mode = "pasive";
+                         changePlayer();
                     }
                 }
-                else{
-                        Titan titan=(Titan)graphicsElements[column][row];
-                     if(!titan.getPlayer().equals(actualTitan.getPlayer())){
-                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0)); //need send attack
-                    }
-                }
-                return;
-               
+
             } else {
                 JOptionPane.showMessageDialog(rootPane, "out of range");
-                return;
+
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "there is nobody there");
-                return;
+
         }
     }
 }

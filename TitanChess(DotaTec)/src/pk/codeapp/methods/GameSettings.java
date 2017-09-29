@@ -7,6 +7,7 @@ package pk.codeapp.methods;
 
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JOptionPane;
 import pk.codeapp.model.Attack;
 import pk.codeapp.model.GraphicsElement;
 
@@ -50,6 +51,7 @@ public class GameSettings
              System.out.println(tower.getQuantityStamina());
             if (damage < tower.getQuantityStamina()) {
                 tower.setQuantityStamina(tower.getQuantityStamina() - damage);
+                titan.setMana(titan.getMana()-attack.getQuantityMana());
                 System.out.println(tower.getQuantityStamina());
                 methods.updateInGraphicsElements(element2);
             }
@@ -59,10 +61,13 @@ public class GameSettings
             if(damage<titan2.getLife()){
                 titan.setLife(titan.getLife()-damage);
                 System.out.println(titan.getLife());
+                titan.setMana(titan.getMana()-attack.getQuantityMana());
                 methods.updateInGraphicsElements(titan);
                 System.out.println();
             }
         }
+        JOptionPane.showMessageDialog(null, "Attack sucessfully ------>Hit reach: "+damage);
+        return;
     }
 
     public boolean isSomebodyHere(int column, int row, GraphicsElement[][] graphicsElements)
