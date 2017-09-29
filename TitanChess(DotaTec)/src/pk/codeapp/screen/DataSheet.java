@@ -5,10 +5,13 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.model.Estadistics;
 import pk.codeapp.model.User;
+import static pk.codeapp.screen.MainApp.methods;
 
 
 /**
@@ -32,10 +35,18 @@ public class DataSheet extends javax.swing.JFrame implements DefaultRules
         lblWinGames.setText(actual.getWinGames()+"");
         lblDeadTitans.setText(actual.getDeadTitans()+"");
         
-        lblDestroyedTower.setText(actual.getDrestroyTower()+"");
+        lblTowerDestroyed.setText(actual.getMyDeadTower()+"");
         lblGameLost.setText(actual.getLostGames()+"");
         lblGamesPlayed.setText(actual.getPlayedGames()+"");
         lblPerformance.setText(actual.getPerformance()+"");
+        lblDestroyedTower.setText(actual.getDrestroyTower()+"");
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
 
     /**

@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
@@ -35,7 +37,15 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         titans = methods.getTitans();
         initComponents();
         chargeTitansInComboBox();
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
 
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
 
     /**
@@ -892,10 +902,12 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         }
         return null;
     }
+
     //</editor-fold>
     /**
      * Delete titan from array
-     * @return  true or false when the operation is sucessfull or fail.
+     *
+     * @return true or false when the operation is sucessfull or fail.
      */
     private boolean deleteTitan()
     {

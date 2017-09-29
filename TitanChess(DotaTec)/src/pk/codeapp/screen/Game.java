@@ -2,6 +2,8 @@ package pk.codeapp.screen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +19,7 @@ import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Path;
 import pk.codeapp.model.Titan;
 import pk.codeapp.model.Tower;
+import static pk.codeapp.screen.MainApp.methods;
 
 public class Game extends javax.swing.JFrame implements DefaultRules, ActionListener, Runnable {
 
@@ -40,6 +43,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     public Game() {
         initComponents();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
