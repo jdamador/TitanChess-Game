@@ -540,16 +540,20 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 if (graphicsElements[column][row] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[column][row];
                     if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
-                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena); //need send attack
+                        AuxAttackMode auxWindowstoAttack = new AuxAttackMode();
+                        
+                        auxWindowstoAttack.getToolsToAttack(actualTitan, tower,this,elementArena);
                         actionToRealice = "move";
                         mode = "pasive";
-                         changePlayer();
+                        changePlayer();
 
                     }
                 } else {
                     Titan titan = (Titan) graphicsElements[column][row];
                     if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
-                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena); //need send attack
+                        AuxAttackMode auxWindowstoAttack = new AuxAttackMode();
+                        
+                        auxWindowstoAttack.getToolsToAttack(actualTitan, titan,this,elementArena);
                         actionToRealice = "move";
                         mode = "pasive";
                          changePlayer();
