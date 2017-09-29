@@ -42,7 +42,7 @@ public class GameSettings
         return null;
     }
 
-    public boolean attack(Titan titan, GraphicsElement element2, Attack attack,String elementArena)
+    public void attack(Titan titan, GraphicsElement element2, Attack attack,String elementArena)
     {
         
         int damage = getRadom(attack.getQuantityDamage() + 1);
@@ -59,29 +59,20 @@ public class GameSettings
                 titan.setMana(titan.getMana()-attack.getQuantityMana());
                 System.out.println(tower.getQuantityStamina());
                 methods.updateInGraphicsElements(element2);
-            }else{
-                tower.setQuantityStamina(0);
-                 JOptionPane.showMessageDialog(null, "Attack sucessfully ------>Hit reach: "+damage);
-                return false;
             }
         } else {
             Titan titan2= (Titan)element2;
             System.out.println(titan.getLife());
             if(damage<titan2.getLife()){
-                titan2.setLife(titan2.getLife()-damage);
+                titan.setLife(titan.getLife()-damage);
                 System.out.println(titan.getLife());
                 titan.setMana(titan.getMana()-attack.getQuantityMana());
                 methods.updateInGraphicsElements(titan);
                 System.out.println();
             }
-            else{
-                 titan2.setLife(0);
-                  JOptionPane.showMessageDialog(null, "Attack sucessfully ------>Hit reach: "+damage);
-                 return false;
-            }
         }
         JOptionPane.showMessageDialog(null, "Attack sucessfully ------>Hit reach: "+damage);
-       return true;
+        return;
     }
 
     public boolean isSomebodyHere(int column, int row, GraphicsElement[][] graphicsElements)

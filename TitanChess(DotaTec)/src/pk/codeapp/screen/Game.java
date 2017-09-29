@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.methods.GameSettings;
-import pk.codeapp.methods.Methods;
 import pk.codeapp.model.Dupla;
 import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Path;
@@ -528,7 +527,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
      */
     private void enterAttackMode(ActionEvent e)
     {
-        Methods methods= MainApp.methods;
         Path path = (Path) e.getSource();
 
         if (!gameSettings.isSomebodyHere(path.getColumn(), path.getRow(), graphicsElements)) {
@@ -538,15 +536,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 if (graphicsElements[column][row] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[column][row];
                     if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
-                        
-                       if (gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena)){ //need send attack
-                            
-                       }else{
-                           
-                           path.setIcon(null);
-                           path.setEnabled(false);
-                       }
-                        methods.getGraphicsElements()[column][row]=null;
+                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena); //need send attack
                         actionToRealice = "move";
                         mode = "pasive";
                          changePlayer();
@@ -555,12 +545,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 } else {
                     Titan titan = (Titan) graphicsElements[column][row];
                     if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
-                        if(gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena)){//need send attack
-                       
-                        }else{
-                            methods.getGraphicsElements()[column][row]=null;
-                            path.setIcon(null);
-                        }
+                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena); //need send attack
                         actionToRealice = "move";
                         mode = "pasive";
                          changePlayer();
