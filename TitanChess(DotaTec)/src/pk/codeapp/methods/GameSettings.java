@@ -22,13 +22,17 @@ import pk.codeapp.screen.MainApp;
  */
 public class GameSettings
 {
-
+    private int contTowersP1;
+    private int contTowersP2;
+    private boolean deadTitan;
+   private ArrayList<Path> buttons; 
     Random randomGenerator = new Random();
     Methods methods;
-
+    
     public GameSettings(Methods methods)
     {
         this.methods = methods;
+
     }
 
     public Path searchButtonToPaint(ArrayList buttons, int column, int row)
@@ -65,11 +69,17 @@ public class GameSettings
                 return true;
             }
             else{
+                if(tower.getTowerPlayer().equals("Player1")) //Less tower 
+                    contTowersP1--;
+                else
+                contTowersP2--;
                 tower.setQuantityStamina(0);
+                Path path=searchButtonToPaint(buttons,tower.getDupla().getColumn(), tower.getDupla().getColumn());
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
                 return false;
             }
+            
         } else {
             Titan titan2= (Titan)element2;
            
@@ -83,10 +93,12 @@ public class GameSettings
             }
             else{
                 titan2.setLife(0);
+                deadTitan=true; // Active dead titan
                 methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
                 return false;
             }
+           
         }
   
     }
@@ -108,7 +120,7 @@ public class GameSettings
         return num;
     }
 
-    public boolean checkRange(int column, int row, Titan actualTitan)
+    public boolean checkRange(int column, int row, Titan actualTitan) //Checks the click this in range titan
     {
         int columnTitan = actualTitan.getDupla().getColumn();
         int rowTitan = actualTitan.getDupla().getRow();
@@ -121,6 +133,30 @@ public class GameSettings
             }
             return false;
         }
+
+    public int getContTowersP1() {
+        return contTowersP1;
+    }
+
+    public void setContTowersP1(int contTowersP1) {
+        this.contTowersP1 = contTowersP1;
+    }
+
+    public int getContTowersP2() {
+        return contTowersP2;
+    }
+
+    public void setContTowersP2(int contTowersP2) {
+        this.contTowersP2 = contTowersP2;
+    }
+
+    public boolean isDeadTitan() {
+        return deadTitan;
+    }
+
+    public void setDeadTitan(boolean deadTitan) {
+        this.deadTitan = deadTitan;
+    }
        
 
     

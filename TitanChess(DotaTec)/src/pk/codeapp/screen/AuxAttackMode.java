@@ -5,6 +5,7 @@
  */
 package pk.codeapp.screen;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -13,6 +14,7 @@ import javax.swing.ImageIcon;
 import pk.codeapp.methods.GameSettings;
 import pk.codeapp.model.Attack;
 import pk.codeapp.model.GraphicsElement;
+import pk.codeapp.model.Path;
 import pk.codeapp.model.Titan;
 import pk.codeapp.model.Tower;
 
@@ -27,6 +29,7 @@ public class AuxAttackMode extends javax.swing.JFrame
     private GraphicsElement element;
     private DefaultComboBoxModel<String> listAttacks = new DefaultComboBoxModel();
     private Game window;
+
     private GameSettings gameSettings = new GameSettings(MainApp.methods);
     private String arena;
 

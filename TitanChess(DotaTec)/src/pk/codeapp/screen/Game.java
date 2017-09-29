@@ -41,7 +41,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
     private GameSettings gameSettings = new GameSettings(MainApp.methods); // Methods to Game
-    private int contTowersP1, contTowersP2;
+ 
     Titan titans[];
     private String mode;
 
@@ -268,6 +268,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         this.elementArena = selectTitan.getElementOfArena(); // Obtain the type of element arena
         paintBackground(elementArena); // Paint Background 
         paintTable(jPanelGame); //Paint table
+        
         paintTowersGame(); // Paint towers and titans in the game
         paintStartTitans(); //Paint and set posicions in the game
         init(); //Inicialization of init
@@ -364,7 +365,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         return null;
     }
 
-    private void paintTable(JPanel panel)
+    private void paintTable(JPanel panel) 
     { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame, columnGame));
         int column = columnGame, row = rowGame;
@@ -387,7 +388,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     panel.add(temp);
                 }
             }
-        }
+        }gameSettings.setButtons(buttons); // Save buttons in the gameSettings
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -474,8 +475,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
-        this.contTowersP1 = contTowersP1;
-        this.contTowersP2 = contTowersP2;
+        gameSettings.setContTowersP1(contTowersP1);
+        gameSettings.setContTowersP2(contTowersP2);
+        
+    }
+    private void whoWin(){
+        if(gameSettings.getContTowersP1()==0){
+            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
+            
+            /// 
+        }else if(gameSettings.getContTowersP2()==0){
+            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
+            // 
+        }
     }
 
     // Start Thread of Game 
@@ -496,7 +508,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void tick()
     { // Variables
-
+        whoWin();
+        whoDead();
     }
 
     private void render()
@@ -558,7 +571,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 if (graphicsElements[column][row] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[column][row];
                     if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
-
+                        
                         auxWindowstoAttack.getToolsToAttack(actualTitan, tower, this, elementArena);
                         
 
@@ -589,4 +602,5 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         mode = "pasive";
         changePlayer();
     }
+    
 }
