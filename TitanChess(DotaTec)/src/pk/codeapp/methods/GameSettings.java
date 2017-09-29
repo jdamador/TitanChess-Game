@@ -96,24 +96,16 @@ public class GameSettings
     {
         int columnTitan = actualTitan.getDupla().getColumn();
         int rowTitan = actualTitan.getDupla().getRow();
-        if (actualTitan.getPlayer().equals("Player1")) {
+  
             if ((columnTitan + 1 == column && rowTitan == row)
                     || (columnTitan == column && rowTitan + 1 == row)
                     || (columnTitan == column && rowTitan - 1 == row)
                     ||(columnTitan-1== column && rowTitan == row)) {
-                return true;
-
+                    return true;
             }
-        } else {
-            if ((columnTitan - 1 == column && rowTitan == row)
-                    || (columnTitan == column && rowTitan + 1 == row)
-                    || (columnTitan == column && rowTitan - 1 == row)
-                    || (columnTitan+1 == column && rowTitan== row)) {
-                return true;
-
-            }
+            return false;
         }
-        return false;
+       
 
-    }
+    
 }

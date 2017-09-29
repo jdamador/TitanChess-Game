@@ -302,7 +302,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     { //Paint start champions in the table
         titans = MainApp.methods.getTitans();
         for (int i = 0; i < titans.length; i++) {
-            ;
+            
             Titan titan = titans[i];
             if (titan != null) {
 

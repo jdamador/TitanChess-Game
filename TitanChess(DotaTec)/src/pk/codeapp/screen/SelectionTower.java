@@ -203,6 +203,22 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         
     }
 
+    public int getContTowersP1() {
+        return contTowersP1;
+    }
+
+    public void setContTowersP1(int contTowersP1) {
+        this.contTowersP1 = contTowersP1;
+    }
+
+    public int getContTowersP2() {
+        return contTowersP2;
+    }
+
+    public void setContTowersP2(int contTowersP2) {
+        this.contTowersP2 = contTowersP2;
+    }
+    
     @Override
     public void openWindow(JFrame frame) {
         selectTitan = (SelectTitan)frame;

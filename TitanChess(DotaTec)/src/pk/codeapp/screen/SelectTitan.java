@@ -30,7 +30,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private Lobby lobby;
     private int contTitansPlayer1 = 4;
     private int contTitansPlayer2 = 4;
-
+    
+     SelectionTower selectionTower;
     public SelectTitan()
     {
         initComponents();
@@ -285,9 +286,10 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             MainApp.methods.setColumnGame(columnGame);
             MainApp.methods.setRowGame(rowGame);
 
-            SelectionTower selectionTower = new SelectionTower(); //Instance of windows selection of tower
+            selectionTower = new SelectionTower(); //Instance of windows selection of tower
             this.setVisible(false);
             selectionTower.openWindow(this); // Pass windows to Selection of tower
+            
             activateButtonTowers = false; //Desactive button
         }
     }//GEN-LAST:event_btnPositionTowerActionPerformed
@@ -338,6 +340,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
                 String elementofArena = (String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
                 Game game = new Game();
+                game.obtainQuantityTower(selectionTower.getContTowersP1(),selectionTower.getContTowersP2());
                 game.openWindow(this);
                
 
