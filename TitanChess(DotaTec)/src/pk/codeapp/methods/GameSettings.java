@@ -13,6 +13,7 @@ import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Path;
 import pk.codeapp.model.Titan;
 import pk.codeapp.model.Tower;
+import pk.codeapp.screen.MainApp;
 
 /**
  *
@@ -38,11 +39,38 @@ public class GameSettings {
              }
              
         }
-        
+        public boolean isSomebodyHere(int column,int row,GraphicsElement[][] graphicsElements){ 
+            if(graphicsElements[column][row] instanceof Tower){
+                return false;
+            }else if(graphicsElements[column][row] instanceof Titan){
+                return false;
+            }return true;
+    }
         
         public int getRadom( int end){
             
             int num= randomGenerator.nextInt(end);
             return num;
+        }
+        public boolean checkRange(int column,int row,Titan actualTitan){
+            int columnTitan = actualTitan.getDupla().getColumn();
+            int rowTitan = actualTitan.getDupla().getRow();
+            if(actualTitan.getPlayer().equals("Player1")){
+            if(
+                    (columnTitan+1==column && rowTitan==row)||
+                    (columnTitan==column && rowTitan+1==row)||
+                    (columnTitan==column && rowTitan-1==row)){
+                return true;
+            
+        }}else{
+            if((columnTitan-1==column && rowTitan==row) || 
+                    
+                    (columnTitan==column && rowTitan+1==row)||
+                    (columnTitan==column && rowTitan-1==row)){
+                return true;
+            
+        }}
+            return false;
+            
         }
 }

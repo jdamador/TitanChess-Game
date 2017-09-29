@@ -25,15 +25,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private String elementArena;
     private int columnGame;
     private int rowGame;
+    private int contMovesTitan;//Cont the moves has actualTitan  
+    private Titan actualTitan; // Titan actual clicked
     private boolean running; // thread Game)
     private boolean turnOfPlayer; // Define turn of player
     private String actionToRealice; // Action to  realize the player
-    private int half = columnGame/2; // Half Game
+    private int half = columnGame / 2; // Half Game
+    private Path backupButton; // Backup the button to move
     private Thread thread; // Main thread Game 
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
     private GameSettings gameSettings = new GameSettings(); // Methods to Game
     Titan titans[];
+
     public Game() {
         initComponents();
     }
@@ -44,6 +48,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
         jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        btnEndTurn = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,6 +90,17 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 130, 50));
 
+        btnEndTurn.setBackground(new java.awt.Color(0, 0, 0));
+        btnEndTurn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEndTurn.setForeground(new java.awt.Color(255, 255, 255));
+        btnEndTurn.setText("End Turn");
+        btnEndTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEndTurnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 600, 110, 50));
+
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -101,6 +117,21 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         this.setVisible(true);
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnEndTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndTurnActionPerformed
+            actionToRealice="move";
+            changePlayer();
+            
+        
+    }//GEN-LAST:event_btnEndTurnActionPerformed
+    private void changePlayer(){
+        if (turnOfPlayer) { //Player 1  - Player 2
+            turnOfPlayer = false; 
+            JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
+        } else{ //Player 2  - Player 1
+            turnOfPlayer = true; 
+            JOptionPane.showMessageDialog(rootPane, "Turn Player 1");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -188,7 +219,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     Tower tower = (Tower) graphicsElements[i][j];
                     if (tower.getTowerPlayer().equals("player2")) {
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(), tower.getPosition().getRow()); //Methods to return the button
-                    
+
                         buttonToPaint.setIcon(tower.getIcon());
                     } else {
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(), tower.getPosition().getRow()); //Methods to return the button
@@ -201,12 +232,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
 
     private void paintStartTitans() { //Paint start champions in the table
-        titans= MainApp.methods.getTitans();
-        for (int i = 0; i <titans .length; i++) {
-             ;
+        titans = MainApp.methods.getTitans();
+        for (int i = 0; i < titans.length; i++) {
+            ;
             Titan titan = titans[i];
             if (titan != null) {
-     
+
                 if (titan.getPlayer().equals("Player2")) {
                     if (getPositionOfTitan("player2") != null) {
                         System.out.println("Entro en el PLayer2");
@@ -238,22 +269,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
                 if (graphicsElements[i][j] instanceof Tower) {
-                   
                     Tower tower = (Tower) graphicsElements[i][j];
-                     System.out.println(tower.getTowerPlayer());
+                 
                     if (tower.getTowerPlayer().equals(player)) {
-                        System.out.println(graphicsElements[i][j+1]);
-                          System.out.println(i+ "  "+j);
-                        if (graphicsElements[i][j + 1]==null) {
-                          
+                        System.out.println(graphicsElements[i][j + 1]);
+                        System.out.println(i + "  " + j);
+                        if (graphicsElements[i][j + 1] == null) {
+
                             return new Dupla(i, j + 1);
-                        } else if (graphicsElements[i][j - 1]==null) {
-                            
+                        } else if (graphicsElements[i][j - 1] == null) {
+
                             return new Dupla(i, j - 1);
-                        } 
-                        else 
-                            if(graphicsElements[i-1][j]==null) {
-                            return new Dupla(i-1,j);
+                        } else if (graphicsElements[i - 1][j] == null) {
+                            return new Dupla(i - 1, j);
                         }
                     }
                 }
@@ -288,6 +316,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEndTurn;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanelGame;
     private javax.swing.JLabel lblBackground;
@@ -296,17 +325,46 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     @Override
     public void actionPerformed(ActionEvent e) { // Click in the mouse
         Path temp = (Path) e.getSource();
-        if(turnOfPlayer){ //Player 1
-            if(actionToRealice.equals("move")){ //Action move
-               // getTitan();
-            }else{ //Action Play
-                
+        int column = temp.getColumn();
+        int row = temp.getRow();
+        if (actionToRealice.equals("move")){ //Move
+            if(turnOfPlayer)
+                moveTitan("Player1",column,row,temp);
+            else
+                moveTitan("Player2",column,row,temp);
+        }else if(actionToRealice.equals("movePosition")){
+            if(gameSettings.isSomebodyHere(column, row, graphicsElements)){
+                movePosition(column,row,temp);
             }
-        }else{ //Player 2
-            if(actionToRealice.equals("move")){ //Action move
-            
-            }else{ //Action Play
-            
+        }
+    }
+    private void movePosition(int column,int row, Path temp){ // Move Position of titan
+        System.out.println("Entro a move Position"+" El contador es: "+contMovesTitan);
+        if(contMovesTitan>0){
+            System.out.println("Entro al contador");
+        if(gameSettings.checkRange(column,row,actualTitan)){ //Check range of titan
+            System.out.println("Posicion actual del Mouse: "+column+" -  "+row);
+            System.out.println("Posicion del titan: "+actualTitan.getDupla().getColumn()+" - "+actualTitan.getDupla().getRow());
+            graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()]=null; // Delete before position
+            actualTitan.setDupla(new Dupla(column,row));
+            backupButton.setIcon(null); 
+            graphicsElements[column][row]=actualTitan; //set actual position in the matrix
+            backupButton=temp;
+            temp.setIcon(actualTitan.getTiny());
+            contMovesTitan--;
+        }}else{
+            JOptionPane.showMessageDialog(rootPane,"Titan does not have more movements");
+        }
+    }
+    private void moveTitan(String player,int column,int row,Path temp){ // Methods to move titan 
+        if(graphicsElements[column][row] instanceof Titan){
+            Titan titan=(Titan)graphicsElements[column][row];
+            if(titan.getPlayer().equals(player)){
+                contMovesTitan=titan.getMoves();
+                backupButton=temp; // Backup the button to move
+                actualTitan=titan; // set Actual Titan
+                JOptionPane.showMessageDialog(rootPane,"Move the Titan |All Movement "+titan.getMoves()); //Message to Move
+                actionToRealice="movePosition"; //set action to Moviment titan
             }
         }
     }
@@ -314,16 +372,17 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     // Start Thread of Game 
     private void init() { // Inicialization of Varaibles
         //Start Game 
-        actionToRealice="move";
+        actionToRealice = "move";
         int playerStart = gameSettings.getRadom(2);
-        if(playerStart==0){
-            turnOfPlayer=true; // True is the player 1
-            JOptionPane.showMessageDialog(rootPane, "Start Player 1");
-        }else{
-            turnOfPlayer=false; // True is the player 2
-            JOptionPane.showMessageDialog(rootPane, "Start Player 2");
+        if (playerStart==0) { //Player 1  
+            turnOfPlayer = true; 
+            JOptionPane.showMessageDialog(rootPane, "Turn Player 1");
+        } else{ //Player 2
+            turnOfPlayer = false; 
+            JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
         }
         
+
     }
 
     private void tick() { // Variables
