@@ -266,6 +266,6 @@ public class AuxAttackMode extends javax.swing.JFrame
         window.setEnabled(true);
 
         this.dispose();
-        window.changeStates();
+        window.changeStates(element);
     }
 }
