@@ -201,6 +201,8 @@ public class MainApp extends javax.swing.JFrame {
             if (askUser != null) {
                 
                 if (askUser.getPassword().equals(password)) {
+                    methods.setActual(askUser);
+                    System.out.println(askUser);
                     Lobby lobby = new Lobby();
                     lobby.openWindow(this);
                 } else {
