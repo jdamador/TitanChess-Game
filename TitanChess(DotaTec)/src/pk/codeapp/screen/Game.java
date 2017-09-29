@@ -40,6 +40,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
     private GameSettings gameSettings = new GameSettings(MainApp.methods); // Methods to Game
+    private int contTowersP1,contTowersP2;
     Titan titans[];
     private String mode;
 
@@ -455,7 +456,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
     }
-
+   public void obtainQuantityTower(int contTowersP1, int contTowersP2) {
+        this.contTowersP1 = contTowersP1;
+        this.contTowersP2 = contTowersP2;
+    }
     // Start Thread of Game 
     private void init()
     { // Inicialization of Varaibles

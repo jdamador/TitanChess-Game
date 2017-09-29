@@ -352,6 +352,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
 
         }
     }//GEN-LAST:event_btnStartGameActionPerformed
+
     private JComboBox getcmbTitan(int i)
     {
         switch (i) {
