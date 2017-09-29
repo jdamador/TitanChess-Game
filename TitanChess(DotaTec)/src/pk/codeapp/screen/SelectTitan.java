@@ -5,7 +5,8 @@
  */
 package pk.codeapp.screen;
 
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,8 +16,10 @@ import javax.swing.JOptionPane;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Titan;
+import static pk.codeapp.screen.MainApp.methods;
 
-public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
+public class SelectTitan extends javax.swing.JFrame implements DefaultRules
+{
 
     //Inicialization of Variables
     private int columnGame, rowGame; // Column and row of Table Game
@@ -25,9 +28,11 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
     private String elementOfArena;
     private Titan[] titans;
     private Lobby lobby;
-    private int contTitansPlayer1=4;
-    private int contTitansPlayer2=4;
-    public SelectTitan() {
+    private int contTitansPlayer1 = 4;
+    private int contTitansPlayer2 = 4;
+
+    public SelectTitan()
+    {
         initComponents();
         lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
         this.setLocationRelativeTo(null); //Localization of Windows
@@ -41,10 +46,17 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         cmbTitan6.setVisible(false);
         cmbTitan7.setVisible(false);
         cmbTitan8.setVisible(false);
-        
-        
-        putImageIconTitan(); // Put the image in the labels 
 
+        putImageIconTitan(); // Put the image in the labels 
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
+
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
 
     /**
@@ -210,49 +222,49 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         cmbTitan1.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan1.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 100, 30));
 
         cmbTitan2.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan2.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 100, 30));
 
         cmbTitan3.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan3.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 100, 30));
 
         cmbTitan4.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan4.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, 100, 30));
 
         cmbTitan5.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan5.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 100, 30));
 
         cmbTitan6.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan6.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 100, 30));
 
         cmbTitan7.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan7.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 100, 30));
 
         cmbTitan8.setBackground(new java.awt.Color(0, 0, 0));
         cmbTitan8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbTitan8.setForeground(new java.awt.Color(255, 255, 255));
-        cmbTitan8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2", " " }));
+        cmbTitan8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 100, 30));
 
         lblBackground.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -261,14 +273,14 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
+
     private void btnPositionTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPositionTowerActionPerformed
         if (activateButtonTowers) {
             cmbSizeofmap.setEnabled(false);
             String sizeOfTable = checkStringSize(); // Return the string of combobox
             setSizeoftableGame(sizeOfTable); //set variables column and row related to String size
             this.setVisible(false);
-            
+
             // Set ColumnGame and RowGame in methods
             MainApp.methods.setColumnGame(columnGame);
             MainApp.methods.setRowGame(rowGame);
@@ -279,19 +291,21 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
             activateButtonTowers = false; //Desactive button
         }
     }//GEN-LAST:event_btnPositionTowerActionPerformed
-    private void putImageIconTitan() { // Put icons of titans in the labels
+    private void putImageIconTitan()
+    { // Put icons of titans in the labels
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] != null) {
-                JLabel aux = checkIconJLabel(i +1);
+                JLabel aux = checkIconJLabel(i + 1);
                 if (aux != null) {
-                    getcmbTitan(i+1).setVisible(true);
+                    getcmbTitan(i + 1).setVisible(true);
                     aux.setIcon(titans[i].getIcon());
-                } 
+                }
             }
         }
     }
 
-    private JLabel checkIconJLabel(int i) { // Return the JLabel 
+    private JLabel checkIconJLabel(int i)
+    { // Return the JLabel 
         switch (i) {
             case 1:
                 return titan_image1;
@@ -318,37 +332,46 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         if (activateButtonTowers == true) { //Checks to tower is correct selected
             JOptionPane.showMessageDialog(rootPane, "!!! Select the towers to Play Game !!! ");
         } else {
-                
-                addTitanInTheCorrectPlayer();
-                if(contTitansPlayer1<2 && contTitansPlayer2<2){
-                String elementofArena=(String) cmbSizeofmap1.getSelectedItem();
+
+            addTitanInTheCorrectPlayer();
+            if (contTitansPlayer1 < 2 && contTitansPlayer2 < 2) {
+                String elementofArena = (String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
                 Game game = new Game();
                 game.openWindow(this);
-                
-            }else{
-                 contTitansPlayer1=4;
-                 contTitansPlayer2=4;
-                JOptionPane.showMessageDialog(rootPane,"You need more Titans to pay, minimun 3 for player");
+
+            } else {
+                contTitansPlayer1 = 4;
+                contTitansPlayer2 = 4;
+                JOptionPane.showMessageDialog(rootPane, "You need more Titans to pay, minimun 3 for player");
             }
 
         }
     }//GEN-LAST:event_btnStartGameActionPerformed
-    private JComboBox getcmbTitan(int i){
-        switch(i){
-            case 1: return cmbTitan1;
-            case 2: return cmbTitan2;
-            case 3: return cmbTitan3;
-            case 4: return cmbTitan4;
-            case 5: return cmbTitan5;
-            case 6: return cmbTitan6;
-            case 7: return cmbTitan7;
-            case 8: return cmbTitan8;
+    private JComboBox getcmbTitan(int i)
+    {
+        switch (i) {
+            case 1:
+                return cmbTitan1;
+            case 2:
+                return cmbTitan2;
+            case 3:
+                return cmbTitan3;
+            case 4:
+                return cmbTitan4;
+            case 5:
+                return cmbTitan5;
+            case 6:
+                return cmbTitan6;
+            case 7:
+                return cmbTitan7;
+            case 8:
+                return cmbTitan8;
         }
-       return null;
+        return null;
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       MainApp.methods.setGraphicsElements(null);
+        MainApp.methods.setGraphicsElements(null);
         goBack();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -356,41 +379,44 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
     {//GEN-HEADEREND:event_cmbSizeofmapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbSizeofmapActionPerformed
-    private boolean addTitanInTheCorrectPlayer() { // Add each titan in the correct player with respect to the selected button
-        titans=MainApp.methods.getTitans();
+    private boolean addTitanInTheCorrectPlayer()
+    { // Add each titan in the correct player with respect to the selected button
+        titans = MainApp.methods.getTitans();
         for (int i = 0; i < titans.length; i++) {
-                if(titans[i]!=null){
-                    JComboBox cmb = getcmbTitan(i+1);              
-                    if(cmb==null){break;}
-                    else{
-                    int player = cmb.getSelectedIndex(); 
-                    if(player==1){                        
-                       titans[i].setPlayer("Player2");
+            if (titans[i] != null) {
+                JComboBox cmb = getcmbTitan(i + 1);
+                if (cmb == null) {
+                    break;
+                } else {
+                    int player = cmb.getSelectedIndex();
+                    if (player == 1) {
+                        titans[i].setPlayer("Player2");
                         contTitansPlayer1--;
-                    }else{
-                       titans[i].setPlayer("Player1");
+                    } else {
+                        titans[i].setPlayer("Player1");
                         contTitansPlayer2--;
-                        }
                     }
                 }
+            }
         }
         // Checks number of selected players
-        if(contTitansPlayer1>2){
-           return false;
-        }
-        else{
-            if(contTitansPlayer2>2){
+        if (contTitansPlayer1 > 2) {
+            return false;
+        } else {
+            if (contTitansPlayer2 > 2) {
                 return false;
             }
-            }
+        }
         return true;
     }
 
-    private String checkStringSize() { // Return the String cliked in cmb (Small,Medium,Large)
+    private String checkStringSize()
+    { // Return the String cliked in cmb (Small,Medium,Large)
         return (String) cmbSizeofmap.getSelectedItem();
     }
 
-    private void setSizeoftableGame(String sizeOfTable) { // storage column and row 
+    private void setSizeoftableGame(String sizeOfTable)
+    { // storage column and row 
         System.out.println(sizeOfTable);
         if (sizeOfTable.equals("Large")) {
             this.columnGame = 14;
@@ -407,7 +433,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -432,35 +459,43 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new SelectTitan().setVisible(true);
             }
         });
     }
     // <editor-fold defaultstate="collapsed" desc="Geters and Seters">
 
-    public String getElementOfArena() {
+    public String getElementOfArena()
+    {
         return elementOfArena;
     }
 
-    public void setElementOfArena(String elementOfArena) {
+    public void setElementOfArena(String elementOfArena)
+    {
         this.elementOfArena = elementOfArena;
     }
 
-    public int getColumnGame() {
+    public int getColumnGame()
+    {
         return columnGame;
     }
 
-    public void setColumnGame(int columnGame) {
+    public void setColumnGame(int columnGame)
+    {
         this.columnGame = columnGame;
     }
 
-    public int getRowGame() {
+    public int getRowGame()
+    {
         return rowGame;
     }
 
-    public void setRowGame(int rowGame) {
+    public void setRowGame(int rowGame)
+    {
         this.rowGame = rowGame;
     }
 
@@ -504,13 +539,15 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void openWindow(JFrame frame) {
+    public void openWindow(JFrame frame)
+    {
         lobby = (Lobby) frame;
         this.setVisible(true);
         lobby.setVisible(false);
     }
 
-    public void openWindows(JFrame frame) {
+    public void openWindows(JFrame frame)
+    {
         lobby = (Lobby) frame;
         lobby.setVisible(false);
         this.setVisible(true);
@@ -518,7 +555,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
     }
 
     @Override
-    public void goBack() {
+    public void goBack()
+    {
         this.dispose();
         lobby.setVisible(true);
     }

@@ -8,6 +8,8 @@ package pk.codeapp.screen;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +19,7 @@ import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.model.Dupla;
 import pk.codeapp.model.Path;
 import pk.codeapp.model.Tower;
+import static pk.codeapp.screen.MainApp.methods;
 
 public class SelectionTower extends javax.swing.JFrame implements ActionListener, DefaultRules{
 
@@ -31,6 +34,13 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         initComponents();
         this.setLocationRelativeTo(null); //Localization of Windows
          lblBackground.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg")); // Image Background 
+         this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
