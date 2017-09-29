@@ -58,6 +58,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         });
         mode = "pasive";
         btnAttack.setEnabled(false);
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -316,6 +317,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
                         System.out.println("Titan:" + titan.getName() + " Columna " + titan.getDupla().getColumn() + " Fila " + titan.getDupla().getRow());
                         buttonToPaint.setIcon(titan.getTiny());
+                        buttonToPaint.setBackground(java.awt.Color.blue);
                     }
                 } else {
                     if (getPositionOfTitan("player1") != null) {
@@ -326,6 +328,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
                         System.out.println("Titan:" + titan.getName() + " Columna " + titan.getDupla().getColumn() + " Fila " + titan.getDupla().getRow());
                         buttonToPaint.setIcon(titan.getTiny());
+                        buttonToPaint.setBackground(java.awt.Color.red);
                     }
 
                 }
@@ -426,14 +429,25 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (contMovesTitan > 0) {
             System.out.println("Entro al contador");
             if (gameSettings.checkRange(column, row, actualTitan)) { //Check range of titan
-                System.out.println("Posicion actual del Mouse: " + column + " -  " + row);
-                System.out.println("Posicion del titan: " + actualTitan.getDupla().getColumn() + " - " + actualTitan.getDupla().getRow());
+               
                 graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()] = null; // Delete before position
                 actualTitan.setDupla(new Dupla(column, row));
                 backupButton.setIcon(null);
+                if(backupButton.getColumn()>(methods.getColumnGame()/2-1)){
+                    backupButton.setBackground(java.awt.Color.gray);
+                }
+                else{
+                    backupButton.setBackground(null);
+                }
                 graphicsElements[column][row] = actualTitan; //set actual position in the matrix
                 backupButton = temp;
                 temp.setIcon(actualTitan.getTiny());
+                if(actualTitan.getPlayer().equals("Player1")){
+                    temp.setBackground(java.awt.Color.red);
+                }else{
+                    temp.setBackground(java.awt.Color.blue);
+                }
+                
                 contMovesTitan--;
                 btnAttack.setEnabled(true);
             }
@@ -447,6 +461,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (graphicsElements[column][row] instanceof Titan) {
             Titan titan = (Titan) graphicsElements[column][row];
             if (titan.getPlayer().equals(player)) {
+                
                 contMovesTitan = titan.getMoves();
                 backupButton = temp; // Backup the button to move
                 actualTitan = titan; // set Actual Titan
