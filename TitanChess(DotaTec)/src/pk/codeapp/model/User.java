@@ -16,11 +16,12 @@ public class User implements Serializable{
     private String name;
     private String password;
     private String email;
-    private Estadistics userEstadistics;
+    private Estadistics  userEstadistics= new Estadistics(0,0,0,0,0,0,0);
     public User(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
+       
     }
 
     public String getName() {
@@ -45,6 +46,17 @@ public class User implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Estadistics getUserEstadistics()
+    {   
+        
+        return userEstadistics;
+    }
+
+    public void setUserEstadistics(Estadistics userEstadistics)
+    {
+        this.userEstadistics = userEstadistics;
     }
     
 }

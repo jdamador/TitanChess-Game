@@ -37,7 +37,7 @@ public class Methods {
     private boolean checkTowerPlayer2;// Boolean to cheek quantity of towers in player 2
     private GraphicsElement graphicsElements[][]; // Matrix of Game
     private int columnGame, rowGame;
-
+    private User actual;
     private Titan[] titans = new Titan[8];
 
     /**
@@ -204,6 +204,18 @@ public class Methods {
     {
         this.element[i]= null;
     }
+
+    public User getActual()
+    {
+        return actual;
+    }
+
+    public void setActual(User actual)
+    {
+          System.out.println(actual);
+        this.actual = actual;
+    }
+    
     
 
     public void addTower(Tower newTower) { // Add tower in the matrix

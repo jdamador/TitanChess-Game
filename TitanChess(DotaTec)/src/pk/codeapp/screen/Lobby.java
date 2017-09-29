@@ -252,6 +252,13 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         jButton2.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Estadistics");
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, 210, 100));
 
         lblGifImage.setBackground(new java.awt.Color(0, 0, 0));
@@ -327,6 +334,13 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         selectTitan.openWindows(this);
         
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
+    {//GEN-HEADEREND:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DataSheet data= new DataSheet();
+        data.openWindow(this);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
