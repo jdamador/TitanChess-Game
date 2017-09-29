@@ -318,14 +318,17 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules {
         if (activateButtonTowers == true) { //Checks to tower is correct selected
             JOptionPane.showMessageDialog(rootPane, "!!! Select the towers to Play Game !!! ");
         } else {
-            if (addTitanInTheCorrectPlayer()==true) {
-           
+                
+                addTitanInTheCorrectPlayer();
+                if(contTitansPlayer1<2 && contTitansPlayer2<2){
                 String elementofArena=(String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
                 Game game = new Game();
                 game.openWindow(this);
                 
             }else{
+                 contTitansPlayer1=4;
+                 contTitansPlayer2=4;
                 JOptionPane.showMessageDialog(rootPane,"You need more Titans to pay, minimun 3 for player");
             }
 

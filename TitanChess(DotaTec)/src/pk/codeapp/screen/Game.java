@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javafx.scene.paint.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.methods.GameSettings;
@@ -27,6 +28,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private boolean running; // thread Game)
     private boolean turnOfPlayer; // Define turn of player
     private String actionToRealice; // Action to  realize the player
+    private int half = columnGame/2; // Half Game
     private Thread thread; // Main thread Game 
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
@@ -169,6 +171,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         paintTable(jPanelGame); //Paint table
         paintTowersGame(); // Paint towers and titans in the game
         paintStartTitans(); //Paint and set posicions in the game
+        init(); //Inicialization of init
 
     }
 
@@ -291,13 +294,36 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
+    public void actionPerformed(ActionEvent e) { // Click in the mouse
+        Path temp = (Path) e.getSource();
+        if(turnOfPlayer){ //Player 1
+            if(actionToRealice.equals("move")){ //Action move
+               // getTitan();
+            }else{ //Action Play
+                
+            }
+        }else{ //Player 2
+            if(actionToRealice.equals("move")){ //Action move
+            
+            }else{ //Action Play
+            
+            }
+        }
     }
 
     // Start Thread of Game 
     private void init() { // Inicialization of Varaibles
-   
+        //Start Game 
+        actionToRealice="move";
+        int playerStart = gameSettings.getRadom(2);
+        if(playerStart==0){
+            turnOfPlayer=true; // True is the player 1
+            JOptionPane.showMessageDialog(rootPane, "Start Player 1");
+        }else{
+            turnOfPlayer=false; // True is the player 2
+            JOptionPane.showMessageDialog(rootPane, "Start Player 2");
+        }
+        
     }
 
     private void tick() { // Variables
