@@ -39,7 +39,7 @@ public class Methods {
     private int columnGame, rowGame;
     private User actual;
     private Titan[] titans = new Titan[8];
-
+    private ArrayList<Titan> withoutCreating =new ArrayList();
     /**
      * Register new user in the game
      *
@@ -148,6 +148,8 @@ public class Methods {
     }
 
     //</editor-fold>
+    
+    //<editor-fold desc="Default Titans in the game" defaultstate="collapsed">
     public void defaulTitan() {
         //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
         Titan titan = new Titan("Mewtwo", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", 
@@ -168,8 +170,14 @@ public class Methods {
         titan = new Titan("Lucario", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", 
                 "src/pk/codeapp/tools/titans/titan3.gif","src/pk/codeapp/tools/titans/Icons/icon3.jpg");
         addTitan(titan);
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------
+        
+        titan=new Titan("Default1 ", 0, 0, 0, 0, "", "src/pk/codeapp/tools/titans/Icons/titan8.png", "src/pk/codeapp/tools/titans/titan8.png", "src/pk/codeapp/tools/titans/titan8.gif", "src/pk/codeapp/tools/titans/Icons/icon8.png");
+        withoutCreating.add(titan);
+        titan=new Titan("Default 2", 0, 0, 0, 0, "", "src/pk/codeapp/tools/titans/Icons/titan7.png", "src/pk/codeapp/tools/titans/titan7.png", "src/pk/codeapp/tools/titans/titan7.gif", "src/pk/codeapp/tools/titans/Icons/icon7.png");
+         withoutCreating.add(titan);
     }
+    //</editor-fold>
 
     public int getColumnGame() {
         return columnGame;
@@ -214,6 +222,16 @@ public class Methods {
     {
           System.out.println(actual);
         this.actual = actual;
+    }
+
+    public ArrayList<Titan> getWithoutCreating()
+    {
+        return withoutCreating;
+    }
+
+    public void setWithoutCreating(ArrayList<Titan> withoutCreating)
+    {
+        this.withoutCreating = withoutCreating;
     }
     
     
@@ -278,5 +296,20 @@ public class Methods {
 
         }
         return flag;
+    }
+
+    public void updateDefaults(int index)
+    {
+        withoutCreating.remove(index);
+    }
+    public void addInDefaults(Titan titan){
+        withoutCreating.add(titan);
+        for (int i = 0; i < titans.length; i++) {
+            if(titans[i]==titan){
+                titans[i]=null;
+               break;
+            }
+            
+        }
     }
 }

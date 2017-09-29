@@ -69,6 +69,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnEndTurn = new javax.swing.JButton();
         btnAttack = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter()
@@ -139,6 +140,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 600, -1, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -165,10 +179,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         // TODO add your handling code here:
         mode = "attack";
         JOptionPane.showMessageDialog(rootPane, "Select your enemy!");
-
     }//GEN-LAST:event_btnAttackActionPerformed
     private void changePlayer()
     {
+        btnAttack.setEnabled(false);
         if (turnOfPlayer) { //Player 1  - Player 2
             turnOfPlayer = false;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
@@ -375,6 +389,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnEndTurn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelGame;
     private javax.swing.JLabel lblBackground;
     // End of variables declaration//GEN-END:variables
@@ -435,6 +450,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 backupButton = temp; // Backup the button to move
                 actualTitan = titan; // set Actual Titan
                 JOptionPane.showMessageDialog(rootPane, "Move the Titan |All Movement " + titan.getMoves()); //Message to Move
+                btnAttack.setEnabled(true);
                 actionToRealice = "movePosition"; //set action to Moviment titan
             }
         }
@@ -520,7 +536,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 if (graphicsElements[column][row] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[column][row];
                     if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
-                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0)); //need send attack
+                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena); //need send attack
                         actionToRealice = "move";
                         mode = "pasive";
                          changePlayer();
@@ -529,7 +545,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 } else {
                     Titan titan = (Titan) graphicsElements[column][row];
                     if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
-                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0)); //need send attack
+                        gameSettings.attack(actualTitan, graphicsElements[column][row], actualTitan.getAttacks().get(0),elementArena); //need send attack
                         actionToRealice = "move";
                         mode = "pasive";
                          changePlayer();

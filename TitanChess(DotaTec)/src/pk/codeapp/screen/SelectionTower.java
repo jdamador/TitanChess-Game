@@ -49,8 +49,6 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
 
         jLabel1 = new javax.swing.JLabel();
         towerPlayer1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
@@ -62,7 +60,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Select the Position of towers");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(360, 30, 620, 50);
+        jLabel1.setBounds(350, 0, 620, 50);
 
         towerPlayer1.setOpaque(false);
 
@@ -74,23 +72,11 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         );
         towerPlayer1Layout.setVerticalGroup(
             towerPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         getContentPane().add(towerPlayer1);
-        towerPlayer1.setBounds(0, 70, 1280, 590);
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Player 2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(940, 110, 120, 30);
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Player 1");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(250, 110, 110, 30);
+        towerPlayer1.setBounds(0, 50, 1280, 570);
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -104,7 +90,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(10, 660, 110, 50);
+        jButton1.setBounds(20, 630, 110, 50);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/SelectTitan_Background.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
@@ -186,8 +172,6 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JPanel towerPlayer1;
     // End of variables declaration//GEN-END:variables

@@ -182,8 +182,15 @@ public class Titan extends GraphicsElement implements Serializable{
         return model;
     }
 
-    public void addAttack(Attack attack) {
-        attacks.add(attack);
+    public boolean addAttack(Attack attack) {
+        if(attacks.size()!=5){
+            attacks.add(attack);
+            return true;
+        }else{
+            return false;
+        }
+        
+        
     }
     
 }

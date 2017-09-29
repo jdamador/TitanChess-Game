@@ -339,6 +339,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
                 setElementOfArena(elementofArena);
                 Game game = new Game();
                 game.openWindow(this);
+               
 
             } else {
                 contTitansPlayer1 = 4;

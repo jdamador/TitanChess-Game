@@ -42,9 +42,14 @@ public class GameSettings
         return null;
     }
 
-    public void attack(Titan titan, GraphicsElement element2, Attack attack)
+    public void attack(Titan titan, GraphicsElement element2, Attack attack,String elementArena)
     {
+        
         int damage = getRadom(attack.getQuantityDamage() + 1);
+        if(titan.getVitalElement().equals(elementArena)){
+            int plus = (int) (attack.getQuantityDamage()*0.10);
+            damage+=plus;
+        }
         if (element2 instanceof Tower) {
             
             Tower tower = ((Tower) element2);
@@ -94,14 +99,16 @@ public class GameSettings
         if (actualTitan.getPlayer().equals("Player1")) {
             if ((columnTitan + 1 == column && rowTitan == row)
                     || (columnTitan == column && rowTitan + 1 == row)
-                    || (columnTitan == column && rowTitan - 1 == row)) {
+                    || (columnTitan == column && rowTitan - 1 == row)
+                    ||(columnTitan-1== column && rowTitan == row)) {
                 return true;
 
             }
         } else {
             if ((columnTitan - 1 == column && rowTitan == row)
                     || (columnTitan == column && rowTitan + 1 == row)
-                    || (columnTitan == column && rowTitan - 1 == row)) {
+                    || (columnTitan == column && rowTitan - 1 == row)
+                    || (columnTitan+1 == column && rowTitan== row)) {
                 return true;
 
             }

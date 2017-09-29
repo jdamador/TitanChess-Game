@@ -7,6 +7,7 @@ package pk.codeapp.screen;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
@@ -27,7 +28,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     private Methods methods = MainApp.methods;
     private Titan[] titans;
     String selectedName;
-    String[] names;
+    ArrayList<Titan> nom;
 
     /**
      * Creates new form GameMaster
@@ -35,6 +36,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
     public GameMaster()
     {
         titans = methods.getTitans();
+        nom = methods.getWithoutCreating();
         initComponents();
         chargeTitansInComboBox();
         this.addWindowListener(new WindowAdapter()
@@ -185,7 +187,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
                 btnAddAttackActionPerformed(evt);
             }
         });
-        addAttack.add(btnAddAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, -1, -1));
+        addAttack.add(btnAddAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, -1, -1));
 
         sliderDamageAttack.setBackground(new java.awt.Color(102, 102, 102));
         sliderDamageAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -596,6 +598,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         // TODO add your handling code here:
         if (deleteTitan()) {
             JOptionPane.showMessageDialog(rootPane, "Delete sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+            chargeTitansInComboBox();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Delete Fail", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -777,17 +780,12 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
                 model.addElement(titans[i].getName());
             }
         }
-        model = new DefaultComboBoxModel();
         cmbAttackTitans.setModel(model);
         cmbDeleteTitans.setModel(model);
         cmbModifyTitans.setModel(model);
-        names = methods.getElement();
-
-        model.addElement("");
-        for (int i = 0; i < names.length; i++) {
-            if (names[i] != null) {
-                model.addElement(names[i]);
-            }
+        model = new DefaultComboBoxModel();
+        for (int i = 0; i < nom.size(); i++) {
+            model.addElement(nom.get(i).getName());
         }
         cmbNewPath.setModel(model);
     }
@@ -802,108 +800,40 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
                     String name = (String) cmbAttackTitans.getSelectedItem();
                     if (titans[i].getName().equals(name)) {
                         Attack attack = new Attack(attackName.getText(), sliderManaAttack.getValue(), sliderDamageAttack.getValue());
-                        titans[i].addAttack(attack);
-                        JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
-                        break;
+                        if (titans[i].addAttack(attack)) {
+                            JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "no more can be added", "Alert", JOptionPane.WARNING_MESSAGE);
+                            break;
                     }
                 }
             }
         }
     }
-
+    }
     private void createNewTitan()
     {
-        String name = txtNewName.getText();
-        if (!name.isEmpty() && names.length != 0) {
-            String path = (String) cmbNewPath.getSelectedItem();
-            int index = cmbNewPath.getSelectedIndex();
-            String imageBig = getImageBig(path);
-            String icon = getIcon(path);
-            String gif = getGif(path);
-            String tiny = getTiny(path);
-            int damage = slideNewDamage.getValue();
-            int life = slideNewLife.getValue();
-            int mana = slideNewMana.getValue();
-            methods.setElement(index);
-            String vitalElement = (String) cmbVitalElement.getSelectedItem();
-            int moves = cmbNewMoves.getSelectedIndex() + 1;
-
-            Titan newTitan = new Titan(name, life, moves, damage, mana, vitalElement, icon, imageBig, gif, tiny);
-
-            if (methods.addTitan(newTitan)) {
-                chargeTitansInComboBox();
-                JOptionPane.showMessageDialog(rootPane, "Add sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "The titan is already exist!", "Alert", JOptionPane.WARNING_MESSAGE);
-            }
+        if (txtNewName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank", "Alert", JOptionPane.WARNING_MESSAGE);
+            int index = cmbNewPath.getSelectedIndex();
+            Titan newTitan = nom.get(index);
+            newTitan.setName(txtNewName.getText());
+            newTitan.setDamage(slideNewDamage.getValue());
+            newTitan.setLife(slideNewLife.getValue());
+            newTitan.setMana(slideNewMana.getValue());
+            String element = (String) cmbVitalElement.getSelectedItem();
+            newTitan.setVitalElement(element);
+            newTitan.setMoves(Integer.parseInt((String) cmbNewMoves.getSelectedItem()));
+            methods.addTitan(newTitan);
+            JOptionPane.showMessageDialog(rootPane, "Operation Sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+            methods.updateDefaults(index);
+            chargeTitansInComboBox();
         }
 
     }
-//<editor-fold desc="ALL METHODS TO GET DEFAULTS IMAGES HERE" defaultstate="collapsed">
 
-    private String getImageBig(String path)
-    {
-        switch (path) {
-            case "Buckbeak": {
-                return "src/pk/codeapp/tools/titans/titan8.png";
-            }
-            case "Foxy": {
-                return "src/pk/codeapp/tools/titans/titan7.png";
-            }
-            case "Sobeck": {
-                return "src/pk/codeapp/tools/titans/titan6.png";
-            }
-
-        }
-        return null;
-    }
-
-    private String getIcon(String path)
-    {
-        switch (path) {
-            case "Buckbeak": {
-                return "src/pk/codeapp/tools/titans/Icons/titan8.png";
-            }
-            case "Foxy": {
-                return "src/pk/codeapp/tools/titans/Icons/titan7.png";
-            }
-
-        }
-        return null;
-    }
-
-    private String getGif(String path)
-    {
-        switch (path) {
-            case "Buckbeak": {
-                return "src/pk/codeapp/tools/titans/titan8.gif";
-            }
-            case "Foxy": {
-                return "src/pk/codeapp/tools/titans/titan7.gif";
-            }
-
-        }
-
-        return null;
-    }
-
-    private String getTiny(String path)
-    {
-        switch (path) {
-            case "Buckbeak": {
-                return "src/pk/codeapp/tools/titans/Icons/icon8.png";
-            }
-            case "Foxy": {
-                return "src/pk/codeapp/tools/titans/Icons/icon7.png";
-            }
-
-        }
-        return null;
-    }
-
-    //</editor-fold>
     /**
      * Delete titan from array
      *
@@ -915,7 +845,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] != null) {
                 if (titans[i].getName().equals(nameToDelete)) {
-                    titans[i] = null;
+                    methods.addInDefaults(titans[i]);
                     return true;
                 }
             }
