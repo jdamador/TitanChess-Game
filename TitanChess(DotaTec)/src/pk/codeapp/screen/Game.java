@@ -15,10 +15,12 @@ import javax.swing.JPanel;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.methods.GameSettings;
 import pk.codeapp.model.Dupla;
+import pk.codeapp.model.Estadistics;
 import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Path;
 import pk.codeapp.model.Titan;
 import pk.codeapp.model.Tower;
+import pk.codeapp.model.User;
 import static pk.codeapp.screen.MainApp.methods;
 
 public class Game extends javax.swing.JFrame implements DefaultRules, ActionListener, Runnable
@@ -265,7 +267,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
      */
     private void paintBackground(String elementArena)
     { // Paint The arena of type respective
-        
+
         switch (elementArena) {
 
             case "Fire": {
@@ -342,23 +344,23 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
                 if (titan.getPlayer().equals("Player2")) {
                     if (getPositionOfTitan("player2") != null) {
-                      
+
                         Dupla dupla = getPositionOfTitan("player2");
                         titan.setDupla(dupla);
                         graphicsElements[titan.getDupla().getColumn()][titan.getDupla().getRow()] = titan; // Set  titan in new Position in the matrix of game 
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
-                        
+
                         buttonToPaint.setIcon(titan.getTiny());
                         buttonToPaint.setBackground(java.awt.Color.blue);
                     }
                 } else {
                     if (getPositionOfTitan("player1") != null) {
-                       
+
                         Dupla dupla = getPositionOfTitan("player1");
                         titan.setDupla(dupla);
                         graphicsElements[titan.getDupla().getColumn()][titan.getDupla().getRow()] = titan; // Set  titan in new Position in the matrix of game 
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, titan.getDupla().getColumn(), titan.getDupla().getRow()); //Methods to return the button
-                        
+
                         buttonToPaint.setIcon(titan.getTiny());
                         buttonToPaint.setBackground(java.awt.Color.red);
                     }
@@ -377,7 +379,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     Tower tower = (Tower) graphicsElements[i][j];
 
                     if (tower.getTowerPlayer().equals(player)) {
-                      
+
                         if (graphicsElements[i][j + 1] == null) {
 
                             return new Dupla(i, j + 1);
@@ -455,13 +457,17 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-    private void increaseMana(){
-        
+
+    private void increaseMana()
+    {
+
     }
-    private void movePosition(int column, int row, Path temp) { // Move Position of titan
+
+    private void movePosition(int column, int row, Path temp)
+    { // Move Position of titan
         System.out.println("Entro a move Position" + " El contador es: " + contMovesTitan);
         if (contMovesTitan > 0) {
-   
+
             if (gameSettings.checkRange(column, row, actualTitan)) { //Check range of titan
 
                 graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()] = null; // Delete before position
@@ -507,6 +513,15 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
+
+        int index = searchUserToEdit(methods.getActual());
+        int played = methods.getPlayers().get(index).getUserEstadistics().getPlayedGames();
+        methods.getPlayers().get(index).getUserEstadistics().setPlayedGames(played+1);
+
+        index = searchUserToEdit(methods.getPlayer2());
+        played = methods.getPlayers().get(index).getUserEstadistics().getPlayedGames();
+        methods.getPlayers().get(index).getUserEstadistics().setPlayedGames(played+1);
+
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
 
@@ -610,7 +625,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     public synchronized void start()
     {
-       
+
         if (running) {
             return;
         }
@@ -654,23 +669,18 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                         auxWindowstoAttack.getToolsToAttack(actualTitan, tower, this, elementArena);
 
                     }
-
                 } else {
                     Titan titan = (Titan) graphicsElements[column][row];
                     if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
 
                         auxWindowstoAttack.getToolsToAttack(actualTitan, titan, this, elementArena);
-
                     }
                 }
-
             } else {
                 JOptionPane.showMessageDialog(rootPane, "out of range");
-
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "there is nobody there");
-
         }
     }
 
@@ -691,11 +701,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 path.setIcon(new ImageIcon("src/pk/codeapp/tools/deletetower.png"));
                 path.setEnabled(false);
             }
-
         } else {
             if (element instanceof Titan) {
                 int midGame = (columnGame / 2);
                 if (((Titan) element).getLife() == 0) {
+                    increaseEstadistics((Titan) element);
                     titan2 = (Titan) element;
                     dupla = element.getDupla();
                     deadTitan = true;
@@ -715,4 +725,29 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         changePlayer();
     }
 
+    private void increaseEstadistics(Titan titan)
+    {
+        if (titan.getPlayer().equals("Player1")) {
+            int index = searchUserToEdit(methods.getActual());
+            Estadistics estadistics = methods.getPlayers().get(index).getUserEstadistics();
+            estadistics.setDeadTitans(estadistics.getDeadTitans() + 1);
+            methods.getPlayers().get(index).setUserEstadistics(estadistics);
+        } else {
+            int index = searchUserToEdit(methods.getPlayer2());
+            Estadistics estadistics = methods.getPlayers().get(index).getUserEstadistics();
+            estadistics.setDeadTitans(estadistics.getDeadTitans() + 1);
+            methods.getPlayers().get(index).setUserEstadistics(estadistics);
+        }
+    }
+
+    public int searchUserToEdit(User user)
+    {
+        ArrayList<User> users = methods.getPlayers();
+        for (int i = 0; i < users.size(); i++) {
+            if (user.equals(users.get(i))) {
+                return i;
+            }
+        }
+        return Integer.MAX_VALUE;
+    }
 }
