@@ -181,13 +181,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         lblPictureTitan.setRequestFocusEnabled(false);
         getContentPane().add(lblPictureTitan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
 
-        jPMana.setBackground(new java.awt.Color(153, 153, 153));
+        jPMana.setBackground(new java.awt.Color(0, 153, 255));
         jPMana.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jPMana.setForeground(new java.awt.Color(0, 0, 0));
         jPMana.setStringPainted(true);
         getContentPane().add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 660, 420, 40));
 
-        jPlife.setBackground(new java.awt.Color(153, 153, 153));
+        jPlife.setBackground(new java.awt.Color(51, 255, 51));
         jPlife.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jPlife.setForeground(new java.awt.Color(0, 0, 0));
         jPlife.setStringPainted(true);
