@@ -257,6 +257,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             paneTurn.setBackground(java.awt.Color.red);
         }
         if (deadTitan) {
+            System.out.println(contTimeToDead);
             this.contTimeToDead++;
         }
     }
@@ -343,7 +344,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     public void goBack()
     {
         this.dispose();
-        selectTitan.setVisible(true);
+        selectTitan.goBack();
     }
 
     private void paintTowersGame()
@@ -576,6 +577,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
+        System.out.println("Player 1 Towers: "+contTowersP1);
+        System.out.println("Player 2 Towers: "+contTowersP2);
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
 
@@ -583,29 +586,27 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void whoWin()
     {
+       System.out.println("Tower Player 1: "+contTowersP1);
+       System.out.println("Tower Player 2: " + contTowersP2);
         if (contTowersP1 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
             this.dispose();
-            SelectTitan.lobby.setVisible(true);
+            Lobby lobby=selectTitan.getLobby();
+            lobby.setVisible(true);
             /// 
+        
         } else if (contTowersP2 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             this.dispose();
-            SelectTitan.lobby.setVisible(true);
+            Lobby lobby=selectTitan.getLobby();
+            lobby.setVisible(true);
             // 
         }
     }
 
     private void whoDead()
     { //Methods to titans is dead
-
         if (deadTitan) {
-
-            int column = titan2.getDupla().getColumn();
-            int row = titan2.getDupla().getRow();
-
-            graphicsElements[column][row] = null;
-
             if (contTimeToDead == 4) { //Before to 1 turn paint and add titan in the matrix
 
                 if (titan2.getPlayer().equals("Player1")) {
@@ -618,7 +619,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     Dupla dupla = getPositionOfTitan("player2");
                     titan2.setDupla(dupla);
                 }
-
+                titan2.setLife(titan2.getMaxLife());
+                titan2.setMana(titan2.getMaxMana());
                 graphicsElements[titan2.getDupla().getColumn()][titan2.getDupla().getRow()] = titan2;
                 Path path = gameSettings.searchButtonToPaint(buttons, titan2.getDupla().getColumn(), titan2.getDupla().getRow());
                 path.setIcon(titan2.getTiny());
@@ -748,7 +750,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         Dupla dupla;
         if (element instanceof Tower) {
             if (((Tower) element).getQuantityStamina() == 0) {
-                if (((Tower) element).getTowerPlayer().equals("Player1")) {
+                Tower tower = (Tower)element;
+                if (tower.getTowerPlayer().equals("player1")) {
                     contTowersP1--;
                 } else {
                     contTowersP2--;
