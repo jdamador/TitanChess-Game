@@ -33,7 +33,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private Lobby lobby;
     private int contTitansPlayer1 = 4;
     private int contTitansPlayer2 = 4;
-    private ArrayList<User> enemies = methods.getPlayers();
+    private ArrayList<User> enemies ;
 
     SelectionTower selectionTower;
 
@@ -63,6 +63,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
                 System.exit(0);
             }
         });
+        enemies=methods.getPlayers();
         chargerEnemy();
     }
 
