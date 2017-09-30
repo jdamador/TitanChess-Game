@@ -18,15 +18,19 @@ import pk.codeapp.model.Tower;
  *
  * @author Jose Pablo Brenes
  */
-public class AuxAttackMode extends javax.swing.JFrame {
+public class AuxAttackMode extends javax.swing.JFrame
+{
 
+    static boolean state;
     private Titan titan;
     private GraphicsElement element;
     private DefaultComboBoxModel<String> listAttacks = new DefaultComboBoxModel();
     private Game window;
-    private GameSettings gameSettings;
+    private GameSettings gameSettings = new GameSettings(MainApp.methods);
     private String arena;
-    public AuxAttackMode() {
+
+    public AuxAttackMode()
+    {
         initComponents();
     }
 
@@ -37,7 +41,8 @@ public class AuxAttackMode extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -62,8 +67,10 @@ public class AuxAttackMode extends javax.swing.JFrame {
         btnMakeAttack.setBackground(new java.awt.Color(0, 0, 0));
         btnMakeAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnMakeAttack.setText("Make Attack");
-        btnMakeAttack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMakeAttack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMakeAttackActionPerformed(evt);
             }
         });
@@ -97,11 +104,11 @@ public class AuxAttackMode extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(btnMakeAttack))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(189, 189, 189)
-                        .addComponent(cmbSpecialAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbSpecialAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(btnMakeAttack)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,15 +148,18 @@ public class AuxAttackMode extends javax.swing.JFrame {
         Attack attack = searchAttack(attackName);
 
         if (attack != null) {
-            gameSettings.attack(titan, element,attack, arena); //need send attack
-
+            System.out.println("Entrando");
+            gameSettings.attack(titan, element, attack, arena); //need send attack
+            
+            goBack();
         }
     }//GEN-LAST:event_btnMakeAttackActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -175,16 +185,20 @@ public class AuxAttackMode extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new AuxAttackMode().setVisible(true);
             }
         });
     }
 
-    public Attack searchAttack(String name) {
+    public Attack searchAttack(String name)
+    {
         for (int i = 0; i < titan.getAttacks().size(); i++) {
             if (titan.getAttacks().get(i).getNameAttack().equals(name)) {
+
                 return titan.getAttacks().get(i);
             }
 
@@ -192,26 +206,31 @@ public class AuxAttackMode extends javax.swing.JFrame {
         return null;
     }
 
-    public void getToolsToAttack(Titan titan, GraphicsElement element, Game window,String arena) { // Get tools to make attack
+    public void getToolsToAttack(Titan titan, GraphicsElement element, Game window, String arena)
+    { // Get tools to make attack
         this.titan = titan;
         this.element = element;
         this.window = window;
-        this.arena=arena;
+        this.setVisible(true);
+        window.setEnabled(false);
+        this.arena = arena;
         viewAttacks(); // Show attacks in the cmb
         viewTitans();
     }
 
-    private void viewTitans() {
+    private void viewTitans()
+    {
         lblActual.setIcon(this.titan.getIcon());
         if (element instanceof Titan) {
             Titan titan = (Titan) element;
             lblDefended.setIcon(titan.getIcon());
         } else {
-            lblDefended.setIcon(new ImageIcon("src/pk/codeapp/tools/SelectTitan_Background.jpg"));
+            lblDefended.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
         }
     }
 
-    private void viewAttacks() {
+    private void viewAttacks()
+    {
         for (int i = 0; i < titan.getAttacks().size(); i++) {
             String attack = titan.getAttacks().get(i).getNameAttack();
             listAttacks.addElement(attack);
@@ -227,4 +246,12 @@ public class AuxAttackMode extends javax.swing.JFrame {
     private javax.swing.JLabel lblArrow;
     private javax.swing.JLabel lblDefended;
     // End of variables declaration//GEN-END:variables
+
+    private void goBack()
+    {   
+        window.setEnabled(true);
+        state = true;
+        this.dispose();
+        
+    }
 }

@@ -50,34 +50,41 @@ public class GameSettings
             int plus = (int) (attack.getQuantityDamage()*0.10);
             damage+=plus;
         }
+      
         if (element2 instanceof Tower) {
             
             Tower tower = ((Tower) element2);
-             System.out.println(tower.getQuantityStamina());
+           
             if (damage < tower.getQuantityStamina()) {
                 tower.setQuantityStamina(tower.getQuantityStamina() - damage);
                 titan.setMana(titan.getMana()-attack.getQuantityMana());
-                System.out.println(tower.getQuantityStamina());
-                methods.updateInGraphicsElements(element2);
+               
+                methods.updateInGraphicsElements(tower);
+                methods.updateInGraphicsElements(titan);
+                  JOptionPane.showMessageDialog(null, damage);
                 return true;
             }
             else{
                 tower.setQuantityStamina(0);
+                methods.updateInGraphicsElements(tower);
+                methods.updateInGraphicsElements(titan);
                 return false;
             }
         } else {
             Titan titan2= (Titan)element2;
-            System.out.println(titan.getLife());
+           
             if(damage<titan2.getLife()){
-                titan.setLife(titan.getLife()-damage);
-                System.out.println(titan.getLife());
+                titan.setLife(titan2.getLife()-damage);
                 titan.setMana(titan.getMana()-attack.getQuantityMana());
+                methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
-                System.out.println();
+              JOptionPane.showMessageDialog(null, damage);
                 return true;
             }
             else{
-                titan.setLife(0);
+                titan2.setLife(0);
+                methods.updateInGraphicsElements(titan2);
+                methods.updateInGraphicsElements(titan);
                 return false;
             }
         }

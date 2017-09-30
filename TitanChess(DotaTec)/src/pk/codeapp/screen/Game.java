@@ -25,6 +25,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 {
 
     //Inicialization of Variables
+    AuxAttackMode auxWindowstoAttack = new AuxAttackMode();
     private SelectTitan selectTitan;  // Before Windows
     private String elementArena;
     private int columnGame;
@@ -40,7 +41,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
     private GameSettings gameSettings = new GameSettings(MainApp.methods); // Methods to Game
-    private int contTowersP1,contTowersP2;
+    private int contTowersP1, contTowersP2;
     Titan titans[];
     private String mode;
 
@@ -58,7 +59,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         });
         mode = "pasive";
         btnAttack.setEnabled(false);
-       
+
     }
 
     @SuppressWarnings("unchecked")
@@ -304,7 +305,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     { //Paint start champions in the table
         titans = MainApp.methods.getTitans();
         for (int i = 0; i < titans.length; i++) {
-            
+
             Titan titan = titans[i];
             if (titan != null) {
 
@@ -429,25 +430,24 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (contMovesTitan > 0) {
             System.out.println("Entro al contador");
             if (gameSettings.checkRange(column, row, actualTitan)) { //Check range of titan
-               
+
                 graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()] = null; // Delete before position
                 actualTitan.setDupla(new Dupla(column, row));
                 backupButton.setIcon(null);
-                if(backupButton.getColumn()>(methods.getColumnGame()/2-1)){
+                if (backupButton.getColumn() > (methods.getColumnGame() / 2 - 1)) {
                     backupButton.setBackground(java.awt.Color.gray);
-                }
-                else{
+                } else {
                     backupButton.setBackground(null);
                 }
                 graphicsElements[column][row] = actualTitan; //set actual position in the matrix
                 backupButton = temp;
                 temp.setIcon(actualTitan.getTiny());
-                if(actualTitan.getPlayer().equals("Player1")){
+                if (actualTitan.getPlayer().equals("Player1")) {
                     temp.setBackground(java.awt.Color.red);
-                }else{
+                } else {
                     temp.setBackground(java.awt.Color.blue);
                 }
-                
+
                 contMovesTitan--;
                 btnAttack.setEnabled(true);
             }
@@ -461,7 +461,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (graphicsElements[column][row] instanceof Titan) {
             Titan titan = (Titan) graphicsElements[column][row];
             if (titan.getPlayer().equals(player)) {
-                
+
                 contMovesTitan = titan.getMoves();
                 backupButton = temp; // Backup the button to move
                 actualTitan = titan; // set Actual Titan
@@ -471,10 +471,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
     }
-   public void obtainQuantityTower(int contTowersP1, int contTowersP2) {
+
+    public void obtainQuantityTower(int contTowersP1, int contTowersP2)
+    {
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
     }
+
     // Start Thread of Game 
     private void init()
     { // Inicialization of Varaibles
@@ -555,23 +558,37 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 if (graphicsElements[column][row] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[column][row];
                     if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
-                        AuxAttackMode auxWindowstoAttack = new AuxAttackMode();
-                        
-                        auxWindowstoAttack.getToolsToAttack(actualTitan, tower,this,elementArena);
-                        actionToRealice = "move";
-                        mode = "pasive";
-                        changePlayer();
+
+                        auxWindowstoAttack.getToolsToAttack(actualTitan, tower, this, elementArena);
+                        if (auxWindowstoAttack.state == true) {
+                            JOptionPane.showMessageDialog(rootPane, "Registration was successful", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+                            tower = (Tower) graphicsElements[column][row];
+                            if (tower.getQuantityStamina() == 0) {
+                                graphicsElements[column][row] = null;
+                            }
+                            actionToRealice = "move";
+                            mode = "pasive";
+                            changePlayer();
+                        }
 
                     }
+
                 } else {
                     Titan titan = (Titan) graphicsElements[column][row];
                     if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
-                        AuxAttackMode auxWindowstoAttack = new AuxAttackMode();
-                        
-                        auxWindowstoAttack.getToolsToAttack(actualTitan, titan,this,elementArena);
-                        actionToRealice = "move";
-                        mode = "pasive";
-                         changePlayer();
+
+                        auxWindowstoAttack.getToolsToAttack(actualTitan, titan, this, elementArena);
+                        if (auxWindowstoAttack.state == true) {
+                            JOptionPane.showMessageDialog(rootPane, "Registration was successful", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+                            titan = (Titan) graphicsElements[column][row];
+                            if (titan.getLife() == 0) {
+                                graphicsElements[column][row] = null;
+                            }
+                            actionToRealice = "move";
+                            mode = "pasive";
+                            changePlayer();
+                        }
+
                     }
                 }
 
