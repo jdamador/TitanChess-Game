@@ -30,7 +30,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private int minimumTitan = 0; // Minimum titans to the players has selected
     private String elementOfArena;
     private Titan[] titans;
-    static Lobby lobby;
+    private Lobby lobby;
     private int contTitansPlayer1 = 4;
     private int contTitansPlayer2 = 4;
     private int contTowersP1,contTowersP2;
@@ -541,6 +541,14 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
 
     public void setContTowersP2(int contTowersP2) {
         this.contTowersP2 = contTowersP2;
+    }
+
+    public Lobby getLobby() {
+        return lobby;
+    }
+
+    public void setLobby(Lobby lobby) {
+        this.lobby = lobby;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

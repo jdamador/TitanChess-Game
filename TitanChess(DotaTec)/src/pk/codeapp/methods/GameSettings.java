@@ -84,16 +84,16 @@ public class GameSettings
                 
                 if (newDamege < titan2.getLife()) {
 
-                    titan.setLife(titan2.getLife() - newDamege);
+                    titan.setLife(titan2.getLife() - damage);
                     titan.setMana(titan.getMana() - attack.getQuantityMana());
-                    JOptionPane.showMessageDialog(null, "Damage caused :" + newDamege);
+                    JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
                     methods.updateInGraphicsElements(titan2);
                     methods.updateInGraphicsElements(titan);
 
                 } else {
 
                     titan2.setLife(0);
-                    JOptionPane.showMessageDialog(null, "Damage caused :" + newDamege);
+                    JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
 
                     titan2.setLife(0);
 

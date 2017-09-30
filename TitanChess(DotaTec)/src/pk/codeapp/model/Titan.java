@@ -24,6 +24,8 @@ public class Titan extends GraphicsElement implements Serializable{
     private String vitalElement;
     private int damage;
     private int mana;
+    private int maxMana;
+    private int maxLife;
     //Graphics Attibutes
      private ImageIcon icon;
      private ImageIcon gif;
@@ -53,10 +55,28 @@ public class Titan extends GraphicsElement implements Serializable{
         Attack basic = new Attack("Beat you up", 0, 70);
         attacks.add(basic);
         this.defense=100;
+        this.maxLife=life;
+        this.maxMana=mana;
         
     }
     //<editor-fold desc="*Getter and Setter*" defaultstate=""collapsed">
 
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
+
+    public int getMaxLife() {
+        return maxLife;
+    }
+
+    public void setMaxLife(int maxLife) {
+        this.maxLife = maxLife;
+    }
+    
     public ImageIcon getTiny() {
         return tiny;
     }
