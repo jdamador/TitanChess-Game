@@ -6,6 +6,7 @@
 package pk.codeapp.screen;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -58,7 +59,6 @@ public class AuxAttackMode extends javax.swing.JFrame
         lblDefended = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setUndecorated(true);
         setResizable(false);
 
@@ -157,18 +157,18 @@ public class AuxAttackMode extends javax.swing.JFrame
 
         if (attack != null) {
             System.out.println("Entrando");
-             lblDefended.setIcon(new ImageIcon("src/pk/codeapp/tools/explosion.gif"));
+
+            lblDefended.setIcon(new ImageIcon("src/pk/codeapp/tools/explosion.gif"));
             gameSettings.attack(titan, element, attack, arena); //need send attack
-           
-            try {
-               
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-              
-                Thread.currentThread().interrupt();
-            }
-              goBack();
+            
+            window.setEnabled(true);
+            window.setVisible(true);
+            this.dispose();
+
+            window.changeStates(element);
         }
+
+        goBack();
     }//GEN-LAST:event_btnMakeAttackActionPerformed
 
     /**
@@ -266,9 +266,6 @@ public class AuxAttackMode extends javax.swing.JFrame
 
     private void goBack()
     {
-        window.setEnabled(true);
 
-        this.dispose();
-        window.changeStates(element);
     }
 }

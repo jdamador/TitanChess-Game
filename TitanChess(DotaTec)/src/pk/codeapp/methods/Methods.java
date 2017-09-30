@@ -293,6 +293,7 @@ public class Methods {
             row=tw.getDupla().getRow();
         }
         graphicsElements[column][row]=element;
+        return;
     }
 
     public boolean search(Titan titan) {
@@ -316,7 +317,7 @@ public class Methods {
     public void addInDefaults(Titan titan){
         withoutCreating.add(titan);
         for (int i = 0; i < titans.length; i++) {
-            if(titans[i]==titan){
+            if(titans[i].equals(titan)){
                 titans[i]=null;
                break;
             }

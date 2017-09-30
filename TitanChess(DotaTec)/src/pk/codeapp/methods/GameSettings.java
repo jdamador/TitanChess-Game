@@ -21,7 +21,8 @@ import pk.codeapp.screen.MainApp;
  *
  * @author Jose Pablo Brenes
  */
-public class GameSettings {
+public class GameSettings
+{
 
     private int contTowersP1;
     private int contTowersP2;
@@ -31,12 +32,14 @@ public class GameSettings {
     Random randomGenerator = new Random();
     Methods methods;
 
-    public GameSettings(Methods methods) {
+    public GameSettings(Methods methods)
+    {
         this.methods = methods;
 
     }
 
-    public Path searchButtonToPaint(ArrayList buttons, int column, int row) {
+    public Path searchButtonToPaint(ArrayList buttons, int column, int row)
+    {
         for (int i = 0; i < buttons.size(); i++) {
             Path button = (Path) buttons.get(i);
             if (button.getColumn() == column && button.getRow() == row) {
@@ -46,65 +49,54 @@ public class GameSettings {
         return null;
     }
 
-    public void attack(Titan titan, GraphicsElement element2, Attack attack, String elementArena) {
-
-        int damage = getRadom(attack.getQuantityDamage() + 1);
+    public void attack(Titan titan, GraphicsElement element2, Attack attack, String elementArena)
+    {
+     
+        int damage = getRadom(attack.getQuantityDamage() + 1) + 1;
         if (titan.getVitalElement().equals(elementArena)) {
             int plus = (int) (attack.getQuantityDamage() * 0.10);
             damage += plus;
         }
-
+        System.out.println(elementArena);
         if (element2 instanceof Tower) {
-
             Tower tower = ((Tower) element2);
-
+            System.out.println(tower);
             if (damage < tower.getQuantityStamina()) {
                 tower.setQuantityStamina(tower.getQuantityStamina() - damage);
                 titan.setMana(titan.getMana() - attack.getQuantityMana());
-
+                JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
-                JOptionPane.showMessageDialog(null, "Damage caused :"+damage);
-                
+                return;
             } else {
-                if (tower.getTowerPlayer().equals("Player1")) //Less tower 
-                {
-                    contTowersP1--;
-                } else {
-                    contTowersP2--;
-                }
-
                 tower.setQuantityStamina(0);
-
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
-               
+                 JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
             }
-
         } else {
             titan2 = (Titan) element2;
-
             if (damage < titan2.getLife()) {
                 titan.setLife(titan2.getLife() - damage);
                 titan.setMana(titan.getMana() - attack.getQuantityMana());
+                  JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
                 methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
-                JOptionPane.showMessageDialog(null, "Damage caused :"+damage);
-                
+              
             } else {
-                deadTitan = true;
                 titan2.setLife(0);
-                deadTitan = true; // Active dead titan
+                  JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
                 methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
-                
+               
             }
 
         }
 
     }
 
-    public boolean isSomebodyHere(int column, int row, GraphicsElement[][] graphicsElements) {
+    public boolean isSomebodyHere(int column, int row, GraphicsElement[][] graphicsElements)
+    {
         if (graphicsElements[column][row] instanceof Tower) {
             return false;
         } else if (graphicsElements[column][row] instanceof Titan) {
@@ -113,7 +105,8 @@ public class GameSettings {
         return true;
     }
 
-    public int getRadom(int end) {
+    public int getRadom(int end)
+    {
 
         int num = randomGenerator.nextInt(end);
         return num;
@@ -133,43 +126,53 @@ public class GameSettings {
         return false;
     }
 
-    public int getContTowersP1() {
+    public int getContTowersP1()
+    {
         return contTowersP1;
     }
 
-    public void setContTowersP1(int contTowersP1) {
+    public void setContTowersP1(int contTowersP1)
+    {
         this.contTowersP1 = contTowersP1;
     }
 
-    public int getContTowersP2() {
+    public int getContTowersP2()
+    {
         return contTowersP2;
     }
 
-    public void setContTowersP2(int contTowersP2) {
+    public void setContTowersP2(int contTowersP2)
+    {
         this.contTowersP2 = contTowersP2;
     }
 
-    public boolean isDeadTitan() {
+    public boolean isDeadTitan()
+    {
         return deadTitan;
     }
 
-    public void setDeadTitan(boolean deadTitan) {
+    public void setDeadTitan(boolean deadTitan)
+    {
         this.deadTitan = deadTitan;
     }
 
-    public ArrayList<Path> getButtons() {
+    public ArrayList<Path> getButtons()
+    {
         return buttons;
     }
 
-    public void setButtons(ArrayList<Path> buttons) {
+    public void setButtons(ArrayList<Path> buttons)
+    {
         this.buttons = buttons;
     }
 
-    public Titan getTitan2() {
+    public Titan getTitan2()
+    {
         return titan2;
     }
 
-    public void setTitan2(Titan titan2) {
+    public void setTitan2(Titan titan2)
+    {
         this.titan2 = titan2;
     }
 
