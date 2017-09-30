@@ -614,7 +614,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         this.dispose();
         lobby.setVisible(true);
     }
-
+    
     private void chargerEnemy()
     {
         DefaultComboBoxModel<String>model = new DefaultComboBoxModel();

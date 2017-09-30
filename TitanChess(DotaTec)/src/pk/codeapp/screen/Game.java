@@ -612,15 +612,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (contTowersP1 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
             this.dispose();
-            Lobby lobby=selectTitan.getLobby();
-            lobby.setVisible(true);
+            selectTitan.goBack();
             /// 
         
         } else if (contTowersP2 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             this.dispose();
-            Lobby lobby=selectTitan.getLobby();
-            lobby.setVisible(true);
+            selectTitan.goBack();
             // 
         }
     }
