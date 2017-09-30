@@ -24,9 +24,8 @@ import pk.codeapp.screen.MainApp;
 public class GameSettings
 {
 
-    private int contTowersP1;
-    private int contTowersP2;
-    private boolean deadTitan;
+
+
     private Titan titan2;
     private ArrayList<Path> buttons;
     Random randomGenerator = new Random();
@@ -69,13 +68,22 @@ public class GameSettings
                 methods.updateInGraphicsElements(titan);
                 return;
             } else {
+<<<<<<< HEAD
+=======
+               
+>>>>>>> master
                 tower.setQuantityStamina(0);
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
                  JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
             }
         } else {
+            if(element2 instanceof Titan){
             titan2 = (Titan) element2;
+<<<<<<< HEAD
+=======
+            }
+>>>>>>> master
             if (damage < titan2.getLife()) {
                 titan.setLife(titan2.getLife() - damage);
                 titan.setMana(titan.getMana() - attack.getQuantityMana());
@@ -84,8 +92,14 @@ public class GameSettings
                 methods.updateInGraphicsElements(titan);
               
             } else {
+<<<<<<< HEAD
                 titan2.setLife(0);
                   JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
+=======
+            
+                titan2.setLife(0);
+                
+>>>>>>> master
                 methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
                
@@ -126,6 +140,7 @@ public class GameSettings
         return false;
     }
 
+<<<<<<< HEAD
     public int getContTowersP1()
     {
         return contTowersP1;
@@ -155,6 +170,8 @@ public class GameSettings
     {
         this.deadTitan = deadTitan;
     }
+=======
+>>>>>>> master
 
     public ArrayList<Path> getButtons()
     {

@@ -102,6 +102,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
         goBack();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -154,13 +155,13 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
                 Path temp = new Path(i,j);      
                 temp.addActionListener(this);
                 temp.setVisible(true);
-        
                 temp.setBackground(java.awt.Color.blue);
+                
                 panel.add(temp);
                 }else{ //Paint the player 2 with Light gray
                 Path temp = new Path(i,j);
                 temp.addActionListener(this);
-    
+  
                 temp.setVisible(true);
                 temp.setBackground(java.awt.Color.red);
                 panel.add(temp);}
@@ -188,7 +189,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
             temp.setEnabled(false);
-            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player1");
+            Tower newTower = new Tower(50,new Dupla(temp.getColumn(),temp.getRow()),"player1");
             MainApp.methods.addTower(newTower);
             }else{return;}
         }
@@ -197,7 +198,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             if(contTowersP2<=3){// Check the num Tower is less than 3 (Panel 2)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
             temp.setEnabled(false);
-            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player2");
+            Tower newTower = new Tower(50,new Dupla(temp.getColumn(),temp.getRow()),"player2");
             MainApp.methods.addTower(newTower);
             }else{return;}}
         
@@ -238,6 +239,8 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             JOptionPane.showMessageDialog(rootPane,"Please select more towers in the diferents player( Minumum 1 tower for player)");
         }
         else{
+        selectTitan.setContTowersP1(contTowersP1);
+        selectTitan.setContTowersP2(contTowersP2);
         this.dispose();
         selectTitan.setVisible(true);}
     }
