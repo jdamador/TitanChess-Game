@@ -75,8 +75,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         buttonGroupTitan1 = new javax.swing.ButtonGroup();
         buttonGroupTitan2 = new javax.swing.ButtonGroup();
@@ -120,7 +119,6 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -171,10 +169,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         cmbSizeofmap.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbSizeofmap.setForeground(new java.awt.Color(255, 255, 255));
         cmbSizeofmap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large", " " }));
-        cmbSizeofmap.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbSizeofmap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSizeofmapActionPerformed(evt);
             }
         });
@@ -189,10 +185,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         btnPositionTower.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnPositionTower.setForeground(new java.awt.Color(255, 255, 255));
         btnPositionTower.setText("Position Towers");
-        btnPositionTower.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPositionTower.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPositionTowerActionPerformed(evt);
             }
         });
@@ -202,20 +196,16 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 140, 50));
 
         btnStartGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/playGame.png"))); // NOI18N
-        btnStartGame.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnStartGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartGameActionPerformed(evt);
             }
         });
