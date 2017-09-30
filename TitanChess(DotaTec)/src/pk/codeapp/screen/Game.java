@@ -72,6 +72,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
             public void windowOpened(java.awt.event.WindowEvent evt)

@@ -47,7 +47,8 @@ public class MainApp extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         txtUsername = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -56,6 +57,7 @@ public class MainApp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,8 +67,10 @@ public class MainApp extends javax.swing.JFrame {
         txtUsername.setForeground(new java.awt.Color(255, 255, 255));
         txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsername.setToolTipText("");
-        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtUsernameKeyPressed(evt);
             }
         });
@@ -77,8 +81,10 @@ public class MainApp extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Start Game");
         jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -89,8 +95,10 @@ public class MainApp extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Register");
         jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -100,8 +108,10 @@ public class MainApp extends javax.swing.JFrame {
         txtPassword.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtPasswordKeyPressed(evt);
             }
         });

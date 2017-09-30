@@ -56,6 +56,7 @@ public class Register extends javax.swing.JFrame implements DefaultRules {
         lblRegisterBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setEnabled(false);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
