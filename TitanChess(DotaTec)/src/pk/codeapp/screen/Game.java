@@ -560,16 +560,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
 
                         auxWindowstoAttack.getToolsToAttack(actualTitan, tower, this, elementArena);
-                        if (auxWindowstoAttack.state == true) {
-                            JOptionPane.showMessageDialog(rootPane, "Registration was successful", "Infomation", JOptionPane.INFORMATION_MESSAGE);
-                            tower = (Tower) graphicsElements[column][row];
-                            if (tower.getQuantityStamina() == 0) {
-                                graphicsElements[column][row] = null;
-                            }
-                            actionToRealice = "move";
-                            mode = "pasive";
-                            changePlayer();
-                        }
+                        
 
                     }
 
@@ -578,17 +569,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
 
                         auxWindowstoAttack.getToolsToAttack(actualTitan, titan, this, elementArena);
-                        if (auxWindowstoAttack.state == true) {
-                            JOptionPane.showMessageDialog(rootPane, "Registration was successful", "Infomation", JOptionPane.INFORMATION_MESSAGE);
-                            titan = (Titan) graphicsElements[column][row];
-                            if (titan.getLife() == 0) {
-                                graphicsElements[column][row] = null;
-                            }
-                            actionToRealice = "move";
-                            mode = "pasive";
-                            changePlayer();
-                        }
-
+                      
                     }
                 }
 
@@ -600,5 +581,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             JOptionPane.showMessageDialog(rootPane, "there is nobody there");
 
         }
+    }
+
+    public void changeStates()
+    {
+        actionToRealice = "move";
+        mode = "pasive";
+        changePlayer();
     }
 }

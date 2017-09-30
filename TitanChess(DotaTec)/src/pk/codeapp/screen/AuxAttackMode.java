@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -21,7 +23,6 @@ import pk.codeapp.model.Tower;
 public class AuxAttackMode extends javax.swing.JFrame
 {
 
-    static boolean state;
     private Titan titan;
     private GraphicsElement element;
     private DefaultComboBoxModel<String> listAttacks = new DefaultComboBoxModel();
@@ -32,6 +33,7 @@ public class AuxAttackMode extends javax.swing.JFrame
     public AuxAttackMode()
     {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -149,9 +151,17 @@ public class AuxAttackMode extends javax.swing.JFrame
 
         if (attack != null) {
             System.out.println("Entrando");
+             lblDefended.setIcon(new ImageIcon("src/pk/codeapp/tools/explosion.gif"));
             gameSettings.attack(titan, element, attack, arena); //need send attack
-            
-            goBack();
+           
+            try {
+               
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+              
+                Thread.currentThread().interrupt();
+            }
+              goBack();
         }
     }//GEN-LAST:event_btnMakeAttackActionPerformed
 
@@ -231,6 +241,7 @@ public class AuxAttackMode extends javax.swing.JFrame
 
     private void viewAttacks()
     {
+        listAttacks = new DefaultComboBoxModel();
         for (int i = 0; i < titan.getAttacks().size(); i++) {
             String attack = titan.getAttacks().get(i).getNameAttack();
             listAttacks.addElement(attack);
@@ -248,10 +259,10 @@ public class AuxAttackMode extends javax.swing.JFrame
     // End of variables declaration//GEN-END:variables
 
     private void goBack()
-    {   
+    {
         window.setEnabled(true);
-        state = true;
+
         this.dispose();
-        
+        window.changeStates();
     }
 }
