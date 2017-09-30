@@ -32,8 +32,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private int columnGame;
     private int rowGame;
     private int contTimeToDead = 0; // Cont the turn that pass to restart Titan
-    private int contTowersP1;
-    private int contTowersP2;
+    private int contTowersP1=0;
+    private int contTowersP2=0;
     private Titan titan2;
     private boolean deadTitan = false; // boolean to  check dead Titan
     private int contMovesTitan;//Cont the moves has actualTitan  
@@ -344,10 +344,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         this.elementArena = selectTitan.getElementOfArena(); // Obtain the type of element arena
         paintBackground(elementArena); // Paint Background 
         paintTable(jPanelGame); //Paint table
-
         paintTowersGame(); // Paint towers and titans in the game
         paintStartTitans(); //Paint and set posicions in the game
-
         start();
     }
 
@@ -617,26 +615,24 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
-
+        System.out.println("Cantidad de Torres P1: "+contTowersP1);
+        System.out.println("Cantidad de Torres P2: "+contTowersP2);
     }
 
     private void whoWin()
-    {
-
-        if (contTowersP1 == 0) {
+    { 
+        System.out.println("Contador Tower 1:  "+contTowersP1);
+        System.out.println("Contador Tower 2:  "+contTowersP2);
+        if (this.contTowersP1==0){
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
-
             this.dispose();
             selectTitan.goBack();
             running = false;
-            /// 
-
-        } else if (contTowersP2 == 0) {
+        }else if (this.contTowersP2==0){
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             this.dispose();
             selectTitan.goBack();
-            running = false;
-            // 
+            running = false;  
         }
     }
 
@@ -782,11 +778,14 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (element instanceof Tower) {
             if (((Tower) element).getQuantityStamina() == 0) {
                 Tower tower = (Tower) element;
+                System.out.println(tower.getTowerPlayer());
                 if (tower.getTowerPlayer().equals("player1")) {
                     contTowersP1--;
                 } else {
                     contTowersP2--;
                 }
+                System.out.println("Cantidad de Torres P1: "+contTowersP1);
+                System.out.println("Cantidad de Torres P2: "+contTowersP2);
                 dupla = ((Tower) element).getPosition();
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                 Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
