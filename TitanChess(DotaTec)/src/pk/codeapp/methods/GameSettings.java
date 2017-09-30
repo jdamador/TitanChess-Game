@@ -24,8 +24,6 @@ import pk.codeapp.screen.MainApp;
 public class GameSettings
 {
 
-
-
     private Titan titan2;
     private ArrayList<Path> buttons;
     Random randomGenerator = new Random();
@@ -50,13 +48,14 @@ public class GameSettings
 
     public void attack(Titan titan, GraphicsElement element2, Attack attack, String elementArena)
     {
-     
+        System.out.println(elementArena);
         int damage = getRadom(attack.getQuantityDamage() + 1) + 1;
         if (titan.getVitalElement().equals(elementArena)) {
-            int plus = (int) (attack.getQuantityDamage() * 0.10);
+            System.out.println(elementArena + " Aqui estoy");
+            int plus = (int) (damage * 0.10);
             damage += plus;
         }
-        System.out.println(elementArena);
+
         if (element2 instanceof Tower) {
             Tower tower = ((Tower) element2);
             System.out.println(tower);
@@ -72,37 +71,39 @@ public class GameSettings
                 tower.setQuantityStamina(0);
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
-                 JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
+                JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
             }
         } else {
-            if(element2 instanceof Titan){
-            titan2 = (Titan) element2;
-
-            }
-
-            if (damage < titan2.getLife()) {
-                titan.setLife(titan2.getLife() - damage);
-                titan.setMana(titan.getMana() - attack.getQuantityMana());
-                  JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
-                methods.updateInGraphicsElements(titan2);
-                methods.updateInGraphicsElements(titan);
-              
-            } else {
-
-                titan2.setLife(0);
-                  JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
-
-            
-                titan2.setLife(0);
+            if (element2 instanceof Titan) {
+                titan2 = (Titan) element2;
+                int defense = getRadom(titan2.getDefense() + 1) + 1;
+                int newDamege = damage - defense;
+                if(newDamege<0){
+                    newDamege=1;
+                }
                 
+                if (newDamege < titan2.getLife()) {
 
-                methods.updateInGraphicsElements(titan2);
-                methods.updateInGraphicsElements(titan);
-               
+                    titan.setLife(titan2.getLife() - newDamege);
+                    titan.setMana(titan.getMana() - attack.getQuantityMana());
+                    JOptionPane.showMessageDialog(null, "Damage caused :" + newDamege);
+                    methods.updateInGraphicsElements(titan2);
+                    methods.updateInGraphicsElements(titan);
+
+                } else {
+
+                    titan2.setLife(0);
+                    JOptionPane.showMessageDialog(null, "Damage caused :" + newDamege);
+
+                    titan2.setLife(0);
+
+                    methods.updateInGraphicsElements(titan2);
+                    methods.updateInGraphicsElements(titan);
+
+                }
+
             }
-
         }
-
     }
 
     public boolean isSomebodyHere(int column, int row, GraphicsElement[][] graphicsElements)

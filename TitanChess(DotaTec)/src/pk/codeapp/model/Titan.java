@@ -30,7 +30,7 @@ public class Titan extends GraphicsElement implements Serializable{
      private ImageIcon imageBig;
      private ImageIcon tiny;
      private Dupla dupla;
-     
+     private int defense;
     //Relation
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
     //Player
@@ -52,6 +52,8 @@ public class Titan extends GraphicsElement implements Serializable{
         //Create basic Attack
         Attack basic = new Attack("Beat you up", 0, 70);
         attacks.add(basic);
+        this.defense=100;
+        
     }
     //<editor-fold desc="*Getter and Setter*" defaultstate=""collapsed">
 
@@ -135,6 +137,16 @@ public class Titan extends GraphicsElement implements Serializable{
 
     public void setGif(ImageIcon gif) {
         this.gif = gif;
+    }
+
+    public int getDefense()
+    {
+        return defense;
+    }
+
+    public void setDefense(int defense)
+    {
+        this.defense = defense;
     }
     
     //</editor-fold>
