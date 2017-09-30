@@ -205,7 +205,7 @@
         <Component class="javax.swing.JProgressBar" name="jPlife">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Schoolbook" size="18" style="1"/>
@@ -213,6 +213,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="string" type="java.lang.String" value="Life&#xa;"/>
             <Property name="stringPainted" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -224,7 +228,7 @@
         <Component class="javax.swing.JProgressBar" name="jPMana">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Schoolbook" size="18" style="1"/>
@@ -232,7 +236,12 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="string" type="java.lang.String" value="Mana"/>
             <Property name="stringPainted" type="boolean" value="true"/>
+            <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

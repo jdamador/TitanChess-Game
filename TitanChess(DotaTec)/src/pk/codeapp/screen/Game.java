@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.methods.GameSettings;
 import pk.codeapp.model.Dupla;
@@ -73,8 +74,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -92,10 +92,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
@@ -125,10 +123,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -138,10 +134,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnEndTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnEndTurn.setForeground(new java.awt.Color(255, 255, 255));
         btnEndTurn.setText("End Turn");
-        btnEndTurn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnEndTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEndTurnActionPerformed(evt);
             }
         });
@@ -151,10 +145,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnAttack.setText("Attack");
-        btnAttack.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAttackActionPerformed(evt);
             }
         });
@@ -188,16 +180,21 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPlife.setBackground(new java.awt.Color(153, 153, 153));
+        jPlife.setBackground(new java.awt.Color(0, 0, 0));
         jPlife.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jPlife.setForeground(new java.awt.Color(0, 0, 0));
+        jPlife.setBorder(null);
+        jPlife.setString("Life\n");
         jPlife.setStringPainted(true);
         jPanel1.add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 420, 30));
 
-        jPMana.setBackground(new java.awt.Color(153, 153, 153));
+        jPMana.setBackground(new java.awt.Color(0, 0, 0));
         jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jPMana.setForeground(new java.awt.Color(0, 0, 0));
+        jPMana.setBorder(null);
+        jPMana.setString("Mana");
         jPMana.setStringPainted(true);
+        jPMana.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 420, 30));
 
         lblPictureTitan.setBorder(new javax.swing.border.MatteBorder(null));
@@ -254,13 +251,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
          jPMana.setVisible(false);
         jPlife.setMaximum(0);
         jPlife.setValue(0);
-        jPlife.setStringPainted(true);
-        jPlife.setString("Life");
+       
         //Mana
         jPMana.setMaximum(0);
         jPMana.setValue(0);
-        jPMana.setStringPainted(true);
-        jPMana.setString("Mana");
+       
         
     }
     private void changePlayer() // Change turn of game
@@ -594,18 +589,26 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
          jPlife.setVisible(true);
          jPMana.setVisible(true);
          jPlife.setMaximum(0);
-          jPMana.setMaximum(0);
-        lblPictureTitan.setIcon(titan.getImageBig());
+         jPMana.setMaximum(0);
+         lblPictureTitan.setIcon(titan.getImageBig());
          //Life
         jPlife.setMaximum(titan.getMaxLife());
         jPlife.setValue(titan.getLife());
         jPlife.setStringPainted(true);
         jPlife.setString("Life");
+       jPlife.setOpaque(true);
+       jPlife.setBackground(java.awt.Color.green);
+       jPlife.setForeground(java.awt.Color.black);
+
+        
         //Mana
         jPMana.setMaximum(titan.getMaxMana());
         jPMana.setValue(titan.getMana());
-        jPMana.setStringPainted(true);
-        jPMana.setString("Mana");
+       jPMana.setOpaque(true);
+       jPMana.setBackground(java.awt.Color.blue);
+       jPMana.setForeground(java.awt.Color.black);
+     
+        
     }
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
