@@ -53,6 +53,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     public Game()
     {
         initComponents();
+          jPlife.setVisible(false);
+         jPMana.setVisible(false);
         this.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent evt)
@@ -120,7 +122,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 660, 130, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 590, 130, 50));
 
         btnEndTurn.setBackground(new java.awt.Color(0, 0, 0));
         btnEndTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -131,7 +133,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 btnEndTurnActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 600, 130, 50));
+        getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 660, 130, 50));
 
         btnAttack.setBackground(new java.awt.Color(51, 51, 51));
         btnAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -142,7 +144,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 btnAttackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 600, 130, 50));
+        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 600, 130, 50));
 
         paneTurn.setBackground(new java.awt.Color(51, 51, 51));
         paneTurn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -155,10 +157,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         paneTurn.setLayout(paneTurnLayout);
         paneTurnLayout.setHorizontalGroup(
             paneTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneTurnLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneTurnLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblShowTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         paneTurnLayout.setVerticalGroup(
             paneTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,27 +169,27 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 .addComponent(lblShowTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(paneTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 600, -1, 50));
+        getContentPane().add(paneTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 650, -1, 50));
 
         lblPictureTitan.setBorder(new javax.swing.border.MatteBorder(null));
         lblPictureTitan.setMaximumSize(new java.awt.Dimension(80, 80));
         lblPictureTitan.setMinimumSize(new java.awt.Dimension(80, 80));
         lblPictureTitan.setName(""); // NOI18N
-        lblPictureTitan.setPreferredSize(new java.awt.Dimension(80, 80));
+        lblPictureTitan.setPreferredSize(new java.awt.Dimension(242, 121));
         lblPictureTitan.setRequestFocusEnabled(false);
-        getContentPane().add(lblPictureTitan, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 620, -1, -1));
+        getContentPane().add(lblPictureTitan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
 
         jPMana.setBackground(new java.awt.Color(153, 153, 153));
         jPMana.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jPMana.setForeground(new java.awt.Color(0, 0, 0));
         jPMana.setStringPainted(true);
-        getContentPane().add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 670, 420, 40));
+        getContentPane().add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 660, 420, 40));
 
         jPlife.setBackground(new java.awt.Color(153, 153, 153));
         jPlife.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jPlife.setForeground(new java.awt.Color(0, 0, 0));
         jPlife.setStringPainted(true);
-        getContentPane().add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 610, 420, 40));
+        getContentPane().add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 420, 40));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -206,6 +208,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEndTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndTurnActionPerformed
+
+        
         actionToRealice = "move";
         mode = "pasive";
         changePlayer();
@@ -217,13 +221,29 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     {//GEN-HEADEREND:event_btnAttackActionPerformed
         // TODO add your handling code here:
         mode = "attack";
-        JOptionPane.showMessageDialog(rootPane, "Select your enemy!");
+        JOptionPane.showMessageDialog(rootPane, "Select your enemy!","Information",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAttackActionPerformed
-
+    private void viewTitan(){
+         // View titan 
+        lblPictureTitan.setIcon(null);
+         //Life
+         jPlife.setVisible(false);
+         jPMana.setVisible(false);
+        jPlife.setMaximum(0);
+        jPlife.setValue(0);
+        jPlife.setStringPainted(true);
+        jPlife.setString("Life");
+        //Mana
+        jPMana.setMaximum(0);
+        jPMana.setValue(0);
+        jPMana.setStringPainted(true);
+        jPMana.setString("Mana");
+        
+    }
     private void changePlayer() // Change turn of game
     {
          increaseMana();
-
+         viewTitan();
         btnAttack.setEnabled(false);
         if (turnOfPlayer) { //Player 1  - Player 2
             turnOfPlayer = false;
@@ -479,7 +499,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 Titan titan =(Titan)graphicsElements[i][j];
                 int mana = titan.getMana();
                 mana*=0.25;
-                titan.setMana(mana);
+                titan.setMana(titan.getMana()+mana);
                 graphicsElements[i][j]=titan;
             }
             }}
@@ -514,13 +534,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             JOptionPane.showMessageDialog(rootPane, "Titan does not have more movements");
         }
     }
-
+    /**
+     * Methods to move the titan 
+     * @param player
+     * @param column
+     * @param row
+     * @param temp 
+     */
     private void moveTitan(String player, int column, int row, Path temp)
     { // Methods to move titan 
         if (graphicsElements[column][row] instanceof Titan) {
             Titan titan = (Titan) graphicsElements[column][row];
             if (titan.getPlayer().equals(player)) {
-
+                viewTitan(titan); 
                 contMovesTitan = titan.getMoves();
                 backupButton = temp; // Backup the button to move
                 actualTitan = titan; // set Actual Titan
@@ -530,7 +556,24 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
     }
-
+    
+    private void viewTitan(Titan titan){
+         jPlife.setVisible(true);
+         jPMana.setVisible(true);
+         jPlife.setMaximum(0);
+          jPMana.setMaximum(0);
+        lblPictureTitan.setIcon(titan.getImageBig());
+         //Life
+        jPlife.setMaximum(titan.getMaxLife());
+        jPlife.setValue(titan.getLife());
+        jPlife.setStringPainted(true);
+        jPlife.setString("Life");
+        //Mana
+        jPMana.setMaximum(titan.getMaxMana());
+        jPMana.setValue(titan.getMana());
+        jPMana.setStringPainted(true);
+        jPMana.setString("Mana");
+    }
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
         this.contTowersP1 = contTowersP1;
