@@ -495,12 +495,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-<<<<<<< HEAD
 
-    private void increaseMana()
-    {
 
-=======
+  
+
     private void increaseMana(){
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
@@ -512,7 +510,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 graphicsElements[i][j]=titan;
             }
             }}
->>>>>>> master
+
     }
 
     private void movePosition(int column, int row, Path temp)
@@ -588,7 +586,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
-<<<<<<< HEAD
+
 
         int index = searchUserToEdit(methods.getActual());
         int played = methods.getPlayers().get(index).getUserEstadistics().getPlayedGames();
@@ -598,10 +596,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         played = methods.getPlayers().get(index).getUserEstadistics().getPlayedGames();
         methods.getPlayers().get(index).getUserEstadistics().setPlayedGames(played+1);
 
-=======
+
         System.out.println("Player 1 Towers: "+contTowersP1);
         System.out.println("Player 2 Towers: "+contTowersP2);
->>>>>>> master
+
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
 
