@@ -56,8 +56,7 @@ public class DataSheet extends javax.swing.JFrame implements DefaultRules
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -78,7 +77,7 @@ public class DataSheet extends javax.swing.JFrame implements DefaultRules
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
+        setTitle("GameMaster");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -155,10 +154,8 @@ public class DataSheet extends javax.swing.JFrame implements DefaultRules
         getContentPane().add(lblPerformance, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 550, -1, -1));
 
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });

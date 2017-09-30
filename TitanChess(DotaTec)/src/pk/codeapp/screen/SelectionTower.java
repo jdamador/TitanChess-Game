@@ -44,8 +44,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         towerPlayer1 = new javax.swing.JPanel();
@@ -53,7 +52,6 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -84,10 +82,8 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });

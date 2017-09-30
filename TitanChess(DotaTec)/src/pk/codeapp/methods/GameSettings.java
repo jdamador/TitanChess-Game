@@ -24,7 +24,7 @@ import pk.codeapp.screen.MainApp;
 public class GameSettings
 {
 
-    private Titan titan2;
+    private Titan defender;
     private ArrayList<Path> buttons;
     Random randomGenerator = new Random();
     Methods methods;
@@ -46,62 +46,58 @@ public class GameSettings
         return null;
     }
 
-    public void attack(Titan titan, GraphicsElement element2, Attack attack, String elementArena)
+    /**
+     * Receives the actual titan, element to attack, attack selected and arena's
+     * element
+     *
+     * @param titan
+     * @param element
+     * @param attack
+     * @param elementArena
+     */
+    public void attack(Titan titan, GraphicsElement element, Attack attack, String elementArena)
     {
-        System.out.println(elementArena);
         int damage = getRadom(attack.getQuantityDamage() + 1) + 1;
         if (titan.getVitalElement().equals(elementArena)) {
-            System.out.println(elementArena + " Aqui estoy");
-            int plus = (int) (damage * 0.10);
+            int plus = (int) (titan.getDamage() * 0.10);
             damage += plus;
         }
 
-        if (element2 instanceof Tower) {
-            Tower tower = ((Tower) element2);
-            System.out.println(tower);
+        if (element instanceof Tower) {
+            Tower tower = ((Tower) element);
             if (damage < tower.getQuantityStamina()) {
                 tower.setQuantityStamina(tower.getQuantityStamina() - damage);
                 titan.setMana(titan.getMana() - attack.getQuantityMana());
                 JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
-                return;
             } else {
-
                 tower.setQuantityStamina(0);
+                JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
-                JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
             }
         } else {
-            if (element2 instanceof Titan) {
-                titan2 = (Titan) element2;
-                int defense = getRadom(titan2.getDefense() + 1) + 1;
+            if (element instanceof Titan) {
+                defender = (Titan) element;
+                int defense = getRadom(defender.getDefense() + 1) + 1;
                 int newDamege = damage - defense;
-                if(newDamege<0){
-                    newDamege=1;
+                if (newDamege < 0) {
+                    newDamege = 1;
                 }
-                
-                if (newDamege < titan2.getLife()) {
-
-                    titan.setLife(titan2.getLife() - damage);
+                if (damage < defender.getLife()) {
+                    defender.setLife(defender.getLife() - damage);
                     titan.setMana(titan.getMana() - attack.getQuantityMana());
                     JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
-                    methods.updateInGraphicsElements(titan2);
+                    methods.updateInGraphicsElements(defender);
                     methods.updateInGraphicsElements(titan);
 
                 } else {
-
-                    titan2.setLife(0);
+                    defender.setLife(0);
                     JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
-
-                    titan2.setLife(0);
-
-                    methods.updateInGraphicsElements(titan2);
+                    methods.updateInGraphicsElements(defender);
                     methods.updateInGraphicsElements(titan);
-
                 }
-
             }
         }
     }
@@ -149,12 +145,12 @@ public class GameSettings
 
     public Titan getTitan2()
     {
-        return titan2;
+        return defender;
     }
 
     public void setTitan2(Titan titan2)
     {
-        this.titan2 = titan2;
+        this.defender = titan2;
     }
 
 }

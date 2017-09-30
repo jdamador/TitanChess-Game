@@ -33,6 +33,7 @@ public class Titan extends GraphicsElement implements Serializable{
      private ImageIcon tiny;
      private Dupla dupla;
      private int defense;
+     private int level=1;
     //Relation
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
     //Player
@@ -223,6 +224,11 @@ public class Titan extends GraphicsElement implements Serializable{
         }
         
         
+    }
+
+    public int getLevel()
+    {
+       return level;
     }
     
 }
