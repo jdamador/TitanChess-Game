@@ -53,7 +53,9 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N

@@ -65,21 +65,21 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnEndTurn = new javax.swing.JButton();
         btnAttack = new javax.swing.JButton();
+        paneTurn = new javax.swing.JPanel();
+        lblShowTurn = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+        setAlwaysOnTop(true);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
@@ -109,53 +109,62 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 130, 50));
 
         btnEndTurn.setBackground(new java.awt.Color(0, 0, 0));
-        btnEndTurn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEndTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnEndTurn.setForeground(new java.awt.Color(255, 255, 255));
         btnEndTurn.setText("End Turn");
-        btnEndTurn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnEndTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEndTurnActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 600, 110, 50));
+        getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 600, 130, 50));
 
+        btnAttack.setBackground(new java.awt.Color(51, 51, 51));
+        btnAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnAttack.setText("Attack");
-        btnAttack.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAttackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 600, 130, 50));
+        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 600, 130, 50));
+
+        paneTurn.setBackground(new java.awt.Color(51, 51, 51));
+        paneTurn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblShowTurn.setBackground(new java.awt.Color(51, 51, 51));
+        lblShowTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 36)); // NOI18N
+        lblShowTurn.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout paneTurnLayout = new javax.swing.GroupLayout(paneTurn);
+        paneTurn.setLayout(paneTurnLayout);
+        paneTurnLayout.setHorizontalGroup(
+            paneTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneTurnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblShowTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        paneTurnLayout.setVerticalGroup(
+            paneTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneTurnLayout.createSequentialGroup()
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addComponent(lblShowTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        getContentPane().add(paneTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 600, -1, 50));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 600, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -192,9 +201,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (turnOfPlayer) { //Player 1  - Player 2
             turnOfPlayer = false;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
+            lblShowTurn.setText( "Turn Player 2");
+            paneTurn.setBackground(java.awt.Color.blue);
         } else { //Player 2  - Player 1
             turnOfPlayer = true;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 1");
+            lblShowTurn.setText( "Turn Player 1");
+            paneTurn.setBackground(java.awt.Color.red);
         }
         if (deadTitan) {   
             this.contTimeToDead++;
@@ -391,9 +404,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnEndTurn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelGame;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblShowTurn;
+    private javax.swing.JPanel paneTurn;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -531,9 +545,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (playerStart == 0) { //Player 1  
             turnOfPlayer = true;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 1");
+             lblShowTurn.setText( "Turn Player 1");
+             paneTurn.setBackground(java.awt.Color.red);
         } else { //Player 2
             turnOfPlayer = false;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
+             lblShowTurn.setText( "Turn Player 2");
+             paneTurn.setBackground(java.awt.Color.blue);
         }
 
     }
