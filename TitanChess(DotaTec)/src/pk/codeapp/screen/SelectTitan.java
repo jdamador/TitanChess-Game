@@ -30,9 +30,10 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private int minimumTitan = 0; // Minimum titans to the players has selected
     private String elementOfArena;
     private Titan[] titans;
-    private Lobby lobby;
+    static Lobby lobby;
     private int contTitansPlayer1 = 4;
     private int contTitansPlayer2 = 4;
+    private int contTowersP1,contTowersP2;
     private ArrayList<User> enemies ;
 
     SelectionTower selectionTower;
@@ -361,7 +362,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
                 String selected=(String)cmbEnemy.getSelectedItem();
                  methods.setPlayer2(methods.searchUser(selected));
                 Game game = new Game();
-                game.obtainQuantityTower(selectionTower.getContTowersP1(), selectionTower.getContTowersP2());
+                game.obtainQuantityTower(contTowersP1, contTowersP2);
                 game.openWindow(this);
 
             } else {
@@ -524,6 +525,22 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         this.rowGame = rowGame;
     }
 
+    public int getContTowersP1() {
+        return contTowersP1;
+    }
+
+    public void setContTowersP1(int contTowersP1) {
+        this.contTowersP1 = contTowersP1;
+    }
+
+    public int getContTowersP2() {
+        return contTowersP2;
+    }
+
+    public void setContTowersP2(int contTowersP2) {
+        this.contTowersP2 = contTowersP2;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPositionTower;
     private javax.swing.JButton btnStartGame;

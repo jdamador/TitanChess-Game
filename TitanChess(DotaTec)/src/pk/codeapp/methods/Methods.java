@@ -153,22 +153,22 @@ public class Methods {
     //<editor-fold desc="Default Titans in the game" defaultstate="collapsed">
     public void defaulTitan() {
         //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
-        Titan titan = new Titan("Mewtwo", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", 
+        Titan titan = new Titan("Mewtwo", 50, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", 
                 "src/pk/codeapp/tools/titans/titan6.gif","src/pk/codeapp/tools/titans/Icons/icon6.png");
         addTitan(titan);
-        titan = new Titan("Geb", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg",
+        titan = new Titan("Geb", 50, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg",
                 "src/pk/codeapp/tools/titans/titan4.gif","src/pk/codeapp/tools/titans/Icons/icon4.jpg");
         addTitan(titan);
-        titan = new Titan("Tretan", 400, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/Icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", 
+        titan = new Titan("Tretan", 50, 3, 200, 200, "Fire", "src/pk/codeapp/tools/titans/Icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg", 
                 "src/pk/codeapp/tools/titans/titan2.gif","src/pk/codeapp/tools/titans/Icons/icon2.jpg");
         addTitan(titan);
-        titan = new Titan("Western Dragon", 400, 3, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg", 
+        titan = new Titan("Western Dragon", 50, 3, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg", 
                 "src/pk/codeapp/tools/titans/titan1.gif","src/pk/codeapp/tools/titans/Icons/icon1.jpg");
         addTitan(titan);
-        titan = new Titan("Jack", 400, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.jpg",
+        titan = new Titan("Jack", 50, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.jpg",
                 "src/pk/codeapp/tools/titans/titan5.gif","src/pk/codeapp/tools/titans/Icons/icon5.jpg");
         addTitan(titan);
-        titan = new Titan("Lucario", 400, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", 
+        titan = new Titan("Lucario", 50, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg", 
                 "src/pk/codeapp/tools/titans/titan3.gif","src/pk/codeapp/tools/titans/Icons/icon3.jpg");
         addTitan(titan);
         //--------------------------------------------------------------------------------------------------------------------------------------------
