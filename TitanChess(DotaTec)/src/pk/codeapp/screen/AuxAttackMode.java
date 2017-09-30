@@ -58,6 +58,9 @@ public class AuxAttackMode extends javax.swing.JFrame
         lblDefended = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 137, 123));
 

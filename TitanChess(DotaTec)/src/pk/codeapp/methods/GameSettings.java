@@ -46,7 +46,7 @@ public class GameSettings {
         return null;
     }
 
-    public boolean attack(Titan titan, GraphicsElement element2, Attack attack, String elementArena) {
+    public void attack(Titan titan, GraphicsElement element2, Attack attack, String elementArena) {
 
         int damage = getRadom(attack.getQuantityDamage() + 1);
         if (titan.getVitalElement().equals(elementArena)) {
@@ -64,8 +64,8 @@ public class GameSettings {
 
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
-                JOptionPane.showMessageDialog(null, damage);
-                return true;
+                JOptionPane.showMessageDialog(null, "Damage caused :"+damage);
+                
             } else {
                 if (tower.getTowerPlayer().equals("Player1")) //Less tower 
                 {
@@ -78,7 +78,7 @@ public class GameSettings {
 
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
-                return false;
+               
             }
 
         } else {
@@ -89,15 +89,15 @@ public class GameSettings {
                 titan.setMana(titan.getMana() - attack.getQuantityMana());
                 methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
-                JOptionPane.showMessageDialog(null, damage);
-                return true;
+                JOptionPane.showMessageDialog(null, "Damage caused :"+damage);
+                
             } else {
                 deadTitan = true;
                 titan2.setLife(0);
                 deadTitan = true; // Active dead titan
                 methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
-                return false;
+                
             }
 
         }
