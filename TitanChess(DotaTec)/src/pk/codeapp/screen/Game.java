@@ -69,8 +69,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -78,14 +77,15 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnAttack = new javax.swing.JButton();
         paneTurn = new javax.swing.JPanel();
         lblShowTurn = new javax.swing.JLabel();
+        lblPictureTitan = new javax.swing.JLabel();
+        jPMana = new javax.swing.JProgressBar();
+        jPlife = new javax.swing.JProgressBar();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
@@ -115,23 +115,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 130, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 660, 130, 50));
 
         btnEndTurn.setBackground(new java.awt.Color(0, 0, 0));
         btnEndTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnEndTurn.setForeground(new java.awt.Color(255, 255, 255));
         btnEndTurn.setText("End Turn");
-        btnEndTurn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnEndTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEndTurnActionPerformed(evt);
             }
         });
@@ -141,10 +137,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnAttack.setText("Attack");
-        btnAttack.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAttackActionPerformed(evt);
             }
         });
@@ -174,6 +168,26 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         );
 
         getContentPane().add(paneTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 600, -1, 50));
+
+        lblPictureTitan.setBorder(new javax.swing.border.MatteBorder(null));
+        lblPictureTitan.setMaximumSize(new java.awt.Dimension(80, 80));
+        lblPictureTitan.setMinimumSize(new java.awt.Dimension(80, 80));
+        lblPictureTitan.setName(""); // NOI18N
+        lblPictureTitan.setPreferredSize(new java.awt.Dimension(80, 80));
+        lblPictureTitan.setRequestFocusEnabled(false);
+        getContentPane().add(lblPictureTitan, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 620, -1, -1));
+
+        jPMana.setBackground(new java.awt.Color(153, 153, 153));
+        jPMana.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jPMana.setForeground(new java.awt.Color(0, 0, 0));
+        jPMana.setStringPainted(true);
+        getContentPane().add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 670, 420, 40));
+
+        jPlife.setBackground(new java.awt.Color(153, 153, 153));
+        jPlife.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jPlife.setForeground(new java.awt.Color(0, 0, 0));
+        jPlife.setStringPainted(true);
+        getContentPane().add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 610, 420, 40));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -208,7 +222,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void changePlayer() // Change turn of game
     {
-        increaseMana();
+         increaseMana();
 
         btnAttack.setEnabled(false);
         if (turnOfPlayer) { //Player 1  - Player 2
@@ -425,8 +439,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnEndTurn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JProgressBar jPMana;
     private javax.swing.JPanel jPanelGame;
+    private javax.swing.JProgressBar jPlife;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblPictureTitan;
     private javax.swing.JLabel lblShowTurn;
     private javax.swing.JPanel paneTurn;
     // End of variables declaration//GEN-END:variables
@@ -456,7 +473,16 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     }
     private void increaseMana(){
-        
+        for (int j = 0; j < rowGame; j++) {
+            for (int i = 0; i < columnGame; i++) {
+            if(graphicsElements[i][j] instanceof Titan){
+                Titan titan =(Titan)graphicsElements[i][j];
+                int mana = titan.getMana();
+                mana*=0.25;
+                titan.setMana(mana);
+                graphicsElements[i][j]=titan;
+            }
+            }}
     }
     private void movePosition(int column, int row, Path temp) { // Move Position of titan
         System.out.println("Entro a move Position" + " El contador es: " + contMovesTitan);
