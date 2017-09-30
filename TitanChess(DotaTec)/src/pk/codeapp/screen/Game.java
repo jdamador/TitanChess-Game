@@ -612,14 +612,17 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
        System.out.println("Tower Player 2: " + contTowersP2);
         if (contTowersP1 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
+           
             this.dispose();
             selectTitan.goBack();
+           return;
             /// 
         
         } else if (contTowersP2 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             this.dispose();
             selectTitan.goBack();
+            return;
             // 
         }
     }
@@ -740,14 +743,14 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             if (gameSettings.checkRange(column, row, actualTitan)) {
                 if (graphicsElements[column][row] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[column][row];
-                    if (!tower.getTowerPlayer().equals(actualTitan.getPlayer())) {
+                    if (!tower.getTowerPlayer().equalsIgnoreCase(actualTitan.getPlayer())) {
 
                         auxWindowstoAttack.getToolsToAttack(actualTitan, tower, this, elementArena);
 
                     }
                 } else {
                     Titan titan = (Titan) graphicsElements[column][row];
-                    if (!titan.getPlayer().equals(actualTitan.getPlayer())) {
+                    if (!titan.getPlayer().equalsIgnoreCase(actualTitan.getPlayer())) {
 
                         auxWindowstoAttack.getToolsToAttack(actualTitan, titan, this, elementArena);
                     }
