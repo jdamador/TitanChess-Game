@@ -433,7 +433,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-
+    private void increaseMana(){
+        
+    }
     private void movePosition(int column, int row, Path temp) { // Move Position of titan
         System.out.println("Entro a move Position" + " El contador es: " + contMovesTitan);
         if (contMovesTitan > 0) {
