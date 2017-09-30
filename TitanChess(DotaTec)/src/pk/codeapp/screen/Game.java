@@ -49,7 +49,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
     private GameSettings gameSettings = new GameSettings(MainApp.methods); // Methods to Game
-
+    private Estadistics estadisticsPlayer1=methods.getActual().getUserEstadistics();
+    private Estadistics estadisticsPlayer2=methods.getPlayer2().getUserEstadistics();
     Titan titans[];
     private String mode;
 
@@ -814,7 +815,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 dupla = ((Tower) element).getPosition();
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                 Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
-
+                increaseDetroyTowers(tower);
                 path.setIcon(new ImageIcon("src/pk/codeapp/tools/deletetower.png"));
                 path.setEnabled(false);
             }
@@ -822,7 +823,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             if (element instanceof Titan) {
                 int midGame = (columnGame / 2);
                 if (((Titan) element).getLife() == 0) {
-                    increaseEstadistics((Titan) element);
+                    increaseDeadTitans((Titan) element);
                     titan2 = (Titan) element;
                     dupla = element.getDupla();
                     deadTitan = true;
@@ -842,20 +843,35 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         changePlayer();
     }
 
-    private void increaseEstadistics(Titan titan)
+    private void increaseDeadTitans(Titan titan)
     {
+        int index ;
         if (titan.getPlayer().equals("Player1")) {
-            int index = searchUserToEdit(methods.getActual());
-            Estadistics estadistics = methods.getPlayers().get(index).getUserEstadistics();
-            estadistics.setDeadTitans(estadistics.getDeadTitans() + 1);
-            methods.getPlayers().get(index).setUserEstadistics(estadistics);
+           index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setDeadTitans(estadisticsPlayer1.getDeadTitans() + 1);
+            updateEstadics(estadisticsPlayer1, index);
         } else {
-            int index = searchUserToEdit(methods.getPlayer2());
-            Estadistics estadistics = methods.getPlayers().get(index).getUserEstadistics();
-            estadistics.setDeadTitans(estadistics.getDeadTitans() + 1);
-            methods.getPlayers().get(index).setUserEstadistics(estadistics);
+            index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.setDeadTitans(estadisticsPlayer1.getDeadTitans() + 1);
+            updateEstadics(estadisticsPlayer2, index);
         }
     }
+    private void increaseDetroyTowers(Tower tower)
+    {
+        int index ;
+        if (tower.getTowerPlayer().equalsIgnoreCase("Player1")) {
+           index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setDrestroyTower(estadisticsPlayer1.getDrestroyTower()+ 1);
+            updateEstadics(estadisticsPlayer1, index);
+        } else {
+            index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.setDrestroyTower(estadisticsPlayer1.getDrestroyTower() + 1);
+            updateEstadics(estadisticsPlayer2, index);
+        }
+    }
+   public void updateEstadics(Estadistics estadistics, int index){
+        methods.getPlayers().get(index).setUserEstadistics(estadistics);
+   }
 
     public int searchUserToEdit(User user)
     {
