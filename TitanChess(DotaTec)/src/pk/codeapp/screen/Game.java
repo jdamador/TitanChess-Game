@@ -208,6 +208,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void changePlayer() // Change turn of game
     {
+        increaseMana();
 
         btnAttack.setEnabled(false);
         if (turnOfPlayer) { //Player 1  - Player 2
@@ -454,15 +455,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-
-    private void increaseMana()
-    {
-
-    }
-
-    private void movePosition(int column, int row, Path temp)
-    { // Move Position of titan
+    private void increaseMana(){
         
+    }
+    private void movePosition(int column, int row, Path temp) { // Move Position of titan
+        System.out.println("Entro a move Position" + " El contador es: " + contMovesTitan);
         if (contMovesTitan > 0) {
    
             if (gameSettings.checkRange(column, row, actualTitan)) { //Check range of titan
