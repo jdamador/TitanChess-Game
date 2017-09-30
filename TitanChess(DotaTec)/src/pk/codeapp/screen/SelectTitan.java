@@ -7,6 +7,8 @@ package pk.codeapp.screen;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -16,6 +18,7 @@ import javax.swing.JOptionPane;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.model.GraphicsElement;
 import pk.codeapp.model.Titan;
+import pk.codeapp.model.User;
 import static pk.codeapp.screen.MainApp.methods;
 
 public class SelectTitan extends javax.swing.JFrame implements DefaultRules
@@ -30,8 +33,10 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private Lobby lobby;
     private int contTitansPlayer1 = 4;
     private int contTitansPlayer2 = 4;
-    
-     SelectionTower selectionTower;
+    private ArrayList<User> enemies = methods.getPlayers();
+
+    SelectionTower selectionTower;
+
     public SelectTitan()
     {
         initComponents();
@@ -58,6 +63,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
                 System.exit(0);
             }
         });
+        chargerEnemy();
     }
 
     /**
@@ -105,6 +111,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         cmbTitan6 = new javax.swing.JComboBox<>();
         cmbTitan7 = new javax.swing.JComboBox<>();
         cmbTitan8 = new javax.swing.JComboBox<>();
+        cmbEnemy = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
@@ -268,6 +276,16 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         cmbTitan8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player1", "Player2" }));
         getContentPane().add(cmbTitan8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 100, 30));
 
+        cmbEnemy.setBackground(new java.awt.Color(51, 51, 51));
+        cmbEnemy.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        cmbEnemy.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cmbEnemy, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 240, 30));
+
+        jLabel5.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Select your enemy!");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, -1, -1));
+
         lblBackground.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/SelectTitan_Background.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -289,7 +307,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             selectionTower = new SelectionTower(); //Instance of windows selection of tower
             this.setVisible(false);
             selectionTower.openWindow(this); // Pass windows to Selection of tower
-            
+
             activateButtonTowers = false; //Desactive button
         }
     }//GEN-LAST:event_btnPositionTowerActionPerformed
@@ -339,10 +357,11 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             if (contTitansPlayer1 < 2 && contTitansPlayer2 < 2) {
                 String elementofArena = (String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
+                String selected=(String)cmbEnemy.getSelectedItem();
+                 methods.setPlayer2(methods.searchUser(selected));
                 Game game = new Game();
-                game.obtainQuantityTower(selectionTower.getContTowersP1(),selectionTower.getContTowersP2());
+                game.obtainQuantityTower(selectionTower.getContTowersP1(), selectionTower.getContTowersP2());
                 game.openWindow(this);
-               
 
             } else {
                 contTitansPlayer1 = 4;
@@ -516,6 +535,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private javax.swing.ButtonGroup buttonGroupTitan6;
     private javax.swing.ButtonGroup buttonGroupTitan7;
     private javax.swing.ButtonGroup buttonGroupTitan8;
+    private javax.swing.JComboBox<String> cmbEnemy;
     private javax.swing.JComboBox<String> cmbSizeofmap;
     private javax.swing.JComboBox<String> cmbSizeofmap1;
     private javax.swing.JComboBox<String> cmbTitan1;
@@ -531,6 +551,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel titan_image1;
@@ -564,6 +585,18 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     {
         this.dispose();
         lobby.setVisible(true);
+    }
+
+    private void chargerEnemy()
+    {
+        DefaultComboBoxModel<String>model = new DefaultComboBoxModel();
+        for (int i = 0; i < enemies.size(); i++) {
+            if(enemies.get(i)!=methods.getActual()){
+                model.addElement(enemies.get(i).getName());
+            }
+            
+        }
+        cmbEnemy.setModel(model);
     }
 
 }

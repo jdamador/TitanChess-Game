@@ -37,7 +37,8 @@ public class Methods {
     private boolean checkTowerPlayer2;// Boolean to cheek quantity of towers in player 2
     private GraphicsElement graphicsElements[][]; // Matrix of Game
     private int columnGame, rowGame;
-    private User actual;
+   
+    
     private Titan[] titans = new Titan[8];
     private ArrayList<Titan> withoutCreating =new ArrayList();
     /**
@@ -215,13 +216,23 @@ public class Methods {
 
     public User getActual()
     {
-        return actual;
+        return player1;
     }
 
     public void setActual(User actual)
     {
           System.out.println(actual);
-        this.actual = actual;
+        this.player1 = actual;
+    }
+
+    public User getPlayer2()
+    {
+        return player2;
+    }
+
+    public void setPlayer2(User player2)
+    {
+        this.player2 = player2;
     }
 
     public ArrayList<Titan> getWithoutCreating()
@@ -312,4 +323,17 @@ public class Methods {
             
         }
     }
+    
+    public ArrayList<User> getPlayers()
+    {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<User> players)
+    {
+        this.players = players;
+    }
+    
+    
+    
 }
