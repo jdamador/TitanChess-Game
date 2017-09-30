@@ -68,10 +68,7 @@ public class GameSettings
                 methods.updateInGraphicsElements(titan);
                 return;
             } else {
-<<<<<<< HEAD
-=======
-               
->>>>>>> master
+
                 tower.setQuantityStamina(0);
                 methods.updateInGraphicsElements(tower);
                 methods.updateInGraphicsElements(titan);
@@ -80,10 +77,9 @@ public class GameSettings
         } else {
             if(element2 instanceof Titan){
             titan2 = (Titan) element2;
-<<<<<<< HEAD
-=======
+
             }
->>>>>>> master
+
             if (damage < titan2.getLife()) {
                 titan.setLife(titan2.getLife() - damage);
                 titan.setMana(titan.getMana() - attack.getQuantityMana());
@@ -92,14 +88,14 @@ public class GameSettings
                 methods.updateInGraphicsElements(titan);
               
             } else {
-<<<<<<< HEAD
+
                 titan2.setLife(0);
                   JOptionPane.showMessageDialog(null, "Damage caused :" + damage);
-=======
+
             
                 titan2.setLife(0);
                 
->>>>>>> master
+
                 methods.updateInGraphicsElements(titan2);
                 methods.updateInGraphicsElements(titan);
                
@@ -139,39 +135,6 @@ public class GameSettings
         }
         return false;
     }
-
-<<<<<<< HEAD
-    public int getContTowersP1()
-    {
-        return contTowersP1;
-    }
-
-    public void setContTowersP1(int contTowersP1)
-    {
-        this.contTowersP1 = contTowersP1;
-    }
-
-    public int getContTowersP2()
-    {
-        return contTowersP2;
-    }
-
-    public void setContTowersP2(int contTowersP2)
-    {
-        this.contTowersP2 = contTowersP2;
-    }
-
-    public boolean isDeadTitan()
-    {
-        return deadTitan;
-    }
-
-    public void setDeadTitan(boolean deadTitan)
-    {
-        this.deadTitan = deadTitan;
-    }
-=======
->>>>>>> master
 
     public ArrayList<Path> getButtons()
     {

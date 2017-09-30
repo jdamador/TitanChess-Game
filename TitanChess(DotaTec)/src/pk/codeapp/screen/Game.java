@@ -682,11 +682,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                         path.setBackground(java.awt.Color.lightGray);
                 }
             }
-
-            actionToRealice = "move";
-            mode = "pasive";
-            changePlayer();
         }
+        actionToRealice = "move";
+         mode = "pasive";
+         changePlayer();
     }
 
 }
