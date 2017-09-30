@@ -180,15 +180,14 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPlife.setBackground(new java.awt.Color(0, 0, 0));
+        jPlife.setBackground(null);
         jPlife.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jPlife.setForeground(new java.awt.Color(0, 0, 0));
         jPlife.setBorder(null);
         jPlife.setString("Life\n");
-        jPlife.setStringPainted(true);
         jPanel1.add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 420, 30));
 
-        jPMana.setBackground(new java.awt.Color(0, 0, 0));
+        jPMana.setBackground(null);
         jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jPMana.setForeground(new java.awt.Color(0, 0, 0));
         jPMana.setBorder(null);
@@ -599,7 +598,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
        jPlife.setOpaque(true);
        jPlife.setBackground(java.awt.Color.green);
        jPlife.setForeground(java.awt.Color.black);
-
         
         //Mana
         jPMana.setMaximum(titan.getMaxMana());
