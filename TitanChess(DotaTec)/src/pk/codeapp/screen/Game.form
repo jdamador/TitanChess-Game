@@ -217,7 +217,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
-            <Property name="indeterminate" type="boolean" value="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="string" type="java.lang.String" value="Life&#xa;"/>
             <Property name="stringPainted" type="boolean" value="true"/>
@@ -243,6 +243,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="string" type="java.lang.String" value="Mana"/>
             <Property name="stringPainted" type="boolean" value="true"/>
             <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>

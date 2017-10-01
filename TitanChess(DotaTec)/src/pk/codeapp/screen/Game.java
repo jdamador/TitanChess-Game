@@ -32,8 +32,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private int columnGame;
     private int rowGame;
     private int contTimeToDead = 0; // Cont the turn that pass to restart Titan
-    private int contTowersP1=0;
-    private int contTowersP2=0;
+    private int contTowersP1 = 0;
+    private int contTowersP2 = 0;
     private Titan titan2;
     private boolean deadTitan = false; // boolean to  check dead Titan
     private int contMovesTitan;//Cont the moves has actualTitan  
@@ -193,7 +193,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPlife.setForeground(new java.awt.Color(0, 153, 102));
         jPlife.setToolTipText("");
         jPlife.setBorder(null);
-        jPlife.setIndeterminate(true);
+        jPlife.setOpaque(false);
         jPlife.setRequestFocusEnabled(false);
         jPlife.setString("Life\n");
         jPlife.setStringPainted(true);
@@ -204,6 +204,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jPMana.setForeground(new java.awt.Color(102, 255, 255));
         jPMana.setBorder(null);
+        jPMana.setOpaque(false);
         jPMana.setString("Mana");
         jPMana.setStringPainted(true);
         jPMana.setVerifyInputWhenFocusTarget(false);
@@ -259,11 +260,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         //Life
         jPlife.setVisible(false);
         jPMana.setVisible(false);
-        jPlife.setMaximum(0);
-        jPlife.setValue(0);
-        //Mana
-        jPMana.setMaximum(0);
-        jPMana.setValue(0);
     }
 
     private void changePlayer() // Change turn of game
@@ -595,8 +591,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         lblShowName.setText(titan.getName() + "          " + "Lvl:" + titan.getLevel());
         jPlife.setVisible(true);
         jPMana.setVisible(true);
-        jPlife.setMaximum(0);
-        jPMana.setMaximum(0);
         lblPictureTitan.setIcon(titan.getImageBig());
         //Life
         jPlife.setMaximum(titan.getMaxLife());
@@ -629,24 +623,24 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
-        System.out.println("Cantidad de Torres P1: "+contTowersP1);
-        System.out.println("Cantidad de Torres P2: "+contTowersP2);
+        System.out.println("Cantidad de Torres P1: " + contTowersP1);
+        System.out.println("Cantidad de Torres P2: " + contTowersP2);
     }
 
     private void whoWin()
-    { 
-        System.out.println("Contador Tower 1:  "+contTowersP1);
-        System.out.println("Contador Tower 2:  "+contTowersP2);
-        if (this.contTowersP1==0){
+    {
+        System.out.println("Contador Tower 1:  " + contTowersP1);
+        System.out.println("Contador Tower 2:  " + contTowersP2);
+        if (this.contTowersP1 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
             this.dispose();
             selectTitan.goBack();
             running = false;
-        }else if (this.contTowersP2==0){
+        } else if (this.contTowersP2 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             this.dispose();
             selectTitan.goBack();
-            running = false;  
+            running = false;
         }
     }
 
@@ -704,7 +698,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private void tick()
     { // Variables
 
-        whoWin();
         whoDead();
     }
 
@@ -798,8 +791,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 } else {
                     contTowersP2--;
                 }
-                System.out.println("Cantidad de Torres P1: "+contTowersP1);
-                System.out.println("Cantidad de Torres P2: "+contTowersP2);
+                whoWin();
+                System.out.println("Cantidad de Torres P1: " + contTowersP1);
+                System.out.println("Cantidad de Torres P2: " + contTowersP2);
                 dupla = ((Tower) element).getPosition();
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                 Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
@@ -811,7 +805,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             if (element instanceof Titan) {
                 int midGame = (columnGame / 2);
                 if (((Titan) element).getLife() == 0) {
-                    increaseDeadTitans((Titan) element); 
+                    increaseDeadTitans((Titan) element);
                     titan2 = (Titan) element;
                     increaseDeadTitans((Titan) element);
                     dupla = element.getDupla();
@@ -854,14 +848,14 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setDrestroyTower(estadisticsPlayer1.getDrestroyTower() + 1);
             updateEstadics(estadisticsPlayer1, index);
-             estadisticsPlayer2.setMyDeadTower(estadisticsPlayer2.getMyDeadTower()+1); 
-            updateEstadics(estadisticsPlayer2, index); 
+            estadisticsPlayer2.setMyDeadTower(estadisticsPlayer2.getMyDeadTower() + 1);
+            updateEstadics(estadisticsPlayer2, index);
         } else {
             index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setDrestroyTower(estadisticsPlayer2.getDrestroyTower() + 1);
             updateEstadics(estadisticsPlayer2, index);
-            estadisticsPlayer1.setMyDeadTower(estadisticsPlayer1.getMyDeadTower()+ 1); 
-            updateEstadics(estadisticsPlayer1, index); 
+            estadisticsPlayer1.setMyDeadTower(estadisticsPlayer1.getMyDeadTower() + 1);
+            updateEstadics(estadisticsPlayer1, index);
         }
     }
 
