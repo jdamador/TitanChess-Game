@@ -47,15 +47,16 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private GraphicsElement[][] graphicsElements = MainApp.methods.getGraphicsElements(); // Matrix of Game
     private ArrayList<Path> buttons = new ArrayList(); // List of buttons
     private GameSettings gameSettings = new GameSettings(MainApp.methods); // Methods to Game
-
+    private Estadistics estadisticsPlayer1 = methods.getActual().getUserEstadistics();
+    private Estadistics estadisticsPlayer2 = methods.getPlayer2().getUserEstadistics();
     Titan titans[];
     private String mode;
 
     public Game()
     {
         initComponents();
-          jPlife.setVisible(false);
-         jPMana.setVisible(false);
+        jPlife.setVisible(false);
+        jPMana.setVisible(false);
         this.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent evt)
@@ -234,25 +235,27 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     {//GEN-HEADEREND:event_btnAttackActionPerformed
         // TODO add your handling code here:
         mode = "attack";
-        JOptionPane.showMessageDialog(rootPane, "Select your enemy!","Information",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(rootPane, "Select your enemy!", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAttackActionPerformed
-    private void viewTitan(){
-         // View titan 
+    private void viewTitan()
+    {
+        // View titan 
         lblPictureTitan.setIcon(null);
-        lblShowName.setText(null); 
-         //Life
-         jPlife.setVisible(false);
-         jPMana.setVisible(false);
+        lblShowName.setText(null);
+        //Life
+        jPlife.setVisible(false);
+        jPMana.setVisible(false);
         jPlife.setMaximum(0);
         jPlife.setValue(0);
         //Mana
         jPMana.setMaximum(0);
         jPMana.setValue(0);
     }
+
     private void changePlayer() // Change turn of game
     {
-         increaseMana();
-         viewTitan();
+        increaseMana();
+        viewTitan();
         btnAttack.setEnabled(false);
         if (turnOfPlayer) { //Player 1  - Player 2
             turnOfPlayer = false;
@@ -266,7 +269,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             paneTurn.setBackground(java.awt.Color.red);
         }
         if (deadTitan) {
-            System.out.println(contTimeToDead);
             this.contTimeToDead++;
         }
     }
@@ -504,21 +506,25 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-    private void increaseMana(){
+
+    private void increaseMana()
+    {
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
-            if(graphicsElements[i][j] instanceof Titan){
-                Titan titan =(Titan)graphicsElements[i][j];
-                int mana = titan.getMana();
-                mana*=0.25;
-                titan.setMana(titan.getMana()+mana);
-                graphicsElements[i][j]=titan;
+                if (graphicsElements[i][j] instanceof Titan) {
+                    Titan titan = (Titan) graphicsElements[i][j];
+                    int mana = titan.getMana();
+                    mana *= 0.25;
+                    titan.setMana(titan.getMana() + mana);
+                    graphicsElements[i][j] = titan;
+                }
             }
-            }}
+        }
     }
+
     private void movePosition(int column, int row, Path temp)
     { // Move Position of titan
-        System.out.println("Entro a move Position" + " El contador es: " + contMovesTitan);
+
         if (contMovesTitan > 0) {
 
             if (gameSettings.checkRange(column, row, actualTitan)) { //Check range of titan
@@ -547,19 +553,21 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             JOptionPane.showMessageDialog(rootPane, "Titan does not have more movements");
         }
     }
+
     /**
-     * Methods to move the titan 
+     * Methods to move the titan
+     *
      * @param player
      * @param column
      * @param row
-     * @param temp 
+     * @param temp
      */
     private void moveTitan(String player, int column, int row, Path temp)
     { // Methods to move titan 
         if (graphicsElements[column][row] instanceof Titan) {
             Titan titan = (Titan) graphicsElements[column][row];
             if (titan.getPlayer().equals(player)) {
-                viewTitan(titan); 
+                viewTitan(titan);
                 contMovesTitan = titan.getMoves();
                 backupButton = temp; // Backup the button to move
                 actualTitan = titan; // set Actual Titan
@@ -569,47 +577,43 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
     }
-    
-    private void viewTitan(Titan titan){
-         lblShowName.setText(titan.getName()+"          "+"Lvl:"+titan.getLevel()); 
-         jPlife.setVisible(true);
-         jPMana.setVisible(true);
-         jPlife.setMaximum(0);
-         jPMana.setMaximum(0);
-         lblPictureTitan.setIcon(titan.getImageBig());
-         //Life
+
+    private void viewTitan(Titan titan)
+    {
+        lblShowName.setText(titan.getName() + "          " + "Lvl:" + titan.getLevel());
+        jPlife.setVisible(true);
+        jPMana.setVisible(true);
+        jPlife.setMaximum(0);
+        jPMana.setMaximum(0);
+        lblPictureTitan.setIcon(titan.getImageBig());
+        //Life
         jPlife.setMaximum(titan.getMaxLife());
         jPlife.setValue(titan.getLife());
         jPlife.setStringPainted(true);
         jPlife.setString("Life");
-       jPlife.setOpaque(true);
-       jPlife.setBackground(java.awt.Color.green);
-       jPlife.setForeground(java.awt.Color.black);
-        
+        jPlife.setOpaque(true);
+        jPlife.setBackground(java.awt.Color.green);
+        jPlife.setForeground(java.awt.Color.black);
+
         //Mana
         jPMana.setMaximum(titan.getMaxMana());
         jPMana.setValue(titan.getMana());
-       jPMana.setOpaque(true);
-       jPMana.setBackground(java.awt.Color.blue);
-       jPMana.setForeground(java.awt.Color.black);
-     
-        
+        jPMana.setOpaque(true);
+        jPMana.setBackground(java.awt.Color.blue);
+        jPMana.setForeground(java.awt.Color.black);
+
     }
+
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
 
-
         int index = searchUserToEdit(methods.getActual());
         int played = methods.getPlayers().get(index).getUserEstadistics().getPlayedGames();
-        methods.getPlayers().get(index).getUserEstadistics().setPlayedGames(played+1);
+        methods.getPlayers().get(index).getUserEstadistics().setPlayedGames(played + 1);
 
         index = searchUserToEdit(methods.getPlayer2());
         played = methods.getPlayers().get(index).getUserEstadistics().getPlayedGames();
-        methods.getPlayers().get(index).getUserEstadistics().setPlayedGames(played+1);
-
-
-        System.out.println("Player 1 Towers: "+contTowersP1);
-        System.out.println("Player 2 Towers: "+contTowersP2);
+        methods.getPlayers().get(index).getUserEstadistics().setPlayedGames(played + 1);
 
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
@@ -618,21 +622,20 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void whoWin()
     {
-       System.out.println("Tower Player 1: "+contTowersP1);
-       System.out.println("Tower Player 2: " + contTowersP2);
+
         if (contTowersP1 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
-           
+
             this.dispose();
             selectTitan.goBack();
-            running = false; 
+            running = false;
             /// 
-        
+
         } else if (contTowersP2 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             this.dispose();
             selectTitan.goBack();
-            running = false; 
+            running = false;
             // 
         }
     }
@@ -778,7 +781,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         Dupla dupla;
         if (element instanceof Tower) {
             if (((Tower) element).getQuantityStamina() == 0) {
-                Tower tower = (Tower)element;
+                Tower tower = (Tower) element;
                 if (tower.getTowerPlayer().equals("player1")) {
                     contTowersP1--;
                 } else {
@@ -787,7 +790,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 dupla = ((Tower) element).getPosition();
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                 Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
-
+                increaseDetroyTowers(tower);
                 path.setIcon(new ImageIcon("src/pk/codeapp/tools/deletetower.png"));
                 path.setEnabled(false);
             }
@@ -795,13 +798,15 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             if (element instanceof Titan) {
                 int midGame = (columnGame / 2);
                 if (((Titan) element).getLife() == 0) {
-                    increaseEstadistics((Titan) element);
+                    increaseDeadTitans((Titan) element); 
                     titan2 = (Titan) element;
+                    increaseDeadTitans((Titan) element);
                     dupla = element.getDupla();
                     deadTitan = true;
                     graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                     Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
                     path.setIcon(null);
+
                     if (path.getColumn() > midGame - 1) {
                         path.setBackground(java.awt.Color.gray);
                     } else {
@@ -815,19 +820,41 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         changePlayer();
     }
 
-    private void increaseEstadistics(Titan titan)
+    private void increaseDeadTitans(Titan titan)
     {
+        int index;
         if (titan.getPlayer().equals("Player1")) {
-            int index = searchUserToEdit(methods.getActual());
-            Estadistics estadistics = methods.getPlayers().get(index).getUserEstadistics();
-            estadistics.setDeadTitans(estadistics.getDeadTitans() + 1);
-            methods.getPlayers().get(index).setUserEstadistics(estadistics);
+            index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setDeadTitans(estadisticsPlayer1.getDeadTitans() + 1);
+            updateEstadics(estadisticsPlayer1, index);
         } else {
-            int index = searchUserToEdit(methods.getPlayer2());
-            Estadistics estadistics = methods.getPlayers().get(index).getUserEstadistics();
-            estadistics.setDeadTitans(estadistics.getDeadTitans() + 1);
-            methods.getPlayers().get(index).setUserEstadistics(estadistics);
+            index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.setDeadTitans(estadisticsPlayer1.getDeadTitans() + 1);
+            updateEstadics(estadisticsPlayer2, index);
         }
+    }
+
+    private void increaseDetroyTowers(Tower tower)
+    {
+        int index;
+        if (tower.getTowerPlayer().equalsIgnoreCase("Player1")) {
+            index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setDrestroyTower(estadisticsPlayer1.getDrestroyTower() + 1);
+            updateEstadics(estadisticsPlayer1, index);
+             estadisticsPlayer2.setMyDeadTower(estadisticsPlayer2.getMyDeadTower()+1); 
+            updateEstadics(estadisticsPlayer2, index); 
+        } else {
+            index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.setDrestroyTower(estadisticsPlayer2.getDrestroyTower() + 1);
+            updateEstadics(estadisticsPlayer2, index);
+            estadisticsPlayer1.setMyDeadTower(estadisticsPlayer1.getMyDeadTower()+ 1); 
+            updateEstadics(estadisticsPlayer1, index); 
+        }
+    }
+
+    public void updateEstadics(Estadistics estadistics, int index)
+    {
+        methods.getPlayers().get(index).setUserEstadistics(estadistics);
     }
 
     public int searchUserToEdit(User user)

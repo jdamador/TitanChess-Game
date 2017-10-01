@@ -349,14 +349,18 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
 
             addTitanInTheCorrectPlayer();
             if (contTitansPlayer1 < 2 && contTitansPlayer2 < 2) {
+                
+                String selected = (String) cmbEnemy.getSelectedItem(); 
+                if (selected == null) { 
+                    JOptionPane.showMessageDialog(rootPane, "You need 2 player to play"); 
+                } else { 
                 String elementofArena = (String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
-                String selected = (String) cmbEnemy.getSelectedItem();
                 methods.setPlayer2(methods.searchUser(selected));
                 Game game = new Game();
                 game.obtainQuantityTower(contTowersP1, contTowersP2);
                 game.openWindow(this);
-
+                }
             } else {
                 contTitansPlayer1 = 4;
                 contTitansPlayer2 = 4;
@@ -485,7 +489,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             }
         });
     }
-    // <editor-fold defaultstate="collapsed" desc="Geters and Seters">
+  //<editor-fold desc="*All getters and setters here*" defaultstate="collapsed"> 
 
     public String getElementOfArena()
     {
@@ -546,7 +550,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     {
         this.lobby = lobby;
     }
-
+//</editor-fold> 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPositionTower;
     private javax.swing.JButton btnStartGame;
