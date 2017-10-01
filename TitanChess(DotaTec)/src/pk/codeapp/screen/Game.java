@@ -204,38 +204,36 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPlife.setStringPainted(true);
         jPanel1.add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 450, -1));
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         jPMana.setBackground(new java.awt.Color(0, 153, 255));
-=======
+
         jPMana.setBackground(new java.awt.Color(153, 153, 153));
->>>>>>> parent of 8342299... Updates
+
         jPMana.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-=======
+
         jPMana.setBackground(new java.awt.Color(153, 153, 153));
         jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
->>>>>>> master
+
         jPMana.setForeground(new java.awt.Color(0, 0, 0));
         jPMana.setStringPainted(true);
         jPanel1.add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 450, 30));
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         jPlife.setBackground(new java.awt.Color(51, 255, 51));
-=======
+
         jPlife.setBackground(new java.awt.Color(153, 153, 153));
->>>>>>> parent of 8342299... Updates
+
         jPlife.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jPlife.setForeground(new java.awt.Color(0, 0, 0));
         jPlife.setStringPainted(true);
         getContentPane().add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 420, 40));
-=======
+
         lblShowName.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         lblShowName.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(lblShowName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 260, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 710, 130));
->>>>>>> master
+
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
