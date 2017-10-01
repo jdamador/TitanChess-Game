@@ -34,11 +34,11 @@ public class DataSheet extends javax.swing.JFrame implements DefaultRules
         System.out.println(actual);
         lblWinGames.setText(actual.getWinGames()+"");
         lblDeadTitans.setText(actual.getDeadTitans()+"");
-        
+        actual.calcPerformance();
         lblTowerDestroyed.setText(actual.getMyDeadTower()+"");
         lblGameLost.setText(actual.getLostGames()+"");
         lblGamesPlayed.setText(actual.getPlayedGames()+"");
-        lblPerformance.setText(actual.getPerformance()+"");
+        lblPerformance.setText(actual.getPerformance()+"%");
         lblDestroyedTower.setText(actual.getDrestroyTower()+"");
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {

@@ -30,6 +30,7 @@ public class Estadistics implements Serializable {
 
     public void setPlayedGames(int playedGames)
     {
+        calcPerformance();
         this.playedGames = playedGames;
     }
 
@@ -50,6 +51,7 @@ public class Estadistics implements Serializable {
 
     public void setWinGames(int winGames)
     {
+        calcPerformance();
         this.winGames = winGames;
     }
 
@@ -135,5 +137,9 @@ public class Estadistics implements Serializable {
         this.performance = performance;
     }
     
+    public void calcPerformance(){
+        if(winGames!=0&& playedGames!=0)
+        this.performance= winGames*100/playedGames;
+    }
     
 }

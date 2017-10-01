@@ -623,25 +623,43 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
         this.contTowersP1 = contTowersP1;
         this.contTowersP2 = contTowersP2;
-        System.out.println("Cantidad de Torres P1: " + contTowersP1);
-        System.out.println("Cantidad de Torres P2: " + contTowersP2);
+
     }
 
-    private void whoWin()
+    private boolean whoWin()
     {
-        System.out.println("Contador Tower 1:  " + contTowersP1);
-        System.out.println("Contador Tower 2:  " + contTowersP2);
+        int index;
         if (this.contTowersP1 == 0) {
+            //if player 1 is lost
+            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
+            index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.setWinGames(estadisticsPlayer2.getWinGames()+ 1);
+            //if player 1 is lost
+            updateEstadics(estadisticsPlayer2, index);
+             index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setLostGames(estadisticsPlayer1.getLostGames()+ 1);
+            updateEstadics(estadisticsPlayer1, index);
+            this.dispose();
+            selectTitan.goBack();
+            running = false;
+            return true;
+        } else if (this.contTowersP2 == 0) {
+            //if player 1 is winner
+              index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setWinGames(estadisticsPlayer1.getWinGames()+ 1);
+            updateEstadics(estadisticsPlayer1, index);
+            
+            //if player 2 is lost
+             index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.setLostGames(estadisticsPlayer2.getLostGames()+ 1);
+            updateEstadics(estadisticsPlayer2, index);
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
             this.dispose();
             selectTitan.goBack();
             running = false;
-        } else if (this.contTowersP2 == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
-            this.dispose();
-            selectTitan.goBack();
-            running = false;
+            return true;
         }
+        return false;
     }
 
     private void whoDead()
@@ -785,15 +803,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         if (element instanceof Tower) {
             if (((Tower) element).getQuantityStamina() == 0) {
                 Tower tower = (Tower) element;
-                System.out.println(tower.getTowerPlayer());
+
                 if (tower.getTowerPlayer().equals("player1")) {
                     contTowersP1--;
                 } else {
                     contTowersP2--;
                 }
-                whoWin();
-                System.out.println("Cantidad de Torres P1: " + contTowersP1);
-                System.out.println("Cantidad de Torres P2: " + contTowersP2);
+
                 dupla = ((Tower) element).getPosition();
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                 Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
@@ -822,15 +838,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 }
             }
         }
-        actionToRealice = "move";
-        mode = "pasive";
-        changePlayer();
+        if (whoWin()) {
+        } else {
+            actionToRealice = "move";
+            mode = "pasive";
+            changePlayer();
+        }
+
     }
 
     private void increaseDeadTitans(Titan titan)
     {
         int index;
-        if (titan.getPlayer().equals("Player1")) {
+        if (titan.getPlayer().equalsIgnoreCase("Player2")) {
             index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setDeadTitans(estadisticsPlayer1.getDeadTitans() + 1);
             updateEstadics(estadisticsPlayer1, index);
@@ -844,16 +864,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private void increaseDetroyTowers(Tower tower)
     {
         int index;
-        if (tower.getTowerPlayer().equalsIgnoreCase("Player1")) {
+        if (tower.getTowerPlayer().equalsIgnoreCase("Player2")) {
             index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setDrestroyTower(estadisticsPlayer1.getDrestroyTower() + 1);
             updateEstadics(estadisticsPlayer1, index);
+            
+             index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setMyDeadTower(estadisticsPlayer2.getMyDeadTower() + 1);
             updateEstadics(estadisticsPlayer2, index);
         } else {
             index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setDrestroyTower(estadisticsPlayer2.getDrestroyTower() + 1);
             updateEstadics(estadisticsPlayer2, index);
+              index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setMyDeadTower(estadisticsPlayer1.getMyDeadTower() + 1);
             updateEstadics(estadisticsPlayer1, index);
         }
