@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.ListModel;
+
 import pk.codeapp.model.GraphicsElement;
 
 /*
@@ -37,7 +37,7 @@ public class Titan extends GraphicsElement implements Serializable{
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
     //Player
     private String player="";
-
+    private int level=1;
     public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String imageBig,String gif,String tiny) {
         //init attributes
         this.name = name;
@@ -196,6 +196,16 @@ public class Titan extends GraphicsElement implements Serializable{
         this.attacks = attacks;
     }
 
+    public int getLevel()
+    {
+        return level;
+    }
+
+    public void setLevel(int level)
+    {
+        this.level = level;
+    }
+    
     
     public DefaultListModel<String> toModel() {
         DefaultListModel<String> model= new DefaultListModel();

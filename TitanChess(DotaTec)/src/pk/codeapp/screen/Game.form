@@ -204,9 +204,6 @@
       <SubComponents>
         <Component class="javax.swing.JProgressBar" name="jPlife">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color type="null"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Schoolbook" size="18" style="1"/>
             </Property>
@@ -226,9 +223,6 @@
         </Component>
         <Component class="javax.swing.JProgressBar" name="jPMana">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color type="null"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Schoolbook" size="18" style="1"/>
             </Property>

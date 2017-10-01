@@ -7,12 +7,10 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.paint.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import pk.codeapp.methods.DefaultRules;
 import pk.codeapp.methods.GameSettings;
 import pk.codeapp.model.Dupla;
@@ -227,13 +225,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEndTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndTurnActionPerformed
-
-        
         actionToRealice = "move";
         mode = "pasive";
         changePlayer();
-
-
     }//GEN-LAST:event_btnEndTurnActionPerformed
 
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAttackActionPerformed
@@ -245,17 +239,15 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private void viewTitan(){
          // View titan 
         lblPictureTitan.setIcon(null);
+        lblShowName.setText(null); 
          //Life
          jPlife.setVisible(false);
          jPMana.setVisible(false);
         jPlife.setMaximum(0);
         jPlife.setValue(0);
-       
         //Mana
         jPMana.setMaximum(0);
         jPMana.setValue(0);
-       
-        
     }
     private void changePlayer() // Change turn of game
     {
@@ -512,10 +504,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-
-
-  
-
     private void increaseMana(){
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
@@ -527,9 +515,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 graphicsElements[i][j]=titan;
             }
             }}
-
     }
-
     private void movePosition(int column, int row, Path temp)
     { // Move Position of titan
         System.out.println("Entro a move Position" + " El contador es: " + contMovesTitan);
@@ -585,6 +571,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     }
     
     private void viewTitan(Titan titan){
+         lblShowName.setText(titan.getName()+"          "+"Lvl:"+titan.getLevel()); 
          jPlife.setVisible(true);
          jPMana.setVisible(true);
          jPlife.setMaximum(0);
@@ -638,14 +625,14 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
            
             this.dispose();
             selectTitan.goBack();
-           return;
+            running = false; 
             /// 
         
         } else if (contTowersP2 == 0) {
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             this.dispose();
             selectTitan.goBack();
-            return;
+            running = false; 
             // 
         }
     }

@@ -33,8 +33,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     private Lobby lobby;
     private int contTitansPlayer1 = 4;
     private int contTitansPlayer2 = 4;
-    private int contTowersP1,contTowersP2;
-    private ArrayList<User> enemies ;
+    private int contTowersP1, contTowersP2;
+    private ArrayList<User> enemies;
 
     SelectionTower selectionTower;
 
@@ -64,7 +64,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
                 System.exit(0);
             }
         });
-        enemies=methods.getPlayers();
+        enemies = methods.getPlayers();
         chargerEnemy();
     }
 
@@ -297,7 +297,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             // Set ColumnGame and RowGame in methods
             MainApp.methods.setColumnGame(columnGame);
             MainApp.methods.setRowGame(rowGame);
-
+            MainApp.methods.setGraphicsElements(new GraphicsElement[columnGame][rowGame]);
             selectionTower = new SelectionTower(); //Instance of windows selection of tower
             this.setVisible(false);
             selectionTower.openWindow(this); // Pass windows to Selection of tower
@@ -351,8 +351,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             if (contTitansPlayer1 < 2 && contTitansPlayer2 < 2) {
                 String elementofArena = (String) cmbSizeofmap1.getSelectedItem();
                 setElementOfArena(elementofArena);
-                String selected=(String)cmbEnemy.getSelectedItem();
-                 methods.setPlayer2(methods.searchUser(selected));
+                String selected = (String) cmbEnemy.getSelectedItem();
+                methods.setPlayer2(methods.searchUser(selected));
                 Game game = new Game();
                 game.obtainQuantityTower(contTowersP1, contTowersP2);
                 game.openWindow(this);
@@ -517,30 +517,36 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         this.rowGame = rowGame;
     }
 
-    public int getContTowersP1() {
+    public int getContTowersP1()
+    {
         return contTowersP1;
     }
 
-    public void setContTowersP1(int contTowersP1) {
+    public void setContTowersP1(int contTowersP1)
+    {
         this.contTowersP1 = contTowersP1;
     }
 
-    public int getContTowersP2() {
+    public int getContTowersP2()
+    {
         return contTowersP2;
     }
 
-    public void setContTowersP2(int contTowersP2) {
+    public void setContTowersP2(int contTowersP2)
+    {
         this.contTowersP2 = contTowersP2;
     }
 
-    public Lobby getLobby() {
+    public Lobby getLobby()
+    {
         return lobby;
     }
 
-    public void setLobby(Lobby lobby) {
+    public void setLobby(Lobby lobby)
+    {
         this.lobby = lobby;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPositionTower;
     private javax.swing.JButton btnStartGame;
@@ -604,15 +610,15 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
         this.dispose();
         lobby.setVisible(true);
     }
-    
+
     private void chargerEnemy()
     {
-        DefaultComboBoxModel<String>model = new DefaultComboBoxModel();
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel();
         for (int i = 0; i < enemies.size(); i++) {
-            if(enemies.get(i)!=methods.getActual()){
+            if (enemies.get(i) != methods.getActual()) {
                 model.addElement(enemies.get(i).getName());
             }
-            
+
         }
         cmbEnemy.setModel(model);
     }
