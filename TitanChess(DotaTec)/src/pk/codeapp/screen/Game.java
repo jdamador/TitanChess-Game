@@ -73,7 +73,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -91,8 +92,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
                 formWindowOpened(evt);
             }
         });
@@ -122,8 +125,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -133,8 +138,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnEndTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnEndTurn.setForeground(new java.awt.Color(255, 255, 255));
         btnEndTurn.setText("End Turn");
-        btnEndTurn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEndTurn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnEndTurnActionPerformed(evt);
             }
         });
@@ -144,8 +151,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnAttack.setText("Attack");
-        btnAttack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAttack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAttackActionPerformed(evt);
             }
         });
@@ -179,16 +188,21 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPlife.setBackground(null);
+        jPlife.setBackground(new java.awt.Color(0, 153, 102));
         jPlife.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
-        jPlife.setForeground(new java.awt.Color(0, 0, 0));
+        jPlife.setForeground(new java.awt.Color(0, 153, 102));
+        jPlife.setToolTipText("");
         jPlife.setBorder(null);
+        jPlife.setIndeterminate(true);
+        jPlife.setRequestFocusEnabled(false);
         jPlife.setString("Life\n");
+        jPlife.setStringPainted(true);
+        jPlife.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 420, 30));
 
-        jPMana.setBackground(null);
+        jPMana.setBackground(new java.awt.Color(102, 255, 255));
         jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
-        jPMana.setForeground(new java.awt.Color(0, 0, 0));
+        jPMana.setForeground(new java.awt.Color(102, 255, 255));
         jPMana.setBorder(null);
         jPMana.setString("Mana");
         jPMana.setStringPainted(true);
