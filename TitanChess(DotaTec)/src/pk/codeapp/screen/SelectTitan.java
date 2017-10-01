@@ -490,10 +490,8 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             }
         });
     }
+    // <editor-fold defaultstate="collapsed" desc="Geters and Seters">
 
-    
-    
-//<editor-fold desc="*All getters and setters here*" defaultstate="collapsed">
     public String getElementOfArena()
     {
         return elementOfArena;
@@ -553,11 +551,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
     {
         this.lobby = lobby;
     }
-//</editor-fold>
-    
-    
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPositionTower;
     private javax.swing.JButton btnStartGame;
