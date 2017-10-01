@@ -73,7 +73,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanelGame = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -81,16 +82,20 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnAttack = new javax.swing.JButton();
         paneTurn = new javax.swing.JPanel();
         lblShowTurn = new javax.swing.JLabel();
-        lblPictureTitan = new javax.swing.JLabel();
-        jPMana = new javax.swing.JProgressBar();
+        jPanel1 = new javax.swing.JPanel();
         jPlife = new javax.swing.JProgressBar();
+        jPMana = new javax.swing.JProgressBar();
+        lblPictureTitan = new javax.swing.JLabel();
+        lblShowName = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
                 formWindowOpened(evt);
             }
         });
@@ -120,8 +125,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -131,8 +138,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnEndTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnEndTurn.setForeground(new java.awt.Color(255, 255, 255));
         btnEndTurn.setText("End Turn");
-        btnEndTurn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEndTurn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnEndTurnActionPerformed(evt);
             }
         });
@@ -142,8 +151,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnAttack.setText("Attack");
-        btnAttack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAttack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAttackActionPerformed(evt);
             }
         });
@@ -174,55 +185,34 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
         getContentPane().add(paneTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 650, -1, 50));
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPlife.setBackground(new java.awt.Color(153, 153, 153));
+        jPlife.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        jPlife.setForeground(new java.awt.Color(0, 0, 0));
+        jPlife.setStringPainted(true);
+        jPanel1.add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 420, 30));
+
+        jPMana.setBackground(new java.awt.Color(153, 153, 153));
+        jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        jPMana.setForeground(new java.awt.Color(0, 0, 0));
+        jPMana.setStringPainted(true);
+        jPanel1.add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 420, 30));
+
         lblPictureTitan.setBorder(new javax.swing.border.MatteBorder(null));
         lblPictureTitan.setMaximumSize(new java.awt.Dimension(80, 80));
         lblPictureTitan.setMinimumSize(new java.awt.Dimension(80, 80));
         lblPictureTitan.setName(""); // NOI18N
         lblPictureTitan.setPreferredSize(new java.awt.Dimension(242, 121));
         lblPictureTitan.setRequestFocusEnabled(false);
-        getContentPane().add(lblPictureTitan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
-
-
-        jPMana.setBackground(new java.awt.Color(0, 153, 255));
-
-        jPMana.setBackground(new java.awt.Color(153, 153, 153));
-
-        jPMana.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-
-        jPMana.setBackground(new java.awt.Color(153, 153, 153));
-<<<<<<< HEAD
-        jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
-
-        jPMana.setForeground(new java.awt.Color(0, 0, 0));
-        jPMana.setStringPainted(true);
-        jPanel1.add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 450, 30));
-
-
-        jPlife.setBackground(new java.awt.Color(51, 255, 51));
-
-        jPlife.setBackground(new java.awt.Color(153, 153, 153));
-
-        jPlife.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jPlife.setForeground(new java.awt.Color(0, 0, 0));
-        jPlife.setStringPainted(true);
-        getContentPane().add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 420, 40));
+        jPanel1.add(lblPictureTitan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         lblShowName.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         lblShowName.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(lblShowName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 260, 30));
-=======
-        jPMana.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jPMana.setForeground(new java.awt.Color(0, 0, 0));
-        jPMana.setStringPainted(true);
-        getContentPane().add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 660, 420, 40));
->>>>>>> parent of c39a186... working with mana and life in the titans
+        jPanel1.add(lblShowName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 340, 40));
 
-        jPlife.setBackground(new java.awt.Color(153, 153, 153));
-        jPlife.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jPlife.setForeground(new java.awt.Color(0, 0, 0));
-        jPlife.setStringPainted(true);
-        getContentPane().add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 420, 40));
-
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 720, 130));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/BackgroundLand.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -494,10 +484,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private javax.swing.JButton btnEndTurn;
     private javax.swing.JButton jButton1;
     private javax.swing.JProgressBar jPMana;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelGame;
     private javax.swing.JProgressBar jPlife;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblPictureTitan;
+    private javax.swing.JLabel lblShowName;
     private javax.swing.JLabel lblShowTurn;
     private javax.swing.JPanel paneTurn;
     // End of variables declaration//GEN-END:variables
