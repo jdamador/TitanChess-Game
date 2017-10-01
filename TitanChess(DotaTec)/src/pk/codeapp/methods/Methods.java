@@ -153,7 +153,7 @@ public class Methods {
     //<editor-fold desc="Default Titans in the game" defaultstate="collapsed">
     public void defaulTitan() {
         //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
-        Titan titan = new Titan("Mewtwo", 50, 2, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", 
+        Titan titan = new Titan("Mewtwo", 50, 3, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png", 
                 "src/pk/codeapp/tools/titans/titan6.gif","src/pk/codeapp/tools/titans/Icons/icon6.png");
         addTitan(titan);
         titan = new Titan("Geb", 50, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg",
