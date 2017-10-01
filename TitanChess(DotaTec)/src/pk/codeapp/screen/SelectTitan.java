@@ -297,7 +297,7 @@ public class SelectTitan extends javax.swing.JFrame implements DefaultRules
             // Set ColumnGame and RowGame in methods
             MainApp.methods.setColumnGame(columnGame);
             MainApp.methods.setRowGame(rowGame);
-             MainApp.methods.setGraphicsElements(new GraphicsElement[columnGame][rowGame]);
+
             selectionTower = new SelectionTower(); //Instance of windows selection of tower
             this.setVisible(false);
             selectionTower.openWindow(this); // Pass windows to Selection of tower
