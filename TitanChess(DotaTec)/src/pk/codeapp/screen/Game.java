@@ -205,7 +205,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPanel1.add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 450, -1));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         jPMana.setBackground(new java.awt.Color(0, 153, 255));
+=======
+        jPMana.setBackground(new java.awt.Color(153, 153, 153));
+>>>>>>> parent of 8342299... Updates
         jPMana.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
 =======
         jPMana.setBackground(new java.awt.Color(153, 153, 153));
@@ -216,7 +220,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPanel1.add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 450, 30));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         jPlife.setBackground(new java.awt.Color(51, 255, 51));
+=======
+        jPlife.setBackground(new java.awt.Color(153, 153, 153));
+>>>>>>> parent of 8342299... Updates
         jPlife.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jPlife.setForeground(new java.awt.Color(0, 0, 0));
         jPlife.setStringPainted(true);
