@@ -31,11 +31,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private String elementArena;
     private int columnGame;
     private int rowGame;
-    private int contTimeToDead = 0; // Cont the turn that pass to restart Titan
+
     private int contTowersP1 = 0;
     private int contTowersP2 = 0;
     private Titan titan2;
-    private boolean deadTitan = false; // boolean to  check dead Titan
+    private boolean titanReallyDied = false; // boolean to  check dead Titan
     private int contMovesTitan;//Cont the moves has actualTitan  
     private Titan actualTitan; // Titan actual clicked
     private boolean running; // thread Game)
@@ -51,6 +51,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private Estadistics estadisticsPlayer2 = methods.getPlayer2().getUserEstadistics();
     Titan titans[];
     private String mode;
+    private Titan[] titansDead = new Titan[4];
+    private int timeDead1 = -1; // Cont the turn that pass to restart Titanwa
+    private int timeDead2 = -1;
+    private int timeDead3 = -1;
+    private int timeDead4 = -1;
 
     public Game()
     {
@@ -265,6 +270,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void changePlayer() // Change turn of game
     {
+
         increaseMana();
         viewTitan();
         btnAttack.setEnabled(false);
@@ -279,9 +285,15 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             lblShowTurn.setText("Turn Player 1");
             paneTurn.setBackground(java.awt.Color.red);
         }
-        if (deadTitan) {
-            this.contTimeToDead++;
-        }
+
+        System.out.println(timeDead1 + " " + timeDead2 + " " + timeDead3 + " " + timeDead4);
+
+        timeDead1--;
+        timeDead2--;
+        timeDead3--;
+        timeDead4--;
+        whoDead();
+
     }
 
     /**
@@ -426,25 +438,37 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private Dupla getPositionOfTitan(String player)
     {
+        Dupla aux = null;
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
                 if (graphicsElements[i][j] instanceof Tower) {
                     Tower tower = (Tower) graphicsElements[i][j];
 
-                    if (tower.getTowerPlayer().equals(player)) {
-
+                    if (tower.getTowerPlayer().equalsIgnoreCase(player)) {
+                        aux = tower.getPosition();
                         if (graphicsElements[i][j + 1] == null) {
-
                             return new Dupla(i, j + 1);
-                        } else if (graphicsElements[i][j - 1] == null) {
 
+                        } else if (graphicsElements[i][j - 1] == null) {
                             return new Dupla(i, j - 1);
+
                         } else if (graphicsElements[i - 1][j] == null) {
                             return new Dupla(i - 1, j);
+
+                        } else if (graphicsElements[i + 1][j] == null) {
+                            return new Dupla(i + 1, j);
+                            //alter position 
                         }
                     }
                 }
             }
+
+        }
+        if (graphicsElements[aux.getColumn() + 2][aux.getRow()] == null) {
+            return new Dupla(aux.getColumn() + 2,aux.getRow());
+        }
+        if(graphicsElements[aux.getColumn() ][aux.getRow()+2] == null) {
+            return new Dupla(aux.getColumn(),aux.getRow()+2);
         }
         return null;
     }
@@ -524,6 +548,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     Titan titan = (Titan) graphicsElements[i][j];
                     int mana = titan.getMana();
                     mana *= 0.25;
+
                     titan.setMana(titan.getMana() + mana);
                     graphicsElements[i][j] = titan;
                 }
@@ -668,36 +693,91 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void whoDead()
     { //Methods to titans is dead
-        if (deadTitan) {
-            if (contTimeToDead == 4) { //Before to 1 turn paint and add titan in the matrix
 
-                if (titan2.getPlayer().equals("Player1")) {
+        Titan deadTitan = null;
+        Dupla dupla = null;
+        if (timeDead1 == 0) {
+            System.out.println("aqui 1");
+            deadTitan = titansDead[0];
+            if (deadTitan.getPlayer().equalsIgnoreCase("Player1")) {
+                dupla = getPositionOfTitan("player1");
+                reviveTitan(deadTitan, dupla);
 
-                    Dupla dupla = getPositionOfTitan("player1");
-                    titan2.setDupla(dupla);
-
-                } else {
-
-                    Dupla dupla = getPositionOfTitan("player2");
-                    titan2.setDupla(dupla);
-                }
-                titan2.setLife(titan2.getMaxLife());
-                titan2.setMana(titan2.getMaxMana());
-                graphicsElements[titan2.getDupla().getColumn()][titan2.getDupla().getRow()] = titan2;
-                Path path = gameSettings.searchButtonToPaint(buttons, titan2.getDupla().getColumn(), titan2.getDupla().getRow());
-                path.setIcon(titan2.getTiny());
-                if (titan2.getPlayer().equals("Player1")) {
-                    path.setBackground(java.awt.Color.red);
-                } else {
-                    path.setBackground(java.awt.Color.blue);
-                }
-                contTimeToDead = 0;
-                deadTitan = false;
+            } else {
+                dupla = getPositionOfTitan("player2");
+                reviveTitan(deadTitan, dupla);
             }
+            timeDead1 = -1;
+            titansDead[0] = null;
+        } else if (timeDead2 == 0) {
+            System.out.println("aqui 2");
+            deadTitan = titansDead[1];
+            if (deadTitan.getPlayer().equalsIgnoreCase("Player1")) {
+                dupla = getPositionOfTitan("player1");
+                reviveTitan(deadTitan, dupla);
+
+            } else {
+                dupla = getPositionOfTitan("player2");
+                reviveTitan(deadTitan, dupla);
+            }
+            timeDead2 = -1;
+            titansDead[1] = null;
+        } else if (timeDead3 == 0) {
+            System.out.println("aqui 3");
+            deadTitan = titansDead[2];
+            if (deadTitan.getPlayer().equalsIgnoreCase("Player1")) {
+                dupla = getPositionOfTitan("player1");
+                reviveTitan(deadTitan, dupla);
+
+            } else {
+                dupla = getPositionOfTitan("player2");
+                reviveTitan(deadTitan, dupla);
+            }
+            timeDead3 = -1;
+            titansDead[2] = null;
+        } else if (timeDead4 == 0) {
+            System.out.println("aqui 4");
+            deadTitan = titansDead[3];
+            if (deadTitan.getPlayer().equalsIgnoreCase("Player1")) {
+                dupla = getPositionOfTitan("player1");
+                reviveTitan(deadTitan, dupla);
+            } else {
+                dupla = getPositionOfTitan("player2");
+                reviveTitan(deadTitan, dupla);
+            }
+            timeDead4 = -1;
+            titansDead[4] = null;
         }
+
     }
 
-    // Start Thread of Game 
+    public void reviveTitan(Titan deadTitan, Dupla dupla)
+    {
+        System.out.println("Revive titan");
+        deadTitan.setLife(deadTitan.getMaxLife());
+        deadTitan.setMana(deadTitan.getMaxMana());
+        graphicsElements[deadTitan.getDupla().getColumn()][deadTitan.getDupla().getRow()] = deadTitan;
+        Path path = gameSettings.searchButtonToPaint(buttons, deadTitan.getDupla().getColumn(), deadTitan.getDupla().getRow());
+        path.setIcon(deadTitan.getTiny());
+        if (deadTitan.getPlayer().equals("Player1")) {
+            path.setBackground(java.awt.Color.red);
+        } else {
+            path.setBackground(java.awt.Color.blue);
+        }
+        titanReallyDied = theyAreDead();
+    }
+
+    public boolean theyAreDead()
+    {
+        for (int i = 0; i < titansDead.length; i++) {
+            if (titansDead[i] != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+// Start Thread of Game 
+
     private void init()
     { // Inicialization of Varaibles
         //Start Game 
@@ -801,9 +881,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
     }
 
-    public void changeStates(GraphicsElement element,int mana)
+    public void changeStates(GraphicsElement element, int mana)
     {
-         viewTitan(actualTitan);
+        viewTitan(actualTitan);
         Dupla dupla;
         if (element instanceof Tower) {
             if (((Tower) element).getQuantityStamina() == 0) {
@@ -826,14 +906,16 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             if (element instanceof Titan) {
                 int midGame = (columnGame / 2);
                 if (((Titan) element).getLife() == 0) {
+                    graphicsElements[((Titan)element).getDupla().getColumn()][((Titan)element).getDupla().getRow()] = null;
+                    notWontDie((Titan) element);
                     addNewTitanKill(((Titan) element));
                     increaseDeadTitans((Titan) element);
-                    titan2 = (Titan) element;
+
                     increaseDeadTitans((Titan) element);
-                    dupla = element.getDupla();
-                    deadTitan = true;
-                    graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
-                    Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
+                    
+
+                    
+                    Path path = gameSettings.searchButtonToPaint(buttons, ((Titan)element).getDupla().getColumn(),((Titan)element).getDupla().getRow());
                     path.setIcon(null);
 
                     if (path.getColumn() > midGame - 1) {
@@ -841,10 +923,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     } else {
                         path.setBackground(java.awt.Color.lightGray);
                     }
+
                 }
             }
         }
         if (whoWin()) {
+
         } else {
             actionToRealice = "move";
             mode = "pasive";
@@ -915,6 +999,27 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.addNewTitanDead(actualTitan);
             updateEstadics(estadisticsPlayer1, index);
+        }
+    }
+
+    private void notWontDie(Titan titan)
+    {
+        if (titansDead[0] == (null)) {
+            titansDead[0] = titan;
+            timeDead1 = 4;
+
+        } else if (titansDead[1] == (null)) {
+            titansDead[1] = titan;
+            timeDead2 = 4;
+
+        } else if (titansDead[2] == (null)) {
+            titansDead[2] = titan;
+            timeDead3 = 4;
+
+        } else if (titansDead[3] == (null)) {
+            titansDead[3] = titan;
+            timeDead4 = 4;
+
         }
     }
 }
