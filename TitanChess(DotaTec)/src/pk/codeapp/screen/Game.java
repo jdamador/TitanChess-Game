@@ -55,7 +55,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     public Game()
     {
         initComponents();
-        jPlife.setVisible(false);
+        jPLife.setVisible(false);
         jPMana.setVisible(false);
         this.addWindowListener(new WindowAdapter()
         {
@@ -83,7 +83,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         paneTurn = new javax.swing.JPanel();
         lblShowTurn = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPlife = new javax.swing.JProgressBar();
+        jPLife = new javax.swing.JProgressBar();
         jPMana = new javax.swing.JProgressBar();
         lblPictureTitan = new javax.swing.JLabel();
         lblShowName = new javax.swing.JLabel();
@@ -132,7 +132,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 590, 130, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 670, 130, 50));
 
         btnEndTurn.setBackground(new java.awt.Color(0, 0, 0));
         btnEndTurn.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -145,9 +145,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 btnEndTurnActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 660, 130, 50));
+        getContentPane().add(btnEndTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 590, 130, 50));
 
-        btnAttack.setBackground(new java.awt.Color(51, 51, 51));
+        btnAttack.setBackground(new java.awt.Color(0, 0, 0));
         btnAttack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         btnAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnAttack.setText("Attack");
@@ -158,7 +158,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 btnAttackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 600, 130, 50));
+        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 590, 130, 50));
 
         paneTurn.setBackground(new java.awt.Color(51, 51, 51));
         paneTurn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -183,29 +183,30 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 .addComponent(lblShowTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(paneTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 650, -1, 50));
+        getContentPane().add(paneTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 640, -1, 50));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPlife.setBackground(new java.awt.Color(0, 153, 102));
-        jPlife.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
-        jPlife.setForeground(new java.awt.Color(0, 153, 102));
-        jPlife.setToolTipText("");
-        jPlife.setBorder(null);
-        jPlife.setOpaque(false);
-        jPlife.setRequestFocusEnabled(false);
-        jPlife.setString("Life\n");
-        jPlife.setStringPainted(true);
-        jPlife.setVerifyInputWhenFocusTarget(false);
-        jPanel1.add(jPlife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 420, 30));
+        jPLife.setBackground(new java.awt.Color(0, 153, 102));
+        jPLife.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        jPLife.setForeground(new java.awt.Color(0, 153, 102));
+        jPLife.setToolTipText("");
+        jPLife.setBorder(null);
+        jPLife.setName(""); // NOI18N
+        jPLife.setOpaque(false);
+        jPLife.setRequestFocusEnabled(false);
+        jPLife.setString("");
+        jPLife.setStringPainted(true);
+        jPLife.setVerifyInputWhenFocusTarget(false);
+        jPanel1.add(jPLife, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 420, 30));
 
         jPMana.setBackground(new java.awt.Color(102, 255, 255));
         jPMana.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jPMana.setForeground(new java.awt.Color(102, 255, 255));
         jPMana.setBorder(null);
         jPMana.setOpaque(false);
-        jPMana.setString("Mana");
+        jPMana.setString("");
         jPMana.setStringPainted(true);
         jPMana.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(jPMana, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 420, 30));
@@ -258,7 +259,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         lblPictureTitan.setIcon(null);
         lblShowName.setText(null);
         //Life
-        jPlife.setVisible(false);
+        jPLife.setVisible(false);
         jPMana.setVisible(false);
     }
 
@@ -479,10 +480,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnEndTurn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JProgressBar jPLife;
     private javax.swing.JProgressBar jPMana;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelGame;
-    private javax.swing.JProgressBar jPlife;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblPictureTitan;
     private javax.swing.JLabel lblShowName;
@@ -588,23 +589,26 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void viewTitan(Titan titan)
     {
+        actualTitan = titan;
         lblShowName.setText(titan.getName() + "          " + "Lvl:" + titan.getLevel());
-        jPlife.setVisible(true);
+        jPLife.setVisible(true);
         jPMana.setVisible(true);
         lblPictureTitan.setIcon(titan.getImageBig());
         //Life
-        jPlife.setMaximum(titan.getMaxLife());
-        jPlife.setValue(titan.getLife());
-        jPlife.setStringPainted(true);
-        jPlife.setString("Life");
-        jPlife.setOpaque(true);
-        jPlife.setBackground(java.awt.Color.green);
-        jPlife.setForeground(java.awt.Color.black);
+        jPLife.setMaximum(titan.getMaxLife());
+        jPLife.setValue(titan.getLife());
+        jPLife.setStringPainted(true);
+        jPLife.setString("Life: " + titan.getLife() + "/" + titan.getMaxLife());
+        jPLife.setOpaque(true);
+        jPLife.setBackground(java.awt.Color.green);
+        jPLife.setForeground(java.awt.Color.black);
 
         //Mana
         jPMana.setMaximum(titan.getMaxMana());
         jPMana.setValue(titan.getMana());
         jPMana.setOpaque(true);
+        jPMana.setStringPainted(true);
+        jPMana.setString("Mana: " + titan.getMana() + "/" + titan.getMaxMana());
         jPMana.setBackground(java.awt.Color.blue);
         jPMana.setForeground(java.awt.Color.black);
 
@@ -633,11 +637,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             //if player 1 is lost
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.");
             index = searchUserToEdit(methods.getPlayer2());
-            estadisticsPlayer2.setWinGames(estadisticsPlayer2.getWinGames()+ 1);
+            estadisticsPlayer2.setWinGames(estadisticsPlayer2.getWinGames() + 1);
             //if player 1 is lost
             updateEstadics(estadisticsPlayer2, index);
-             index = searchUserToEdit(methods.getActual());
-            estadisticsPlayer1.setLostGames(estadisticsPlayer1.getLostGames()+ 1);
+            index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setLostGames(estadisticsPlayer1.getLostGames() + 1);
             updateEstadics(estadisticsPlayer1, index);
             this.dispose();
             selectTitan.goBack();
@@ -645,13 +649,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             return true;
         } else if (this.contTowersP2 == 0) {
             //if player 1 is winner
-              index = searchUserToEdit(methods.getActual());
-            estadisticsPlayer1.setWinGames(estadisticsPlayer1.getWinGames()+ 1);
+            index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.setWinGames(estadisticsPlayer1.getWinGames() + 1);
             updateEstadics(estadisticsPlayer1, index);
-            
+
             //if player 2 is lost
-             index = searchUserToEdit(methods.getPlayer2());
-            estadisticsPlayer2.setLostGames(estadisticsPlayer2.getLostGames()+ 1);
+            index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.setLostGames(estadisticsPlayer2.getLostGames() + 1);
             updateEstadics(estadisticsPlayer2, index);
             JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.");
             this.dispose();
@@ -797,8 +801,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
     }
 
-    public void changeStates(GraphicsElement element)
+    public void changeStates(GraphicsElement element,int mana)
     {
+         viewTitan(actualTitan);
         Dupla dupla;
         if (element instanceof Tower) {
             if (((Tower) element).getQuantityStamina() == 0) {
@@ -821,6 +826,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             if (element instanceof Titan) {
                 int midGame = (columnGame / 2);
                 if (((Titan) element).getLife() == 0) {
+                    addNewTitanKill(((Titan) element));
                     increaseDeadTitans((Titan) element);
                     titan2 = (Titan) element;
                     increaseDeadTitans((Titan) element);
@@ -868,15 +874,15 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setDrestroyTower(estadisticsPlayer1.getDrestroyTower() + 1);
             updateEstadics(estadisticsPlayer1, index);
-            
-             index = searchUserToEdit(methods.getPlayer2());
+
+            index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setMyDeadTower(estadisticsPlayer2.getMyDeadTower() + 1);
             updateEstadics(estadisticsPlayer2, index);
         } else {
             index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setDrestroyTower(estadisticsPlayer2.getDrestroyTower() + 1);
             updateEstadics(estadisticsPlayer2, index);
-              index = searchUserToEdit(methods.getActual());
+            index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setMyDeadTower(estadisticsPlayer1.getMyDeadTower() + 1);
             updateEstadics(estadisticsPlayer1, index);
         }
@@ -896,5 +902,19 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
         return Integer.MAX_VALUE;
+    }
+
+    private void addNewTitanKill(Titan titan)
+    {
+        int index;
+        if (titan.getPlayer().equalsIgnoreCase("Player1")) {
+            index = searchUserToEdit(methods.getPlayer2());
+            estadisticsPlayer2.addNewTitanDead(actualTitan);
+            updateEstadics(estadisticsPlayer2, index);
+        } else {
+            index = searchUserToEdit(methods.getActual());
+            estadisticsPlayer1.addNewTitanDead(actualTitan);
+            updateEstadics(estadisticsPlayer1, index);
+        }
     }
 }

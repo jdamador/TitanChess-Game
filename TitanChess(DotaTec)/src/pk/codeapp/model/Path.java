@@ -14,6 +14,11 @@ import javax.swing.JButton;
 public class Path extends JButton{
     private int column;
     private int row;
+    /**
+     * This class make the function of buttons in the interface
+     * @param column
+     * @param row 
+     */
 public Path(int column,int row){
         super();
         this.column=column;

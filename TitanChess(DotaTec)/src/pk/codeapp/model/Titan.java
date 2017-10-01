@@ -33,11 +33,27 @@ public class Titan extends GraphicsElement implements Serializable{
      private ImageIcon tiny;
      private Dupla dupla;
      private int defense;
+     String path;
     //Relation
     private ArrayList<Attack> attacks = new ArrayList(); // List of Attacks
     //Player
     private String player="";
     private int level=1;
+    
+    /**
+     * Create a new instance from Titan
+     * this constructor receives the data to make a new Titan
+     * @param name
+     * @param life
+     * @param moves
+     * @param damage
+     * @param mana
+     * @param vitalElement
+     * @param icon
+     * @param imageBig
+     * @param gif
+     * @param tiny 
+     */
     public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String imageBig,String gif,String tiny) {
         //init attributes
         this.name = name;
@@ -48,6 +64,7 @@ public class Titan extends GraphicsElement implements Serializable{
         this.damage = damage;
         this.mana=mana;
         //init graphics elements
+        path=icon;
         this.icon= new ImageIcon(icon);
         this.gif= new ImageIcon(gif);
         this.imageBig = new ImageIcon(imageBig);
@@ -59,7 +76,8 @@ public class Titan extends GraphicsElement implements Serializable{
         this.maxMana=mana;
         
     }
-    //<editor-fold desc="*Getter and Setter*" defaultstate=""collapsed">
+    
+    //<editor-fold defaultstate=""collapsed" desc="*Getter and Setter*" >
 
     public int getMaxMana() {
         return maxMana;
@@ -169,7 +187,7 @@ public class Titan extends GraphicsElement implements Serializable{
         this.defense = defense;
     }
     
-    //</editor-fold>
+    
 
     public ImageIcon getImageBig() {
         return imageBig;
@@ -205,11 +223,15 @@ public class Titan extends GraphicsElement implements Serializable{
     {
         this.level = level;
     }
+    //</editor-fold>
     
-    
+    /**
+     * Converts the information into a string
+     * @return  the model with the information.
+     */
     public DefaultListModel<String> toModel() {
         DefaultListModel<String> model= new DefaultListModel();
-        model.addElement("Name:   "+this.name+ "    Vital Element:    "+this.vitalElement);
+        model.addElement("Name:   "+this.name+ "    Vital Element:    "+this.vitalElement +"          Level: "+this.level);
         model.addElement("Life:   "+this.life + "     Maximun Damage  "+this.damage+"     Quantity Mana:  "+this.mana);
         model.addElement("Moves:  "+this.moves);
        
@@ -223,7 +245,11 @@ public class Titan extends GraphicsElement implements Serializable{
         }
         return model;
     }
-
+    /**
+     * Add new attack in the attack's array from the titan
+     * @param attack
+     * @return true if operation is successfull or false if is fail
+     */
     public boolean addAttack(Attack attack) {
         if(attacks.size()!=5){
             attacks.add(attack);

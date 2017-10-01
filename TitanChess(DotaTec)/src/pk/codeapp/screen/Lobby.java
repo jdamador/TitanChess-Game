@@ -51,7 +51,8 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         btnTitan2 = new javax.swing.JButton();
@@ -81,8 +82,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan2.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan2.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan2ActionPerformed(evt);
             }
         });
@@ -91,8 +94,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan1.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan1.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan1ActionPerformed(evt);
             }
         });
@@ -101,8 +106,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan3.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan3.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan3ActionPerformed(evt);
             }
         });
@@ -111,8 +118,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan4.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan4.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan4ActionPerformed(evt);
             }
         });
@@ -121,8 +130,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan5.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan5.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan5ActionPerformed(evt);
             }
         });
@@ -131,8 +142,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan6.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan6.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan6ActionPerformed(evt);
             }
         });
@@ -141,8 +154,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan7.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan7.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan7ActionPerformed(evt);
             }
         });
@@ -151,8 +166,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         btnTitan8.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnTitan8.setForeground(new java.awt.Color(255, 255, 255));
         btnTitan8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTitan8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTitan8.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTitan8ActionPerformed(evt);
             }
         });
@@ -209,8 +226,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/playGame.png"))); // NOI18N
         jButton9.setOpaque(false);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton9.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton9ActionPerformed(evt);
             }
         });
@@ -220,23 +239,29 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
 
-        jButton2.setBackground(new java.awt.Color(51, 51, 51));
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Estadistics");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/graph.gif"))); // NOI18N
+        jButton2.setText("Stadistics");
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, 210, 100));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 610, 210, 100));
 
         lblGifImage.setBackground(new java.awt.Color(0, 0, 0));
         lblGifImage.setFont(new java.awt.Font("Century Schoolbook L", 1, 36)); // NOI18N

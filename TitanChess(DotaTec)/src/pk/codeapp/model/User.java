@@ -17,13 +17,19 @@ public class User implements Serializable{
     private String password;
     private String email;
     private Estadistics  userEstadistics= new Estadistics(0,0,0,0,0,0,0);
+    /**
+     * Create new user, receives the attributes to create the instance
+     * @param name
+     * @param password
+     * @param email 
+     */
     public User(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
        
     }
-
+    /*All getter and setter here*/
     public String getName() {
         return name;
     }

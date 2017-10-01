@@ -4,21 +4,12 @@
  * and open the template in the editor.
  */
 package pk.codeapp.screen;
-
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import pk.codeapp.methods.GameSettings;
 import pk.codeapp.model.Attack;
 import pk.codeapp.model.GraphicsElement;
-import pk.codeapp.model.Path;
 import pk.codeapp.model.Titan;
-import pk.codeapp.model.Tower;
-
 /**
  *
  * @author Jose Pablo Brenes
@@ -73,6 +64,7 @@ public class AuxAttackMode extends javax.swing.JFrame
         cmbSpecialAttack.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         btnMakeAttack.setBackground(new java.awt.Color(0, 0, 0));
+        btnMakeAttack.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         btnMakeAttack.setForeground(new java.awt.Color(255, 255, 255));
         btnMakeAttack.setText("Make Attack");
         btnMakeAttack.addActionListener(new java.awt.event.ActionListener()
@@ -112,12 +104,12 @@ public class AuxAttackMode extends javax.swing.JFrame
                         .addGap(85, 85, 85)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(cmbSpecialAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59)
+                        .addComponent(cmbSpecialAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
+                        .addGap(200, 200, 200)
                         .addComponent(btnMakeAttack)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,24 +142,20 @@ public class AuxAttackMode extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ 
     private void btnMakeAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeAttackActionPerformed
         String attackName = (String) cmbSpecialAttack.getSelectedItem();
-
         Attack attack = searchAttack(attackName);
-
         if (attack != null) {
             System.out.println("Entrando");
-
             lblDefended.setIcon(new ImageIcon("src/pk/codeapp/tools/explosion.gif"));
-            gameSettings.attack(titan, element, attack, arena); //need send attack
+            int mana=gameSettings.attack(titan, element, attack, arena); //need send attack
             
             window.setEnabled(true);
             window.setVisible(true);
             this.dispose();
-
-            window.changeStates(element);
+            window.changeStates(element,mana);
         }
-
         goBack();
     }//GEN-LAST:event_btnMakeAttackActionPerformed
 
@@ -214,16 +202,20 @@ public class AuxAttackMode extends javax.swing.JFrame
     {
         for (int i = 0; i < titan.getAttacks().size(); i++) {
             if (titan.getAttacks().get(i).getNameAttack().equals(name)) {
-
                 return titan.getAttacks().get(i);
             }
-
         }
         return null;
     }
-
+    /**
+     * get tools to make attacks
+     * @param titan
+     * @param element
+     * @param window
+     * @param arena 
+     */
     public void getToolsToAttack(Titan titan, GraphicsElement element, Game window, String arena)
-    { // Get tools to make attack
+    { 
         this.titan = titan;
         this.element = element;
         this.window = window;
@@ -249,8 +241,8 @@ public class AuxAttackMode extends javax.swing.JFrame
     {
         listAttacks = new DefaultComboBoxModel();
         for (int i = 0; i < titan.getAttacks().size(); i++) {
-            String attack = titan.getAttacks().get(i).getNameAttack();
-            listAttacks.addElement(attack);
+            Attack attack = titan.getAttacks().get(i);
+            listAttacks.addElement(attack.getNameAttack());
         }
         cmbSpecialAttack.setModel(listAttacks);
     }

@@ -6,9 +6,10 @@ package pk.codeapp.model;
  * and open the template in the editor.
  */
 
+
 /**
- *
- * @author Jose Pablo Brenes
+ * Class to create new graphics elements
+ * @author Daniel Amador
  */
 public abstract class GraphicsElement {
     private Dupla dupla;

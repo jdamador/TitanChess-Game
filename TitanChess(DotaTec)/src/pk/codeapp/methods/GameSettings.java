@@ -4,18 +4,17 @@
  * and open the template in the editor.
  */
 package pk.codeapp.methods;
+//<editor-fold desc="****all imports here****"  defaultstate="collapsed">
 
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import pk.codeapp.model.Attack;
 import pk.codeapp.model.GraphicsElement;
-
 import pk.codeapp.model.Path;
 import pk.codeapp.model.Titan;
 import pk.codeapp.model.Tower;
-import pk.codeapp.screen.MainApp;
+//</editor-fold>
 
 /**
  *
@@ -32,7 +31,6 @@ public class GameSettings
     public GameSettings(Methods methods)
     {
         this.methods = methods;
-
     }
 
     public Path searchButtonToPaint(ArrayList buttons, int column, int row)
@@ -55,14 +53,19 @@ public class GameSettings
      * @param attack
      * @param elementArena
      */
-    public void attack(Titan titan, GraphicsElement element, Attack attack, String elementArena)
+    public int attack(Titan titan, GraphicsElement element, Attack attack, String elementArena)
     {
+        /**
+         * Calculate the damage from attack
+         */
         int damage = getRadom(attack.getQuantityDamage() + 1) + 1;
         if (titan.getVitalElement().equals(elementArena)) {
             int plus = (int) (titan.getDamage() * 0.10);
             damage += plus;
         }
-
+        /**
+         * Verify if the element is a instance from Tower and apply the attack
+         */
         if (element instanceof Tower) {
             Tower tower = ((Tower) element);
             if (damage < tower.getQuantityStamina()) {
@@ -78,6 +81,9 @@ public class GameSettings
                 methods.updateInGraphicsElements(titan);
             }
         } else {
+            /**
+             * Verify if the element is instance from Titan and apply the attack
+             */
             if (element instanceof Titan) {
                 defender = (Titan) element;
                 int defense = getRadom(defender.getDefense() + 1) + 1;
@@ -100,8 +106,17 @@ public class GameSettings
                 }
             }
         }
+        return titan.getMana();
     }
 
+    /**
+     * check if anyone is there
+     *
+     * @param column
+     * @param row
+     * @param graphicsElements
+     * @return return true if he found anything or false
+     */
     public boolean isSomebodyHere(int column, int row, GraphicsElement[][] graphicsElements)
     {
         if (graphicsElements[column][row] instanceof Tower) {
@@ -111,14 +126,25 @@ public class GameSettings
         }
         return true;
     }
-
+/**
+ * That methods calculate a random number
+ *
+ * @param end recivies a max number
+ * @return  the new number
+ */
     public int getRadom(int end)
     {
 
         int num = randomGenerator.nextInt(end);
         return num;
     }
-
+/**
+ * Check range to attack or move, this range is up, dawn, back and ahead
+ * @param column
+ * @param row
+ * @param actualTitan
+ * @return  true if is allow or false 
+ */
     public boolean checkRange(int column, int row, Titan actualTitan) //Checks the click this in range titan
     {
         int columnTitan = actualTitan.getDupla().getColumn();
@@ -132,7 +158,7 @@ public class GameSettings
         }
         return false;
     }
-
+    //<editor-fold defaultstate="collapsed" desc="***All getter and setter here***">
     public ArrayList<Path> getButtons()
     {
         return buttons;
@@ -152,5 +178,5 @@ public class GameSettings
     {
         this.defender = titan2;
     }
-
+    //</editor-fold>
 }

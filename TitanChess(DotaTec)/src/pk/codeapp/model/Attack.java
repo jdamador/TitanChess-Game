@@ -13,7 +13,12 @@ public class Attack {
     private String nameAttack;
     private int quantityMana;
     private int quantityDamage;
-
+    /**
+     * Constructor receives the data to create the new instance
+     * @param nameAttack
+     * @param quantityMana
+     * @param quantityDamage 
+     */
     public Attack(String nameAttack, int quantityMana, int quantityDamage) {
         this.nameAttack = nameAttack;
         this.quantityMana = quantityMana;

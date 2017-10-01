@@ -17,12 +17,19 @@ public class Tower extends GraphicsElement{
     private Dupla position;
     private String towerPlayer;
     private ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/tower.png");
+    /**
+     * Receives the data to create new instance of the class
+     * @param quantityStamina
+     * @param dupla
+     * @param player 
+     */
     public Tower(int quantityStamina,Dupla dupla,String player) {
         this.quantityStamina = quantityStamina;
         this.position=dupla;
         this.towerPlayer=player;
     }
-
+    
+    /*All getter and setter here*/
     public ImageIcon getIcon() {
         return icon;
     }

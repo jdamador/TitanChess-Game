@@ -12,6 +12,10 @@ import javax.swing.JFrame;
  * @author amador
  */
 public interface DefaultRules {
+    /**
+     * Interface that define the default rules in differents windows
+     * @param frame 
+     */
     public void openWindow(JFrame frame);
     public void goBack();
     
