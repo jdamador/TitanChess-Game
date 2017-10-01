@@ -802,7 +802,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 dupla = ((Tower) element).getPosition();
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                 Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
-                increaseDetroyTowers(tower);
+                increaseDestroyTowers(tower);
                 path.setIcon(new ImageIcon("src/pk/codeapp/tools/deletetower.png"));
                 path.setEnabled(false);
             }
@@ -843,17 +843,21 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             updateEstadics(estadisticsPlayer2, index);
         }
     }
-    private void increaseDetroyTowers(Tower tower)
+    private void increaseDestroyTowers(Tower tower)
     {
         int index ;
         if (tower.getTowerPlayer().equalsIgnoreCase("Player1")) {
            index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setDrestroyTower(estadisticsPlayer1.getDrestroyTower()+ 1);
             updateEstadics(estadisticsPlayer1, index);
+            estadisticsPlayer2.setMyDeadTower(estadisticsPlayer2.getMyDeadTower()+1);
+            updateEstadics(estadisticsPlayer2, index);
         } else {
             index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setDrestroyTower(estadisticsPlayer1.getDrestroyTower() + 1);
             updateEstadics(estadisticsPlayer2, index);
+             estadisticsPlayer1.setMyDeadTower(estadisticsPlayer1.getMyDeadTower()+ 1);
+            updateEstadics(estadisticsPlayer1, index);
         }
     }
    public void updateEstadics(Estadistics estadistics, int index){
