@@ -53,7 +53,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private int timeDead2 = -1;
     private int timeDead3 = -1;
     private int timeDead4 = -1;
-
+    ImageIcon player1Icon= new ImageIcon("src/pk/codeapp/tools/player1.png");
+    ImageIcon player2Icon= new ImageIcon("src/pk/codeapp/tools/player2.jpg");
     /**
      * Default constructor
      */
@@ -283,12 +284,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         btnAttack.setEnabled(false);
         if (turnOfPlayer) { //Player 1  - Player 2
             turnOfPlayer = false;
-            JOptionPane.showMessageDialog(rootPane, "Turn Player 2");
+            JOptionPane.showMessageDialog(rootPane, " ","Turn Player 2",JOptionPane.INFORMATION_MESSAGE,player2Icon);
             lblShowTurn.setText("Turn Player 2");
             paneTurn.setBackground(java.awt.Color.blue);
         } else { //Player 2  - Player 1
             turnOfPlayer = true;
-            JOptionPane.showMessageDialog(rootPane, "Turn Player 1");
+           JOptionPane.showMessageDialog(rootPane, " ","Turn Player 1",JOptionPane.INFORMATION_MESSAGE,player1Icon);
             lblShowTurn.setText("Turn Player 1");
             paneTurn.setBackground(java.awt.Color.red);
         }

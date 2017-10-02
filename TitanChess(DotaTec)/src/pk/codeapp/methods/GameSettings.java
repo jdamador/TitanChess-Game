@@ -126,38 +126,46 @@ public class GameSettings
         }
         return true;
     }
-/**
- * That methods calculate a random number
- *
- * @param end recivies a max number
- * @return  the new number
- */
+
+    /**
+     * That methods calculate a random number
+     *
+     * @param end recivies a max number
+     * @return the new number
+     */
     public int getRadom(int end)
     {
 
         int num = randomGenerator.nextInt(end);
         return num;
     }
-/**
- * Check range to attack or move, this range is up, dawn, back and ahead
- * @param column
- * @param row
- * @param actualTitan
- * @return  true if is allow or false 
- */
+
+    /**
+     * Check range to attack or move, this range is up, dawn, back and ahead
+     *
+     * @param column
+     * @param row
+     * @param actualTitan
+     * @return true if is allow or false
+     */
     public boolean checkRange(int column, int row, Titan actualTitan) //Checks the click this in range titan
     {
         int columnTitan = actualTitan.getDupla().getColumn();
         int rowTitan = actualTitan.getDupla().getRow();
-
-        if ((columnTitan + 1 == column && rowTitan == row)
-                || (columnTitan == column && rowTitan + 1 == row)
+        if (actualTitan.getPlayer().equalsIgnoreCase("Player1")) {
+            if ((columnTitan + 1 == column && rowTitan == row)
+                    || (columnTitan == column && rowTitan + 1 == row)
+                    || (columnTitan == column && rowTitan - 1 == row)) {
+                return true;
+            }
+        }else if ( (columnTitan == column && rowTitan + 1 == row)
                 || (columnTitan == column && rowTitan - 1 == row)
                 || (columnTitan - 1 == column && rowTitan == row)) {
             return true;
         }
         return false;
     }
+
     //<editor-fold defaultstate="collapsed" desc="***All getter and setter here***">
     public ArrayList<Path> getButtons()
     {
