@@ -7,9 +7,7 @@ package pk.codeapp.screen;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import pk.codeapp.methods.DefaultRules;
@@ -437,7 +435,10 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         this.dispose();
         beforeWindow.setVisible(true);
     }
-
+    /**
+     * This methods change the image in the lobby
+     * @param icon 
+     */
     public void chargeGif(int icon) {
         if(titans[icon]==null){
             lblGifImage.setText("Coming soon...");
@@ -452,6 +453,11 @@ public class Lobby extends javax.swing.JFrame implements DefaultRules {
         }
     }
 
+    /**
+     * Return the button to set image
+     * @param select
+     * @return  
+     */
     public JButton getButton(int select) {
         switch (select) {
             case 1: {

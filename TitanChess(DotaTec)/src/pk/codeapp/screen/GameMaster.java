@@ -790,7 +790,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         }
         cmbNewPath.setModel(model);
     }
-
+    /**
+     * Method to add new attack in the specific titan
+     */
     private void addAttack()
     {
         if (attackName.getText().isEmpty()) {
@@ -813,6 +815,10 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         }
     }
     }
+    /**
+     * Create new titan
+     * 
+     */
     private void createNewTitan()
     {
         if (txtNewName.getText().isEmpty()) {

@@ -198,7 +198,9 @@ public class Register extends javax.swing.JFrame implements DefaultRules {
        this.dispose();
        beforeWindow.setVisible(true);
     }
-
+    /**
+     * Create new Account in the game
+     */
       public void createAccount()
     {
         String email = txtEmail.getText();

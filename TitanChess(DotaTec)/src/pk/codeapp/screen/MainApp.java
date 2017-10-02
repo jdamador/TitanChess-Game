@@ -186,6 +186,9 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Verify if the user exist in the list and go to the lobby
+     */
     public void login() {
         String username = txtUsername.getText();
         String password = txtPassword.getText();

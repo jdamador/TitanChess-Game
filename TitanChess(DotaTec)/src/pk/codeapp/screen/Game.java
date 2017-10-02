@@ -24,18 +24,15 @@ import static pk.codeapp.screen.MainApp.methods;
 
 public class Game extends javax.swing.JFrame implements DefaultRules, ActionListener, Runnable
 {
-
+    
     //Inicialization of Variables
     AuxAttackMode auxWindowstoAttack = new AuxAttackMode();
     private SelectTitan selectTitan;  // Before Windows
     private String elementArena;
     private int columnGame;
     private int rowGame;
-
     private int contTowersP1 = 0;
     private int contTowersP2 = 0;
-    private Titan titan2;
-    private boolean titanReallyDied = false; // boolean to  check dead Titan
     private int contMovesTitan;//Cont the moves has actualTitan  
     private Titan actualTitan; // Titan actual clicked
     private boolean running; // thread Game)
@@ -57,6 +54,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private int timeDead3 = -1;
     private int timeDead4 = -1;
 
+    
+    /**
+     * Default constructor
+     */
     public Game()
     {
         initComponents();
@@ -258,6 +259,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         mode = "attack";
         JOptionPane.showMessageDialog(rootPane, "Select your enemy!", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAttackActionPerformed
+    
+    /**
+     * Inicialices the labesl in null
+     */
     private void viewTitan()
     {
         // View titan 
@@ -267,7 +272,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPLife.setVisible(false);
         jPMana.setVisible(false);
     }
-
+/**
+ * This methods change de turn of the each player
+ */
     private void changePlayer() // Change turn of game
     {
 
@@ -285,7 +292,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             lblShowTurn.setText("Turn Player 1");
             paneTurn.setBackground(java.awt.Color.red);
         }
-
+        //Verify that one titan is dead
         System.out.println(timeDead1 + " " + timeDead2 + " " + timeDead3 + " " + timeDead4);
 
         timeDead1--;
@@ -293,7 +300,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         timeDead3--;
         timeDead4--;
         whoDead();
-
     }
 
     /**
@@ -327,10 +333,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         /* Create and display the form */
     }
 
+  
     /**
-     * Get elementArena to check the image
-     *
-     * @param elementArena
+     * Receives the element and set background
+     * @param elementArena 
      */
     private void paintBackground(String elementArena)
     { // Paint The arena of type respective
@@ -355,7 +361,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
     }
-
+    /**
+     * Default operation to open this windows
+     * @param frame 
+     */
     @Override
     public void openWindow(JFrame frame)
     {
@@ -378,7 +387,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         this.dispose();
         selectTitan.goBack();
     }
-
+    /**
+     * this method paint the diferents tower in the board
+     */
     private void paintTowersGame()
     { //Paint tower in the table
         for (int j = 0; j < rowGame; j++) {
@@ -393,12 +404,15 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(), tower.getPosition().getRow()); //Methods to return the button
                         buttonToPaint.setIcon(tower.getIcon());
                     }
-
                 }
             }
         }
     }
 
+    /**
+     * paint the start position the all titans
+     * work with the array that contains the graphics elements
+     */
     private void paintStartTitans()
     { //Paint start champions in the table
         titans = MainApp.methods.getTitans();
@@ -436,6 +450,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
     }
 
+    /**
+     * This methods optain the new position to element in the array and board
+     * receives the player 
+     * @param player
+     * @return the Dupla with new column and row
+     */
     private Dupla getPositionOfTitan(String player)
     {
         Dupla aux = null;
@@ -472,7 +492,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
         return null;
     }
-
+    /**
+     * this method paint the board to the game
+     * @param panel receives the panel 
+     */
     private void paintTable(JPanel panel)
     { //Methods to paint matrix of table(Only part of player)
         panel.setLayout(new java.awt.GridLayout(rowGame, columnGame));
@@ -515,6 +538,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private javax.swing.JPanel paneTurn;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Default operation to button is pressed
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     { // Click in the mouse
@@ -539,7 +566,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-
+    /**
+     * Increase the mana, these increase 25% by turn
+     */
     private void increaseMana()
     {
         for (int j = 0; j < rowGame; j++) {
@@ -555,7 +584,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
     }
-
+/**
+ * This method make the titan move, receives the row and column, also the new buttton in the board
+ * @param column
+ * @param row
+ * @param temp 
+ */
     private void movePosition(int column, int row, Path temp)
     { // Move Position of titan
 
@@ -611,7 +645,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             }
         }
     }
-
+    
+    /**
+     * Charge the information in the screen, requires the titan to show your data sheet
+     * @param titan 
+     */
     private void viewTitan(Titan titan)
     {
         actualTitan = titan;
@@ -638,7 +676,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         jPMana.setForeground(java.awt.Color.black);
 
     }
-
+    
+    /**
+     * this methis obtain the quantity of tower there is on the board
+     * @param contTowersP1
+     * @param contTowersP2 
+     */
     public void obtainQuantityTower(int contTowersP1, int contTowersP2)
     {
 
@@ -654,7 +697,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         this.contTowersP2 = contTowersP2;
 
     }
-
+/**
+ * This method verify that someone won
+ * @return  true if there is a winner o false
+ */
     private boolean whoWin()
     {
         int index;
@@ -690,7 +736,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
         return false;
     }
-
+/**
+ * This method revive the dead titan after of one turn
+ */
     private void whoDead()
     { //Methods to titans is dead
 
@@ -764,9 +812,12 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         } else {
             path.setBackground(java.awt.Color.blue);
         }
-        titanReallyDied = theyAreDead();
+       theyAreDead();
     }
-
+    /**
+     * This method verify if there is a dead titan
+     * @return 
+     */
     public boolean theyAreDead()
     {
         for (int i = 0; i < titansDead.length; i++) {
@@ -777,7 +828,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         return false;
     }
 // Start Thread of Game 
-
+/**
+ * Inicialices the game variables
+ */
     private void init()
     { // Inicialization of Varaibles
         //Start Game 
@@ -797,6 +850,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     }
 
+    
     private void tick()
     { // Variables
 
@@ -807,7 +861,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     { // Graphics
 
     }
-
+/**
+ * Game loop
+ */
     @Override
     public void run()
     {
@@ -819,7 +875,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
         stop();
     }
-
+/**
+ * Start game
+ */
     public synchronized void start()
     {
 
@@ -830,7 +888,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         Thread thread = new Thread(this);
         thread.start();
     }
-
+/**
+ * Stop the thread
+ */
     public synchronized void stop()
     {
         if (!running) {
@@ -880,7 +940,11 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             JOptionPane.showMessageDialog(rootPane, "there is nobody there");
         }
     }
-
+/**
+ * Verify if a titan or tower is dead and set the attributes, also call the method that change the turn
+ * @param element
+ * @param mana 
+ */
     public void changeStates(GraphicsElement element, int mana)
     {
         viewTitan(actualTitan);
@@ -894,7 +958,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                 } else {
                     contTowersP2--;
                 }
-
+                increaseLevelAndPowers(actualTitan);
                 dupla = ((Tower) element).getPosition();
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
                 Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
@@ -910,11 +974,8 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     notWontDie((Titan) element);
                     addNewTitanKill(((Titan) element));
                     increaseDeadTitans((Titan) element);
+                    increaseLevelAndPowers(actualTitan);
 
-                    increaseDeadTitans((Titan) element);
-                    
-
-                    
                     Path path = gameSettings.searchButtonToPaint(buttons, ((Titan)element).getDupla().getColumn(),((Titan)element).getDupla().getRow());
                     path.setIcon(null);
 
@@ -923,7 +984,6 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     } else {
                         path.setBackground(java.awt.Color.lightGray);
                     }
-
                 }
             }
         }
@@ -936,7 +996,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
 
     }
-
+    /**
+     * Increase the stadistic about the titans deads
+     * @param titan 
+     */
     private void increaseDeadTitans(Titan titan)
     {
         int index;
@@ -950,13 +1013,18 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             updateEstadics(estadisticsPlayer2, index);
         }
     }
-
+/**
+ * increase the stadistics about the enemy tower dead 
+ * ithe deaths of the towers themselves
+ * @param tower 
+ */
     private void increaseDetroyTowers(Tower tower)
     {
         int index;
         if (tower.getTowerPlayer().equalsIgnoreCase("Player2")) {
             index = searchUserToEdit(methods.getActual());
             estadisticsPlayer1.setDrestroyTower(estadisticsPlayer1.getDrestroyTower() + 1);
+            
             updateEstadics(estadisticsPlayer1, index);
 
             index = searchUserToEdit(methods.getPlayer2());
@@ -971,12 +1039,20 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             updateEstadics(estadisticsPlayer1, index);
         }
     }
-
+/**
+ * Seach in the array and make update
+ * @param estadistics
+ * @param index 
+ */
     public void updateEstadics(Estadistics estadistics, int index)
     {
         methods.getPlayers().get(index).setUserEstadistics(estadistics);
     }
-
+/**
+ * Seach the user in the array
+ * @param user
+ * @return the index where is located
+ */
     public int searchUserToEdit(User user)
     {
         ArrayList<User> users = methods.getPlayers();
@@ -987,7 +1063,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         }
         return Integer.MAX_VALUE;
     }
-
+/**
+ * Add stadistic about the kill with a specific titan
+ * @param titan 
+ */
     private void addNewTitanKill(Titan titan)
     {
         int index;
@@ -1001,7 +1080,10 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             updateEstadics(estadisticsPlayer1, index);
         }
     }
-
+/**'
+ * Save the dead titans to revive them later
+ * @param titan 
+ */
     private void notWontDie(Titan titan)
     {
         if (titansDead[0] == (null)) {
@@ -1021,5 +1103,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             timeDead4 = 4;
 
         }
+    }
+
+    private void increaseLevelAndPowers(Titan actualTitan)
+    {
+        actualTitan.setMana((int)(actualTitan.getMana()*0.25)+actualTitan.getMana());
+        actualTitan.setLife((int)(actualTitan.getLife()*0.25)+actualTitan.getLife());
+        actualTitan.setLevel(actualTitan.getLevel()+1);
+       graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()]=actualTitan;
     }
 }

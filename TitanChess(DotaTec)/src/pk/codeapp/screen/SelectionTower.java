@@ -5,13 +5,11 @@
  */
 package pk.codeapp.screen;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -133,8 +131,11 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             }
         });
     }
-
-   private void paintTabletoTowers(JPanel panel) { //Methods to paint matrix of table(Only part of player)
+/**
+ * Methods to paint matrix of table(Only part of player)
+ * @param panel 
+ */
+   private void paintTabletoTowers(JPanel panel) { 
          panel.setLayout(new java.awt.GridLayout(rowGame,columnGame));
         int column = columnGame, row = rowGame;
         int midGame=(columnGame/2);
@@ -185,7 +186,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             if(contTowersP1<=3){ // Check the num Tower is less than 3 (Panel 1)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
             temp.setEnabled(false);
-            Tower newTower = new Tower(50,new Dupla(temp.getColumn(),temp.getRow()),"player1");
+            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player1");
             MainApp.methods.addTower(newTower);
             }else{return;}
         }
@@ -194,7 +195,7 @@ public class SelectionTower extends javax.swing.JFrame implements ActionListener
             if(contTowersP2<=3){// Check the num Tower is less than 3 (Panel 2)
             temp.setIcon(new ImageIcon("src/pk/codeapp/tools/tower.png"));
             temp.setEnabled(false);
-            Tower newTower = new Tower(50,new Dupla(temp.getColumn(),temp.getRow()),"player2");
+            Tower newTower = new Tower(10000,new Dupla(temp.getColumn(),temp.getRow()),"player2");
             MainApp.methods.addTower(newTower);
             }else{return;}}
         
