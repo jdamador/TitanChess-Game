@@ -283,15 +283,17 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     private void changePlayer() // Change turn of game
     {
 
-        increaseMana();
         viewTitan();
         btnAttack.setEnabled(false);
         if (turnOfPlayer) { //Player 1  - Player 2
             turnOfPlayer = false;
+            increaseMana("Player1");
             JOptionPane.showMessageDialog(rootPane, "Turn Player 2", "Change of turn ", JOptionPane.INFORMATION_MESSAGE, player2Icon);
             lblShowTurn.setText("Turn Player 2");
+
             paneTurn.setBackground(java.awt.Color.blue);
         } else { //Player 2  - Player 1
+            increaseMana("Player2");
             turnOfPlayer = true;
             JOptionPane.showMessageDialog(rootPane, "Turn Player 1", "Change of turn ", JOptionPane.INFORMATION_MESSAGE, player1Icon);
             lblShowTurn.setText("Turn Player 1");
@@ -589,17 +591,20 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
     /**
      * Increase the mana, these increase 25% by turn
      */
-    private void increaseMana()
+    private void increaseMana(String player)
     {
         for (int j = 0; j < rowGame; j++) {
             for (int i = 0; i < columnGame; i++) {
                 if (graphicsElements[i][j] instanceof Titan) {
-                    Titan titan = (Titan) graphicsElements[i][j];
-                    int mana = titan.getMana();
-                    mana *= 0.25;
+                    if (((Titan) graphicsElements[i][j]).getPlayer().equalsIgnoreCase(player)) {
+                        Titan titan = (Titan) graphicsElements[i][j];
+                        int mana = titan.getMana();
+                        mana *= 0.25;
 
-                    titan.setMana(titan.getMana() + mana);
-                    graphicsElements[i][j] = titan;
+                        titan.setMana(titan.getMana()+ mana);
+                        graphicsElements[i][j] = titan;
+                    }
+
                 }
             }
         }
@@ -734,7 +739,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         int index;
         if (this.contTowersP1 == 0) {
             //if player 1 is lost
-            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.", "Congratulations", JOptionPane.INFORMATION_MESSAGE,winner);
+            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 2, you've won.", "Congratulations", JOptionPane.INFORMATION_MESSAGE, winner);
             index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setWinGames(estadisticsPlayer2.getWinGames() + 1);
             //if player 1 is lost
@@ -756,7 +761,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
             index = searchUserToEdit(methods.getPlayer2());
             estadisticsPlayer2.setLostGames(estadisticsPlayer2.getLostGames() + 1);
             updateEstadics(estadisticsPlayer2, index);
-            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.", "Congratulations", JOptionPane.INFORMATION_MESSAGE,winner);
+            JOptionPane.showMessageDialog(rootPane, "Congratulations Player 1, you've won.", "Congratulations", JOptionPane.INFORMATION_MESSAGE, winner);
             this.dispose();
             selectTitan.goBack();
             running = false;
@@ -1169,7 +1174,7 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
 
     private void increaseLevelAndPowers(Titan actualTitan)
     {
-        actualTitan.setMana((int) (actualTitan.getMana() * 0.25) + actualTitan.getMana());
+        actualTitan.setMana((int) (actualTitan.getMaxMana()* 0.25) + actualTitan.getMana());
         actualTitan.setLife((int) (actualTitan.getLife() * 0.25) + actualTitan.getLife());
         actualTitan.setLevel(actualTitan.getLevel() + 1);
         graphicsElements[actualTitan.getDupla().getColumn()][actualTitan.getDupla().getRow()] = actualTitan;
