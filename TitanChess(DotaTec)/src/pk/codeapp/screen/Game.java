@@ -1,5 +1,6 @@
 package pk.codeapp.screen;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -402,11 +403,18 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     Tower tower = (Tower) graphicsElements[i][j];
                     if (tower.getTowerPlayer().equals("player2")) {
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(), tower.getPosition().getRow()); //Methods to return the button
-
+                        buttonToPaint.setText(tower.getQuantityStamina()+"");
+                        buttonToPaint.setHorizontalTextPosition(0);
+                        buttonToPaint.setFont(new java.awt.Font("Dialog", 1, 14));
+                        buttonToPaint.setForeground(Color.red);
                         buttonToPaint.setIcon(tower.getIcon());
                     } else {
                         Path buttonToPaint = gameSettings.searchButtonToPaint(buttons, tower.getPosition().getColumn(), tower.getPosition().getRow()); //Methods to return the button
                         buttonToPaint.setIcon(tower.getIcon());
+                         buttonToPaint.setText(tower.getQuantityStamina()+"");
+                        buttonToPaint.setHorizontalTextPosition(0);
+                        buttonToPaint.setFont(new java.awt.Font("Dialog", 1, 14));
+                        buttonToPaint.setForeground(Color.red);
                     }
                 }
             }
@@ -977,9 +985,13 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
         Dupla dupla;
         boolean flag = true;
         if (element instanceof Tower) {
+             Tower tower = (Tower) element;
+             dupla = ((Tower) element).getPosition();
+            Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
+            path.setText(tower.getQuantityStamina()+"");
             if (((Tower) element).getQuantityStamina() == 0) {
                 flag = false;
-                Tower tower = (Tower) element;
+               
 
                 if (tower.getTowerPlayer().equals("player1")) {
                     contTowersP1--;
@@ -987,9 +999,9 @@ public class Game extends javax.swing.JFrame implements DefaultRules, ActionList
                     contTowersP2--;
                 }
                 increaseLevelAndPowers(actualTitan);
-                dupla = ((Tower) element).getPosition();
+                
                 graphicsElements[dupla.getColumn()][dupla.getRow()] = null;
-                Path path = gameSettings.searchButtonToPaint(buttons, dupla.getColumn(), dupla.getRow());
+                
                 increaseDetroyTowers(tower);
                 path.setIcon(new ImageIcon("src/pk/codeapp/tools/deletetower.png"));
                 path.setEnabled(false);
