@@ -70,7 +70,7 @@ public class Titan extends GraphicsElement implements Serializable{
         this.imageBig = new ImageIcon(imageBig);
         //Create basic Attack
       
-       
+      
         this.defense=100;
         this.maxLife=life;
         this.maxMana=mana;

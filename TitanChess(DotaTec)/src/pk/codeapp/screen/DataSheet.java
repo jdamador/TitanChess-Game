@@ -43,7 +43,7 @@ public class DataSheet extends javax.swing.JFrame implements DefaultRules
         lblPerformance.setText(actual.getPerformance() + "%");
         lblDestroyedTower.setText(actual.getDrestroyTower() + "");
         //</editor-fold>
-        
+        this.setLocationRelativeTo(null);
         chargeKillsFromTitans();
         this.addWindowListener(new WindowAdapter()
         {
