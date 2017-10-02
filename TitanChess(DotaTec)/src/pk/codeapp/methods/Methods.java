@@ -214,37 +214,37 @@ public int getColumnGame()
     public void defaulTitan()
     {
         //public Titan(String name, int life, int moves, int damage,int mana, String vitalElement, String icon,String gif,String imageBig)
-        Titan titan = new Titan("Mewtwo", 40, 2, 150, 300, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png",
+        Titan titan = new Titan("Mewtwo", 400, 2, 150, 300, "Water", "src/pk/codeapp/tools/titans/Icons/titan6.png", "src/pk/codeapp/tools/titans/titan6.png",
                 "src/pk/codeapp/tools/titans/titan6.gif", "src/pk/codeapp/tools/titans/Icons/icon6.png");
         Attack attack = new Attack("Aura Sphere", 100, 250);
         titan.addAttack(attack);
         addTitan(titan);
 
-        titan = new Titan("Geb", 65, 3, 200, 300, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg",
+        titan = new Titan("Geb", 650, 3, 200, 300, "Land", "src/pk/codeapp/tools/titans/Icons/titan4.jpg", "src/pk/codeapp/tools/titans/titan4.jpg",
                 "src/pk/codeapp/tools/titans/titan4.gif", "src/pk/codeapp/tools/titans/Icons/icon4.jpg");
         attack = new Attack("Bone stick", 50, 150);
         titan.addAttack(attack);
         addTitan(titan);
 
-        titan = new Titan("Tretan", 40, 2, 200, 400, "Fire", "src/pk/codeapp/tools/titans/Icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg",
+        titan = new Titan("Tretan", 400, 2, 200, 400, "Fire", "src/pk/codeapp/tools/titans/Icons/titan2.jpg", "src/pk/codeapp/tools/titans/titan2.jpg",
                 "src/pk/codeapp/tools/titans/titan2.gif", "src/pk/codeapp/tools/titans/Icons/icon2.jpg");
         attack = new Attack("Heat Wave", 200, 300);
         titan.addAttack(attack);
         addTitan(titan);
 
-        titan = new Titan("Western Dragon", 30, 1, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg",
+        titan = new Titan("Western Dragon", 300, 1, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg",
                 "src/pk/codeapp/tools/titans/titan1.gif", "src/pk/codeapp/tools/titans/Icons/icon1.jpg");
          attack = new Attack("Ice Skewers", 120, 200);
         titan.addAttack(attack);
         addTitan(titan);
         
-        titan = new Titan("Jack", 50, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.jpg",
+        titan = new Titan("Jack", 500, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.jpg",
                 "src/pk/codeapp/tools/titans/titan5.gif", "src/pk/codeapp/tools/titans/Icons/icon5.jpg");
        attack = new Attack("BreaksRocks", 90, 215);
         titan.addAttack(attack);
         addTitan(titan);
      
-        titan = new Titan("Lucario", 46, 2, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg",
+        titan = new Titan("Lucario", 460, 2, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg",
                 "src/pk/codeapp/tools/titans/titan3.gif", "src/pk/codeapp/tools/titans/Icons/icon3.jpg");
         attack = new Attack("Heal Pulse", 50, 150);
         titan.addAttack(attack);
