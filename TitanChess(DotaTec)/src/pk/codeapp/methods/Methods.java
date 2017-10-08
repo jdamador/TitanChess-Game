@@ -142,7 +142,8 @@ public class Methods
     {
         this.titans = titans;
     }
-public int getColumnGame()
+
+    public int getColumnGame()
     {
         return columnGame;
     }
@@ -208,8 +209,7 @@ public int getColumnGame()
         return withoutCreating;
     }
     //</editor-fold>
-    
-    
+
     //<editor-fold desc="Default Titans in the game" defaultstate="collapsed">
     public void defaulTitan()
     {
@@ -234,16 +234,16 @@ public int getColumnGame()
 
         titan = new Titan("Western Dragon", 300, 1, 200, 200, "Air", "src/pk/codeapp/tools/titans/Icons/titan1.jpg", "src/pk/codeapp/tools/titans/titan1.jpg",
                 "src/pk/codeapp/tools/titans/titan1.gif", "src/pk/codeapp/tools/titans/Icons/icon1.jpg");
-         attack = new Attack("Ice Skewers", 120, 200);
+        attack = new Attack("Ice Skewers", 120, 200);
         titan.addAttack(attack);
         addTitan(titan);
-        
+
         titan = new Titan("Jack", 500, 3, 200, 200, "Land", "src/pk/codeapp/tools/titans/Icons/titan5.jpg", "src/pk/codeapp/tools/titans/titan5.jpg",
                 "src/pk/codeapp/tools/titans/titan5.gif", "src/pk/codeapp/tools/titans/Icons/icon5.jpg");
-       attack = new Attack("BreaksRocks", 90, 215);
+        attack = new Attack("BreaksRocks", 90, 215);
         titan.addAttack(attack);
         addTitan(titan);
-     
+
         titan = new Titan("Lucario", 460, 2, 200, 200, "Water", "src/pk/codeapp/tools/titans/Icons/titan3.jpg", "src/pk/codeapp/tools/titans/titan3.jpg",
                 "src/pk/codeapp/tools/titans/titan3.gif", "src/pk/codeapp/tools/titans/Icons/icon3.jpg");
         attack = new Attack("Heal Pulse", 50, 150);
@@ -258,18 +258,18 @@ public int getColumnGame()
     }
     //</editor-fold>
 
-    
-
     public void setWithoutCreating(ArrayList<Titan> withoutCreating)
     {
         this.withoutCreating = withoutCreating;
     }
+
     /**
      * Add tower in the matrix
-     * @param newTower 
+     *
+     * @param newTower
      */
     public void addTower(Tower newTower)
-    { 
+    {
         if (checkTowerPlayer1 == false || checkTowerPlayer2 == false) {
             activeTowertoPlay(newTower.getTowerPlayer()); //Methods to active tower to play
         }
@@ -280,10 +280,12 @@ public int getColumnGame()
             graphicsElements[newTower.getPosition().getColumn()][newTower.getPosition().getRow()] = newTower;//Add
         }
     }
-/**
- * Panel selected
- * @param panel 
- */
+
+    /**
+     * Panel selected
+     *
+     * @param panel
+     */
     private void activeTowertoPlay(String panel)
     { // Methods to activate the verfication of the towers 
         if (panel.equals("player1")) {
@@ -292,10 +294,12 @@ public int getColumnGame()
             this.checkTowerPlayer2 = true;
         }
     }
+
     /**
      * add titan in the list
+     *
      * @param titan
-     * @return  true when is addedor false 
+     * @return true when is addedor false
      */
     public boolean addTitan(Titan titan)
     {
@@ -313,7 +317,8 @@ public int getColumnGame()
 
     /**
      * Seach the position in the array and make one update from data
-     * @param element 
+     *
+     * @param element
      */
     public void updateInGraphicsElements(GraphicsElement element)
     {
@@ -329,13 +334,15 @@ public int getColumnGame()
             row = tw.getDupla().getRow();
         }
         graphicsElements[column][row] = element;
-      
+
     }
-/**
- * Seach titan in the array
- * @param titan
- * @return  if exists return true and isn't return false
- */
+
+    /**
+     * Seach titan in the array
+     *
+     * @param titan
+     * @return if exists return true and isn't return false
+     */
     public boolean search(Titan titan)
     {
         boolean flag = false;
@@ -355,20 +362,30 @@ public int getColumnGame()
         withoutCreating.remove(index);
     }
 
-    public void addInDefaults(Titan titan)
+    public void addInDefaults(Titan titanParamether)
     {
-        withoutCreating.add(titan);
+
+        withoutCreating.add(titanParamether);
+
         for (int i = 0; i < titans.length; i++) {
-            if (titans[i].equals(titan)) {
-                titans[i] = null;
-                break;
+         
+            if (titans[i] != null) {
+
+                if (titans[i].getName().equals(titanParamether.getName())) {
+                    titans[i] = null;
+
+                    break;
+                }
             }
         }
+      
     }
+
     public ArrayList<User> getPlayers()
     {
         return players;
     }
+
     public void setPlayers(ArrayList<User> players)
     {
         this.players = players;

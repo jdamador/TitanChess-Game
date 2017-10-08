@@ -790,6 +790,7 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         }
         cmbNewPath.setModel(model);
     }
+
     /**
      * Method to add new attack in the specific titan
      */
@@ -809,34 +810,41 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
                         } else {
                             JOptionPane.showMessageDialog(rootPane, "no more can be added", "Alert", JOptionPane.WARNING_MESSAGE);
                             break;
+                        }
                     }
                 }
             }
         }
     }
-    }
+
     /**
      * Create new titan
-     * 
+     *
      */
     private void createNewTitan()
     {
         if (txtNewName.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Don't leave spaces in blank", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+
             int index = cmbNewPath.getSelectedIndex();
-            Titan newTitan = nom.get(index);
-            newTitan.setName(txtNewName.getText());
-            newTitan.setDamage(slideNewDamage.getValue());
-            newTitan.setLife(slideNewLife.getValue());
-            newTitan.setMana(slideNewMana.getValue());
-            String element = (String) cmbVitalElement.getSelectedItem();
-            newTitan.setVitalElement(element);
-            newTitan.setMoves(Integer.parseInt((String) cmbNewMoves.getSelectedItem()));
-            methods.addTitan(newTitan);
-            JOptionPane.showMessageDialog(rootPane, "Operation Sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
-            methods.updateDefaults(index);
-            chargeTitansInComboBox();
+            if (index >= 0) {
+                Titan newTitan = nom.get(index);
+                newTitan.setName(txtNewName.getText());
+                newTitan.setDamage(slideNewDamage.getValue());
+                newTitan.setLife(slideNewLife.getValue());
+                newTitan.setMana(slideNewMana.getValue());
+                String element = (String) cmbVitalElement.getSelectedItem();
+                newTitan.setVitalElement(element);
+                newTitan.setMoves(Integer.parseInt((String) cmbNewMoves.getSelectedItem()));
+                methods.addTitan(newTitan);
+                JOptionPane.showMessageDialog(rootPane, "Operation Sucessfull", "Information", JOptionPane.INFORMATION_MESSAGE);
+                methods.updateDefaults(index);
+                chargeTitansInComboBox();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "there are no more characters to create", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+
         }
 
     }
@@ -852,7 +860,9 @@ public class GameMaster extends javax.swing.JFrame implements DefaultRules
         for (int i = 0; i < titans.length; i++) {
             if (titans[i] != null) {
                 if (titans[i].getName().equals(nameToDelete)) {
+
                     methods.addInDefaults(titans[i]);
+
                     return true;
                 }
             }
